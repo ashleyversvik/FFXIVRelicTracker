@@ -14,7 +14,7 @@ namespace FFXIVRelicTracker._05_ShB.ShBHelpers
 
             ShBJob tempJob = character.ShBModel.ShbJobList[JobIndex];
 
-            if (shbProgress.Progress == ShBProgress.States.NA & StageIndex>0)
+            if (shbProgress.Progress == ShBProgress.States.NA)
             {
                 CompletePreviousStages(character, tempJob, StageIndex);
             }
@@ -34,17 +34,8 @@ namespace FFXIVRelicTracker._05_ShB.ShBHelpers
                 IncompleteOtherJobs(character, StageIndex);
                 switch (StageIndex)
                 {
-                    case 0:
-                        shbProgress.Progress = ShBProgress.States.Completed;
-                        break;
-                    case 1:
-                        shbProgress.Progress = ShBProgress.States.Completed;
-                        break;
-                    case 2:
-                        shbProgress.Progress = ShBProgress.States.Completed;
-                        break;
                     default:
-                        shbProgress.Progress++;
+                        shbProgress.Progress = ShBProgress.States.Completed;
                         break;
                 }
                 AlterCounts(character, StageIndex);
@@ -73,10 +64,11 @@ namespace FFXIVRelicTracker._05_ShB.ShBHelpers
         {
             for (int i = 0; i < stageIndex; i++)
             {
-                if (i==0 & tempStage.Resistance.Progress!=ShBProgress.States.Completed) { DecreaseScalePowder(character); }
-                else if (i==1 & tempStage.AugmentedResistance.Progress != ShBProgress.States.Completed) { DecreaseMemoryCount(character); }
-                else if (i==2 & tempStage.Recollection.Progress != ShBProgress.States.Completed) { DecreaseBitterMemoryCount(character); }
-                tempStage.StageList[i].Progress = ShBProgress.States.Completed;
+                if (tempStage.StageList[i].Progress != ShBProgress.States.Completed)
+                {
+                    AlterCounts(character, i);
+                    tempStage.StageList[i].Progress = ShBProgress.States.Completed;
+                }
             }
         }
 
@@ -92,6 +84,15 @@ namespace FFXIVRelicTracker._05_ShB.ShBHelpers
                     break;
                 case 2:
                     DecreaseBitterMemoryCount(character);
+                    break;
+                case 3:
+                    DecreaseLoathsomeMemoryCount(character);
+                    break;
+                case 4:
+                    DecreaseTimewornArtifactCount(character);
+                    break;
+                case 5:
+                    DecreaseRawEmotionCount(character);
                     break;
                 default:
                     break;
@@ -126,5 +127,29 @@ namespace FFXIVRelicTracker._05_ShB.ShBHelpers
             if (character.ShBModel.RecollectionModel.MemoryCount <= 6) { character.ShBModel.RecollectionModel.MemoryCount = 0; }
             else { character.ShBModel.RecollectionModel.MemoryCount -= 6; }
         }
+
+        private static void DecreaseLoathsomeMemoryCount(Character character)
+        {
+            //Decrease Count of Memory items outside of LawsOrder model so that changes to progress that occur outside of LawsOrder view still impact Memory Counts
+
+            if (character.ShBModel.LawsOrderModel.MemoryCount <= 15) { character.ShBModel.RecollectionModel.MemoryCount = 0; }
+            else { character.ShBModel.LawsOrderModel.MemoryCount -= 15; }
+        }
+        private static void DecreaseTimewornArtifactCount(Character character)
+        {
+            //Decrease Count of Memory items outside of AugmentedLawsOrderModel so that changes to progress that occur outside of AugmentedLawsOrder view still impact Memory Counts
+
+            if (character.ShBModel.AugmentedLawsOrderModel.MemoryCount <= 15) { character.ShBModel.AugmentedLawsOrderModel.MemoryCount = 0; }
+            else { character.ShBModel.AugmentedLawsOrderModel.MemoryCount -= 15; }
+        }
+
+        private static void DecreaseRawEmotionCount(Character character)
+        {
+            //Decrease Count of Emotion items outside of BladesModel so that changes to progress that occur outside of BladesModel view still impact Emotion Counts
+
+            if (character.ShBModel.BladesModel.EmotionCount <= 15) { character.ShBModel.BladesModel.EmotionCount = 0; }
+            else { character.ShBModel.AugmentedLawsOrderModel.MemoryCount -= 15; }
+        }
+        
     }
 }

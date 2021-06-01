@@ -9,7 +9,7 @@
         xmlns:views="clr-namespace:FFXIVRelicTracker.Views"
         mc:Ignorable="d"
         Name="mainWindow"
-        Title="MainWindow" Height="450" Width="800"
+        Title="FFXIVRelicTracker" Height="450" Width="800"
         ResizeMode="CanResizeWithGrip"
         WindowStyle="None"    AllowsTransparency="True" WindowStartupLocation="CenterOwner"    Background="Transparent">
 
@@ -52,7 +52,6 @@
                                         <ColumnDefinition Width="auto"/>
                                     </Grid.ColumnDefinitions>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Style="{StaticResource LeftTextBlock}" Text="FFXIVRelicTracker "/>
                                         <TextBlock Style="{StaticResource LeftTextBlock}" Text="FFXIVRelicTracker "/>
                                         <TextBlock Style="{StaticResource LeftTextBlock}" Text="v5.35.3.2"/>
                                     </StackPanel>
@@ -101,6 +100,7 @@
                                             </ItemsControl>
                                         </StackPanel>
                                         <StackPanel VerticalAlignment="Bottom" Orientation="Vertical">
+                                            <Button Style="{StaticResource FFXIVButton}" Command="{Binding SaveCommand}" VerticalAlignment="Bottom" Content="Save"/>
                                             <Button Style="{StaticResource FFXIVButton}" Command="{Binding SettingsCommand}" VerticalAlignment="Bottom" Content="Settings"/>
                                         </StackPanel>
                                     </DockPanel>

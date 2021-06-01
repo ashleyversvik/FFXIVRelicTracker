@@ -43,7 +43,8 @@ namespace FFXIVRelicTracker._05_Skysteel.Skysteel_Helpers
            "BasePlus1",
            "Dragonsung",
            "AugmentedDragonsung",
-           "Skysung"
+           "Skysung",
+           "Skybuilders"
         };
 
         private static Dictionary<string, string> JobToToolDict= new Dictionary<string, string>
@@ -376,6 +377,74 @@ namespace FFXIVRelicTracker._05_Skysteel.Skysteel_Helpers
             {"FSH", ""}
         };
 
+        #endregion
+
+        #region Skysung
+
+        public static Tuple<string, string, string, string, string, string> ReturnSkybuildersTuple(string job)
+        {
+            return new Tuple<string, string, string, string, string, string>(JobToToolDict[job], JobNameListString[JobListString.IndexOf(job)], JobToSkybuildersCraft[job], JobToFirstSkybuildersMat[job], JobToSecondSkybuildersMat[job], JobToThirdSkybuildersMat[job]);
+        }
+
+        private static Dictionary<string, string> JobToSkybuildersCraft = new Dictionary<string, string>
+        {
+            {"CRP", "Oddly Delicate Pine Lumber"},
+            {"BSM", "Oddly Delicate Silver Gear"},
+            {"ARM", "Oddly Delicate Wolfram Square"},
+            {"GSM", "Oddly Delicate Celestine"},
+            {"LTW", "Oddly Delicate Gazelle Leather"},
+            {"WVR", "Oddly Delicate Rhea Cloth"},
+            {"ALC", "Oddly Delicate Holy Water"},
+            {"CUL", "Oddly Delicate Shark Oil"},
+            {"MIN", "" },
+            {"BTN", ""},
+            {"FSH", ""}
+        };
+
+        private static Dictionary<string, string> JobToFirstSkybuildersMat = new Dictionary<string, string>
+        {
+            {"CRP", "Oddly Delicate Ping Log" },
+            {"BSM", "Oddly Delicate Silvergrace Ore" },
+            {"ARM", "Oddly Delicate Scheelite"},
+            {"GSM", "Oddly Delicate Raw Celestine"},
+            {"LTW", "Oddly Delicate Gazelle Hide"},
+            {"WVR", "Oddly Delicate Rhea"},
+            {"ALC", "Oddly Delicate Mistletoe"},
+            {"CUL", "Oddly Delicate Hammerhead Shark"},
+            {"MIN", "Oddly Delicate Adamantite Ore" },
+            {"BTN", "Oddly Delicate Feather"},
+            {"FSH", "Flintstrike"}
+        };
+
+        private static Dictionary<string, string> JobToSecondSkybuildersMat = new Dictionary<string, string>
+        {
+            {"CRP", "Approved Grade 4 Artisanal Skybuilders' Log"},
+            {"BSM", "Approved Grade 4 Artisanal Skybuilders' Cloudstone"},
+            {"ARM", "Approved Grade 4 Artisanal Skybuilders' Cloudstone"},
+            {"GSM", "Approved Grade 4 Artisanal Skybuilders' Silex"},
+            {"LTW", "Approved Grade 4 Artisanal Skybuilders' Log"},
+            {"WVR", "Approved Grade 4 Artisanal Skybuilders' Cocoon"},
+            {"ALC", "Approved Grade 4 Artisanal Skybuilders' Spring Water"},
+            {"CUL", "Approved Grade 4 Artisanal Skybuilders' Spring Water"},
+            {"MIN", "Oddly Delicate Raw Jade"},
+            {"BTN", "Oddly Delicate Birch Log"},
+            {"FSH", "Pickled Pom"}
+        };
+
+        private static Dictionary<string, string> JobToThirdSkybuildersMat = new Dictionary<string, string>
+        {
+            {"CRP", "Approved Grade 4 Artisanal Skybuilders' Barbgrass"},
+            {"BSM", "Approved Grade 4 Artisanal Skybuilders' Silex"},
+            {"ARM", "Approved Grade 4 Artisanal Skybuilders' Prismstone"},
+            {"GSM", "Approved Grade 4 Artisanal Skybuilders' Barbgrass"},
+            {"LTW", "Approved Grade 4 Artisanal Skybuilders' Caiman"},
+            {"WVR", "Approved Grade 4 Artisanal Skybuilders' Ice Stalagmite"},
+            {"ALC", "Approved Grade 4 Artisanal Skybuilders' Raspberry"},
+            {"CUL", "Approved Grade 4 Artisanal Skybuilders' Ice Stalagmite"},
+            {"MIN", ""},
+            {"BTN", ""},
+            {"FSH", ""}
+        };
         #endregion
     }
 }

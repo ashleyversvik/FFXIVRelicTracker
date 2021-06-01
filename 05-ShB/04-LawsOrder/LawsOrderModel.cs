@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 
-namespace FFXIVRelicTracker._05_ShB._03_Recollection
+namespace FFXIVRelicTracker._05_ShB._04_LawsOrder
 {
-    public class RecollectionModel : ObservableObject
+    public class LawsOrderModel : ObservableObject
     {
         #region Constructor
-        public RecollectionModel()
+        public LawsOrderModel()
         {
 
         }

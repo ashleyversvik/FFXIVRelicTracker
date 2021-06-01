@@ -9,22 +9,22 @@ using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows.Input;
 
-namespace FFXIVRelicTracker._05_ShB._01_Resistance
+namespace FFXIVRelicTracker._05_ShB._05_AugmentedLawsOrder
 {
-    public class ResistanceViewModel : ObservableObject, IPageViewModel
+    public class AugmentedLawsOrderViewModel : ObservableObject, IPageViewModel
     {
         #region Fields
         private IEventAggregator eventAggregator;
         private Character selectedCharacter;
-        private ResistanceModel resistanceModel;
+        private AugmentedLawsOrderModel augmentedLawsOrderModel;
         #endregion
 
         #region Constructor
-        public ResistanceViewModel()
+        public AugmentedLawsOrderViewModel()
         {
 
         }
-        public ResistanceViewModel(IEventAggregator eventAggregator)
+        public AugmentedLawsOrderViewModel(IEventAggregator eventAggregator)
         {
             this.eventAggregator = eventAggregator;
 
@@ -40,8 +40,7 @@ namespace FFXIVRelicTracker._05_ShB._01_Resistance
         #endregion
 
         #region Properties
-        public string Name => "Resistance";
-
+        public string Name => "Augmented Law's Order";
         public Character SelectedCharacter
         {
             get { return selectedCharacter; }
@@ -50,82 +49,85 @@ namespace FFXIVRelicTracker._05_ShB._01_Resistance
                 if (value != null)
                 {
                     selectedCharacter = value;
-                    ResistanceModel = SelectedCharacter.ShBModel.ResistanceModel;
+                    AugmentedLawsOrderModel = SelectedCharacter.ShBModel.AugmentedLawsOrderModel;
                     OnPropertyChanged(nameof(SelectedCharacter));
                 }
             }
         }
 
-        public ResistanceModel ResistanceModel
+        public AugmentedLawsOrderModel AugmentedLawsOrderModel
         {
-            get { return resistanceModel; }
+            get { return augmentedLawsOrderModel; }
             set
             {
-                resistanceModel = value;
-                OnPropertyChanged(nameof(ResistanceModel));
+                augmentedLawsOrderModel = value;
+                OnPropertyChanged(nameof(AugmentedLawsOrderModel));
             }
         }
 
         public string SelectedJob
         {
-            get { return resistanceModel.SelectedJob; }
+            get { return augmentedLawsOrderModel.SelectedJob; }
             set
             {
-                resistanceModel.SelectedJob = value;
+                augmentedLawsOrderModel.SelectedJob = value;
                 OnPropertyChanged(nameof(SelectedJob));
             }
         }
-        public int CurrentScalepowder
-        {
-            get 
-            {
-                if (resistanceModel.CurrentScalepowder < 0) { CurrentScalepowder = 0; }
-                return resistanceModel.CurrentScalepowder; 
-            }
-            set
-            {
-                if(value>=0 & value < 70)
-                {
-                    resistanceModel.CurrentScalepowder = value;
-                    OnPropertyChanged(nameof(CurrentScalepowder));
-                    OnPropertyChanged(nameof(ScalepowderCost));
-                }
-            }
-        }
-        public int NeededScalepowder { get { if (AvailableJobs == null) { LoadAvailableJobs(); } return Math.Min(16, AvailableJobs.Count) * 4; } }
-        public int ScalepowderCost => (NeededScalepowder - CurrentScalepowder) * 250;
 
         public ObservableCollection<string> AvailableJobs
         {
-            get { return resistanceModel.AvailableJobs; }
+            get { return augmentedLawsOrderModel.AvailableJobs; }
             set
             {
-                resistanceModel.AvailableJobs = value;
+                augmentedLawsOrderModel.AvailableJobs = value;
                 OnPropertyChanged(nameof(AvailableJobs));
             }
         }
-        public bool CompletedFirstResistance { get { return AvailableJobs.Count < ShBInfo.JobListString.Count; } }
-        #endregion
+        public int MemoryCount 
+        { 
+            get 
+            { 
+                if(augmentedLawsOrderModel.MemoryCount < 0) { MemoryCount = 0; }
+                return augmentedLawsOrderModel.MemoryCount; 
+            } 
+            set 
+            {
+                if (value < 0) { augmentedLawsOrderModel.MemoryCount = 0; }
+                else { augmentedLawsOrderModel.MemoryCount = value; }
+                OnPropertyChanged(nameof(MemoryCount));
+                OnPropertyChanged(nameof(MemoryNeeded));
+            } 
+        }
 
+        public int MemoryNeeded 
+        { 
+            get 
+            { 
+                if (AvailableJobs == null) { LoadAvailableJobs(); } 
+                return (AvailableJobs.Count * 15) - augmentedLawsOrderModel.MemoryCount;
+            } 
+        }
+
+        #endregion
 
         #region Methods
         public void LoadAvailableJobs()
         {
             if (AvailableJobs == null) { AvailableJobs = new ObservableCollection<string>(); }
-            foreach( ShBJob job in selectedCharacter.ShBModel.ShbJobList)
+            foreach (ShBJob job in selectedCharacter.ShBModel.ShbJobList)
             {
-                if(job.Resistance.Progress==BaseProgressClass.States.Completed & AvailableJobs.Contains(job.Name))
+                if (job.AugmentedLawsOrder.Progress == BaseProgressClass.States.Completed & AvailableJobs.Contains(job.Name))
                 {
                     AvailableJobs.Remove(job.Name);
                 }
-                if (job.Resistance.Progress != BaseProgressClass.States.Completed & !AvailableJobs.Contains(job.Name))
+                if (job.AugmentedLawsOrder.Progress != BaseProgressClass.States.Completed & !AvailableJobs.Contains(job.Name))
                 {
-                    ShBInfo.ReloadJobList(AvailableJobs, job.Name);                 
+                    ShBInfo.ReloadJobList(AvailableJobs, job.Name);
                 }
             }
-            OnPropertyChanged(nameof(CompletedFirstResistance));
-            OnPropertyChanged(nameof(NeededScalepowder));
-            OnPropertyChanged(nameof(ScalepowderCost));
+            //Calculate remaining memories to acquire
+            OnPropertyChanged(nameof(MemoryNeeded));
         }
         #endregion
 
@@ -154,35 +156,38 @@ namespace FFXIVRelicTracker._05_ShB._01_Resistance
 
             ShBJob tempJob = selectedCharacter.ShBModel.ShbJobList[ShBInfo.JobListString.IndexOf(SelectedJob)];
 
-            ShBStageCompleter.ProgressClass(selectedCharacter, tempJob.Resistance, true);
+            ShBStageCompleter.ProgressClass(selectedCharacter, tempJob.AugmentedLawsOrder, true);
 
             LoadAvailableJobs();
 
+            OnPropertyChanged(nameof(MemoryCount));
         }
         #endregion
 
-        #region Increment Scalepowder
-        private ICommand _ScalepowderButton;
+        #region Increment Memory
+        private ICommand _MemoryButton;
 
-        public ICommand ScalepowderButton
+        public ICommand MemoryButton
         {
             get
             {
-                if (_ScalepowderButton == null)
+                if (_MemoryButton == null)
                 {
-                    _ScalepowderButton = new RelayCommand(
-                        param => this.ScalepowderCommand(param)
+                    _MemoryButton = new RelayCommand(
+                        param => this.MemoryCommand(param)
                         );
                 }
-                return _ScalepowderButton;
+                return _MemoryButton;
             }
         }
 
-        private void ScalepowderCommand(object param)
+        private void MemoryCommand(object param)
         {
-            CurrentScalepowder += 1;
+            MemoryCount += 1;
         }
         #endregion
         #endregion
+
+
     }
 }

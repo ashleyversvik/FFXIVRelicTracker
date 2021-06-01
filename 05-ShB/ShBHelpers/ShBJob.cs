@@ -19,6 +19,9 @@ namespace FFXIVRelicTracker._05_ShB.ShBHelpers
             Resistance = new ShBProgress("Resistance",Name);
             AugmentedResistance = new ShBProgress("AugmentedResistance", Name);
             Recollection = new ShBProgress("Recollection", Name);
+            LawsOrder = new ShBProgress("LawsOrder", Name);
+            AugmentedLawsOrder = new ShBProgress("AugmentedLawsOrder", Name);
+            Blades = new ShBProgress("Blades", Name);
         }
 
         #endregion
@@ -42,6 +45,9 @@ namespace FFXIVRelicTracker._05_ShB.ShBHelpers
         private ShBProgress resistance;
         private ShBProgress augmentedResistance;
         private ShBProgress recollection;
+        private ShBProgress lawsOrder;
+        private ShBProgress augmentedLawsOrder;
+        private ShBProgress blades;
 
         public ShBProgress Resistance
         {
@@ -72,6 +78,36 @@ namespace FFXIVRelicTracker._05_ShB.ShBHelpers
                 OnPropertyChanged(nameof(Recollection));
             }
         }
+
+        public ShBProgress LawsOrder
+        {
+            get { return lawsOrder; }
+            set
+            {
+                lawsOrder = value;
+                OnPropertyChanged(nameof(LawsOrder));
+            }
+        }
+
+        public ShBProgress AugmentedLawsOrder
+        {
+            get { return augmentedLawsOrder; }
+            set
+            {
+                augmentedLawsOrder = value;
+                OnPropertyChanged(nameof(AugmentedLawsOrder));
+            }
+        }
+
+        public ShBProgress Blades
+        {
+            get { return blades; }
+            set
+            {
+                blades = value;
+                OnPropertyChanged(nameof(Blades));
+            }
+        }        
         #endregion
 
         #region Methods
@@ -83,10 +119,10 @@ namespace FFXIVRelicTracker._05_ShB.ShBHelpers
 
             List<ShBProgress> tempList = new List<ShBProgress>();
 
-            for (int stageIndex = 0; stageIndex < StageList.Count; stageIndex++)
+            for (int stageIndex = 0; stageIndex < ShBInfo.StageListString.Count; stageIndex++)
             {
                 ShBProgress ShBProgress = new ShBProgress();
-                if (StageList[stageIndex] != null) { ShBProgress = StageList[stageIndex]; }
+                if (stageIndex < StageList.Count && StageList[stageIndex] != null) { ShBProgress = StageList[stageIndex]; }
                 if (ShBProgress.Name == null)
                 {
                     ShBProgress tempProgress = new ShBProgress(ShBInfo.StageListString[stageIndex], name);
@@ -103,6 +139,15 @@ namespace FFXIVRelicTracker._05_ShB.ShBHelpers
                             break;
                         case 2:
                             Recollection = tempProgress;
+                            break;
+                        case 3:
+                            LawsOrder = tempProgress;
+                            break;
+                        case 4:
+                            AugmentedLawsOrder = tempProgress;
+                            break;
+                        case 5:
+                            Blades = tempProgress;
                             break;
                     }
                 }

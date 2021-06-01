@@ -84,6 +84,7 @@
                 <TextBlock Style="{StaticResource RotateTextBlock}" Grid.Row="4" Grid.Column="0" Margin="0,5" Text="Dragonsung Tool"/>
                 <TextBlock Style="{StaticResource RotateTextBlock}" Grid.Row="5" Grid.Column="0" Margin="0,5" Text="Augmented Dragonsung Tool"/>
                 <TextBlock Style="{StaticResource RotateTextBlock}" Grid.Row="6" Grid.Column="0" Margin="0,5" Text="Skysung Tool"/>
+                <TextBlock Style="{StaticResource RotateTextBlock}" Grid.Row="7" Grid.Column="0" Margin="0,5" Text="Skybuilders' Tool"/>
 
                 <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="01" Content="{Binding Path=CRP.BaseTool.Progress}" Tag="{Binding CRP.BaseTool}" />
                 <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="02" Content="{Binding Path=BSM.BaseTool.Progress}" Tag="{Binding BSM.BaseTool}" />
@@ -145,7 +146,17 @@
                 <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="10" Content="{Binding Path=BTN.Skysung.Progress}" Tag="{Binding BTN.Skysung}" />
                 <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="11" Content="{Binding Path=FSH.Skysung.Progress}" Tag="{Binding FSH.Skysung}" />
 
-
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="01" Content="{Binding Path=CRP.Skybuilders.Progress}" Tag="{Binding CRP.Skybuilders}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="02" Content="{Binding Path=BSM.Skybuilders.Progress}" Tag="{Binding BSM.Skybuilders}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="03" Content="{Binding Path=ARM.Skybuilders.Progress}" Tag="{Binding ARM.Skybuilders}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="04" Content="{Binding Path=GSM.Skybuilders.Progress}" Tag="{Binding GSM.Skybuilders}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="05" Content="{Binding Path=LTW.Skybuilders.Progress}" Tag="{Binding LTW.Skybuilders}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="06" Content="{Binding Path=WVR.Skybuilders.Progress}" Tag="{Binding WVR.Skybuilders}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="07" Content="{Binding Path=ALC.Skybuilders.Progress}" Tag="{Binding ALC.Skybuilders}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="08" Content="{Binding Path=CUL.Skybuilders.Progress}" Tag="{Binding CUL.Skybuilders}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="09" Content="{Binding Path=MIN.Skybuilders.Progress}" Tag="{Binding MIN.Skybuilders}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="10" Content="{Binding Path=BTN.Skybuilders.Progress}" Tag="{Binding BTN.Skybuilders}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="11" Content="{Binding Path=FSH.Skybuilders.Progress}" Tag="{Binding FSH.Skybuilders}" />
             </Grid>
         </Grid>
         

@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 
-namespace FFXIVRelicTracker._05_ShB._03_Recollection
+namespace FFXIVRelicTracker._05_ShB._06_Blades
 {
-    public class RecollectionModel : ObservableObject
+    public class BladesModel : ObservableObject
     {
         #region Constructor
-        public RecollectionModel()
+        public BladesModel()
         {
 
         }
@@ -17,6 +17,6 @@ namespace FFXIVRelicTracker._05_ShB._03_Recollection
 
         public ObservableCollection<string> AvailableJobs { get; set; }
         public string SelectedJob { get; set; }
-        public int MemoryCount { get; set; }
+        public int EmotionCount { get; set; }
     }
 }

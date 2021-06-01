@@ -7,6 +7,7 @@
                     xmlns:dragonsung="clr-namespace:FFXIVRelicTracker._05_Skysteel._03_Dragonsung"
                     xmlns:augmentedDragonsung="clr-namespace:FFXIVRelicTracker._05_Skysteel._04_AugmentedDragonsung"
                     xmlns:skysung="clr-namespace:FFXIVRelicTracker._05_Skysteel._05_Skysung"
+                    xmlns:skybuilders="clr-namespace:FFXIVRelicTracker._05_Skysteel._06_Skybuilders"
                     >
     
     
@@ -32,7 +33,9 @@
     <DataTemplate DataType="{x:Type skysung:SkysungViewModel}">
         <skysung:SkysungView/>
     </DataTemplate>
-
+    <DataTemplate DataType="{x:Type skybuilders:SkybuildersViewModel}">
+        <skybuilders:SkybuildersView/>
+    </DataTemplate>
     <Style BasedOn="{StaticResource FFXIVButton }" x:Key="SkysteelSummaryButton" TargetType="Button">
         <Setter Property="HorizontalAlignment"  Value="Center"/>
         <Setter Property="VerticalAlignment"    Value="Center"/>

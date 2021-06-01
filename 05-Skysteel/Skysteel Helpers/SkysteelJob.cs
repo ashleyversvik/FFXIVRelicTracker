@@ -14,6 +14,7 @@ namespace FFXIVRelicTracker._05_Skysteel.Skysteel_Helpers
         private SkysteelProgress dragonsung;
         private SkysteelProgress augmentedDragonsung;
         private SkysteelProgress skysung;
+        private SkysteelProgress skybuilders;
         #endregion
 
 
@@ -31,6 +32,7 @@ namespace FFXIVRelicTracker._05_Skysteel.Skysteel_Helpers
             Dragonsung = new SkysteelProgress("Dragonsung", name);
             AugmentedDragonsung = new SkysteelProgress("AugmentedDragonsung", name);
             Skysung = new SkysteelProgress("Skysung", name);
+            skybuilders = new SkysteelProgress("Skybuilders", name);
         }
         #endregion
 
@@ -93,6 +95,16 @@ namespace FFXIVRelicTracker._05_Skysteel.Skysteel_Helpers
             }
         }
 
+        public SkysteelProgress Skybuilders
+        {
+            get { return skybuilders; }
+            set
+            {
+                skybuilders = value;
+                OnPropertyChanged(nameof(Skybuilders));
+            }
+        }
+
         #endregion
 
         #region Methods
@@ -131,6 +143,9 @@ namespace FFXIVRelicTracker._05_Skysteel.Skysteel_Helpers
                             break;
                         case 4:
                             Skysung = tempProgress;
+                            break;
+                        case 5:
+                            Skybuilders = tempProgress;
                             break;
                     }
                 }

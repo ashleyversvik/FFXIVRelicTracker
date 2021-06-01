@@ -193,7 +193,10 @@ namespace FFXIVRelicTracker.ViewModels
                 {
                     job.Resistance,
                     job.AugmentedResistance,
-                    job.Recollection
+                    job.Recollection,
+                    job.LawsOrder,
+                    job.AugmentedLawsOrder,
+                    job.Blades
                 };
                 job.StageList = shbProgresses;
                 job.CheckObject();
@@ -227,7 +230,8 @@ namespace FFXIVRelicTracker.ViewModels
                     job.BasePlus1,
                     job.Dragonsung,
                     job.AugmentedDragonsung,
-                    job.Skysung
+                    job.Skysung,
+                    job.Skybuilders
                 };
                 job.StageList = skysteelProgresses;
                 job.CheckObject();

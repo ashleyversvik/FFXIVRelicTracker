@@ -24,10 +24,10 @@
             <TextBlock Style="{StaticResource LeftTextBlock}" Text="Active Job:"/>
             <ComboBox Style="{StaticResource FFXIVComboBox}" Margin="5,0,0,0"
                                                 ItemsSource="{Binding   Path=AvailableJobs}" 
-                                                SelectedItem="{Binding Path=CurrentAugmentedResistance}"
+                                                SelectedItem="{Binding Path=SelectedJob}"
                                     />
             <Border HorizontalAlignment="Center">
-                <Button Style="{StaticResource FFXIVButton}" Content="Mark as completed" Command="{Binding CompleteButton}" CommandParameter="{Binding Path=CurrentResistance}"/>
+                <Button Style="{StaticResource FFXIVButton}" Content="Mark as completed" Command="{Binding CompleteButton}" CommandParameter="{Binding Path=SelectedJob}"/>
             </Border>
         </StackPanel>
 

@@ -3,6 +3,7 @@ using FFXIVRelicTracker._05_Skysteel._02_BasePlus1;
 using FFXIVRelicTracker._05_Skysteel._03_Dragonsung;
 using FFXIVRelicTracker._05_Skysteel._04_AugmentedDragonsung;
 using FFXIVRelicTracker._05_Skysteel._05_Skysung;
+using FFXIVRelicTracker._05_Skysteel._06_Skybuilders;
 using FFXIVRelicTracker._05_Skysteel.Skysteel_Helpers;
 using FFXIVRelicTracker.Models.Helpers;
 using System;
@@ -34,6 +35,7 @@ namespace FFXIVRelicTracker._05_Skysteel.Main
         private DragonsungModel dragonsungModel = new DragonsungModel();
         private AugmentedDragonsungModel augmentedDragonsungModel = new AugmentedDragonsungModel();
         private SkysungModel skysungModel = new SkysungModel();
+        private SkybuildersModel skybuildersModel = new SkybuildersModel();
 
         #endregion
 
@@ -67,6 +69,7 @@ namespace FFXIVRelicTracker._05_Skysteel.Main
         public DragonsungModel DragonsungModel { get { return dragonsungModel; } set { dragonsungModel = value; OnPropertyChanged(nameof(DragonsungModel)); } }
         public AugmentedDragonsungModel AugmentedDragonsungModel { get { return augmentedDragonsungModel; } set { augmentedDragonsungModel = value; OnPropertyChanged(nameof(AugmentedDragonsungModel)); } }
         public SkysungModel SkysungModel { get { return skysungModel; } set { skysungModel = value; OnPropertyChanged(nameof(SkysungModel)); } }
+        public SkybuildersModel SkybuildersModel { get { return skybuildersModel; } set { skybuildersModel = value; OnPropertyChanged(nameof(SkybuildersModel)); } }
 
         #endregion
     }

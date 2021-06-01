@@ -111,4 +111,9 @@
     <Folder Include="04-SB\SBHelpers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="05-Skysteel\06-Skybuilders\SkybuildersView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+  </ItemGroup>
 </Project>

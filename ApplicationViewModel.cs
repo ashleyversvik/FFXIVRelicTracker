@@ -31,6 +31,8 @@ namespace FFXIVRelicTracker.ViewModels
         private IPageViewModel _currentPageViewModel;
         private List<IPageViewModel> _pageViewModels;
 
+        private MainMenuViewModel _mainMenu;
+
         #endregion
         #region Constructors
         public ApplicationViewModel(IEventAggregator iEventAggregator)
@@ -47,7 +49,8 @@ namespace FFXIVRelicTracker.ViewModels
                                         });
 
             // Add available pages
-            MenuViewModels.Add(new MainMenuViewModel(Event.EventInstance.EventAggregator));
+            _mainMenu = new MainMenuViewModel(Event.EventInstance.EventAggregator);
+            MenuViewModels.Add(_mainMenu);
             PageViewModels.Add(new ArrViewModel(Event.EventInstance.EventAggregator));
             PageViewModels.Add(new HWViewModel(Event.EventInstance.EventAggregator));
             PageViewModels.Add(new ShBViewModel(Event.EventInstance.EventAggregator));
@@ -175,6 +178,20 @@ namespace FFXIVRelicTracker.ViewModels
             string jsonString;
             jsonString = JsonSerializer.Serialize(Application.Current.Windows[0].FontSize);
             File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\FFXIVRelicTrackerSettings.txt", jsonString);
+        }
+        #endregion
+        #region Open Settings
+        private ICommand _SaveCommand;
+        public ICommand SaveCommand
+        {
+            get
+            {
+                if (_SaveCommand == null)
+                {
+                    _SaveCommand = _mainMenu.SaveCommand;
+                }
+                return _SaveCommand;
+            }
         }
         #endregion
         #endregion

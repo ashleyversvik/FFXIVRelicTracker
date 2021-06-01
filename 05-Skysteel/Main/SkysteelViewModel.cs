@@ -4,6 +4,7 @@ using FFXIVRelicTracker._05_Skysteel._02_BasePlus1;
 using FFXIVRelicTracker._05_Skysteel._03_Dragonsung;
 using FFXIVRelicTracker._05_Skysteel._04_AugmentedDragonsung;
 using FFXIVRelicTracker._05_Skysteel._05_Skysung;
+using FFXIVRelicTracker._05_Skysteel._06_Skybuilders;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Commands;
@@ -43,6 +44,7 @@ namespace FFXIVRelicTracker._05_Skysteel.Main
             PageViewModels.Add(new DragonsungViewModel(Event.EventInstance.EventAggregator));
             PageViewModels.Add(new AugmentedDragonsungViewModel(Event.EventInstance.EventAggregator));
             PageViewModels.Add(new SkysungViewModel(Event.EventInstance.EventAggregator));
+            PageViewModels.Add(new SkybuildersViewModel(Event.EventInstance.EventAggregator));
 
             CurrentPageViewModel = PageViewModels[0];
 

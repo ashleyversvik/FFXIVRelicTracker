@@ -9,22 +9,22 @@ using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows.Input;
 
-namespace FFXIVRelicTracker._05_ShB._01_Resistance
+namespace FFXIVRelicTracker._05_ShB._06_Blades
 {
-    public class ResistanceViewModel : ObservableObject, IPageViewModel
+    public class BladesViewModel : ObservableObject, IPageViewModel
     {
         #region Fields
         private IEventAggregator eventAggregator;
         private Character selectedCharacter;
-        private ResistanceModel resistanceModel;
+        private BladesModel bladesModel;
         #endregion
 
         #region Constructor
-        public ResistanceViewModel()
+        public BladesViewModel()
         {
 
         }
-        public ResistanceViewModel(IEventAggregator eventAggregator)
+        public BladesViewModel(IEventAggregator eventAggregator)
         {
             this.eventAggregator = eventAggregator;
 
@@ -40,8 +40,7 @@ namespace FFXIVRelicTracker._05_ShB._01_Resistance
         #endregion
 
         #region Properties
-        public string Name => "Resistance";
-
+        public string Name => "Blade's";
         public Character SelectedCharacter
         {
             get { return selectedCharacter; }
@@ -50,82 +49,85 @@ namespace FFXIVRelicTracker._05_ShB._01_Resistance
                 if (value != null)
                 {
                     selectedCharacter = value;
-                    ResistanceModel = SelectedCharacter.ShBModel.ResistanceModel;
+                    BladesModel = SelectedCharacter.ShBModel.BladesModel;
                     OnPropertyChanged(nameof(SelectedCharacter));
                 }
             }
         }
 
-        public ResistanceModel ResistanceModel
+        public BladesModel BladesModel
         {
-            get { return resistanceModel; }
+            get { return bladesModel; }
             set
             {
-                resistanceModel = value;
-                OnPropertyChanged(nameof(ResistanceModel));
+                bladesModel = value;
+                OnPropertyChanged(nameof(BladesModel));
             }
         }
 
         public string SelectedJob
         {
-            get { return resistanceModel.SelectedJob; }
+            get { return bladesModel.SelectedJob; }
             set
             {
-                resistanceModel.SelectedJob = value;
+                bladesModel.SelectedJob = value;
                 OnPropertyChanged(nameof(SelectedJob));
             }
         }
-        public int CurrentScalepowder
-        {
-            get 
-            {
-                if (resistanceModel.CurrentScalepowder < 0) { CurrentScalepowder = 0; }
-                return resistanceModel.CurrentScalepowder; 
-            }
-            set
-            {
-                if(value>=0 & value < 70)
-                {
-                    resistanceModel.CurrentScalepowder = value;
-                    OnPropertyChanged(nameof(CurrentScalepowder));
-                    OnPropertyChanged(nameof(ScalepowderCost));
-                }
-            }
-        }
-        public int NeededScalepowder { get { if (AvailableJobs == null) { LoadAvailableJobs(); } return Math.Min(16, AvailableJobs.Count) * 4; } }
-        public int ScalepowderCost => (NeededScalepowder - CurrentScalepowder) * 250;
 
         public ObservableCollection<string> AvailableJobs
         {
-            get { return resistanceModel.AvailableJobs; }
+            get { return bladesModel.AvailableJobs; }
             set
             {
-                resistanceModel.AvailableJobs = value;
+                bladesModel.AvailableJobs = value;
                 OnPropertyChanged(nameof(AvailableJobs));
             }
         }
-        public bool CompletedFirstResistance { get { return AvailableJobs.Count < ShBInfo.JobListString.Count; } }
-        #endregion
+        public int EmotionCount 
+        { 
+            get 
+            { 
+                if(bladesModel.EmotionCount < 0) { EmotionCount = 0; }
+                return bladesModel.EmotionCount; 
+            } 
+            set 
+            {
+                if (value < 0) { bladesModel.EmotionCount = 0; }
+                else { bladesModel.EmotionCount = value; }
+                OnPropertyChanged(nameof(EmotionCount));
+                OnPropertyChanged(nameof(EmotionNeeded));
+            } 
+        }
 
+        public int EmotionNeeded 
+        { 
+            get 
+            { 
+                if (AvailableJobs == null) { LoadAvailableJobs(); } 
+                return (AvailableJobs.Count * 15) - bladesModel.EmotionCount;
+            } 
+        }
+
+        #endregion
 
         #region Methods
         public void LoadAvailableJobs()
         {
             if (AvailableJobs == null) { AvailableJobs = new ObservableCollection<string>(); }
-            foreach( ShBJob job in selectedCharacter.ShBModel.ShbJobList)
+            foreach (ShBJob job in selectedCharacter.ShBModel.ShbJobList)
             {
-                if(job.Resistance.Progress==BaseProgressClass.States.Completed & AvailableJobs.Contains(job.Name))
+                if (job.Blades.Progress == BaseProgressClass.States.Completed & AvailableJobs.Contains(job.Name))
                 {
                     AvailableJobs.Remove(job.Name);
                 }
-                if (job.Resistance.Progress != BaseProgressClass.States.Completed & !AvailableJobs.Contains(job.Name))
+                if (job.Blades.Progress != BaseProgressClass.States.Completed & !AvailableJobs.Contains(job.Name))
                 {
-                    ShBInfo.ReloadJobList(AvailableJobs, job.Name);                 
+                    ShBInfo.ReloadJobList(AvailableJobs, job.Name);
                 }
             }
-            OnPropertyChanged(nameof(CompletedFirstResistance));
-            OnPropertyChanged(nameof(NeededScalepowder));
-            OnPropertyChanged(nameof(ScalepowderCost));
+            //Calculate remaining memories to acquire
+            OnPropertyChanged(nameof(EmotionNeeded));
         }
         #endregion
 
@@ -154,35 +156,38 @@ namespace FFXIVRelicTracker._05_ShB._01_Resistance
 
             ShBJob tempJob = selectedCharacter.ShBModel.ShbJobList[ShBInfo.JobListString.IndexOf(SelectedJob)];
 
-            ShBStageCompleter.ProgressClass(selectedCharacter, tempJob.Resistance, true);
+            ShBStageCompleter.ProgressClass(selectedCharacter, tempJob.Blades, true);
 
             LoadAvailableJobs();
 
+            OnPropertyChanged(nameof(EmotionCount));
         }
         #endregion
 
-        #region Increment Scalepowder
-        private ICommand _ScalepowderButton;
+        #region Increment Emotion
+        private ICommand _EmotionButton;
 
-        public ICommand ScalepowderButton
+        public ICommand EmotionButton
         {
             get
             {
-                if (_ScalepowderButton == null)
+                if (_EmotionButton == null)
                 {
-                    _ScalepowderButton = new RelayCommand(
-                        param => this.ScalepowderCommand(param)
+                    _EmotionButton = new RelayCommand(
+                        param => this.EmotionCommand(param)
                         );
                 }
-                return _ScalepowderButton;
+                return _EmotionButton;
             }
         }
 
-        private void ScalepowderCommand(object param)
+        private void EmotionCommand(object param)
         {
-            CurrentScalepowder += 1;
+            EmotionCount += 1;
         }
         #endregion
         #endregion
+
+
     }
 }

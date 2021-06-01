@@ -65,13 +65,13 @@ namespace FFXIVRelicTracker._05_ShB._03_Recollection
             }
         }
 
-        public string CurrentRecollection
+        public string SelectedJob
         {
-            get { return recollectionModel.CurrentRecollection; }
+            get { return recollectionModel.SelectedJob; }
             set
             {
-                recollectionModel.CurrentRecollection = value;
-                OnPropertyChanged(nameof(CurrentRecollection));
+                recollectionModel.SelectedJob = value;
+                OnPropertyChanged(nameof(SelectedJob));
             }
         }
 
@@ -95,7 +95,8 @@ namespace FFXIVRelicTracker._05_ShB._03_Recollection
             {
                 if (value < 0) { recollectionModel.MemoryCount = 0; }
                 else { recollectionModel.MemoryCount = value; }
-                OnPropertyChanged(nameof(MemoryCount)); 
+                OnPropertyChanged(nameof(MemoryCount));
+                OnPropertyChanged(nameof(MemoryNeeded));
             } 
         }
 
@@ -104,7 +105,7 @@ namespace FFXIVRelicTracker._05_ShB._03_Recollection
             get 
             { 
                 if (AvailableJobs == null) { LoadAvailableJobs(); } 
-                return AvailableJobs.Count * 6;
+                return (AvailableJobs.Count * 6) - recollectionModel.MemoryCount;
             } 
         }
 
@@ -149,11 +150,11 @@ namespace FFXIVRelicTracker._05_ShB._03_Recollection
             }
         }
 
-        private bool CompleteCan() { return CurrentRecollection != null; }
+        private bool CompleteCan() { return SelectedJob != null; }
         private void CompleteCommand()
         {
 
-            ShBJob tempJob = selectedCharacter.ShBModel.ShbJobList[ShBInfo.JobListString.IndexOf(CurrentRecollection)];
+            ShBJob tempJob = selectedCharacter.ShBModel.ShbJobList[ShBInfo.JobListString.IndexOf(SelectedJob)];
 
             ShBStageCompleter.ProgressClass(selectedCharacter, tempJob.Recollection, true);
 

@@ -18,7 +18,7 @@ namespace FFXIVRelicTracker._05_ShB._02_AugmentedResistance
 
         }
 
-        public string CurrentAugmentedResistance { get; set; }
+        public string SelectedJob { get; set; }
         public ObservableCollection<string> AvailableJobs { get;  set; }
         public int HarrowingCount { get;  set; }
         public int TorturedCount { get;  set; }
