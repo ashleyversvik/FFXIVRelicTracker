@@ -7,6 +7,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Input;
+using FFXIVRelicTracker._04_SB._00_Summary;
+using FFXIVRelicTracker._04_SB._01_Antiquated;
+using FFXIVRelicTracker._04_SB._02_Anemos;
+using FFXIVRelicTracker._04_SB._03_Elemental;
+using FFXIVRelicTracker._04_SB._04_Pyros;
+using FFXIVRelicTracker._04_SB._05_Eureka;
+using FFXIVRelicTracker._04_SB._06_Physeos;
 
 namespace FFXIVRelicTracker._04_SB.Main
 {
@@ -32,7 +39,13 @@ namespace FFXIVRelicTracker._04_SB.Main
                                             this.SelectedCharacter = details;
                                         });
 
-            //PageViewModels.Add(new SkysteelSummaryViewModel(Event.EventInstance.EventAggregator));
+            PageViewModels.Add(new SBSummaryViewModel(Event.EventInstance.EventAggregator));
+            PageViewModels.Add(new AntiquatedViewModel(Event.EventInstance.EventAggregator));
+            PageViewModels.Add(new AnemosViewModel(Event.EventInstance.EventAggregator));
+            PageViewModels.Add(new ElementalViewModel(Event.EventInstance.EventAggregator));
+            PageViewModels.Add(new PyrosViewModel(Event.EventInstance.EventAggregator));
+            PageViewModels.Add(new EurekaViewModel(Event.EventInstance.EventAggregator));
+            PageViewModels.Add(new PhyseosViewModel(Event.EventInstance.EventAggregator));
 
             CurrentPageViewModel = PageViewModels[0];
 
@@ -62,7 +75,7 @@ namespace FFXIVRelicTracker._04_SB.Main
         #endregion
 
         #region Properties
-        public string Name => "SB";
+        public string Name => "SB View";
         public Character SelectedCharacter
         {
             get { return selectedCharacter; }

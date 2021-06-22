@@ -1,4 +1,5 @@
 ﻿using FFXIVRelicTracker._03_HW.HWHelpers;
+using FFXIVRelicTracker._04_SB.SBHelpers;
 using FFXIVRelicTracker._05_ShB.ShBHelpers;
 using FFXIVRelicTracker._05_Skysteel.Skysteel_Helpers;
 using FFXIVRelicTracker.ARR.ArrHelpers;
@@ -49,6 +50,7 @@ namespace FFXIVRelicTracker.ViewModels
                 {
                     ConfigureARRLists();
                     ConfigureHWLists();
+                    ConfigureSBLists();
                     ConfigureShBLists();
                     ConfigureSkysteelLists();
                 }
@@ -159,6 +161,44 @@ namespace FFXIVRelicTracker.ViewModels
                     job.Lux
                 };
                 job.StageList = hwProgresses;
+                job.CheckObject();
+            }
+        }
+        private void ConfigureSBLists()
+        {
+            List<SBJob> sbStages = new List<SBJob>()
+            {
+                selectedCharacter.SBModel.PLD,
+                selectedCharacter.SBModel.WAR,
+                selectedCharacter.SBModel.DRK,
+                selectedCharacter.SBModel.WHM,
+                selectedCharacter.SBModel.SCH,
+                selectedCharacter.SBModel.AST,
+                selectedCharacter.SBModel.MNK,
+                selectedCharacter.SBModel.DRG,
+                selectedCharacter.SBModel.NIN,
+                selectedCharacter.SBModel.SAM,
+                selectedCharacter.SBModel.BRD,
+                selectedCharacter.SBModel.MCH,
+                selectedCharacter.SBModel.BLM,
+                selectedCharacter.SBModel.SMN,
+                selectedCharacter.SBModel.RDM
+            };
+
+            selectedCharacter.SBModel.SBJobList = sbStages;
+
+            foreach (SBJob job in selectedCharacter.SBModel.SBJobList)
+            {
+                List<SBProgress> sbProgresses = new List<SBProgress>()
+                {
+                    job.Antiquated,
+                    job.Anemos,
+                    job.Elemental,
+                    job.Pyros,
+                    job.Eureka,
+                    job.Physeos
+                };
+                job.StageList = sbProgresses;
                 job.CheckObject();
             }
         }

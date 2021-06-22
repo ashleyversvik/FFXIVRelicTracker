@@ -1,4 +1,5 @@
 ﻿using FFXIVRelicTracker._03_HW.Main;
+using FFXIVRelicTracker._04_SB.Main;
 using FFXIVRelicTracker._05_ShB.Main;
 using FFXIVRelicTracker._05_Skysteel.Main;
 using FFXIVRelicTracker.Main;
@@ -53,6 +54,7 @@ namespace FFXIVRelicTracker.ViewModels
             MenuViewModels.Add(_mainMenu);
             PageViewModels.Add(new ArrViewModel(Event.EventInstance.EventAggregator));
             PageViewModels.Add(new HWViewModel(Event.EventInstance.EventAggregator));
+            PageViewModels.Add(new SBViewModel(Event.EventInstance.EventAggregator));
             PageViewModels.Add(new ShBViewModel(Event.EventInstance.EventAggregator));
             PageViewModels.Add(new SkysteelViewModel(Event.EventInstance.EventAggregator));
 

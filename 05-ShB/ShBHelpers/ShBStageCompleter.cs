@@ -148,7 +148,7 @@ namespace FFXIVRelicTracker._05_ShB.ShBHelpers
             //Decrease Count of Emotion items outside of BladesModel so that changes to progress that occur outside of BladesModel view still impact Emotion Counts
 
             if (character.ShBModel.BladesModel.EmotionCount <= 15) { character.ShBModel.BladesModel.EmotionCount = 0; }
-            else { character.ShBModel.AugmentedLawsOrderModel.MemoryCount -= 15; }
+            else { character.ShBModel.BladesModel.EmotionCount -= 15; }
         }
         
     }
