@@ -89,10 +89,10 @@ namespace FFXIVRelicTracker._05_ShB.ShBHelpers
                     DecreaseLoathsomeMemoryCount(character);
                     break;
                 case 4:
-                    DecreaseTimewornArtifactCount(character);
+                    DecreaseArtifactCount(character);
                     break;
                 case 5:
-                    DecreaseRawEmotionCount(character);
+                    DecreaseEmotionCount(character);
                     break;
                 default:
                     break;
@@ -135,15 +135,15 @@ namespace FFXIVRelicTracker._05_ShB.ShBHelpers
             if (character.ShBModel.LawsOrderModel.MemoryCount <= 15) { character.ShBModel.RecollectionModel.MemoryCount = 0; }
             else { character.ShBModel.LawsOrderModel.MemoryCount -= 15; }
         }
-        private static void DecreaseTimewornArtifactCount(Character character)
+        private static void DecreaseArtifactCount(Character character)
         {
             //Decrease Count of Memory items outside of AugmentedLawsOrderModel so that changes to progress that occur outside of AugmentedLawsOrder view still impact Memory Counts
 
-            if (character.ShBModel.AugmentedLawsOrderModel.MemoryCount <= 15) { character.ShBModel.AugmentedLawsOrderModel.MemoryCount = 0; }
-            else { character.ShBModel.AugmentedLawsOrderModel.MemoryCount -= 15; }
+            if (character.ShBModel.AugmentedLawsOrderModel.ArtifactCount <= 15) { character.ShBModel.AugmentedLawsOrderModel.ArtifactCount = 0; }
+            else { character.ShBModel.AugmentedLawsOrderModel.ArtifactCount -= 15; }
         }
 
-        private static void DecreaseRawEmotionCount(Character character)
+        private static void DecreaseEmotionCount(Character character)
         {
             //Decrease Count of Emotion items outside of BladesModel so that changes to progress that occur outside of BladesModel view still impact Emotion Counts
 

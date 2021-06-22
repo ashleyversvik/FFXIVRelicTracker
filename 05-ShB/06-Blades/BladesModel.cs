@@ -15,8 +15,18 @@ namespace FFXIVRelicTracker._05_ShB._06_Blades
         }
         #endregion
 
-        public ObservableCollection<string> AvailableJobs { get; set; }
-        public string SelectedJob { get; set; }
+        public int Compact1 { get; set; }
+        public int Compact2 { get; set; }
+
+        public int Book1 { get; set; }
+        public int Book2 { get; set; }
+
+        public int Memory1 { get; set; }
+        public int Memory2 { get; set; }
+
+
         public int EmotionCount { get; set; }
+        public string CurrentBlade { get; set; }
+        public ObservableCollection<string> AvailableJobs { get; set; }
     }
 }

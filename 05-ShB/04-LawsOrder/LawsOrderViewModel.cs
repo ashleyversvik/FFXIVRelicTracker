@@ -13,6 +13,7 @@ namespace FFXIVRelicTracker._05_ShB._04_LawsOrder
 {
     public class LawsOrderViewModel : ObservableObject, IPageViewModel
     {
+
         #region Fields
         private IEventAggregator eventAggregator;
         private Character selectedCharacter;
@@ -65,13 +66,13 @@ namespace FFXIVRelicTracker._05_ShB._04_LawsOrder
             }
         }
 
-        public string SelectedJob
+        public string CurrentLawsOrder
         {
-            get { return lawsOrderModel.SelectedJob; }
+            get { return lawsOrderModel.CurrentLawsOrder; }
             set
             {
-                lawsOrderModel.SelectedJob = value;
-                OnPropertyChanged(nameof(SelectedJob));
+                lawsOrderModel.CurrentLawsOrder = value;
+                OnPropertyChanged(nameof(CurrentLawsOrder));
             }
         }
 
@@ -84,29 +85,29 @@ namespace FFXIVRelicTracker._05_ShB._04_LawsOrder
                 OnPropertyChanged(nameof(AvailableJobs));
             }
         }
-        public int MemoryCount 
-        { 
-            get 
-            { 
-                if(lawsOrderModel.MemoryCount < 0) { MemoryCount = 0; }
-                return lawsOrderModel.MemoryCount; 
-            } 
-            set 
+        public int MemoryCount
+        {
+            get
+            {
+                if (lawsOrderModel.MemoryCount < 0) { MemoryCount = 0; }
+                return lawsOrderModel.MemoryCount;
+            }
+            set
             {
                 if (value < 0) { lawsOrderModel.MemoryCount = 0; }
                 else { lawsOrderModel.MemoryCount = value; }
                 OnPropertyChanged(nameof(MemoryCount));
                 OnPropertyChanged(nameof(MemoryNeeded));
-            } 
+            }
         }
-
-        public int MemoryNeeded 
-        { 
-            get 
-            { 
-                if (AvailableJobs == null) { LoadAvailableJobs(); } 
+        
+        public int MemoryNeeded
+        {
+            get
+            {
+                if (AvailableJobs == null) { LoadAvailableJobs(); }
                 return (AvailableJobs.Count * 15) - lawsOrderModel.MemoryCount;
-            } 
+            }
         }
 
         #endregion
@@ -128,6 +129,7 @@ namespace FFXIVRelicTracker._05_ShB._04_LawsOrder
             }
             //Calculate remaining memories to acquire
             OnPropertyChanged(nameof(MemoryNeeded));
+            OnPropertyChanged(nameof(MemoryCount));
         }
         #endregion
 
@@ -150,17 +152,18 @@ namespace FFXIVRelicTracker._05_ShB._04_LawsOrder
             }
         }
 
-        private bool CompleteCan() { return SelectedJob != null; }
+        private bool CompleteCan() { return CurrentLawsOrder != null; }
         private void CompleteCommand()
         {
 
-            ShBJob tempJob = selectedCharacter.ShBModel.ShbJobList[ShBInfo.JobListString.IndexOf(SelectedJob)];
+            ShBJob tempJob = selectedCharacter.ShBModel.ShbJobList[ShBInfo.JobListString.IndexOf(CurrentLawsOrder)];
 
             ShBStageCompleter.ProgressClass(selectedCharacter, tempJob.LawsOrder, true);
 
             LoadAvailableJobs();
 
             OnPropertyChanged(nameof(MemoryCount));
+            OnPropertyChanged(nameof(MemoryNeeded));
         }
         #endregion
 

@@ -42,6 +42,7 @@ namespace FFXIVRelicTracker._05_ShB.Main
         private LawsOrderModel lawsOrderModel = new LawsOrderModel();
         private AugmentedLawsOrderModel augmentedLawsOrderModel = new AugmentedLawsOrderModel();
         private BladesModel bladesModel = new BladesModel();
+
         #endregion
 
         #region Constructors
@@ -77,8 +78,6 @@ namespace FFXIVRelicTracker._05_ShB.Main
         public LawsOrderModel LawsOrderModel { get { return lawsOrderModel; } set { lawsOrderModel = value; OnPropertyChanged(nameof(LawsOrderModel)); } }
         public AugmentedLawsOrderModel AugmentedLawsOrderModel { get { return augmentedLawsOrderModel; } set { augmentedLawsOrderModel = value; OnPropertyChanged(nameof(AugmentedLawsOrderModel)); } }
         public BladesModel BladesModel { get { return bladesModel; } set { bladesModel = value; OnPropertyChanged(nameof(BladesModel)); } }
-
-        
         #endregion
 
     }

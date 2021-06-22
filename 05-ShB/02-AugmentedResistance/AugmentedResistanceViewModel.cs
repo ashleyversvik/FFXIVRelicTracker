@@ -69,13 +69,13 @@ namespace FFXIVRelicTracker._05_ShB._02_AugmentedResistance
             }
         }
 
-        public string SelectedJob
+        public string CurrentAugmentedResistance
         {
-            get { return augmentedResistanceModel.SelectedJob; }
+            get { return augmentedResistanceModel.CurrentAugmentedResistance; }
             set
             {
-                augmentedResistanceModel.SelectedJob = value;
-                OnPropertyChanged(nameof(SelectedJob));
+                augmentedResistanceModel.CurrentAugmentedResistance = value;
+                OnPropertyChanged(nameof(CurrentAugmentedResistance));
             }
         }
 
@@ -177,11 +177,11 @@ namespace FFXIVRelicTracker._05_ShB._02_AugmentedResistance
             }
         }
 
-        private bool CompleteCan() { return SelectedJob != null; }
+        private bool CompleteCan() { return CurrentAugmentedResistance != null; }
         private void CompleteCommand()
         {
 
-            ShBJob tempJob = selectedCharacter.ShBModel.ShbJobList[ShBInfo.JobListString.IndexOf(SelectedJob)];
+            ShBJob tempJob = selectedCharacter.ShBModel.ShbJobList[ShBInfo.JobListString.IndexOf(CurrentAugmentedResistance)];
 
             ShBStageCompleter.ProgressClass(selectedCharacter, tempJob.AugmentedResistance, true);
 

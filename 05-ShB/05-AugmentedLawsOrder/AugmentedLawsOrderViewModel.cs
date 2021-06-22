@@ -11,8 +11,9 @@ using System.Windows.Input;
 
 namespace FFXIVRelicTracker._05_ShB._05_AugmentedLawsOrder
 {
-    public class AugmentedLawsOrderViewModel : ObservableObject, IPageViewModel
+    class AugmentedLawsOrderViewModel : ObservableObject, IPageViewModel
     {
+
         #region Fields
         private IEventAggregator eventAggregator;
         private Character selectedCharacter;
@@ -65,13 +66,13 @@ namespace FFXIVRelicTracker._05_ShB._05_AugmentedLawsOrder
             }
         }
 
-        public string SelectedJob
+        public string CurrentAugmentedLawsOrder
         {
-            get { return augmentedLawsOrderModel.SelectedJob; }
+            get { return augmentedLawsOrderModel.CurrentAugmentedLawsOrder; }
             set
             {
-                augmentedLawsOrderModel.SelectedJob = value;
-                OnPropertyChanged(nameof(SelectedJob));
+                augmentedLawsOrderModel.CurrentAugmentedLawsOrder = value;
+                OnPropertyChanged(nameof(CurrentAugmentedLawsOrder));
             }
         }
 
@@ -84,30 +85,73 @@ namespace FFXIVRelicTracker._05_ShB._05_AugmentedLawsOrder
                 OnPropertyChanged(nameof(AvailableJobs));
             }
         }
-        public int MemoryCount 
-        { 
-            get 
-            { 
-                if(augmentedLawsOrderModel.MemoryCount < 0) { MemoryCount = 0; }
-                return augmentedLawsOrderModel.MemoryCount; 
-            } 
-            set 
+        public int ArtifactCount
+        {
+            get
             {
-                if (value < 0) { augmentedLawsOrderModel.MemoryCount = 0; }
-                else { augmentedLawsOrderModel.MemoryCount = value; }
-                OnPropertyChanged(nameof(MemoryCount));
-                OnPropertyChanged(nameof(MemoryNeeded));
-            } 
+                if (augmentedLawsOrderModel.ArtifactCount < 0) { ArtifactCount = 0; }
+                return augmentedLawsOrderModel.ArtifactCount;
+            }
+            set
+            {
+                if (value < 0) { augmentedLawsOrderModel.ArtifactCount = 0; }
+                else { augmentedLawsOrderModel.ArtifactCount = value; }
+                OnPropertyChanged(nameof(ArtifactCount));
+                OnPropertyChanged(nameof(ArtifactNeeded));
+            }
+        } 
+        public int YellowCount
+        {
+            get
+            {
+                if (augmentedLawsOrderModel.YellowMemoryCount < 0) { YellowCount = 0; }
+                return augmentedLawsOrderModel.YellowMemoryCount;
+            }
+            set
+            {
+                if (value < 0) { augmentedLawsOrderModel.YellowMemoryCount = 0; }
+                else if (value > 17) { augmentedLawsOrderModel.YellowMemoryCount = 18; }
+                else { augmentedLawsOrderModel.YellowMemoryCount = value; }
+                OnPropertyChanged(nameof(YellowCount));
+            }
+        }
+        public int PurpleCount
+        {
+            get
+            {
+                if (augmentedLawsOrderModel.PurpleMemoryCount < 0) { PurpleCount = 0; }
+                return augmentedLawsOrderModel.PurpleMemoryCount;
+            }
+            set
+            {
+                if (value < 0) { augmentedLawsOrderModel.PurpleMemoryCount = 0; }
+                else if (value > 17) { augmentedLawsOrderModel.PurpleMemoryCount = 18; }
+                else { augmentedLawsOrderModel.PurpleMemoryCount = value; }
+                OnPropertyChanged(nameof(PurpleCount));
+            }
         }
 
-        public int MemoryNeeded 
-        { 
-            get 
-            { 
-                if (AvailableJobs == null) { LoadAvailableJobs(); } 
-                return (AvailableJobs.Count * 15) - augmentedLawsOrderModel.MemoryCount;
-            } 
+        public int ArtifactNeeded
+        {
+            get
+            {
+                if (AvailableJobs == null) { LoadAvailableJobs(); }
+                return (AvailableJobs.Count * 15) - augmentedLawsOrderModel.ArtifactCount;
+            }
         }
+
+        public bool CompletedOnce
+        {
+            get
+            {
+                if (AvailableJobs == null)
+                    return false;
+                else if (AvailableJobs.Count == ShBHelpers.ShBInfo.JobListString.Count)
+                    return false;
+                else return true;
+            }
+        }
+                
 
         #endregion
 
@@ -127,7 +171,7 @@ namespace FFXIVRelicTracker._05_ShB._05_AugmentedLawsOrder
                 }
             }
             //Calculate remaining memories to acquire
-            OnPropertyChanged(nameof(MemoryNeeded));
+            OnPropertyChanged(nameof(ArtifactCount));
         }
         #endregion
 
@@ -150,17 +194,19 @@ namespace FFXIVRelicTracker._05_ShB._05_AugmentedLawsOrder
             }
         }
 
-        private bool CompleteCan() { return SelectedJob != null; }
+        private bool CompleteCan() { return CurrentAugmentedLawsOrder != null; }
         private void CompleteCommand()
         {
 
-            ShBJob tempJob = selectedCharacter.ShBModel.ShbJobList[ShBInfo.JobListString.IndexOf(SelectedJob)];
+            ShBJob tempJob = selectedCharacter.ShBModel.ShbJobList[ShBInfo.JobListString.IndexOf(CurrentAugmentedLawsOrder)];
 
             ShBStageCompleter.ProgressClass(selectedCharacter, tempJob.AugmentedLawsOrder, true);
 
             LoadAvailableJobs();
 
-            OnPropertyChanged(nameof(MemoryCount));
+            OnPropertyChanged(nameof(ArtifactCount));
+            OnPropertyChanged(nameof(ArtifactNeeded));
+            OnPropertyChanged(nameof(CompletedOnce));
         }
         #endregion
 
@@ -180,14 +226,27 @@ namespace FFXIVRelicTracker._05_ShB._05_AugmentedLawsOrder
                 return _MemoryButton;
             }
         }
-
+        
         private void MemoryCommand(object param)
         {
-            MemoryCount += 1;
+            string itemType = (string)param;
+
+            switch (itemType)
+            {
+                case "Purple":
+                    PurpleCount += 1;
+                    break;
+                case "Yellow":
+                    YellowCount += 1;
+                    break;
+                default:
+                    ArtifactCount += 1;
+                    break;
+                    
+                        
+            }
         }
         #endregion
         #endregion
-
-
     }
 }

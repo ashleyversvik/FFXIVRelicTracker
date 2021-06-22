@@ -16,7 +16,7 @@ namespace FFXIVRelicTracker._05_ShB._04_LawsOrder
         #endregion
 
         public ObservableCollection<string> AvailableJobs { get; set; }
-        public string SelectedJob { get; set; }
+        public string CurrentLawsOrder { get; set; }
         public int MemoryCount { get; set; }
     }
 }

@@ -425,7 +425,7 @@ namespace FFXIVRelicTracker.ViewModels
 
         private bool CanSave()
         {
-            return true;
+            return CharacterList.Count>0;
         }
         private void SaveObject()
         {

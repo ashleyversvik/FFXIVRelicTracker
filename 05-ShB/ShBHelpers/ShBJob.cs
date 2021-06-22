@@ -107,7 +107,7 @@ namespace FFXIVRelicTracker._05_ShB.ShBHelpers
                 blades = value;
                 OnPropertyChanged(nameof(Blades));
             }
-        }        
+        }
         #endregion
 
         #region Methods

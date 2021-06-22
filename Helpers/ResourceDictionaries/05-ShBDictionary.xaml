@@ -5,8 +5,9 @@
                     xmlns:augmentedResistance="clr-namespace:FFXIVRelicTracker._05_ShB._02_AugmentedResistance"
                     xmlns:recollection="clr-namespace:FFXIVRelicTracker._05_ShB._03_Recollection"
                     xmlns:lawsOrder="clr-namespace:FFXIVRelicTracker._05_ShB._04_LawsOrder"
-                    xmlns:augmentedLawsOrder="clr-namespace:FFXIVRelicTracker._05_ShB._05_AugmentedLawsOrder"
+                    xmlns:augmentedLawsORder="clr-namespace:FFXIVRelicTracker._05_ShB._05_AugmentedLawsOrder"
                     xmlns:blades="clr-namespace:FFXIVRelicTracker._05_ShB._06_Blades"
+                    
                     >
 
 
@@ -30,13 +31,14 @@
     <DataTemplate DataType="{x:Type lawsOrder:LawsOrderViewModel}">
         <lawsOrder:LawsOrderView/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type augmentedLawsOrder:AugmentedLawsOrderViewModel}">
-        <augmentedLawsOrder:AugmentedLawsOrderView/>
+    <DataTemplate DataType="{x:Type augmentedLawsORder:AugmentedLawsOrderViewModel}">
+        <augmentedLawsORder:AugmentedLawsOrderView/>
     </DataTemplate>
     <DataTemplate DataType="{x:Type blades:BladesViewModel}">
         <blades:BladesView/>
     </DataTemplate>
-    
+
+
     <Style BasedOn="{StaticResource FFXIVButton }" x:Key="ShBSummaryButton" TargetType="Button">
         <Setter Property="HorizontalAlignment"  Value="Center"/>
         <Setter Property="VerticalAlignment"    Value="Center"/>

@@ -94,9 +94,9 @@
                 <TextBlock Style="{StaticResource RotateTextBlock}" Text="Resistance"                Margin="0,5"   Grid.Row="2" Grid.Column="0"/>
                 <TextBlock Style="{StaticResource RotateTextBlock}" Text="Augmented Resistance"      Margin="0,5"   Grid.Row="3" Grid.Column="0"/>
                 <TextBlock Style="{StaticResource RotateTextBlock}" Text="Recollection"              Margin="0,5"   Grid.Row="4" Grid.Column="0"/>
-                <TextBlock Style="{StaticResource RotateTextBlock}" Text="Law's Order"              Margin="0,5"   Grid.Row="5" Grid.Column="0"/>
-                <TextBlock Style="{StaticResource RotateTextBlock}" Text="Augmented Law's Order"              Margin="0,5"   Grid.Row="6" Grid.Column="0"/>
-                <TextBlock Style="{StaticResource RotateTextBlock}" Text="Blade's"              Margin="0,5"   Grid.Row="7" Grid.Column="0"/>
+                <TextBlock Style="{StaticResource RotateTextBlock}" Text="Law's Order"               Margin="0,5"   Grid.Row="5" Grid.Column="0"/>
+                <TextBlock Style="{StaticResource RotateTextBlock}" Text="Augmented Law's Order"     Margin="0,5"   Grid.Row="6" Grid.Column="0"/>
+                <TextBlock Style="{StaticResource RotateTextBlock}" Text="Blades of Gunnhildr"       Margin="0,5"   Grid.Row="7" Grid.Column="0"/>
 
                 <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="01" Content="{Binding Path=PLD.Resistance.Progress}" Tag="{Binding PLD.Resistance}" />
                 <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="02" Content="{Binding Path=WAR.Resistance.Progress}" Tag="{Binding WAR.Resistance}" />

@@ -12,8 +12,8 @@ using FFXIVRelicTracker._05_ShB._00_Summary;
 using FFXIVRelicTracker._05_ShB._01_Resistance;
 using FFXIVRelicTracker._05_ShB._02_AugmentedResistance;
 using FFXIVRelicTracker._05_ShB._03_Recollection;
-using FFXIVRelicTracker._05_ShB._04_LawsOrder;
 using FFXIVRelicTracker._05_ShB._05_AugmentedLawsOrder;
+using FFXIVRelicTracker._05_ShB._04_LawsOrder;
 using FFXIVRelicTracker._05_ShB._06_Blades;
 
 namespace FFXIVRelicTracker._05_ShB.Main

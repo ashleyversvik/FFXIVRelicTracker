@@ -16,7 +16,7 @@ namespace FFXIVRelicTracker._05_ShB._03_Recollection
         #endregion
 
         public ObservableCollection<string> AvailableJobs { get; set; }
-        public string SelectedJob { get; set; }
+        public string CurrentRecollection { get; set; }
         public int MemoryCount { get; set; }
     }
 }

@@ -65,13 +65,13 @@ namespace FFXIVRelicTracker._05_ShB._03_Recollection
             }
         }
 
-        public string SelectedJob
+        public string CurrentRecollection
         {
-            get { return recollectionModel.SelectedJob; }
+            get { return recollectionModel.CurrentRecollection; }
             set
             {
-                recollectionModel.SelectedJob = value;
-                OnPropertyChanged(nameof(SelectedJob));
+                recollectionModel.CurrentRecollection = value;
+                OnPropertyChanged(nameof(CurrentRecollection));
             }
         }
 
@@ -150,11 +150,11 @@ namespace FFXIVRelicTracker._05_ShB._03_Recollection
             }
         }
 
-        private bool CompleteCan() { return SelectedJob != null; }
+        private bool CompleteCan() { return CurrentRecollection != null; }
         private void CompleteCommand()
         {
 
-            ShBJob tempJob = selectedCharacter.ShBModel.ShbJobList[ShBInfo.JobListString.IndexOf(SelectedJob)];
+            ShBJob tempJob = selectedCharacter.ShBModel.ShbJobList[ShBInfo.JobListString.IndexOf(CurrentRecollection)];
 
             ShBStageCompleter.ProgressClass(selectedCharacter, tempJob.Recollection, true);
 
