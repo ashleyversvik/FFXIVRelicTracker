@@ -55,12 +55,8 @@
                                     </Grid.ColumnDefinitions>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Style="{StaticResource LeftTextBlock}" Text="FFXIVRelicTracker "/>
-<<<<<<< HEAD
-                                        <TextBlock Style="{StaticResource LeftTextBlock}" Text="v5.55.0.1"/>
-=======
                                         <TextBlock Style="{StaticResource LeftTextBlock}" Text="FFXIVRelicTracker "/>
                                         <TextBlock Style="{StaticResource LeftTextBlock}" Text="v5.55.0.2"/>
->>>>>>> 932c5fc4eb4f69385aecc8404b0df654c10e511f
                                     </StackPanel>
                                     <TextBlock Grid.Column="1"/>
                                     <Button  Grid.Column="2" HorizontalAlignment="Right" Style="{StaticResource FFXIVButton}"  Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType=Window, AncestorLevel=1},Path=MinimizeCommandHandler}" Content="_" />

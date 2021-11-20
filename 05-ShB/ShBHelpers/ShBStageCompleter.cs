@@ -132,7 +132,7 @@ namespace FFXIVRelicTracker._05_ShB.ShBHelpers
         {
             //Decrease Count of Memory items outside of LawsOrder model so that changes to progress that occur outside of LawsOrder view still impact Memory Counts
 
-            if (character.ShBModel.LawsOrderModel.MemoryCount <= 15) { character.ShBModel.RecollectionModel.MemoryCount = 0; }
+            if (character.ShBModel.LawsOrderModel.MemoryCount <= 15) { character.ShBModel.LawsOrderModel.MemoryCount = 0; }
             else { character.ShBModel.LawsOrderModel.MemoryCount -= 15; }
         }
         private static void DecreaseArtifactCount(Character character)
