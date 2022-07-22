@@ -79,7 +79,7 @@
                     </Grid.RowDefinitions>
                     <TextBlock Style="{StaticResource LeftTextBlock}" Text="Note: "/>
                     <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
-                        <TextBlock Style="{StaticResource LeftTextBlock}" Text="Before 120 Treated Crystal Sand are recieved, trading "/>
+                        <TextBlock Style="{StaticResource LeftTextBlock}" Text="Before 90 Treated Crystal Sand are recieved, trading "/>
                         <TextBlock Style="{StaticResource LeftTextBlock}" Foreground="White" Text="Crystal Sand"/>
                         <TextBlock Style="{StaticResource LeftTextBlock}" Text=" and "/>
                         <TextBlock Style="{StaticResource LeftTextBlock}" Foreground="White" Text="Umbrite"/>
@@ -87,7 +87,7 @@
                         <TextBlock Style="{StaticResource LeftTextBlock}" Text="Treated Crystal Sand"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
-                        <TextBlock Style="{StaticResource LeftTextBlock}" Text="After 120 Treated Crystal Sand are recieved, trading "/>
+                        <TextBlock Style="{StaticResource LeftTextBlock}" Text="After 90 Treated Crystal Sand are recieved, trading "/>
                         <TextBlock Style="{StaticResource LeftTextBlock}" Foreground="White" Text="Crystal Sand"/>
                         <TextBlock Style="{StaticResource LeftTextBlock}" Text=" and "/>
                         <TextBlock Style="{StaticResource LeftTextBlock}" Foreground="White" Text="Umbrite"/>
@@ -97,10 +97,10 @@
                 </Grid>
 
                 <TextBlock Style="{StaticResource LeftTextBlock}" Grid.Row="5" Text=""/>
-                <TextBlock Style="{StaticResource LeftTextBlock}" Grid.Row="6" Text="A total of 240 Treated Crystal Sand are required to complete the Reconditioning"/>
+                <TextBlock Style="{StaticResource LeftTextBlock}" Grid.Row="6" Text="A total of 180 Treated Crystal Sand are required to complete the Reconditioning"/>
                 
                 <StackPanel Orientation="Horizontal" Grid.Row="7">
-                    <TextBlock Style="{StaticResource LeftTextBlock}" Text="A total of 60 - 80 "/>
+                    <TextBlock Style="{StaticResource LeftTextBlock}" Text="A total of 45 - 60 "/>
                     <TextBlock Style="{StaticResource LeftTextBlock}" Foreground="White" Text="Crystal Sand"/>
                     <TextBlock Style="{StaticResource LeftTextBlock}" Text=" and "/>
                     <TextBlock Style="{StaticResource LeftTextBlock}" Foreground="White" Text="Umbrite"/>
@@ -125,7 +125,7 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <ProgressBar Grid.ColumnSpan="4" Minimum="0" Maximum="240" Value="{Binding CurrentPoints}" Margin="10,5,10,5" Foreground="DarkGoldenrod"/>
+                    <ProgressBar Grid.ColumnSpan="4" Minimum="0" Maximum="180" Value="{Binding CurrentPoints}" Margin="10,5,10,5" Foreground="DarkGoldenrod"/>
                     <TextBox Background="Transparent" BorderBrush="Transparent" Text="{Binding CurrentPoints}" Grid.ColumnSpan="4" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,5,10,5"/>
                     <Button Style="{StaticResource incrementButton}" Grid.Row="1" Grid.Column="0" Content="+3" Command="{Binding IncrementButton}" CommandParameter="Point3"/>
                     <Button Style="{StaticResource incrementButton}" Grid.Row="1" Grid.Column="1" Content="4" Command="{Binding IncrementButton}" CommandParameter="Point4"/>

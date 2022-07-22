@@ -140,13 +140,13 @@ namespace FFXIVRelicTracker._03_HW._05_Reconditioned
             get 
             {
                 if (reconditionedModel.CurrentPoints < 0) { CurrentPoints = 0; }
-                else if (reconditionedModel.CurrentPoints > 240) { CurrentPoints = 240; }
+                else if (reconditionedModel.CurrentPoints > 180) { CurrentPoints = 180; }
                 return reconditionedModel.CurrentPoints; 
             }
             set
             {
                 if (value < 0) { reconditionedModel.CurrentPoints = 0; }
-                else if (value > 240) { reconditionedModel.CurrentPoints = 240; }
+                else if (value > 180) { reconditionedModel.CurrentPoints = 180; }
                 else { reconditionedModel.CurrentPoints = value; }
                 Recalculate();
             }
@@ -157,7 +157,7 @@ namespace FFXIVRelicTracker._03_HW._05_Reconditioned
             get
             {
                 if (AvailableJobs == null) { LoadAvailableJobs(); }
-                return (AvailableJobs.Count * 240) - CurrentPoints;
+                return (AvailableJobs.Count * 180) - CurrentPoints;
             }
         }
 
@@ -166,8 +166,8 @@ namespace FFXIVRelicTracker._03_HW._05_Reconditioned
         public int CurrentMinSand => Math.Max(0, CurrentMinPoints - CurrentSand);
         public int CurrentMaxSand => Math.Max(0, CurrentMaxPoints - CurrentSand);
 
-        public int CurrentMinPoints => (int)Math.Ceiling((240 - CurrentPoints) / 4.0);
-        public int CurrentMaxPoints => (int)Math.Ceiling((240 - CurrentPoints) / 3.0);
+        public int CurrentMinPoints => (int)Math.Ceiling((180 - CurrentPoints) / 4.0);
+        public int CurrentMaxPoints => (int)Math.Ceiling((180 - CurrentPoints) / 3.0);
 
         public int MinUmbrite => (int)Math.Ceiling(TotalPoints / 4.0) - CurrentUmbrite;
         public int MaxUmbrite => (int)Math.Ceiling(TotalPoints / 3.0) - CurrentUmbrite; 
