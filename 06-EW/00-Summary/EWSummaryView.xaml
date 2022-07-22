@@ -1,0 +1,119 @@
+﻿<UserControl x:Class="FFXIVRelicTracker._06_EW._00_Summary.EWSummaryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FFXIVRelicTracker._06_EW._00_Summary"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/FFXIVRelicTracker;component/Helpers/ResourceDictionaries/00-SummaryDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="10,0,0,0">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Margin="0,0,30,0">
+                <TextBlock Style="{StaticResource BaseTextBlock}" Text="Selected Character: "/>
+                <TextBlock Style="{StaticResource BaseTextBlock}" Text="{Binding SelectedCharacter}"/>
+            </StackPanel>
+
+            <TextBlock Grid.Column="1" Style="{StaticResource BaseTextBlock}" Text="EW Progress" Margin="0,0,30,0"/>
+
+            <StackPanel Grid.Column="2" Orientation="Horizontal">
+                <TextBlock Style="{StaticResource LeftTextBlock}" Text="Layout Direction: "/>
+                <ComboBox x:Name="LayoutDirection" SelectedItem="{Binding SummaryLayout}" Style="{DynamicResource FFXIVComboBox}" ItemsSource="{Binding Summaries}"/>
+            </StackPanel>
+            
+            <Grid Grid.Row="1" Grid.ColumnSpan="4" Style="{DynamicResource RotatedSummaryGrid}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Style="{StaticResource RotateTextBlock}" Text="PLD" Grid.Row="1"   Grid.Column="01"/>
+                <TextBlock Style="{StaticResource RotateTextBlock}" Text="WAR" Grid.Row="1"   Grid.Column="02"/>
+                <TextBlock Style="{StaticResource RotateTextBlock}" Text="DRK" Grid.Row="1"   Grid.Column="03"/>
+                <TextBlock Style="{StaticResource RotateTextBlock}" Text="GNB" Grid.Row="1"   Grid.Column="04"/>
+                <TextBlock Style="{StaticResource RotateTextBlock}" Text="WHM" Grid.Row="1"   Grid.Column="05"/>
+                <TextBlock Style="{StaticResource RotateTextBlock}" Text="SCH" Grid.Row="1"   Grid.Column="06"/>
+                <TextBlock Style="{StaticResource RotateTextBlock}" Text="AST" Grid.Row="1"   Grid.Column="07"/>
+                <TextBlock Style="{StaticResource RotateTextBlock}" Text="SGE" Grid.Row="1"   Grid.Column="08"/>
+                <TextBlock Style="{StaticResource RotateTextBlock}" Text="MNK" Grid.Row="1"   Grid.Column="09"/>
+                <TextBlock Style="{StaticResource RotateTextBlock}" Text="DRG" Grid.Row="1"   Grid.Column="10"/>
+                <TextBlock Style="{StaticResource RotateTextBlock}" Text="NIN" Grid.Row="1"   Grid.Column="11"/>
+                <TextBlock Style="{StaticResource RotateTextBlock}" Text="SAM" Grid.Row="1"   Grid.Column="12"/>
+                <TextBlock Style="{StaticResource RotateTextBlock}" Text="RPR" Grid.Row="1"   Grid.Column="13"/>
+                <TextBlock Style="{StaticResource RotateTextBlock}" Text="BRD" Grid.Row="1"   Grid.Column="14"/>
+                <TextBlock Style="{StaticResource RotateTextBlock}" Text="MCH" Grid.Row="1"   Grid.Column="15"/>
+                <TextBlock Style="{StaticResource RotateTextBlock}" Text="DNC" Grid.Row="1"   Grid.Column="16"/>
+                <TextBlock Style="{StaticResource RotateTextBlock}" Text="BLM" Grid.Row="1"   Grid.Column="17"/>
+                <TextBlock Style="{StaticResource RotateTextBlock}" Text="SMN" Grid.Row="1"   Grid.Column="18"/>
+                <TextBlock Style="{StaticResource RotateTextBlock}" Text="RDM" Grid.Row="1"   Grid.Column="19"/>
+
+                <TextBlock Style="{StaticResource RotateTextBlock}" Text="Step 1"                Margin="0,5"   Grid.Row="2" Grid.Column="0"/>
+
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="01" Content="{Binding Path=PLD.Placeholder.Progress}" Tag="{Binding PLD.Placeholder}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="02" Content="{Binding Path=WAR.Placeholder.Progress}" Tag="{Binding WAR.Placeholder}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="03" Content="{Binding Path=DRK.Placeholder.Progress}" Tag="{Binding DRK.Placeholder}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="04" Content="{Binding Path=GNB.Placeholder.Progress}" Tag="{Binding GNB.Placeholder}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="05" Content="{Binding Path=WHM.Placeholder.Progress}" Tag="{Binding WHM.Placeholder}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="06" Content="{Binding Path=SCH.Placeholder.Progress}" Tag="{Binding SCH.Placeholder}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="07" Content="{Binding Path=AST.Placeholder.Progress}" Tag="{Binding AST.Placeholder}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="08" Content="{Binding Path=SGE.Placeholder.Progress}" Tag="{Binding SGE.Placeholder}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="09" Content="{Binding Path=MNK.Placeholder.Progress}" Tag="{Binding MNK.Placeholder}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="10" Content="{Binding Path=DRG.Placeholder.Progress}" Tag="{Binding DRG.Placeholder}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="11" Content="{Binding Path=NIN.Placeholder.Progress}" Tag="{Binding NIN.Placeholder}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="12" Content="{Binding Path=SAM.Placeholder.Progress}" Tag="{Binding SAM.Placeholder}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="13" Content="{Binding Path=RPR.Placeholder.Progress}" Tag="{Binding RPR.Placeholder}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="14" Content="{Binding Path=BRD.Placeholder.Progress}" Tag="{Binding BRD.Placeholder}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="15" Content="{Binding Path=MCH.Placeholder.Progress}" Tag="{Binding MCH.Placeholder}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="16" Content="{Binding Path=DNC.Placeholder.Progress}" Tag="{Binding DNC.Placeholder}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="17" Content="{Binding Path=BLM.Placeholder.Progress}" Tag="{Binding BLM.Placeholder}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="18" Content="{Binding Path=SMN.Placeholder.Progress}" Tag="{Binding SMN.Placeholder}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="19" Content="{Binding Path=RDM.Placeholder.Progress}" Tag="{Binding RDM.Placeholder}" />
+
+
+            </Grid>
+        </Grid>
+        
+    </ScrollViewer>
+    
+</UserControl>

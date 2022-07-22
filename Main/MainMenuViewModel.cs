@@ -2,6 +2,7 @@
 using FFXIVRelicTracker._04_SB.SBHelpers;
 using FFXIVRelicTracker._05_ShB.ShBHelpers;
 using FFXIVRelicTracker._05_Skysteel.Skysteel_Helpers;
+using FFXIVRelicTracker._06_EW.EWHelpers;
 using FFXIVRelicTracker.ARR.ArrHelpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
@@ -53,6 +54,7 @@ namespace FFXIVRelicTracker.ViewModels
                     ConfigureSBLists();
                     ConfigureShBLists();
                     ConfigureSkysteelLists();
+                    ConfigureEWLists();
                 }
 
                 CharacterInt = CharacterList.IndexOf(SelectedCharacter);
@@ -274,6 +276,44 @@ namespace FFXIVRelicTracker.ViewModels
                     job.Skybuilders
                 };
                 job.StageList = skysteelProgresses;
+                job.CheckObject();
+            }
+        }
+
+        private void ConfigureEWLists()
+        {
+            List<EWJob> ewStages = new List<EWJob>()
+            {
+                selectedCharacter.EWModel.PLD,
+                selectedCharacter.EWModel.WAR,
+                selectedCharacter.EWModel.DRK,
+                selectedCharacter.EWModel.GNB,
+                selectedCharacter.EWModel.WHM,
+                selectedCharacter.EWModel.SCH,
+                selectedCharacter.EWModel.AST,
+                selectedCharacter.EWModel.SGE,
+                selectedCharacter.EWModel.MNK,
+                selectedCharacter.EWModel.DRG,
+                selectedCharacter.EWModel.NIN,
+                selectedCharacter.EWModel.SAM,
+                selectedCharacter.EWModel.RPR,
+                selectedCharacter.EWModel.BRD,
+                selectedCharacter.EWModel.MCH,
+                selectedCharacter.EWModel.DNC,
+                selectedCharacter.EWModel.BLM,
+                selectedCharacter.EWModel.SMN,
+                selectedCharacter.EWModel.RDM
+            };
+
+            selectedCharacter.EWModel.EWJobList = ewStages;
+
+            foreach (EWJob job in selectedCharacter.EWModel.EWJobList)
+            {
+                List<EWProgress> ewProgresses = new List<EWProgress>()
+                {
+                    job.Placeholder,
+                };
+                job.StageList = ewProgresses;
                 job.CheckObject();
             }
         }

@@ -2,6 +2,7 @@
 using FFXIVRelicTracker._04_SB.Main;
 using FFXIVRelicTracker._05_ShB.Main;
 using FFXIVRelicTracker._05_Skysteel.Main;
+using FFXIVRelicTracker._06_EW.Main;
 using FFXIVRelicTracker.Models.Helpers;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace FFXIVRelicTracker.Models
         private SkysteelModel skysteelModel;
         private HWModel hwModel;
         private SBModel sbModel;
+        private EWModel ewModel;
 
         #region Properties
 
@@ -30,6 +32,7 @@ namespace FFXIVRelicTracker.Models
         public string SBLayout { get; set; }
         public string ShBLayout { get; set; }
         public string SkysteelLayout { get; set; }
+        public string EWLayout { get; set; }
 
         public string Name
         {
@@ -115,6 +118,18 @@ namespace FFXIVRelicTracker.Models
                 }
             }
         }
+        public EWModel EWModel
+        {
+            get { return ewModel; }
+            set
+            {
+                if (value != null)
+                {
+                    ewModel = value;
+                    OnPropertyChanged(nameof(EWModel));
+                }
+            }
+        }
         #endregion
         public Character()
         {
@@ -125,6 +140,8 @@ namespace FFXIVRelicTracker.Models
             ShBModel = new ShBModel();
             SkysteelModel = new SkysteelModel();
             HWModel = new HWModel();
+            SBModel = new SBModel();
+            EWModel = new EWModel();
         }
 
         public Character(string name, string server )
@@ -136,12 +153,14 @@ namespace FFXIVRelicTracker.Models
             HWModel = new HWModel();
             SBModel = new SBModel();
             SkysteelModel = new SkysteelModel();
+            EWModel = new EWModel();
 
             ArrLayout = "Horizontal";
             HWLayout = "Horizontal";
             SBLayout = "Horizontal";
             ShBLayout = "Horizontal";
             SkysteelLayout = "Horizontal";
+            EWLayout = "Horizontal";
 
         }
 
@@ -162,6 +181,7 @@ namespace FFXIVRelicTracker.Models
             if (string.IsNullOrEmpty(SBLayout)) { SBLayout = "Horizontal"; }
             if (string.IsNullOrEmpty(ShBLayout)) { ShBLayout = "Horizontal"; }
             if (string.IsNullOrEmpty(SkysteelLayout)) { SkysteelLayout = "Horizontal"; }
+            if (string.IsNullOrEmpty(EWLayout)) { EWLayout = "Horizontal"; }
 
             //Manually set ARR jobs to progresses since I merged the functionality in version v5.35.3.0 but ARR progress classes were not storing Job names with the progress and
             // the stage progressing method is being made consistent across expansions
