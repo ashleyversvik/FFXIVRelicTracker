@@ -311,7 +311,7 @@ namespace FFXIVRelicTracker.ViewModels
             {
                 List<EWProgress> ewProgresses = new List<EWProgress>()
                 {
-                    job.Placeholder,
+                    job.Manderville,
                 };
                 job.StageList = ewProgresses;
                 job.CheckObject();

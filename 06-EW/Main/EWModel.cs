@@ -1,4 +1,4 @@
-﻿using FFXIVRelicTracker._06_EW._01_Placeholder;
+﻿using FFXIVRelicTracker._06_EW._01_Manderville;
 using FFXIVRelicTracker._06_EW.EWHelpers;
 using FFXIVRelicTracker.Models.Helpers;
 using System;
@@ -33,7 +33,7 @@ namespace FFXIVRelicTracker._06_EW.Main
         private EWJob smn = new EWJob("SMN");
         private EWJob rdm = new EWJob("RDM");
 
-        private PlaceholderModel placeholderModel = new PlaceholderModel();
+        private MandervilleModel mandervilleModel = new MandervilleModel();
 
         #endregion
 
@@ -66,7 +66,7 @@ namespace FFXIVRelicTracker._06_EW.Main
         public EWJob SMN { get { return smn; } set { smn = value; OnPropertyChanged(nameof(SMN)); } }
         public EWJob RDM { get { return rdm; } set { rdm = value; OnPropertyChanged(nameof(RDM)); } }
 
-        public PlaceholderModel PlaceholderModel { get { return placeholderModel; } set { placeholderModel = value; OnPropertyChanged(nameof(PlaceholderModel)); } }
+        public MandervilleModel MandervilleModel { get { return mandervilleModel; } set { mandervilleModel = value; OnPropertyChanged(nameof(MandervilleModel)); } }
         #endregion
 
     }

@@ -16,7 +16,7 @@ namespace FFXIVRelicTracker._06_EW.EWHelpers
         public EWJob(string name)
         {
             this.name = name;
-            Placeholder = new EWProgress("Placeholder",Name);
+            Manderville = new EWProgress("Manderville",Name);
         }
 
         #endregion
@@ -37,15 +37,15 @@ namespace FFXIVRelicTracker._06_EW.EWHelpers
         }
 
         public List<EWProgress> StageList = new List<EWProgress>();
-        private EWProgress placeholder;
+        private EWProgress manderville;
 
-        public EWProgress Placeholder
+        public EWProgress Manderville
         {
-            get { return placeholder; }
+            get { return manderville; }
             set
             {
-                placeholder = value;
-                OnPropertyChanged(nameof(Placeholder));
+                manderville = value;
+                OnPropertyChanged(nameof(Manderville));
             }
         }
 
@@ -73,7 +73,7 @@ namespace FFXIVRelicTracker._06_EW.EWHelpers
                     switch (stageIndex)
                     {
                         case 0:
-                            Placeholder = tempProgress;
+                            Manderville = tempProgress;
                             break;
 
                     }

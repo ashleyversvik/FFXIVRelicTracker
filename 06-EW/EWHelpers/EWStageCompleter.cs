@@ -7,26 +7,26 @@ namespace FFXIVRelicTracker._06_EW.EWHelpers
 {
     public static class EWStageCompleter
     {
-        public static void ProgressClass(Character character, EWProgress shbProgress, bool CompleteBool = false)
+        public static void ProgressClass(Character character, EWProgress ewProgress, bool CompleteBool = false)
         {
-            int StageIndex = EWInfo.StageListString.IndexOf(shbProgress.Name);
-            int JobIndex = EWInfo.JobListString.IndexOf(shbProgress.Job);
+            int StageIndex = EWInfo.StageListString.IndexOf(ewProgress.Name);
+            int JobIndex = EWInfo.JobListString.IndexOf(ewProgress.Job);
 
             EWJob tempJob = character.EWModel.EWJobList[JobIndex];
 
-            if (shbProgress.Progress == EWProgress.States.NA)
+            if (ewProgress.Progress == EWProgress.States.NA)
             {
                 CompletePreviousStages(character, tempJob, StageIndex);
             }
-            else if (shbProgress.Progress == EWProgress.States.Completed)
+            else if (ewProgress.Progress == EWProgress.States.Completed)
             {
                 InCompleteFollowingStages(tempJob, StageIndex);
                 return;
             }
 
-            if (shbProgress.Progress == EWProgress.States.Initiated | CompleteBool)
+            if (ewProgress.Progress == EWProgress.States.Initiated | CompleteBool)
             {
-                shbProgress.Progress = EWProgress.States.Completed;
+                ewProgress.Progress = EWProgress.States.Completed;
                 AlterCounts(character, StageIndex);
             }
             else
@@ -35,7 +35,7 @@ namespace FFXIVRelicTracker._06_EW.EWHelpers
                 switch (StageIndex)
                 {
                     default:
-                        shbProgress.Progress = EWProgress.States.Completed;
+                        ewProgress.Progress = EWProgress.States.Completed;
                         break;
                 }
                 AlterCounts(character, StageIndex);
@@ -77,7 +77,7 @@ namespace FFXIVRelicTracker._06_EW.EWHelpers
             switch (stageIndex)
             {
                 case 0:
-                    DecreaseScalePowder(character);
+                    DecreaseMeteorites(character);
                     break;
 
                 default:
@@ -85,12 +85,12 @@ namespace FFXIVRelicTracker._06_EW.EWHelpers
             }
         }
 
-        private static void DecreaseScalePowder(Character character)
+        private static void DecreaseMeteorites(Character character)
         {
             //Decrease Scalepowder outside of resistance model so that changes to progress that occur outside of Resistance view still impact scalepowder
 
-            if (character.EWModel.PlaceholderModel.CurrentScalepowder <= 4) { character.EWModel.PlaceholderModel.CurrentScalepowder = 0; }
-            else { character.EWModel.PlaceholderModel.CurrentScalepowder -= 4; }
+            if (character.EWModel.MandervilleModel.CurrentMeteorites <= 3) { character.EWModel.MandervilleModel.CurrentMeteorites = 0; }
+            else { character.EWModel.MandervilleModel.CurrentMeteorites -= 3; }
         }
         
     }

@@ -4,16 +4,16 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 
-namespace FFXIVRelicTracker._06_EW._01_Placeholder
+namespace FFXIVRelicTracker._06_EW._01_Manderville
 {
-    public class PlaceholderModel: ObservableObject
+    public class MandervilleModel: ObservableObject
     {
-        public PlaceholderModel()
+        public MandervilleModel()
         {
         }
 
         public ObservableCollection<string> AvailableJobs { get; set; }
-        public string CurrentPlaceholder{ get; set; }
-        public int CurrentScalepowder { get; set; }
+        public string CurrentManderville{ get; set; }
+        public int CurrentMeteorites { get; set; }
     }
 }

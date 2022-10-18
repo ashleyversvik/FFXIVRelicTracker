@@ -88,27 +88,27 @@
                 <TextBlock Style="{StaticResource RotateTextBlock}" Text="SMN" Grid.Row="1"   Grid.Column="18"/>
                 <TextBlock Style="{StaticResource RotateTextBlock}" Text="RDM" Grid.Row="1"   Grid.Column="19"/>
 
-                <TextBlock Style="{StaticResource RotateTextBlock}" Text="Step 1"                Margin="0,5"   Grid.Row="2" Grid.Column="0"/>
+                <TextBlock Style="{StaticResource RotateTextBlock}" Text="Manderville"                Margin="0,5"   Grid.Row="2" Grid.Column="0"/>
 
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="01" Content="{Binding Path=PLD.Placeholder.Progress}" Tag="{Binding PLD.Placeholder}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="02" Content="{Binding Path=WAR.Placeholder.Progress}" Tag="{Binding WAR.Placeholder}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="03" Content="{Binding Path=DRK.Placeholder.Progress}" Tag="{Binding DRK.Placeholder}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="04" Content="{Binding Path=GNB.Placeholder.Progress}" Tag="{Binding GNB.Placeholder}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="05" Content="{Binding Path=WHM.Placeholder.Progress}" Tag="{Binding WHM.Placeholder}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="06" Content="{Binding Path=SCH.Placeholder.Progress}" Tag="{Binding SCH.Placeholder}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="07" Content="{Binding Path=AST.Placeholder.Progress}" Tag="{Binding AST.Placeholder}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="08" Content="{Binding Path=SGE.Placeholder.Progress}" Tag="{Binding SGE.Placeholder}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="09" Content="{Binding Path=MNK.Placeholder.Progress}" Tag="{Binding MNK.Placeholder}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="10" Content="{Binding Path=DRG.Placeholder.Progress}" Tag="{Binding DRG.Placeholder}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="11" Content="{Binding Path=NIN.Placeholder.Progress}" Tag="{Binding NIN.Placeholder}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="12" Content="{Binding Path=SAM.Placeholder.Progress}" Tag="{Binding SAM.Placeholder}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="13" Content="{Binding Path=RPR.Placeholder.Progress}" Tag="{Binding RPR.Placeholder}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="14" Content="{Binding Path=BRD.Placeholder.Progress}" Tag="{Binding BRD.Placeholder}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="15" Content="{Binding Path=MCH.Placeholder.Progress}" Tag="{Binding MCH.Placeholder}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="16" Content="{Binding Path=DNC.Placeholder.Progress}" Tag="{Binding DNC.Placeholder}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="17" Content="{Binding Path=BLM.Placeholder.Progress}" Tag="{Binding BLM.Placeholder}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="18" Content="{Binding Path=SMN.Placeholder.Progress}" Tag="{Binding SMN.Placeholder}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="19" Content="{Binding Path=RDM.Placeholder.Progress}" Tag="{Binding RDM.Placeholder}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="01" Content="{Binding Path=PLD.Manderville.Progress}" Tag="{Binding PLD.Manderville}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="02" Content="{Binding Path=WAR.Manderville.Progress}" Tag="{Binding WAR.Manderville}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="03" Content="{Binding Path=DRK.Manderville.Progress}" Tag="{Binding DRK.Manderville}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="04" Content="{Binding Path=GNB.Manderville.Progress}" Tag="{Binding GNB.Manderville}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="05" Content="{Binding Path=WHM.Manderville.Progress}" Tag="{Binding WHM.Manderville}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="06" Content="{Binding Path=SCH.Manderville.Progress}" Tag="{Binding SCH.Manderville}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="07" Content="{Binding Path=AST.Manderville.Progress}" Tag="{Binding AST.Manderville}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="08" Content="{Binding Path=SGE.Manderville.Progress}" Tag="{Binding SGE.Manderville}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="09" Content="{Binding Path=MNK.Manderville.Progress}" Tag="{Binding MNK.Manderville}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="10" Content="{Binding Path=DRG.Manderville.Progress}" Tag="{Binding DRG.Manderville}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="11" Content="{Binding Path=NIN.Manderville.Progress}" Tag="{Binding NIN.Manderville}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="12" Content="{Binding Path=SAM.Manderville.Progress}" Tag="{Binding SAM.Manderville}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="13" Content="{Binding Path=RPR.Manderville.Progress}" Tag="{Binding RPR.Manderville}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="14" Content="{Binding Path=BRD.Manderville.Progress}" Tag="{Binding BRD.Manderville}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="15" Content="{Binding Path=MCH.Manderville.Progress}" Tag="{Binding MCH.Manderville}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="16" Content="{Binding Path=DNC.Manderville.Progress}" Tag="{Binding DNC.Manderville}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="17" Content="{Binding Path=BLM.Manderville.Progress}" Tag="{Binding BLM.Manderville}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="18" Content="{Binding Path=SMN.Manderville.Progress}" Tag="{Binding SMN.Manderville}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="19" Content="{Binding Path=RDM.Manderville.Progress}" Tag="{Binding RDM.Manderville}" />
 
 
             </Grid>

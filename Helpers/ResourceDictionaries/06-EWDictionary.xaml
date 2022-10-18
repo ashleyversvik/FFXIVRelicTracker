@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:summary="clr-namespace:FFXIVRelicTracker._06_EW._00_Summary"
-                    xmlns:resistance="clr-namespace:FFXIVRelicTracker._06_EW._01_Placeholder"
+                    xmlns:manderville="clr-namespace:FFXIVRelicTracker._06_EW._01_Manderville"
                     >
 
 
@@ -13,8 +13,8 @@
         <summary:EWSummaryView />
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type resistance:PlaceholderViewModel}">
-        <resistance:PlaceholderView/>
+    <DataTemplate DataType="{x:Type manderville:MandervilleViewModel}">
+        <manderville:MandervilleView/>
     </DataTemplate>
 
     <Style BasedOn="{StaticResource FFXIVButton }" x:Key="EWSummaryButton" TargetType="Button">

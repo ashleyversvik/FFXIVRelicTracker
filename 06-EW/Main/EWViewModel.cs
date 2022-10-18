@@ -9,59 +9,60 @@ using System.Text;
 using System.Windows.Input;
 using FFXIVRelicTracker._06_EW.EWHelpers;
 using FFXIVRelicTracker._06_EW._00_Summary;
-using FFXIVRelicTracker._06_EW._01_Placeholder;
+using FFXIVRelicTracker._06_EW._01_Manderville;
 
 namespace FFXIVRelicTracker._06_EW.Main
 {
     public class EWViewModel : ObservableObject, IPageViewModel
     {
-		private Character selectedCharacter;
-		private IEventAggregator iEventAggregator;
+        private Character selectedCharacter;
+        private IEventAggregator iEventAggregator;
 
-		#region Constructors
+        #region Constructors
 
-		public EWViewModel(IEventAggregator iEventAggregator)
-		{
-			this.iEventAggregator = iEventAggregator;
-			SubscriptionToken subscriptionToken =
-									this
-										.iEventAggregator
-										.GetEvent<PubSubEvent<Character>>()
-										.Subscribe((details) =>
-										{
-											this.SelectedCharacter = details;
-										});
+        public EWViewModel(IEventAggregator iEventAggregator)
+        {
+            this.iEventAggregator = iEventAggregator;
+            SubscriptionToken subscriptionToken =
+                                    this
+                                        .iEventAggregator
+                                        .GetEvent<PubSubEvent<Character>>()
+                                        .Subscribe((details) =>
+                                        {
+                                            this.SelectedCharacter = details;
+                                        });
 
             PageViewModels.Add(new EWSummaryViewModel(Event.EventInstance.EventAggregator));
-            PageViewModels.Add(new PlaceholderViewModel(Event.EventInstance.EventAggregator));
+            PageViewModels.Add(new MandervilleViewModel(Event.EventInstance.EventAggregator));
 
 
             CurrentPageViewModel = PageViewModels[0];
 
-			this.Subscribe = new DelegateCommand(
-			() =>
-			{
-				subscriptionToken =
-					this
-						.iEventAggregator
-						.GetEvent<PubSubEvent<Character>>()
-						.Subscribe((details) =>
-						{
-							this.SelectedCharacter = details;
-						});
-			});
+            this.Subscribe = new DelegateCommand(
+            () =>
+            {
+                subscriptionToken =
+                    this
+                        .iEventAggregator
+                        .GetEvent<PubSubEvent<Character>>()
+                        .Subscribe((details) =>
+                        {
+                            this.SelectedCharacter = details;
+                        });
+            });
 
-			this.Unsubscribe = new DelegateCommand(
-				() => {
+            this.Unsubscribe = new DelegateCommand(
+                () =>
+                {
 
-					this
-						.iEventAggregator
-						.GetEvent<PubSubEvent<Character>>()
-						.Unsubscribe(subscriptionToken);
-				});
+                    this
+                        .iEventAggregator
+                        .GetEvent<PubSubEvent<Character>>()
+                        .Unsubscribe(subscriptionToken);
+                });
 
 
-		}
+        }
 
         #endregion
 
@@ -69,13 +70,13 @@ namespace FFXIVRelicTracker._06_EW.Main
         public string Name => "EW View";
 
         public Character SelectedCharacter
-		{
-			get { return selectedCharacter; }
-			set
-			{
-				selectedCharacter = value;
-			}
-		}
+        {
+            get { return selectedCharacter; }
+            set
+            {
+                selectedCharacter = value;
+            }
+        }
 
         public List<IPageViewModel> PageViewModels
         {
@@ -87,7 +88,7 @@ namespace FFXIVRelicTracker._06_EW.Main
                 return _pageViewModels;
             }
         }
-        
+
         #endregion
 
         #region Methods

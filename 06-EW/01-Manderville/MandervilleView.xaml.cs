@@ -11,14 +11,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FFXIVRelicTracker._06_EW._01_Placeholder
+namespace FFXIVRelicTracker._06_EW._01_Manderville
 {
     /// <summary>
-    /// Interaction logic for PlaceholderView.xaml
+    /// Interaction logic for MandervilleView.xaml
     /// </summary>
-    public partial class PlaceholderView : UserControl
+    public partial class MandervilleView : UserControl
     {
-        public PlaceholderView()
+        public MandervilleView()
         {
             InitializeComponent();
         }

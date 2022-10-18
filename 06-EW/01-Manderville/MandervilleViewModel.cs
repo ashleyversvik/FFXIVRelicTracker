@@ -9,22 +9,22 @@ using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows.Input;
 
-namespace FFXIVRelicTracker._06_EW._01_Placeholder
+namespace FFXIVRelicTracker._06_EW._01_Manderville
 {
-    public class PlaceholderViewModel : ObservableObject, IPageViewModel
+    public class MandervilleViewModel : ObservableObject, IPageViewModel
     {
         #region Fields
         private IEventAggregator eventAggregator;
         private Character selectedCharacter;
-        private PlaceholderModel placeholderModel;
+        private MandervilleModel mandervilleModel;
         #endregion
 
         #region Constructor
-        public PlaceholderViewModel()
+        public MandervilleViewModel()
         {
 
         }
-        public PlaceholderViewModel(IEventAggregator eventAggregator)
+        public MandervilleViewModel(IEventAggregator eventAggregator)
         {
             this.eventAggregator = eventAggregator;
 
@@ -40,7 +40,7 @@ namespace FFXIVRelicTracker._06_EW._01_Placeholder
         #endregion
 
         #region Properties
-        public string Name => "Placeholder";
+        public string Name => "Manderville";
 
         public Character SelectedCharacter
         {
@@ -50,61 +50,61 @@ namespace FFXIVRelicTracker._06_EW._01_Placeholder
                 if (value != null)
                 {
                     selectedCharacter = value;
-                    PlaceholderModel = SelectedCharacter.EWModel.PlaceholderModel;
+                    MandervilleModel = SelectedCharacter.EWModel.MandervilleModel;
                     OnPropertyChanged(nameof(SelectedCharacter));
                 }
             }
         }
 
-        public PlaceholderModel PlaceholderModel
+        public MandervilleModel MandervilleModel
         {
-            get { return placeholderModel; }
+            get { return mandervilleModel; }
             set
             {
-                placeholderModel = value;
-                OnPropertyChanged(nameof(PlaceholderModel));
+                mandervilleModel = value;
+                OnPropertyChanged(nameof(MandervilleModel));
             }
         }
 
-        public string CurrentPlaceholder
+        public string CurrentManderville
         {
-            get { return placeholderModel.CurrentPlaceholder; }
+            get { return mandervilleModel.CurrentManderville; }
             set
             {
-                placeholderModel.CurrentPlaceholder = value;
-                OnPropertyChanged(nameof(CurrentPlaceholder));
+                mandervilleModel.CurrentManderville = value;
+                OnPropertyChanged(nameof(CurrentManderville));
             }
         }
-        public int CurrentScalepowder
+        public int CurrentMeteorites
         {
             get 
             {
-                if (placeholderModel.CurrentScalepowder < 0) { CurrentScalepowder = 0; }
-                return placeholderModel.CurrentScalepowder; 
+                if (mandervilleModel.CurrentMeteorites < 0) { CurrentMeteorites = 0; }
+                return mandervilleModel.CurrentMeteorites; 
             }
             set
             {
-                if(value>=0 & value < 70)
+                if(value>=0 & value < 60)
                 {
-                    placeholderModel.CurrentScalepowder = value;
-                    OnPropertyChanged(nameof(CurrentScalepowder));
-                    OnPropertyChanged(nameof(ScalepowderCost));
+                    mandervilleModel.CurrentMeteorites = value;
+                    OnPropertyChanged(nameof(CurrentMeteorites));
+                    OnPropertyChanged(nameof(MeteoritesCost));
                 }
             }
         }
-        public int NeededScalepowder { get { if (AvailableJobs == null) { LoadAvailableJobs(); } return Math.Min(16, AvailableJobs.Count) * 4; } }
-        public int ScalepowderCost => (NeededScalepowder - CurrentScalepowder) * 250;
+        public int NeededMeteorites { get { if (AvailableJobs == null) { LoadAvailableJobs(); } return Math.Min(19, AvailableJobs.Count) * 3; } }
+        public int MeteoritesCost => (NeededMeteorites - CurrentMeteorites) * 500;
 
         public ObservableCollection<string> AvailableJobs
         {
-            get { return placeholderModel.AvailableJobs; }
+            get { return mandervilleModel.AvailableJobs; }
             set
             {
-                placeholderModel.AvailableJobs = value;
+                mandervilleModel.AvailableJobs = value;
                 OnPropertyChanged(nameof(AvailableJobs));
             }
         }
-        public bool CompletedFirstPlaceholder { get { return AvailableJobs.Count < EWInfo.JobListString.Count; } }
+        public bool CompletedFirstManderville { get { return AvailableJobs.Count < EWInfo.JobListString.Count; } }
         #endregion
 
 
@@ -114,18 +114,18 @@ namespace FFXIVRelicTracker._06_EW._01_Placeholder
             if (AvailableJobs == null) { AvailableJobs = new ObservableCollection<string>(); }
             foreach( EWJob job in selectedCharacter.EWModel.EWJobList)
             {
-                if(job.Placeholder.Progress==BaseProgressClass.States.Completed & AvailableJobs.Contains(job.Name))
+                if(job.Manderville.Progress==BaseProgressClass.States.Completed & AvailableJobs.Contains(job.Name))
                 {
                     AvailableJobs.Remove(job.Name);
                 }
-                if (job.Placeholder.Progress != BaseProgressClass.States.Completed & !AvailableJobs.Contains(job.Name))
+                if (job.Manderville.Progress != BaseProgressClass.States.Completed & !AvailableJobs.Contains(job.Name))
                 {
                     EWInfo.ReloadJobList(AvailableJobs, job.Name);                 
                 }
             }
-            OnPropertyChanged(nameof(CompletedFirstPlaceholder));
-            OnPropertyChanged(nameof(NeededScalepowder));
-            OnPropertyChanged(nameof(ScalepowderCost));
+            OnPropertyChanged(nameof(CompletedFirstManderville));
+            OnPropertyChanged(nameof(NeededMeteorites));
+            OnPropertyChanged(nameof(MeteoritesCost));
         }
         #endregion
 
@@ -148,39 +148,39 @@ namespace FFXIVRelicTracker._06_EW._01_Placeholder
             }
         }
 
-        private bool CompleteCan() { return CurrentPlaceholder != null; }
+        private bool CompleteCan() { return CurrentManderville != null; }
         private void CompleteCommand()
         {
 
-            EWJob tempJob = selectedCharacter.EWModel.EWJobList[EWInfo.JobListString.IndexOf(CurrentPlaceholder)];
+            EWJob tempJob = selectedCharacter.EWModel.EWJobList[EWInfo.JobListString.IndexOf(CurrentManderville)];
 
-            EWStageCompleter.ProgressClass(selectedCharacter, tempJob.Placeholder, true);
+            EWStageCompleter.ProgressClass(selectedCharacter, tempJob.Manderville, true);
 
             LoadAvailableJobs();
 
         }
         #endregion
 
-        #region Increment Scalepowder
-        private ICommand _ScalepowderButton;
+        #region Increment Meteorites
+        private ICommand _MeteoritesButton;
 
-        public ICommand ScalepowderButton
+        public ICommand MeteoritesButton
         {
             get
             {
-                if (_ScalepowderButton == null)
+                if (_MeteoritesButton == null)
                 {
-                    _ScalepowderButton = new RelayCommand(
-                        param => this.ScalepowderCommand(param)
+                    _MeteoritesButton = new RelayCommand(
+                        param => this.MeteoritesCommand(param)
                         );
                 }
-                return _ScalepowderButton;
+                return _MeteoritesButton;
             }
         }
 
-        private void ScalepowderCommand(object param)
+        private void MeteoritesCommand(object param)
         {
-            CurrentScalepowder += 1;
+            CurrentMeteorites += 1;
         }
         #endregion
         #endregion
