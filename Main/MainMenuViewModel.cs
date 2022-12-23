@@ -58,6 +58,7 @@ namespace FFXIVRelicTracker.ViewModels
                 }
 
                 CharacterInt = CharacterList.IndexOf(SelectedCharacter);
+                SettingsManager.Settings.LastOpenCharacter = value.ToString();
                 OnPropertyChanged(nameof(SelectedCharacter));
                 this._eventAggregator.GetEvent<PubSubEvent<Character>>().Publish(this.SelectedCharacter);
             }
@@ -424,23 +425,13 @@ namespace FFXIVRelicTracker.ViewModels
 
         private bool CanLoad()
         {
-            return File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Characters.txt"); 
+            return CharactersManager.CanLoad();
         }
 
-        private ObservableCollection<Character> tempCharacterList;
         private void LoadObject()
         {
-            CharacterList = new ObservableCollection<Character>();
-
-            string jsonString;
-            jsonString = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Characters.txt");
-            tempCharacterList = JsonSerializer.Deserialize<ObservableCollection<Character>>(jsonString);
-
-            foreach (Character oldCharacter in tempCharacterList)
-            {
-                Character newCharacter = new Character(oldCharacter);
-                CharacterList.Add(newCharacter);
-            }
+            var characters = CharactersManager.Load();
+            CharacterList = new ObservableCollection<Character>(characters);
         }
         #endregion
 
@@ -469,9 +460,10 @@ namespace FFXIVRelicTracker.ViewModels
         }
         private void SaveObject()
         {
-            string jsonString;
-            jsonString = JsonSerializer.Serialize(CharacterList);
-            File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Characters.txt", jsonString);
+            CharactersManager.Save(CharacterList);
+            //string jsonString;
+            //jsonString = JsonSerializer.Serialize(CharacterList);
+            //File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Characters.txt", jsonString);
         }
 
         public void LoadAvailableJobs()

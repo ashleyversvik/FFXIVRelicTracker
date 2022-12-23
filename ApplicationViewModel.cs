@@ -189,9 +189,7 @@ namespace FFXIVRelicTracker.ViewModels
 
         void _Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            string jsonString;
-            jsonString = JsonSerializer.Serialize(Application.Current.Windows[0].FontSize);
-            File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\FFXIVRelicTrackerSettings.txt", jsonString);
+            SettingsManager.Settings.FontSize = Application.Current.Windows[0].FontSize;
         }
         #endregion
         #region Open Settings
@@ -223,17 +221,9 @@ namespace FFXIVRelicTracker.ViewModels
 
         private void LoadSettings()
         {
-            if( File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\FFXIVRelicTrackerSettings.txt"))
+            foreach (Window window in Application.Current.Windows)
             {
-                string jsonString;
-                jsonString = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\FFXIVRelicTrackerSettings.txt");
-                double tempFontSetting= JsonSerializer.Deserialize<double>(jsonString);
-                if (tempFontSetting <= 0) { tempFontSetting = 12.0; }
-
-                foreach (Window window in Application.Current.Windows)
-                {
-                    window.FontSize = tempFontSetting;
-                }
+                window.FontSize = SettingsManager.Settings.FontSize;
             }
         }
 
