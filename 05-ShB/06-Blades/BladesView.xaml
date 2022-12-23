@@ -24,10 +24,10 @@
             <TextBlock Style="{StaticResource LeftTextBlock}" Text="Active Job:"/>
             <ComboBox Style="{StaticResource FFXIVComboBox}" Margin="5,0,0,0"
                                                 ItemsSource="{Binding   Path=AvailableJobs}" 
-                                                SelectedItem="{Binding Path=CurrentBlade}"
+                                                SelectedItem="{Binding Path=SelectedJob}"
                                     />
             <Border HorizontalAlignment="Center">
-                <Button Style="{StaticResource FFXIVButton}" Content="Mark as completed" Command="{Binding CompleteButton}" CommandParameter="{Binding Path=CurrentBlade}"/>
+                <Button Style="{StaticResource FFXIVButton}" Content="Mark as completed" Command="{Binding CompleteButton}" CommandParameter="{Binding Path=SelectedJob}"/>
             </Border>
             <TextBlock Margin="20,0,0,0" Style="{StaticResource LeftTextBlock}" Text="{Binding Name}"/>
             <TextBlock Style="{StaticResource LeftTextBlock}" Text=" Stage "/>

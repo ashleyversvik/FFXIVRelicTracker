@@ -89,8 +89,8 @@ namespace FFXIVRelicTracker._06_EW.EWHelpers
         {
             //Decrease Scalepowder outside of resistance model so that changes to progress that occur outside of Resistance view still impact scalepowder
 
-            if (character.EWModel.MandervilleModel.CurrentMeteorites <= 3) { character.EWModel.MandervilleModel.CurrentMeteorites = 0; }
-            else { character.EWModel.MandervilleModel.CurrentMeteorites -= 3; }
+            if (character.EWModel.MandervilleModel.MeteoritesCount <= 3) { character.EWModel.MandervilleModel.MeteoritesCount = 0; }
+            else { character.EWModel.MandervilleModel.MeteoritesCount -= 3; }
         }
         
     }

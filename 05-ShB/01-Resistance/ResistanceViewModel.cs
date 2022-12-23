@@ -66,33 +66,33 @@ namespace FFXIVRelicTracker._05_ShB._01_Resistance
             }
         }
 
-        public string CurrentResistance
+        public string SelectedJob
         {
-            get { return resistanceModel.CurrentResistance; }
+            get { return resistanceModel.SelectedJob; }
             set
             {
-                resistanceModel.CurrentResistance = value;
-                OnPropertyChanged(nameof(CurrentResistance));
+                resistanceModel.SelectedJob = value;
+                OnPropertyChanged(nameof(SelectedJob));
             }
         }
-        public int CurrentScalepowder
+        public int ScalepowderCount
         {
             get 
             {
-                if (resistanceModel.CurrentScalepowder < 0) { CurrentScalepowder = 0; }
-                return resistanceModel.CurrentScalepowder; 
+                if (resistanceModel.ScalepowderCount < 0) { ScalepowderCount = 0; }
+                return resistanceModel.ScalepowderCount; 
             }
             set
             {
                 if(value>=0 & value < 70)
                 {
-                    resistanceModel.CurrentScalepowder = value;
-                    OnPropertyChanged(nameof(CurrentScalepowder));
+                    resistanceModel.ScalepowderCount = value;
+                    OnPropertyChanged(nameof(ScalepowderCount));
                     OnPropertyChanged(nameof(ScalepowderCost));
                 }
             }
         }
-        public int NeededScalepowder { get { if (AvailableJobs == null) { LoadAvailableJobs(); } return (Math.Min(16, AvailableJobs.Count) * 4) - CurrentScalepowder; } }
+        public int NeededScalepowder { get { if (AvailableJobs == null) { LoadAvailableJobs(); } return (Math.Min(16, AvailableJobs.Count) * 4) - ScalepowderCount; } }
         public int ScalepowderCost => NeededScalepowder * 250;
 
         public ObservableCollection<string> AvailableJobs
@@ -148,11 +148,11 @@ namespace FFXIVRelicTracker._05_ShB._01_Resistance
             }
         }
 
-        private bool CompleteCan() { return CurrentResistance != null; }
+        private bool CompleteCan() { return SelectedJob != null; }
         private void CompleteCommand()
         {
 
-            ShBJob tempJob = selectedCharacter.ShBModel.ShbJobList[ShBInfo.JobListString.IndexOf(CurrentResistance)];
+            ShBJob tempJob = selectedCharacter.ShBModel.ShbJobList[ShBInfo.JobListString.IndexOf(SelectedJob)];
 
             ShBStageCompleter.ProgressClass(selectedCharacter, tempJob.Resistance, true);
 
@@ -180,7 +180,7 @@ namespace FFXIVRelicTracker._05_ShB._01_Resistance
 
         private void ScalepowderCommand(object param)
         {
-            CurrentScalepowder += 1;
+            ScalepowderCount += 1;
             OnPropertyChanged(nameof(NeededScalepowder));
         }
         #endregion

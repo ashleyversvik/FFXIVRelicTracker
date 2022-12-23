@@ -1,18 +1,13 @@
-﻿using FFXIVRelicTracker.Models.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
+﻿using FFXIVRelicTracker.Helpers;
 
 namespace FFXIVRelicTracker._05_Skysteel._01_BaseTool
 {
-    public class BaseToolModel : ObservableObject
+    public class BaseToolModel : BaseStageModel
     {
         public BaseToolModel()
         {
 
         }
-        public string SelectedJob { get;  set; }
-        public ObservableCollection<string> AvailableJobs { get;  set; }
+
     }
 }

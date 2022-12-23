@@ -1,12 +1,8 @@
-﻿using FFXIVRelicTracker.Models.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
+﻿using FFXIVRelicTracker.Helpers;
 
 namespace FFXIVRelicTracker._05_ShB._06_Blades
 {
-    public class BladesModel : ObservableObject
+    public class BladesModel : BaseStageModel
     {
         #region Constructor
         public BladesModel()
@@ -26,7 +22,5 @@ namespace FFXIVRelicTracker._05_ShB._06_Blades
 
 
         public int EmotionCount { get; set; }
-        public string CurrentBlade { get; set; }
-        public ObservableCollection<string> AvailableJobs { get; set; }
     }
 }

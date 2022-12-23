@@ -1,20 +1,14 @@
-﻿using FFXIVRelicTracker.Models.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
+﻿using FFXIVRelicTracker.Helpers;
 
 namespace FFXIVRelicTracker._05_Skysteel._04_AugmentedDragonsung
 {
-    public class AugmentedDragonsungModel : ObservableObject
+    public class AugmentedDragonsungModel : BaseStageModel
     {
         public AugmentedDragonsungModel()
         {
 
         }
 
-        public string SelectedJob { get; set; }
-        public ObservableCollection<string> AvailableJobs { get; set; }
         public string ToolName { get; set; }
         public string CraftedMat { get; set; }
         public string FirstMat { get; set; }

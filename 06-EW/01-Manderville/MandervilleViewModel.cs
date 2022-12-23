@@ -66,34 +66,34 @@ namespace FFXIVRelicTracker._06_EW._01_Manderville
             }
         }
 
-        public string CurrentManderville
+        public string SelectedJob
         {
-            get { return mandervilleModel.CurrentManderville; }
+            get { return mandervilleModel.SelectedJob; }
             set
             {
-                mandervilleModel.CurrentManderville = value;
-                OnPropertyChanged(nameof(CurrentManderville));
+                mandervilleModel.SelectedJob = value;
+                OnPropertyChanged(nameof(SelectedJob));
             }
         }
-        public int CurrentMeteorites
+        public int MeteoritesCount
         {
             get 
             {
-                if (mandervilleModel.CurrentMeteorites < 0) { CurrentMeteorites = 0; }
-                return mandervilleModel.CurrentMeteorites; 
+                if (mandervilleModel.MeteoritesCount < 0) { MeteoritesCount = 0; }
+                return mandervilleModel.MeteoritesCount;
             }
             set
             {
                 if(value>=0 & value < 60)
                 {
-                    mandervilleModel.CurrentMeteorites = value;
-                    OnPropertyChanged(nameof(CurrentMeteorites));
+                    mandervilleModel.MeteoritesCount = value;
+                    OnPropertyChanged(nameof(MeteoritesCount));
                     OnPropertyChanged(nameof(MeteoritesCost));
                     OnPropertyChanged(nameof(NeededMeteorites));
                 }
             }
         }
-        public int NeededMeteorites { get { if (AvailableJobs == null) { LoadAvailableJobs(); } return (AvailableJobs.Count * 3) - CurrentMeteorites; } }
+        public int NeededMeteorites { get { if (AvailableJobs == null) { LoadAvailableJobs(); } return (AvailableJobs.Count * 3) - MeteoritesCount; } }
         public int MeteoritesCost => NeededMeteorites * 500;
 
         public ObservableCollection<string> AvailableJobs
@@ -149,16 +149,16 @@ namespace FFXIVRelicTracker._06_EW._01_Manderville
             }
         }
 
-        private bool CompleteCan() { return CurrentManderville != null; }
+        private bool CompleteCan() { return SelectedJob != null; }
         private void CompleteCommand()
         {
 
-            EWJob tempJob = selectedCharacter.EWModel.EWJobList[EWInfo.JobListString.IndexOf(CurrentManderville)];
+            EWJob tempJob = selectedCharacter.EWModel.EWJobList[EWInfo.JobListString.IndexOf(SelectedJob)];
 
             EWStageCompleter.ProgressClass(selectedCharacter, tempJob.Manderville, true);
 
             LoadAvailableJobs();
-            OnPropertyChanged(nameof(CurrentMeteorites));
+            OnPropertyChanged(nameof(MeteoritesCount));
             OnPropertyChanged(nameof(NeededMeteorites));
         }
         #endregion
@@ -182,7 +182,7 @@ namespace FFXIVRelicTracker._06_EW._01_Manderville
 
         private void MeteoritesCommand(object param)
         {
-            CurrentMeteorites += 1;
+            MeteoritesCount += 1;
         }
         #endregion
         #endregion

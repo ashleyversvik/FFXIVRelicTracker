@@ -3,7 +3,7 @@ using FFXIVRelicTracker._04_SB.SBHelpers;
 using FFXIVRelicTracker._05_ShB.ShBHelpers;
 using FFXIVRelicTracker._05_Skysteel.Skysteel_Helpers;
 using FFXIVRelicTracker._06_EW.EWHelpers;
-using FFXIVRelicTracker.ARR.ArrHelpers;
+using FFXIVRelicTracker._02_ARR.ArrHelpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using FFXIVRelicTracker.Views;

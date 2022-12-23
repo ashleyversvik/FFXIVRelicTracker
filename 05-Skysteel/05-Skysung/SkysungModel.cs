@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
+﻿using FFXIVRelicTracker.Helpers;
 
 namespace FFXIVRelicTracker._05_Skysteel._05_Skysung
 {
-    public class SkysungModel
+    public class SkysungModel : BaseStageModel
     {
         public SkysungModel()
         {
 
         }
-        public string SelectedJob { get; set; }
-        public ObservableCollection<string> AvailableJobs { get; set; }
+
         public string ToolName { get; set; }
         public string CraftedMat { get; set; }
         public string FirstMat { get; set; }

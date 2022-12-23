@@ -1,19 +1,13 @@
-﻿using FFXIVRelicTracker.Models.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
+﻿using FFXIVRelicTracker.Helpers;
 
 namespace FFXIVRelicTracker._05_ShB._01_Resistance
 {
-    public class ResistanceModel: ObservableObject
+    public class ResistanceModel: BaseStageModel
     {
         public ResistanceModel()
         {
         }
 
-        public ObservableCollection<string> AvailableJobs { get; set; }
-        public string CurrentResistance{ get; set; }
-        public int CurrentScalepowder { get; set; }
+        public int ScalepowderCount { get; set; }
     }
 }

@@ -24,10 +24,10 @@
             <TextBlock Style="{StaticResource LeftTextBlock}" Text="Active Job:"/>
             <ComboBox Style="{StaticResource FFXIVComboBox}" Margin="5,0,0,0"
                                                 ItemsSource="{Binding   Path=AvailableJobs}" 
-                                                SelectedItem="{Binding Path=CurrentResistance}"
+                                                SelectedItem="{Binding Path=SelectedJob}"
                                     />
             <Border HorizontalAlignment="Center">
-                <Button Style="{StaticResource FFXIVButton}" Content="Mark as completed" Command="{Binding CompleteButton}" CommandParameter="{Binding Path=CurrentResistance}"/>
+                <Button Style="{StaticResource FFXIVButton}" Content="Mark as completed" Command="{Binding CompleteButton}" CommandParameter="{Binding Path=SelectedJob}"/>
             </Border>
             <TextBlock Margin="20,0,0,0" Style="{StaticResource LeftTextBlock}" Text="{Binding Name}"/>
             <TextBlock Style="{StaticResource LeftTextBlock}" Text=" Stage "/>
@@ -95,7 +95,7 @@
                         <TextBlock Style="{StaticResource LeftTextBlock}" Foreground="White" Text="Thavnairian Scalepowder"/>
                         <TextBlock Style="{StaticResource LeftTextBlock}" Text=":"/>
                     </StackPanel>
-                    <TextBox Grid.Row="0" Grid.Column="1"  Margin="0,0,0,0" Style="{StaticResource BaseTextBox}"  Text="{Binding CurrentScalepowder}" MinWidth="20"/>
+                    <TextBox Grid.Row="0" Grid.Column="1"  Margin="0,0,0,0" Style="{StaticResource BaseTextBox}"  Text="{Binding ScalepowderCount}" MinWidth="20"/>
                     <Button Grid.Row="0" Grid.Column="2"  Style="{StaticResource incrementButton}" Content="+" Command="{Binding ScalepowderButton}"/>
 
                     <StackPanel Orientation="Horizontal" Grid.Row="1">

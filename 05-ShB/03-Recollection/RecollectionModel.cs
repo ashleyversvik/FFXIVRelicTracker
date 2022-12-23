@@ -1,12 +1,8 @@
-﻿using FFXIVRelicTracker.Models.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
+﻿using FFXIVRelicTracker.Helpers;
 
 namespace FFXIVRelicTracker._05_ShB._03_Recollection
 {
-    public class RecollectionModel : ObservableObject
+    public class RecollectionModel : BaseStageModel
     {
         #region Constructor
         public RecollectionModel()
@@ -15,8 +11,6 @@ namespace FFXIVRelicTracker._05_ShB._03_Recollection
         }
         #endregion
 
-        public ObservableCollection<string> AvailableJobs { get; set; }
-        public string CurrentRecollection { get; set; }
         public int MemoryCount { get; set; }
     }
 }

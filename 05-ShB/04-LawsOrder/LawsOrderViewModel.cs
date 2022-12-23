@@ -66,13 +66,13 @@ namespace FFXIVRelicTracker._05_ShB._04_LawsOrder
             }
         }
 
-        public string CurrentLawsOrder
+        public string SelectedJob
         {
-            get { return lawsOrderModel.CurrentLawsOrder; }
+            get { return lawsOrderModel.SelectedJob; }
             set
             {
-                lawsOrderModel.CurrentLawsOrder = value;
-                OnPropertyChanged(nameof(CurrentLawsOrder));
+                lawsOrderModel.SelectedJob = value;
+                OnPropertyChanged(nameof(SelectedJob));
             }
         }
 
@@ -152,11 +152,11 @@ namespace FFXIVRelicTracker._05_ShB._04_LawsOrder
             }
         }
 
-        private bool CompleteCan() { return CurrentLawsOrder != null; }
+        private bool CompleteCan() { return SelectedJob != null; }
         private void CompleteCommand()
         {
 
-            ShBJob tempJob = selectedCharacter.ShBModel.ShbJobList[ShBInfo.JobListString.IndexOf(CurrentLawsOrder)];
+            ShBJob tempJob = selectedCharacter.ShBModel.ShbJobList[ShBInfo.JobListString.IndexOf(SelectedJob)];
 
             ShBStageCompleter.ProgressClass(selectedCharacter, tempJob.LawsOrder, true);
 

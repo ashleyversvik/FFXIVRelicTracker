@@ -1,12 +1,8 @@
-﻿using FFXIVRelicTracker.Models.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
+﻿using FFXIVRelicTracker.Helpers;
 
 namespace FFXIVRelicTracker._05_ShB._04_LawsOrder
 {
-    public class LawsOrderModel : ObservableObject
+    public class LawsOrderModel : BaseStageModel
     {
         #region Constructor
         public LawsOrderModel()
@@ -15,8 +11,6 @@ namespace FFXIVRelicTracker._05_ShB._04_LawsOrder
         }
         #endregion
 
-        public ObservableCollection<string> AvailableJobs { get; set; }
-        public string CurrentLawsOrder { get; set; }
         public int MemoryCount { get; set; }
     }
 }

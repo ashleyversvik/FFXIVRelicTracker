@@ -103,8 +103,8 @@ namespace FFXIVRelicTracker._05_ShB.ShBHelpers
         {
             //Decrease Scalepowder outside of resistance model so that changes to progress that occur outside of Resistance view still impact scalepowder
 
-            if (character.ShBModel.ResistanceModel.CurrentScalepowder <= 4) { character.ShBModel.ResistanceModel.CurrentScalepowder = 0; }
-            else { character.ShBModel.ResistanceModel.CurrentScalepowder -= 4; }
+            if (character.ShBModel.ResistanceModel.ScalepowderCount <= 4) { character.ShBModel.ResistanceModel.ScalepowderCount = 0; }
+            else { character.ShBModel.ResistanceModel.ScalepowderCount -= 4; }
         }
 
         private static void DecreaseMemoryCount(Character character)

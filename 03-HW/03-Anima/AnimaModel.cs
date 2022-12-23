@@ -1,8 +1,4 @@
 ﻿using FFXIVRelicTracker.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
 
 namespace FFXIVRelicTracker._03_HW._03_Anima
 {

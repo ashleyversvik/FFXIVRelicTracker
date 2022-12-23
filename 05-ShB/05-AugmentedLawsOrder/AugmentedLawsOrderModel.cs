@@ -1,12 +1,8 @@
-﻿using FFXIVRelicTracker.Models.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
+﻿using FFXIVRelicTracker.Helpers;
 
 namespace FFXIVRelicTracker._05_ShB._05_AugmentedLawsOrder
 {
-    public class AugmentedLawsOrderModel : ObservableObject
+    public class AugmentedLawsOrderModel : BaseStageModel
     {
         #region Constructor
         public AugmentedLawsOrderModel()
@@ -15,8 +11,6 @@ namespace FFXIVRelicTracker._05_ShB._05_AugmentedLawsOrder
         }
         #endregion
 
-        public ObservableCollection<string> AvailableJobs { get; set; }
-        public string CurrentAugmentedLawsOrder { get; set; }
         public int ArtifactCount { get; set; }
         public int PurpleMemoryCount { get; set; }
         public int YellowMemoryCount { get; set; }

@@ -66,13 +66,13 @@ namespace FFXIVRelicTracker._05_ShB._06_Blades
             }
         }
 
-        public string CurrentBlade
+        public string SelectedJob
         {
-            get { return bladesModel.CurrentBlade; }
+            get { return bladesModel.SelectedJob; }
             set
             {
-                bladesModel.CurrentBlade = value;
-                OnPropertyChanged(nameof(CurrentBlade));
+                bladesModel.SelectedJob = value;
+                OnPropertyChanged(nameof(SelectedJob));
             }
         }
 
@@ -256,11 +256,11 @@ namespace FFXIVRelicTracker._05_ShB._06_Blades
             }
         }
 
-        private bool CompleteCan() { return CurrentBlade != null; }
+        private bool CompleteCan() { return SelectedJob != null; }
         private void CompleteCommand()
         {
 
-            ShBJob tempJob = selectedCharacter.ShBModel.ShbJobList[ShBInfo.JobListString.IndexOf(CurrentBlade)];
+            ShBJob tempJob = selectedCharacter.ShBModel.ShbJobList[ShBInfo.JobListString.IndexOf(SelectedJob)];
 
             ShBStageCompleter.ProgressClass(selectedCharacter, tempJob.Blades, true);
 
