@@ -21,10 +21,33 @@ namespace FFXIVRelicTracker.Views
             if (viewModel.LoadCommand.CanExecute(null))
             {
                 viewModel.LoadCommand.Execute(null);
-                if (viewModel.CharacterList.Count == 1)
-                {
-                    viewModel.SelectedCharacter = viewModel.CharacterList.First();
-                }
+                if (!string.IsNullOrEmpty(SettingsManager.Settings.LastOpenCharacter))
+                    SelectCharacterFromSettings();
+                else
+                    SelectCharacterIfSingle();
+
+            }
+        }
+
+        private void SelectCharacterFromSettings()
+        {
+            if (string.IsNullOrWhiteSpace(SettingsManager.Settings.LastOpenCharacter))
+                return;
+
+            var viewModel = (MainMenuViewModel)DataContext;
+            var character = viewModel.CharacterList.FirstOrDefault(x => x.ToString() == SettingsManager.Settings.LastOpenCharacter);
+            if(character != null)
+            {
+                viewModel.SelectedCharacter = character;
+            }
+        }
+
+        private void SelectCharacterIfSingle()
+        {
+            var viewModel = (MainMenuViewModel)DataContext;
+            if (viewModel.CharacterList.Count == 1)
+            {
+                viewModel.SelectedCharacter = viewModel.CharacterList.First();
             }
         }
     }

@@ -19,10 +19,18 @@ namespace FFXIVRelicTracker
         {
             base.OnStartup(e);
 
+            SettingsManager.Load();
+            OldFiles.Convert();
+
             MainWindow app = new MainWindow();
             ApplicationViewModel context = new ApplicationViewModel(Event.EventInstance.EventAggregator);
             app.DataContext = context;
             app.Show();
+        }
+
+        private void Application_Exit(object sender, ExitEventArgs e)
+        {
+            SettingsManager.Save();
         }
     }
 }
