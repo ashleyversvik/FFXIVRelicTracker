@@ -89,7 +89,9 @@ namespace FFXIVRelicTracker._05_ShB._02_AugmentedResistance
             }
         }
 
-        public int MemoryNeeded { get { if (AvailableJobs != null) { return AvailableJobs.Count*20; } else { return 0; }; } }
+        public int HarrowingNeeded { get { if (AvailableJobs != null) { return (AvailableJobs.Count*20) - HarrowingCount; } else { return 0; }; } }
+        public int TorturedNeeded { get { if (AvailableJobs != null) { return (AvailableJobs.Count * 20) - TorturedCount; } else { return 0; }; } }
+        public int SorrowfulNeeded { get { if (AvailableJobs != null) { return (AvailableJobs.Count * 20) - SorrowfulCount; } else { return 0; }; } }
         public int HarrowingCount
         {
             get
@@ -102,7 +104,7 @@ namespace FFXIVRelicTracker._05_ShB._02_AugmentedResistance
                 if (value < 0) { augmentedResistanceModel.HarrowingCount = 0; }
                 else { augmentedResistanceModel.HarrowingCount = value; }
                 OnPropertyChanged(nameof(HarrowingCount));
-
+                OnPropertyChanged(nameof(HarrowingNeeded));
             }
         }
         public int TorturedCount
@@ -117,7 +119,7 @@ namespace FFXIVRelicTracker._05_ShB._02_AugmentedResistance
                 if (value < 0) { augmentedResistanceModel.TorturedCount = 0; }
                 else { augmentedResistanceModel.TorturedCount = value; }
                 OnPropertyChanged(nameof(TorturedCount));
-
+                OnPropertyChanged(nameof(TorturedNeeded));
             }
         }
         public int SorrowfulCount
@@ -132,7 +134,7 @@ namespace FFXIVRelicTracker._05_ShB._02_AugmentedResistance
                 if (value < 0) { augmentedResistanceModel.SorrowfulCount = 0; }
                 else { augmentedResistanceModel.SorrowfulCount = value; }
                 OnPropertyChanged(nameof(SorrowfulCount));
-
+                OnPropertyChanged(nameof(SorrowfulNeeded));
             }
         }
 
@@ -154,7 +156,9 @@ namespace FFXIVRelicTracker._05_ShB._02_AugmentedResistance
                 }
             }
             //Calculate remaining memories to acquire
-            OnPropertyChanged(nameof(MemoryNeeded));
+            OnPropertyChanged(nameof(HarrowingNeeded));
+            OnPropertyChanged(nameof(TorturedNeeded));
+            OnPropertyChanged(nameof(SorrowfulNeeded));
         }
         #endregion
 

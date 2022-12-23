@@ -92,8 +92,8 @@ namespace FFXIVRelicTracker._05_ShB._01_Resistance
                 }
             }
         }
-        public int NeededScalepowder { get { if (AvailableJobs == null) { LoadAvailableJobs(); } return Math.Min(16, AvailableJobs.Count) * 4; } }
-        public int ScalepowderCost => (NeededScalepowder - CurrentScalepowder) * 250;
+        public int NeededScalepowder { get { if (AvailableJobs == null) { LoadAvailableJobs(); } return (Math.Min(16, AvailableJobs.Count) * 4) - CurrentScalepowder; } }
+        public int ScalepowderCost => NeededScalepowder * 250;
 
         public ObservableCollection<string> AvailableJobs
         {
@@ -181,6 +181,7 @@ namespace FFXIVRelicTracker._05_ShB._01_Resistance
         private void ScalepowderCommand(object param)
         {
             CurrentScalepowder += 1;
+            OnPropertyChanged(nameof(NeededScalepowder));
         }
         #endregion
         #endregion

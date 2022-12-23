@@ -1,16 +1,7 @@
-﻿using FFXIVRelicTracker.Models.Helpers;
-using FFXIVRelicTracker.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using FFXIVRelicTracker.ViewModels;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace FFXIVRelicTracker.Views
 {
@@ -24,5 +15,17 @@ namespace FFXIVRelicTracker.Views
             InitializeComponent();
         }
 
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            var viewModel = (MainMenuViewModel)DataContext;
+            if (viewModel.LoadCommand.CanExecute(null))
+            {
+                viewModel.LoadCommand.Execute(null);
+                if (viewModel.CharacterList.Count == 1)
+                {
+                    viewModel.SelectedCharacter = viewModel.CharacterList.First();
+                }
+            }
+        }
     }
 }

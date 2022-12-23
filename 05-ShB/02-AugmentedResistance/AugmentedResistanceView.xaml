@@ -93,15 +93,6 @@
                 
                 <TextBlock Margin="0,0,0,0" Grid.Row="7" Grid.Column="0" Style="{StaticResource LeftTextBlock}" Text="20 Memories of each type are required to Augment a Resistance weapon"/>
 
-                <Grid Grid.Row="8">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Margin="10,0,0,0" Grid.Column="0" HorizontalAlignment="Left" Style="{StaticResource LeftTextBlock}" Text="Remaining memories of each type required:"/>
-                    <TextBlock Margin="10,0,0,0" Grid.Column="1" HorizontalAlignment="Left" Style="{StaticResource LeftTextBlock}" Text="{Binding MemoryNeeded}"/>
-                </Grid>
-                
                 <TextBlock Margin="0,0,0,0" Grid.Row="9" Grid.Column="0" Style="{StaticResource LeftTextBlock}" Text=""/>
 
                 <Grid Grid.Row="10">
@@ -115,10 +106,14 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
 
                     <TextBlock Margin="0,0,0,0" Grid.Row="0" Grid.Column="0" Style="{StaticResource LeftTextBlock}" Text="Memory"/>
                     <TextBlock Margin="0,0,0,0" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" Style="{StaticResource LeftTextBlock}" Text="Count"/>
+                    <TextBlock Margin="0,0,0,0" Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="1" HorizontalAlignment="Center" Style="{StaticResource LeftTextBlock}" Text="Remaining"/>
 
                     <TextBlock Margin="10,0,0,0" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Style="{StaticResource LeftTextBlock}" Text="Harrowing:"/>
                     <TextBlock Margin="10,0,0,0" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Style="{StaticResource LeftTextBlock}" Text="Sorrowful:"/>
@@ -126,13 +121,16 @@
 
                     <TextBox Margin="5,0,0,0" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Style="{StaticResource BaseTextBox}" MinWidth="25" Text="{Binding HarrowingCount}"/>
                     <Button Grid.Row="1" Grid.Column="2"  Style="{StaticResource incrementButton}" Content="+" Command="{Binding MemoryButton}" CommandParameter="Harrowing"/>
+                    <TextBlock Margin="0,0,0,0" Grid.Row="1" Grid.Column="4" HorizontalAlignment="Center" Style="{StaticResource LeftTextBlock}" Text="{Binding HarrowingNeeded}"/>
 
 
                     <TextBox Margin="5,0,0,0" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Style="{StaticResource BaseTextBox}" MinWidth="25"  Text="{Binding SorrowfulCount}"/>
                     <Button Grid.Row="2" Grid.Column="2"  Style="{StaticResource incrementButton}" Content="+" Command="{Binding MemoryButton}" CommandParameter="Sorrowful"/>
+                    <TextBlock Margin="0,0,0,0" Grid.Row="2" Grid.Column="4" HorizontalAlignment="Center" Style="{StaticResource LeftTextBlock}" Text="{Binding SorrowfulNeeded}"/>
 
                     <TextBox Margin="5,0,0,0" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" Style="{StaticResource BaseTextBox}" MinWidth="25"  Text="{Binding TorturedCount}"/>
                     <Button Grid.Row="3" Grid.Column="2"  Style="{StaticResource incrementButton}" Content="+" Command="{Binding MemoryButton}" CommandParameter="Tortured"/>
+                    <TextBlock Margin="0,0,0,0" Grid.Row="3" Grid.Column="4" HorizontalAlignment="Center" Style="{StaticResource LeftTextBlock}" Text="{Binding TorturedNeeded}"/>
                 </Grid>
             </Grid>
         </ScrollViewer>

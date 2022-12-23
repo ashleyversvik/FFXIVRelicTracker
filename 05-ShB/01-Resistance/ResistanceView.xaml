@@ -99,9 +99,8 @@
                     <Button Grid.Row="0" Grid.Column="2"  Style="{StaticResource incrementButton}" Content="+" Command="{Binding ScalepowderButton}"/>
 
                     <StackPanel Orientation="Horizontal" Grid.Row="1">
-                        <TextBlock Style="{StaticResource LeftTextBlock}" Text="Total "/>
                         <TextBlock Style="{StaticResource LeftTextBlock}" Foreground="White" Text="Thavnairian Scalepowder"/>
-                        <TextBlock Style="{StaticResource LeftTextBlock}" Text=" needed:"/>
+                        <TextBlock Style="{StaticResource LeftTextBlock}" Text=" remaining:"/>
                     </StackPanel>
                     <TextBlock Grid.Row="1" Grid.Column="1" Margin="5,0,0,0" Style="{StaticResource LeftTextBlock}" Text="{Binding NeededScalepowder}" Width="20"/>
                     
