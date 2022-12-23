@@ -55,7 +55,6 @@
                                     </Grid.ColumnDefinitions>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Style="{StaticResource LeftTextBlock}" Text="FFXIVRelicTracker "/>
-                                        <TextBlock Style="{StaticResource LeftTextBlock}" Text="FFXIVRelicTracker "/>
                                         <TextBlock Style="{StaticResource LeftTextBlock}" Text="v5.55.0.2"/>
                                     </StackPanel>
                                     <TextBlock Grid.Column="1"/>
@@ -86,7 +85,7 @@
                                                 </ItemsControl.Resources>
                                             </ItemsControl>
                                         </StackPanel>
-                                        
+
                                         <StackPanel DockPanel.Dock="Top"  Orientation="Vertical">
                                             <ItemsControl ItemsSource="{Binding PageViewModels}">
                                                 <ItemsControl.ItemTemplate>
@@ -105,6 +104,7 @@
                                             </ItemsControl>
                                         </StackPanel>
                                         <StackPanel VerticalAlignment="Bottom" Orientation="Vertical">
+                                            <TextBlock Margin="10,10,10,10" Style="{StaticResource BaseTextBlock}" Text="{Binding SelectedCharacter}"/>
                                             <Button Style="{StaticResource FFXIVButton}" Command="{Binding SaveCommand}" VerticalAlignment="Bottom" Content="Save"/>
                                             <Button Style="{StaticResource FFXIVButton}" Command="{Binding SettingsCommand}" VerticalAlignment="Bottom" Content="Settings"/>
                                         </StackPanel>

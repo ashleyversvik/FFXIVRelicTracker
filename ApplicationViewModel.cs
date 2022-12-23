@@ -69,8 +69,18 @@ namespace FFXIVRelicTracker.ViewModels
 
         #region Properties / Commands
         private IEventAggregator iEventAggregator;
-        private Character SelectedCharacter;
+        private Character selectedCharacter;
         private List<IPageViewModel> _menuViewModels;
+
+        public Character SelectedCharacter
+        {
+            get { return selectedCharacter; }
+            set
+            {
+                selectedCharacter = value;
+                OnPropertyChanged(nameof(SelectedCharacter));
+            }
+        }
 
         private void performMainCloseButtonCommand(object Parameter)
         {

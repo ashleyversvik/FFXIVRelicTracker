@@ -58,7 +58,7 @@ namespace FFXIVRelicTracker._06_EW.Main
         public EWJob DRG { get { return drg; } set { drg = value; OnPropertyChanged(nameof(DRG)); } }
         public EWJob NIN { get { return nin; } set { nin = value; OnPropertyChanged(nameof(NIN)); } }
         public EWJob SAM { get { return sam; } set { sam = value; OnPropertyChanged(nameof(SAM)); } }
-        public EWJob RPR { get { return rpr; } set { rpr = value; OnPropertyChanged(nameof(rpr)); } }
+        public EWJob RPR { get { return rpr; } set { rpr = value; OnPropertyChanged(nameof(RPR)); } }
         public EWJob BRD { get { return brd; } set { brd = value; OnPropertyChanged(nameof(BRD)); } }
         public EWJob MCH { get { return mch; } set { mch = value; OnPropertyChanged(nameof(MCH)); } }
         public EWJob DNC { get { return dnc; } set { dnc = value; OnPropertyChanged(nameof(DNC)); } }

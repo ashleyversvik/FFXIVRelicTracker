@@ -27,12 +27,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Margin="0,0,30,0">
-                <TextBlock Style="{StaticResource BaseTextBlock}" Text="Selected Character: "/>
-                <TextBlock Style="{StaticResource BaseTextBlock}" Text="{Binding SelectedCharacter}"/>
-            </StackPanel>
-
-            <TextBlock Grid.Column="1" Style="{StaticResource BaseTextBlock}" Text=" Skysteel Tools Progress" Margin="0,0,30,0"/>
+            <TextBlock Grid.Column="1" Style="{StaticResource BaseTextBlock}" Text="Skysteel Tools Progress" Margin="10,0,30,0"/>
 
             <StackPanel Grid.Column="2" Orientation="Horizontal">
                 <TextBlock Style="{StaticResource LeftTextBlock}" Text="Layout Direction: "/>
