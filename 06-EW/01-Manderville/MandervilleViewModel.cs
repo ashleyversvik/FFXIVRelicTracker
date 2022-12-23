@@ -89,11 +89,12 @@ namespace FFXIVRelicTracker._06_EW._01_Manderville
                     mandervilleModel.CurrentMeteorites = value;
                     OnPropertyChanged(nameof(CurrentMeteorites));
                     OnPropertyChanged(nameof(MeteoritesCost));
+                    OnPropertyChanged(nameof(NeededMeteorites));
                 }
             }
         }
-        public int NeededMeteorites { get { if (AvailableJobs == null) { LoadAvailableJobs(); } return Math.Min(19, AvailableJobs.Count) * 3; } }
-        public int MeteoritesCost => (NeededMeteorites - CurrentMeteorites) * 500;
+        public int NeededMeteorites { get { if (AvailableJobs == null) { LoadAvailableJobs(); } return (AvailableJobs.Count * 3) - CurrentMeteorites; } }
+        public int MeteoritesCost => NeededMeteorites * 500;
 
         public ObservableCollection<string> AvailableJobs
         {
@@ -157,7 +158,8 @@ namespace FFXIVRelicTracker._06_EW._01_Manderville
             EWStageCompleter.ProgressClass(selectedCharacter, tempJob.Manderville, true);
 
             LoadAvailableJobs();
-
+            OnPropertyChanged(nameof(CurrentMeteorites));
+            OnPropertyChanged(nameof(NeededMeteorites));
         }
         #endregion
 

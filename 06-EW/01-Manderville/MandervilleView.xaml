@@ -58,7 +58,7 @@
                 <TextBlock Margin="0,0,0,0" Grid.Row="2" Grid.Column="0" Style="{StaticResource LeftTextBlock}" Text=""/>
 
                 <TextBlock Margin="0,0,0,0" Grid.Row="3" Grid.Column="0" Style="{StaticResource LeftTextBlock}" Text="Subsequent Manderville weapons are acquired from the side quest:"/>
-                <TextBlock Margin="10,0,0,0" Grid.Row="4" Grid.Column="0" Style="{StaticResource LeftTextBlock}" Text="'Resistance is (Not) Futile' | Started by: Zlatan (Gangos)"/>
+                <TextBlock Margin="10,0,0,0" Grid.Row="4" Grid.Column="0" Style="{StaticResource LeftTextBlock}" Text="'Make Another Manderville' | Started by: House Manderville Artisan (Radz-at-Han)"/>
                 <StackPanel Orientation="Horizontal" Margin="10,0,0,0" Grid.Row="5">
                     <TextBlock Style="{StaticResource LeftTextBlock}" Text="Three "/>
                     <TextBlock Style="{StaticResource LeftTextBlock}" Foreground="White" Text="Manderium Meteorites"/>
@@ -99,9 +99,8 @@
                     <Button Grid.Row="0" Grid.Column="2"  Style="{StaticResource incrementButton}" Content="+" Command="{Binding MeteoritesButton}"/>
 
                     <StackPanel Orientation="Horizontal" Grid.Row="1">
-                        <TextBlock Style="{StaticResource LeftTextBlock}" Text="Total "/>
                         <TextBlock Style="{StaticResource LeftTextBlock}" Foreground="White" Text="Manderium Meteorites"/>
-                        <TextBlock Style="{StaticResource LeftTextBlock}" Text=" needed:"/>
+                        <TextBlock Style="{StaticResource LeftTextBlock}" Text=" remaining:"/>
                     </StackPanel>
                     <TextBlock Grid.Row="1" Grid.Column="1" Margin="5,0,0,0" Style="{StaticResource LeftTextBlock}" Text="{Binding NeededMeteorites}" Width="20"/>
                     
