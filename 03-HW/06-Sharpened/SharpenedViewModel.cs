@@ -4,15 +4,15 @@ using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows.Input;
 
 namespace FFXIVRelicTracker._03_HW._06_Sharpened
 {
     public class SharpenedViewModel : ObservableObject, IPageViewModel
     {
+        public string Name => "Sharpened";
+
         #region Fields
         private SharpenedModel sharpenedModel;
         private Character selectedCharacter;
@@ -40,7 +40,6 @@ namespace FFXIVRelicTracker._03_HW._06_Sharpened
         #endregion
 
         #region Properties
-        public string Name => "Sharpened";
         public Character SelectedCharacter
         {
             get { return selectedCharacter; }
@@ -162,7 +161,7 @@ namespace FFXIVRelicTracker._03_HW._06_Sharpened
 
             HWJob tempJob = selectedCharacter.HWModel.HWJobList[HWInfo.JobListString.IndexOf(SelectedJob)];
 
-            HWStageCompleter.ProgressClass(selectedCharacter, tempJob.Sharpened, true);
+            HWStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Sharpened, true);
 
             LoadAvailableJobs();
         }

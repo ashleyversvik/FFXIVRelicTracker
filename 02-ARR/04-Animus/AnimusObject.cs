@@ -1,14 +1,10 @@
 ﻿using FFXIVRelicTracker.Helpers;
 using FFXIVRelicTracker.Models.Helpers;
-using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Text;
-using System.Windows;
 
 namespace FFXIVRelicTracker._02_ARR._04_Animus
 {
-    
+
     public class AnimusObject :ObservableObject
     {
         private string name;

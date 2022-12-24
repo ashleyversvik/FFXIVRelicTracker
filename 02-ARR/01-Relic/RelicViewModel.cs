@@ -2,12 +2,9 @@
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
-using System.Reflection;
-using System.Text;
 using System.Windows;
 using System.Windows.Input;
 
@@ -15,16 +12,9 @@ namespace FFXIVRelicTracker._02_ARR._01_Relic
 {
     class RelicViewModel : ObservableObject, IPageViewModel
     {
-        private ArrWeapon arrWeapon;
+        public string Name => "Relic";
         private Character selectedCharacter;
         private RelicModel relicModel;
-        public string Name
-        {
-            get
-            {
-                return "Relic";
-            }
-        }
         private IEventAggregator eventAggregator;
 
         public RelicViewModel(IEventAggregator eventAggregator)
@@ -39,10 +29,7 @@ namespace FFXIVRelicTracker._02_ARR._01_Relic
                             {
                                 this.SelectedCharacter = details;
                             });
-            eventAggregator.GetEvent<PubSubEvent<ArrWeapon>>().Subscribe((details) => { this.ArrWeapon = details; });
         }
-
-
 
         #region Preoperties
         #region ViewModel Properties
@@ -63,9 +50,8 @@ namespace FFXIVRelicTracker._02_ARR._01_Relic
                 if (value != null)
                 {
                     selectedCharacter = value;
-                    RelicModel = selectedCharacter.ArrProgress.RelicModel;
-                    ArrWeapon = SelectedCharacter.ArrProgress.ArrWeapon;
-                    LoadAvailableJobs();
+                    RelicModel = selectedCharacter.ArrModel.RelicModel;
+                    OnPropertyChanged(nameof(SelectedCharacter));
                 }
             }
         }
@@ -78,19 +64,6 @@ namespace FFXIVRelicTracker._02_ARR._01_Relic
             {
                 relicModel.AvailableJobs = value;
                 OnPropertyChanged(nameof(AvailableJobs));
-            }
-        }
-        public ArrWeapon ArrWeapon
-        {
-            get { return arrWeapon; }
-            set
-            {
-                if (value != null)
-                {
-                    arrWeapon = value;
-                    OnPropertyChanged(nameof(ArrWeapon));
-                    LoadAvailableJobs();
-                }
             }
         }
         #endregion
@@ -278,7 +251,7 @@ namespace FFXIVRelicTracker._02_ARR._01_Relic
         public void LoadAvailableJobs()
         {
             if (AvailableJobs == null) { AvailableJobs = new ObservableCollection<string>(); }
-            foreach(ArrJobs job in arrWeapon.JobList)
+            foreach(ArrJob job in selectedCharacter.ArrModel.ArrJobList)
             {
                 if (job.Relic.Progress != ArrProgress.States.Completed & !AvailableJobs.Contains(job.Name))
                 {
@@ -313,9 +286,9 @@ namespace FFXIVRelicTracker._02_ARR._01_Relic
         private bool RelicCan() { return SelectedJob!=null; }
         private void RelicCommand()
         {
-            ArrJobs tempJob = ArrWeapon.JobList[ArrInfo.JobListString.IndexOf(SelectedJob)];
+            ArrJob tempJob = selectedCharacter.ArrModel.ArrJobList[ArrInfo.JobListString.IndexOf(SelectedJob)];
 
-            ArrStageCompleter.ProgressClass(selectedCharacter, tempJob.Relic, true);
+            ArrStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Relic, true);
 
             AvailableJobs.Remove(SelectedJob);
         }

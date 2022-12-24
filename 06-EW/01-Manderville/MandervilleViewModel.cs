@@ -3,10 +3,7 @@ using FFXIVRelicTracker.Helpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows.Input;
 
 namespace FFXIVRelicTracker._06_EW._01_Manderville
@@ -14,6 +11,7 @@ namespace FFXIVRelicTracker._06_EW._01_Manderville
     public class MandervilleViewModel : ObservableObject, IPageViewModel
     {
         #region Fields
+        public string Name => "Manderville";
         private IEventAggregator eventAggregator;
         private Character selectedCharacter;
         private MandervilleModel mandervilleModel;
@@ -40,8 +38,6 @@ namespace FFXIVRelicTracker._06_EW._01_Manderville
         #endregion
 
         #region Properties
-        public string Name => "Manderville";
-
         public Character SelectedCharacter
         {
             get { return selectedCharacter; }
@@ -155,7 +151,7 @@ namespace FFXIVRelicTracker._06_EW._01_Manderville
 
             EWJob tempJob = selectedCharacter.EWModel.EWJobList[EWInfo.JobListString.IndexOf(SelectedJob)];
 
-            EWStageCompleter.ProgressClass(selectedCharacter, tempJob.Manderville, true);
+            EWStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Manderville, true);
 
             LoadAvailableJobs();
             OnPropertyChanged(nameof(MeteoritesCount));

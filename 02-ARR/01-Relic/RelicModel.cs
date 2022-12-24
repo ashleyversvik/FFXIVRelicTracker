@@ -1,17 +1,12 @@
 ﻿using FFXIVRelicTracker._02_ARR.ArrHelpers;
 using FFXIVRelicTracker.Helpers;
-using FFXIVRelicTracker.Models;
-using FFXIVRelicTracker.Models.Helpers;
-using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Drawing;
-using System.Text;
 using System.Windows;
 
 namespace FFXIVRelicTracker._02_ARR._01_Relic
 {
-    
+
     public class RelicModel : BaseStageModel
     {
 

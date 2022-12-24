@@ -4,15 +4,15 @@ using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows.Input;
 
 namespace FFXIVRelicTracker._03_HW._08_Lux
 {
     public class LuxViewModel : ObservableObject, IPageViewModel
     {
+        public string Name => "Lux";
+
         #region Fields
         private LuxModel luxModel;
         private Character selectedCharacter;
@@ -40,7 +40,6 @@ namespace FFXIVRelicTracker._03_HW._08_Lux
         #endregion
 
         #region Properties
-        public string Name => "Lux";
         public Character SelectedCharacter
         {
             get { return selectedCharacter; }
@@ -282,7 +281,7 @@ namespace FFXIVRelicTracker._03_HW._08_Lux
 
             HWJob tempJob = selectedCharacter.HWModel.HWJobList[HWInfo.JobListString.IndexOf(SelectedJob)];
 
-            HWStageCompleter.ProgressClass(selectedCharacter, tempJob.Lux, true);
+            HWStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Lux, true);
 
             LoadAvailableJobs();
             ResetBools();

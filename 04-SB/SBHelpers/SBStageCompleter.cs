@@ -1,16 +1,13 @@
 ﻿using FFXIVRelicTracker.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace FFXIVRelicTracker._04_SB.SBHelpers
 {
     public static class SBStageCompleter
     {
-        public static void ProgressClass(Character character, SBProgress SBProgress, bool CompleteBool = false)
+        public static void ProgressClass(Character character, string job, SBProgress SBProgress, bool CompleteBool = false)
         {
             int StageIndex = SBInfo.StageListString.IndexOf(SBProgress.Name);
-            int JobIndex = SBInfo.JobListString.IndexOf(SBProgress.Job);
+            int JobIndex = SBInfo.JobListString.IndexOf(job);
 
             SBJob tempJob = character.SBModel.SBJobList[JobIndex];
 

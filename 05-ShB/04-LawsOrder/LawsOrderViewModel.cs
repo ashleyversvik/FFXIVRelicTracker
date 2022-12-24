@@ -3,16 +3,14 @@ using FFXIVRelicTracker.Helpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows.Input;
 
 namespace FFXIVRelicTracker._05_ShB._04_LawsOrder
 {
     public class LawsOrderViewModel : ObservableObject, IPageViewModel
     {
+        public string Name => "Law's Order";
 
         #region Fields
         private IEventAggregator eventAggregator;
@@ -41,7 +39,6 @@ namespace FFXIVRelicTracker._05_ShB._04_LawsOrder
         #endregion
 
         #region Properties
-        public string Name => "Law's Order";
         public Character SelectedCharacter
         {
             get { return selectedCharacter; }
@@ -158,7 +155,7 @@ namespace FFXIVRelicTracker._05_ShB._04_LawsOrder
 
             ShBJob tempJob = selectedCharacter.ShBModel.ShbJobList[ShBInfo.JobListString.IndexOf(SelectedJob)];
 
-            ShBStageCompleter.ProgressClass(selectedCharacter, tempJob.LawsOrder, true);
+            ShBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.LawsOrder, true);
 
             LoadAvailableJobs();
 

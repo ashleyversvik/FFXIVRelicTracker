@@ -9,10 +9,11 @@ namespace FFXIVRelicTracker._02_ARR._03_Atma
 {
     class AtmaViewModel : ObservableObject, IPageViewModel
     {
+        public string Name => "Atma";
+
         #region Fields
         private IEventAggregator eventAggregator;
         private Character selectedCharacter;
-        private ArrWeapon arrWeapon;
         private AtmaModel atmaModel;
         private ICommand _CompleteButton;
         #endregion
@@ -22,25 +23,10 @@ namespace FFXIVRelicTracker._02_ARR._03_Atma
             this.eventAggregator = eventAggregator;
 
             SubscriptionToken subscriptionToken =this.eventAggregator.GetEvent<PubSubEvent<Character>>().Subscribe((details) =>{this.SelectedCharacter = details;});
-            eventAggregator.GetEvent<PubSubEvent<ArrWeapon>>().Subscribe((details) => { this.ArrWeapon = details; });
 
         }
 
         #region Properties
-        public string Name => "Atma";
-        public ArrWeapon ArrWeapon
-        {
-            get { return arrWeapon; }
-            set
-            {
-                if (value != null)
-                {
-                    arrWeapon = value;
-                    CountAtma();
-                    OnPropertyChanged(nameof(ArrWeapon));
-                }
-            }
-        }
         public Character SelectedCharacter
         {
             get { return selectedCharacter; }
@@ -49,8 +35,7 @@ namespace FFXIVRelicTracker._02_ARR._03_Atma
                 if (value != null)
                 {
                     selectedCharacter = value;
-                    AtmaModel = SelectedCharacter.ArrProgress.AtmaModel;
-                    ArrWeapon = SelectedCharacter.ArrProgress.ArrWeapon;
+                    AtmaModel = SelectedCharacter.ArrModel.AtmaModel;
                 }
             }
         }
@@ -99,7 +84,7 @@ namespace FFXIVRelicTracker._02_ARR._03_Atma
         {
             CountAtma();
             if (AvailableJobs == null) { AvailableJobs = new ObservableCollection<string>(); }
-            foreach (ArrJobs job in ArrWeapon.JobList)
+            foreach (ArrJob job in selectedCharacter.ArrModel.ArrJobList)
             {
                 if (job.Atma.Progress != ArrProgress.States.Completed & !AvailableJobs.Contains(job.Name))
                 {
@@ -115,7 +100,7 @@ namespace FFXIVRelicTracker._02_ARR._03_Atma
         private void CountAtma()
         {
             int atmaCount = 0;
-            foreach (ArrJobs job in arrWeapon.JobList)
+            foreach (ArrJob job in selectedCharacter.ArrModel.ArrJobList)
             {
                 if (job.Atma.Progress != ArrProgress.States.Completed)
                 {
@@ -146,8 +131,8 @@ namespace FFXIVRelicTracker._02_ARR._03_Atma
         private void CompleteCommand()
         {
 
-            ArrJobs tempJob = ArrWeapon.JobList[ArrInfo.JobListString.IndexOf(SelectedJob)];
-            ArrStageCompleter.ProgressClass(selectedCharacter, tempJob.Atma, true);
+            ArrJob tempJob = selectedCharacter.ArrModel.ArrJobList[ArrInfo.JobListString.IndexOf(SelectedJob)];
+            ArrStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Atma, true);
             LoadAvailableJobs();
         }
         #endregion

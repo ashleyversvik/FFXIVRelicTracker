@@ -6,9 +6,7 @@ using FFXIVRelicTracker._05_ShB._05_AugmentedLawsOrder;
 using FFXIVRelicTracker._05_ShB._06_Blades;
 using FFXIVRelicTracker._05_ShB.ShBHelpers;
 using FFXIVRelicTracker.Models.Helpers;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace FFXIVRelicTracker._05_ShB.Main
 {

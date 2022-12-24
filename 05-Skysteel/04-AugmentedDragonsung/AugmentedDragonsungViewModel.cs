@@ -4,15 +4,15 @@ using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows.Input;
 
 namespace FFXIVRelicTracker._05_Skysteel._04_AugmentedDragonsung
 {
     public class AugmentedDragonsungViewModel : ObservableObject, IPageViewModel, IIncompleteViewModel
     {
+        public string Name => "Augmented Dragonsung";
+
         #region Fields
         private AugmentedDragonsungModel augmentedDragonsungModel;
         private Character selectedCharacter;
@@ -38,7 +38,6 @@ namespace FFXIVRelicTracker._05_Skysteel._04_AugmentedDragonsung
         #endregion
 
         #region Properties
-        public string Name => "Augmented Dragonsung";
         public AugmentedDragonsungModel AugmentedDragonsungModel
         {
             get { return augmentedDragonsungModel; }
@@ -194,7 +193,7 @@ namespace FFXIVRelicTracker._05_Skysteel._04_AugmentedDragonsung
 
             SkysteelJob tempJob = selectedCharacter.SkysteelModel.SkysteelJobList[SkysteelInfo.JobListString.IndexOf(SelectedJob)];
 
-            SkysteelInfo.ProgressClass(selectedCharacter, tempJob.AugmentedDragonsung, true);
+            SkysteelInfo.ProgressClass(selectedCharacter, SelectedJob, tempJob.AugmentedDragonsung, true);
 
             LoadAvailableJobs();
 

@@ -2,9 +2,7 @@
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 
 namespace FFXIVRelicTracker._06_EW._00_Summary
@@ -73,13 +71,11 @@ namespace FFXIVRelicTracker._06_EW._00_Summary
         public EWJob WHM { get { return SelectedCharacter.EWModel.WHM; } }
         public EWJob SCH { get { return SelectedCharacter.EWModel.SCH; } }
         public EWJob AST { get { return SelectedCharacter.EWModel.AST; } }
-
         public EWJob SGE { get { return SelectedCharacter.EWModel.AST; } }
         public EWJob MNK { get { return SelectedCharacter.EWModel.MNK; } }
         public EWJob DRG { get { return SelectedCharacter.EWModel.DRG; } }
         public EWJob NIN { get { return SelectedCharacter.EWModel.NIN; } }
         public EWJob SAM { get { return SelectedCharacter.EWModel.SAM; } }
-
         public EWJob RPR { get { return SelectedCharacter.EWModel.RPR; } }
         public EWJob BRD { get { return SelectedCharacter.EWModel.BRD; } }
         public EWJob MCH { get { return SelectedCharacter.EWModel.MCH; } }
@@ -117,12 +113,12 @@ namespace FFXIVRelicTracker._06_EW._00_Summary
         private bool EWCan() { return true; }
         private void EWCommand(object param)
         {
-            //object[] values = (object[])param;
+            string[] values = ((string)param).Split(".");
 
-            //EWJob tempJob = (EWJob)values[0];
-            EWProgress tempProgress = (EWProgress)param;
+            EWJob tempJob = (EWJob)SelectedCharacter.EWModel.GetType().GetProperty(values[0]).GetValue(SelectedCharacter.EWModel);
+            EWProgress tempProgress = tempJob.StageList.Find(x => x.Name == values[1]);
 
-            EWStageCompleter.ProgressClass(selectedCharacter,tempProgress);
+            EWStageCompleter.ProgressClass(SelectedCharacter, tempJob.Name, tempProgress);
 
         }
         #endregion

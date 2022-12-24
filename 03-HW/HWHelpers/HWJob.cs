@@ -1,11 +1,9 @@
-﻿using FFXIVRelicTracker.Models.Helpers;
-using System;
+﻿using FFXIVRelicTracker.Helpers;
 using System.Collections.Generic;
-using System.Text;
 
 namespace FFXIVRelicTracker._03_HW.HWHelpers
 {
-    public class HWJob : ObservableObject
+    public class HWJob : BaseJob
     {
         #region Constructors
         public HWJob()
@@ -15,22 +13,21 @@ namespace FFXIVRelicTracker._03_HW.HWHelpers
 
         public HWJob(string name)
         {
-            this.name = name;
+            this.Name = name;
 
-            Animated = new HWProgress("Animated", Name);
-            Awoken = new HWProgress("Awoken", Name);
-            Anima = new HWProgress("Anima", Name);
-            Hyperconductive = new HWProgress("Hyperconductive", Name);
-            Reconditioned = new HWProgress("Reconditioned", Name);
-            Sharpened = new HWProgress("Sharpened", Name);
-            Complete = new HWProgress("Complete", Name);
-            Lux = new HWProgress("Lux", Name);
+            Animated = new HWProgress("Animated");
+            Awoken = new HWProgress("Awoken");
+            Anima = new HWProgress("Anima");
+            Hyperconductive = new HWProgress("Hyperconductive");
+            Reconditioned = new HWProgress("Reconditioned");
+            Sharpened = new HWProgress("Sharpened");
+            Complete = new HWProgress("Complete");
+            Lux = new HWProgress("Lux");
         }
 
         #endregion
 
         #region Fields
-        private string name;
         private HWProgress animated;
         private HWProgress awoken;
         private HWProgress anima;
@@ -42,16 +39,6 @@ namespace FFXIVRelicTracker._03_HW.HWHelpers
         #endregion
 
         #region Properties
-        public string Name
-        {
-            get { return name; }
-            set
-            {
-                name = value;
-                OnPropertyChanged(nameof(Name));
-            }
-        }
-
         public List<HWProgress> StageList = new List<HWProgress>();
 
         public HWProgress Animated
@@ -137,13 +124,18 @@ namespace FFXIVRelicTracker._03_HW.HWHelpers
 
             List<HWProgress> tempList = new List<HWProgress>();
 
-            foreach (HWProgress skysteelProgress in StageList)
+            for (int stageIndex = 0; stageIndex < HWInfo.StageListString.Count; stageIndex++)
             {
-                if (skysteelProgress == null)
+                HWProgress tempProgress = null;
+                if (stageIndex < StageList.Count && StageList[stageIndex] != null)
                 {
-                    int stageIndex = StageList.IndexOf(skysteelProgress);
-
-                    HWProgress tempProgress = new HWProgress(HWInfo.StageListString[stageIndex], name);
+                    tempProgress = StageList[stageIndex];
+                    tempProgress.Name = HWInfo.StageListString[stageIndex];
+                    tempList.Add(tempProgress);
+                }
+                else
+                {
+                    tempProgress = new HWProgress(HWInfo.StageListString[stageIndex]);
 
                     tempList.Add(tempProgress);
 
@@ -175,7 +167,6 @@ namespace FFXIVRelicTracker._03_HW.HWHelpers
                             break;
                     }
                 }
-                else { tempList.Add(skysteelProgress); }
             }
 
             StageList = tempList;

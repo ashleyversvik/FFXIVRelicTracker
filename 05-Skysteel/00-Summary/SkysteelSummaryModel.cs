@@ -1,8 +1,5 @@
 ﻿using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace FFXIVRelicTracker._05_Skysteel._00_Summary
 {

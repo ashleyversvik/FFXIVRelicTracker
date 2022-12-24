@@ -1,20 +1,16 @@
 ﻿using FFXIVRelicTracker.Models;
-using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Text;
 
 namespace FFXIVRelicTracker._02_ARR.ArrHelpers
 {
     public static class ArrStageCompleter
     {
 
-        public static void ProgressClass(Character character,  ArrProgress arrProgress, bool CompleteBool=false )
+        public static void ProgressClass(Character character, string job, ArrProgress arrProgress, bool CompleteBool=false )
         {
             int StageIndex = ArrInfo.StageListString.IndexOf(arrProgress.Name);
-            int JobIndex = ArrInfo.JobListString.IndexOf(arrProgress.Job);
+            int JobIndex = ArrInfo.JobListString.IndexOf(job);
 
-            ArrJobs Job = character.ArrProgress.ArrWeapon.JobList[JobIndex];
+            ArrJob Job = character.ArrModel.ArrJobList[JobIndex];
 
             if (arrProgress.Progress == ArrProgress.States.NA)
             {
@@ -55,9 +51,9 @@ namespace FFXIVRelicTracker._02_ARR.ArrHelpers
 
 
 
-        private static void IncompleteOtherJobs(Character SelectedCharacter, ArrJobs tempStage, int StageIndex)
+        private static void IncompleteOtherJobs(Character SelectedCharacter, ArrJob tempStage, int StageIndex)
         {
-            foreach (ArrJobs Job in SelectedCharacter.ArrProgress.ArrWeapon.JobList)
+            foreach (ArrJob Job in SelectedCharacter.ArrModel.ArrJobList)
             {
                 if (Job != tempStage)
                 {
@@ -70,7 +66,7 @@ namespace FFXIVRelicTracker._02_ARR.ArrHelpers
             }
         }
 
-        private static void InCompleteFollowingStages(ArrJobs tempStage, int stageIndex)
+        private static void InCompleteFollowingStages(ArrJob tempStage, int stageIndex)
         {
             for (int i = stageIndex; i < tempStage.StageList.Count; i++)
             {
@@ -78,7 +74,7 @@ namespace FFXIVRelicTracker._02_ARR.ArrHelpers
             }
         }
 
-        private static void CompletePreviousStages(ArrJobs tempStage, int stageIndex)
+        private static void CompletePreviousStages(ArrJob tempStage, int stageIndex)
         {
             for (int i = 0; i < stageIndex; i++)
             {
@@ -88,15 +84,15 @@ namespace FFXIVRelicTracker._02_ARR.ArrHelpers
 
         private static void NovusCompleter(Character character, string Job)
         {
-            if (character.ArrProgress.NovusModel.SelectedJob == Job)
+            if (character.ArrModel.NovusModel.SelectedJob == Job)
             {
                 int subtractAlexandrite = 75;
-                subtractAlexandrite -= character.ArrProgress.NovusModel.MateriaShieldSum + character.ArrProgress.NovusModel.MateriaSwordSum + character.ArrProgress.NovusModel.MateriaSum;
+                subtractAlexandrite -= character.ArrModel.NovusModel.MateriaShieldSum + character.ArrModel.NovusModel.MateriaSwordSum + character.ArrModel.NovusModel.MateriaSum;
 
-                if (subtractAlexandrite >= character.ArrProgress.NovusModel.AlexandriteCount) { character.ArrProgress.NovusModel.AlexandriteCount = 0; }
-                else { character.ArrProgress.NovusModel.AlexandriteCount -= subtractAlexandrite; }
+                if (subtractAlexandrite >= character.ArrModel.NovusModel.AlexandriteCount) { character.ArrModel.NovusModel.AlexandriteCount = 0; }
+                else { character.ArrModel.NovusModel.AlexandriteCount -= subtractAlexandrite; }
 
-                character.ArrProgress.NovusModel.SelectedJob = "";
+                character.ArrModel.NovusModel.SelectedJob = "";
             }
         }
 

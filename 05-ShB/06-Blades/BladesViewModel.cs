@@ -3,16 +3,15 @@ using FFXIVRelicTracker.Helpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows.Input;
 
 namespace FFXIVRelicTracker._05_ShB._06_Blades
 {
     class BladesViewModel : ObservableObject, IPageViewModel
     {
+        public string Name => "Blades of Gunnhildr";
+
         #region Fields
         private IEventAggregator eventAggregator;
         private Character selectedCharacter;
@@ -41,7 +40,6 @@ namespace FFXIVRelicTracker._05_ShB._06_Blades
 
 
         #region Properties
-        public string Name => "Blades of Gunnhildr";
         public Character SelectedCharacter
         {
             get { return selectedCharacter; }
@@ -262,7 +260,7 @@ namespace FFXIVRelicTracker._05_ShB._06_Blades
 
             ShBJob tempJob = selectedCharacter.ShBModel.ShbJobList[ShBInfo.JobListString.IndexOf(SelectedJob)];
 
-            ShBStageCompleter.ProgressClass(selectedCharacter, tempJob.Blades, true);
+            ShBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Blades, true);
 
             LoadAvailableJobs();
 

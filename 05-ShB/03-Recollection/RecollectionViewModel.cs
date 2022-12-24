@@ -3,16 +3,15 @@ using FFXIVRelicTracker.Helpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows.Input;
 
 namespace FFXIVRelicTracker._05_ShB._03_Recollection
 {
     public class RecollectionViewModel : ObservableObject, IPageViewModel
     {
+        public string Name => "Recollection";
+
         #region Fields
         private IEventAggregator eventAggregator;
         private Character selectedCharacter;
@@ -40,7 +39,6 @@ namespace FFXIVRelicTracker._05_ShB._03_Recollection
         #endregion
 
         #region Properties
-        public string Name => "Recollection";
         public Character SelectedCharacter
         {
             get { return selectedCharacter; }
@@ -156,7 +154,7 @@ namespace FFXIVRelicTracker._05_ShB._03_Recollection
 
             ShBJob tempJob = selectedCharacter.ShBModel.ShbJobList[ShBInfo.JobListString.IndexOf(SelectedJob)];
 
-            ShBStageCompleter.ProgressClass(selectedCharacter, tempJob.Recollection, true);
+            ShBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Recollection, true);
 
             LoadAvailableJobs();
 

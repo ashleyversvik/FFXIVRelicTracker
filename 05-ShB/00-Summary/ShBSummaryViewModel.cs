@@ -2,9 +2,7 @@
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 
 namespace FFXIVRelicTracker._05_ShB._00_Summary
@@ -113,12 +111,13 @@ namespace FFXIVRelicTracker._05_ShB._00_Summary
         private bool ShBCan() { return true; }
         private void ShBCommand(object param)
         {
-            //object[] values = (object[])param;
 
-            //ShBJob tempJob = (ShBJob)values[0];
-            ShBProgress tempProgress = (ShBProgress)param;
+            string[] values = ((string)param).Split(".");
 
-            ShBStageCompleter.ProgressClass(selectedCharacter,tempProgress);
+            ShBJob tempJob = (ShBJob)SelectedCharacter.ShBModel.GetType().GetProperty(values[0]).GetValue(SelectedCharacter.ShBModel);
+            ShBProgress tempProgress = tempJob.StageList.Find(x => x.Name == values[1]);
+
+            ShBStageCompleter.ProgressClass(SelectedCharacter, tempJob.Name, tempProgress);
 
         }
         #endregion

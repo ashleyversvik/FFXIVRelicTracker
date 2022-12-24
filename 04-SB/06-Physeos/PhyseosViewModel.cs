@@ -3,16 +3,15 @@ using FFXIVRelicTracker.Helpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows.Input;
 
 namespace FFXIVRelicTracker._04_SB._06_Physeos
 {
     public class PhyseosViewModel : ObservableObject, IPageViewModel
     {
+        public string Name => "Physeos";
+
         #region Fields
         private IEventAggregator eventAggregator;
         private Character selectedCharacter;
@@ -40,7 +39,6 @@ namespace FFXIVRelicTracker._04_SB._06_Physeos
         #endregion
 
         #region Properties
-        public string Name => "Physeos";
         public Character SelectedCharacter
         {
             get { return selectedCharacter; }
@@ -156,7 +154,7 @@ namespace FFXIVRelicTracker._04_SB._06_Physeos
 
             SBJob tempJob = selectedCharacter.SBModel.SBJobList[SBInfo.JobListString.IndexOf(SelectedJob)];
 
-            SBStageCompleter.ProgressClass(selectedCharacter, tempJob.Physeos, true);
+            SBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Physeos, true);
 
             LoadAvailableJobs();
 

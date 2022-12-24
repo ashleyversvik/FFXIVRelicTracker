@@ -4,15 +4,15 @@ using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows.Input;
 
 namespace FFXIVRelicTracker._05_ShB._01_Resistance
 {
     public class ResistanceViewModel : ObservableObject, IPageViewModel
     {
+        public string Name => "Resistance";
+
         #region Fields
         private IEventAggregator eventAggregator;
         private Character selectedCharacter;
@@ -40,7 +40,6 @@ namespace FFXIVRelicTracker._05_ShB._01_Resistance
         #endregion
 
         #region Properties
-        public string Name => "Resistance";
 
         public Character SelectedCharacter
         {
@@ -154,7 +153,7 @@ namespace FFXIVRelicTracker._05_ShB._01_Resistance
 
             ShBJob tempJob = selectedCharacter.ShBModel.ShbJobList[ShBInfo.JobListString.IndexOf(SelectedJob)];
 
-            ShBStageCompleter.ProgressClass(selectedCharacter, tempJob.Resistance, true);
+            ShBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Resistance, true);
 
             LoadAvailableJobs();
 

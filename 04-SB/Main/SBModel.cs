@@ -6,9 +6,7 @@ using FFXIVRelicTracker._04_SB._05_Eureka;
 using FFXIVRelicTracker._04_SB._06_Physeos;
 using FFXIVRelicTracker._04_SB.SBHelpers;
 using FFXIVRelicTracker.Models.Helpers;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace FFXIVRelicTracker._04_SB.Main
 {

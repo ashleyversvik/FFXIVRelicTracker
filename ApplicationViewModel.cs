@@ -6,17 +6,10 @@ using FFXIVRelicTracker._06_EW.Main;
 using FFXIVRelicTracker.Main;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
-using FFXIVRelicTracker.Views;
-using Prism.Commands;
 using Prism.Events;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 

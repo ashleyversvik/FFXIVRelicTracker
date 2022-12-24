@@ -2,12 +2,9 @@
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Commands;
 using Prism.Events;
-using System;
 using System.Linq;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
-using FFXIVRelicTracker._05_ShB.ShBHelpers;
 using FFXIVRelicTracker._05_ShB._00_Summary;
 using FFXIVRelicTracker._05_ShB._01_Resistance;
 using FFXIVRelicTracker._05_ShB._02_AugmentedResistance;

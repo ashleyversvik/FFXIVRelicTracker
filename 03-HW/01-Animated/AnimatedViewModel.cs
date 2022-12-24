@@ -3,17 +3,14 @@ using FFXIVRelicTracker.Helpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Reflection;
-using System.Text;
 using System.Windows.Input;
 
 namespace FFXIVRelicTracker._03_HW._01_Animated
 {
     class AnimatedViewModel : ObservableObject, IPageViewModel
     {
+        public string Name => "Animated";
         #region Fields
         private AnimatedModel animatedModel;
         private Character selectedCharacter;
@@ -38,7 +35,6 @@ namespace FFXIVRelicTracker._03_HW._01_Animated
         #endregion
 
         #region Properties
-        public string Name => "Animated";
         public Character SelectedCharacter
         {
             get { return selectedCharacter; }
@@ -149,7 +145,7 @@ namespace FFXIVRelicTracker._03_HW._01_Animated
 
             HWJob tempJob = selectedCharacter.HWModel.HWJobList[HWInfo.JobListString.IndexOf(SelectedJob)];
 
-            HWStageCompleter.ProgressClass(selectedCharacter, tempJob.Animated, true);
+            HWStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Animated, true);
 
             LoadAvailableJobs();
         }

@@ -91,101 +91,101 @@
                 <TextBlock Style="{StaticResource RotateTextBlock}" Text="Eureka"      Margin="0,5"   Grid.Row="6" Grid.Column="0"/>
                 <TextBlock Style="{StaticResource RotateTextBlock}" Text="Physeos"     Margin="0,5"   Grid.Row="7" Grid.Column="0"/>
 
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="01" Content="{Binding Path=PLD.Antiquated.Progress}" Tag="{Binding PLD.Antiquated}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="02" Content="{Binding Path=WAR.Antiquated.Progress}" Tag="{Binding WAR.Antiquated}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="03" Content="{Binding Path=DRK.Antiquated.Progress}" Tag="{Binding DRK.Antiquated}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="05" Content="{Binding Path=WHM.Antiquated.Progress}" Tag="{Binding WHM.Antiquated}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="06" Content="{Binding Path=SCH.Antiquated.Progress}" Tag="{Binding SCH.Antiquated}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="07" Content="{Binding Path=AST.Antiquated.Progress}" Tag="{Binding AST.Antiquated}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="08" Content="{Binding Path=MNK.Antiquated.Progress}" Tag="{Binding MNK.Antiquated}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="09" Content="{Binding Path=DRG.Antiquated.Progress}" Tag="{Binding DRG.Antiquated}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="10" Content="{Binding Path=NIN.Antiquated.Progress}" Tag="{Binding NIN.Antiquated}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="11" Content="{Binding Path=SAM.Antiquated.Progress}" Tag="{Binding SAM.Antiquated}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="12" Content="{Binding Path=BRD.Antiquated.Progress}" Tag="{Binding BRD.Antiquated}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="13" Content="{Binding Path=MCH.Antiquated.Progress}" Tag="{Binding MCH.Antiquated}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="15" Content="{Binding Path=BLM.Antiquated.Progress}" Tag="{Binding BLM.Antiquated}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="16" Content="{Binding Path=SMN.Antiquated.Progress}" Tag="{Binding SMN.Antiquated}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="17" Content="{Binding Path=RDM.Antiquated.Progress}" Tag="{Binding RDM.Antiquated}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="01" Content="{Binding Path=PLD.Antiquated.Progress}" Tag="PLD.Antiquated" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="02" Content="{Binding Path=WAR.Antiquated.Progress}" Tag="WAR.Antiquated" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="03" Content="{Binding Path=DRK.Antiquated.Progress}" Tag="DRK.Antiquated" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="05" Content="{Binding Path=WHM.Antiquated.Progress}" Tag="WHM.Antiquated" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="06" Content="{Binding Path=SCH.Antiquated.Progress}" Tag="SCH.Antiquated" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="07" Content="{Binding Path=AST.Antiquated.Progress}" Tag="AST.Antiquated" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="08" Content="{Binding Path=MNK.Antiquated.Progress}" Tag="MNK.Antiquated" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="09" Content="{Binding Path=DRG.Antiquated.Progress}" Tag="DRG.Antiquated" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="10" Content="{Binding Path=NIN.Antiquated.Progress}" Tag="NIN.Antiquated" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="11" Content="{Binding Path=SAM.Antiquated.Progress}" Tag="SAM.Antiquated" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="12" Content="{Binding Path=BRD.Antiquated.Progress}" Tag="BRD.Antiquated" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="13" Content="{Binding Path=MCH.Antiquated.Progress}" Tag="MCH.Antiquated" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="15" Content="{Binding Path=BLM.Antiquated.Progress}" Tag="BLM.Antiquated" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="16" Content="{Binding Path=SMN.Antiquated.Progress}" Tag="SMN.Antiquated" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="17" Content="{Binding Path=RDM.Antiquated.Progress}" Tag="RDM.Antiquated" />
 
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="01" Content="{Binding Path=PLD.Anemos.Progress}" Tag="{Binding PLD.Anemos}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="02" Content="{Binding Path=WAR.Anemos.Progress}" Tag="{Binding WAR.Anemos}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="03" Content="{Binding Path=DRK.Anemos.Progress}" Tag="{Binding DRK.Anemos}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="05" Content="{Binding Path=WHM.Anemos.Progress}" Tag="{Binding WHM.Anemos}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="06" Content="{Binding Path=SCH.Anemos.Progress}" Tag="{Binding SCH.Anemos}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="07" Content="{Binding Path=AST.Anemos.Progress}" Tag="{Binding AST.Anemos}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="08" Content="{Binding Path=MNK.Anemos.Progress}" Tag="{Binding MNK.Anemos}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="09" Content="{Binding Path=DRG.Anemos.Progress}" Tag="{Binding DRG.Anemos}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="10" Content="{Binding Path=NIN.Anemos.Progress}" Tag="{Binding NIN.Anemos}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="11" Content="{Binding Path=SAM.Anemos.Progress}" Tag="{Binding SAM.Anemos}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="12" Content="{Binding Path=BRD.Anemos.Progress}" Tag="{Binding BRD.Anemos}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="13" Content="{Binding Path=MCH.Anemos.Progress}" Tag="{Binding MCH.Anemos}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="15" Content="{Binding Path=BLM.Anemos.Progress}" Tag="{Binding BLM.Anemos}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="16" Content="{Binding Path=SMN.Anemos.Progress}" Tag="{Binding SMN.Anemos}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="17" Content="{Binding Path=RDM.Anemos.Progress}" Tag="{Binding RDM.Anemos}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="01" Content="{Binding Path=PLD.Anemos.Progress}" Tag="PLD.Anemos" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="02" Content="{Binding Path=WAR.Anemos.Progress}" Tag="WAR.Anemos" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="03" Content="{Binding Path=DRK.Anemos.Progress}" Tag="DRK.Anemos" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="05" Content="{Binding Path=WHM.Anemos.Progress}" Tag="WHM.Anemos" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="06" Content="{Binding Path=SCH.Anemos.Progress}" Tag="SCH.Anemos" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="07" Content="{Binding Path=AST.Anemos.Progress}" Tag="AST.Anemos" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="08" Content="{Binding Path=MNK.Anemos.Progress}" Tag="MNK.Anemos" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="09" Content="{Binding Path=DRG.Anemos.Progress}" Tag="DRG.Anemos" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="10" Content="{Binding Path=NIN.Anemos.Progress}" Tag="NIN.Anemos" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="11" Content="{Binding Path=SAM.Anemos.Progress}" Tag="SAM.Anemos" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="12" Content="{Binding Path=BRD.Anemos.Progress}" Tag="BRD.Anemos" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="13" Content="{Binding Path=MCH.Anemos.Progress}" Tag="MCH.Anemos" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="15" Content="{Binding Path=BLM.Anemos.Progress}" Tag="BLM.Anemos" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="16" Content="{Binding Path=SMN.Anemos.Progress}" Tag="SMN.Anemos" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="17" Content="{Binding Path=RDM.Anemos.Progress}" Tag="RDM.Anemos" />
 
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="01" Content="{Binding Path=PLD.Elemental.Progress}" Tag="{Binding PLD.Elemental}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="02" Content="{Binding Path=WAR.Elemental.Progress}" Tag="{Binding WAR.Elemental}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="03" Content="{Binding Path=DRK.Elemental.Progress}" Tag="{Binding DRK.Elemental}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="05" Content="{Binding Path=WHM.Elemental.Progress}" Tag="{Binding WHM.Elemental}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="06" Content="{Binding Path=SCH.Elemental.Progress}" Tag="{Binding SCH.Elemental}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="07" Content="{Binding Path=AST.Elemental.Progress}" Tag="{Binding AST.Elemental}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="08" Content="{Binding Path=MNK.Elemental.Progress}" Tag="{Binding MNK.Elemental}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="09" Content="{Binding Path=DRG.Elemental.Progress}" Tag="{Binding DRG.Elemental}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="10" Content="{Binding Path=NIN.Elemental.Progress}" Tag="{Binding NIN.Elemental}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="11" Content="{Binding Path=SAM.Elemental.Progress}" Tag="{Binding SAM.Elemental}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="12" Content="{Binding Path=BRD.Elemental.Progress}" Tag="{Binding BRD.Elemental}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="13" Content="{Binding Path=MCH.Elemental.Progress}" Tag="{Binding MCH.Elemental}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="15" Content="{Binding Path=BLM.Elemental.Progress}" Tag="{Binding BLM.Elemental}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="16" Content="{Binding Path=SMN.Elemental.Progress}" Tag="{Binding SMN.Elemental}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="17" Content="{Binding Path=RDM.Elemental.Progress}" Tag="{Binding RDM.Elemental}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="01" Content="{Binding Path=PLD.Elemental.Progress}" Tag="PLD.Elemental" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="02" Content="{Binding Path=WAR.Elemental.Progress}" Tag="WAR.Elemental" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="03" Content="{Binding Path=DRK.Elemental.Progress}" Tag="DRK.Elemental" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="05" Content="{Binding Path=WHM.Elemental.Progress}" Tag="WHM.Elemental" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="06" Content="{Binding Path=SCH.Elemental.Progress}" Tag="SCH.Elemental" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="07" Content="{Binding Path=AST.Elemental.Progress}" Tag="AST.Elemental" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="08" Content="{Binding Path=MNK.Elemental.Progress}" Tag="MNK.Elemental" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="09" Content="{Binding Path=DRG.Elemental.Progress}" Tag="DRG.Elemental" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="10" Content="{Binding Path=NIN.Elemental.Progress}" Tag="NIN.Elemental" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="11" Content="{Binding Path=SAM.Elemental.Progress}" Tag="SAM.Elemental" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="12" Content="{Binding Path=BRD.Elemental.Progress}" Tag="BRD.Elemental" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="13" Content="{Binding Path=MCH.Elemental.Progress}" Tag="MCH.Elemental" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="15" Content="{Binding Path=BLM.Elemental.Progress}" Tag="BLM.Elemental" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="16" Content="{Binding Path=SMN.Elemental.Progress}" Tag="SMN.Elemental" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="17" Content="{Binding Path=RDM.Elemental.Progress}" Tag="RDM.Elemental" />
 
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="01" Content="{Binding Path=PLD.Pyros.Progress}" Tag="{Binding PLD.Pyros}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="02" Content="{Binding Path=WAR.Pyros.Progress}" Tag="{Binding WAR.Pyros}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="03" Content="{Binding Path=DRK.Pyros.Progress}" Tag="{Binding DRK.Pyros}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="05" Content="{Binding Path=WHM.Pyros.Progress}" Tag="{Binding WHM.Pyros}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="06" Content="{Binding Path=SCH.Pyros.Progress}" Tag="{Binding SCH.Pyros}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="07" Content="{Binding Path=AST.Pyros.Progress}" Tag="{Binding AST.Pyros}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="08" Content="{Binding Path=MNK.Pyros.Progress}" Tag="{Binding MNK.Pyros}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="09" Content="{Binding Path=DRG.Pyros.Progress}" Tag="{Binding DRG.Pyros}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="10" Content="{Binding Path=NIN.Pyros.Progress}" Tag="{Binding NIN.Pyros}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="11" Content="{Binding Path=SAM.Pyros.Progress}" Tag="{Binding SAM.Pyros}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="12" Content="{Binding Path=BRD.Pyros.Progress}" Tag="{Binding BRD.Pyros}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="13" Content="{Binding Path=MCH.Pyros.Progress}" Tag="{Binding MCH.Pyros}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="15" Content="{Binding Path=BLM.Pyros.Progress}" Tag="{Binding BLM.Pyros}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="16" Content="{Binding Path=SMN.Pyros.Progress}" Tag="{Binding SMN.Pyros}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="17" Content="{Binding Path=RDM.Pyros.Progress}" Tag="{Binding RDM.Pyros}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="01" Content="{Binding Path=PLD.Pyros.Progress}" Tag="PLD.Pyros" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="02" Content="{Binding Path=WAR.Pyros.Progress}" Tag="WAR.Pyros" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="03" Content="{Binding Path=DRK.Pyros.Progress}" Tag="DRK.Pyros" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="05" Content="{Binding Path=WHM.Pyros.Progress}" Tag="WHM.Pyros" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="06" Content="{Binding Path=SCH.Pyros.Progress}" Tag="SCH.Pyros" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="07" Content="{Binding Path=AST.Pyros.Progress}" Tag="AST.Pyros" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="08" Content="{Binding Path=MNK.Pyros.Progress}" Tag="MNK.Pyros" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="09" Content="{Binding Path=DRG.Pyros.Progress}" Tag="DRG.Pyros" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="10" Content="{Binding Path=NIN.Pyros.Progress}" Tag="NIN.Pyros" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="11" Content="{Binding Path=SAM.Pyros.Progress}" Tag="SAM.Pyros" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="12" Content="{Binding Path=BRD.Pyros.Progress}" Tag="BRD.Pyros" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="13" Content="{Binding Path=MCH.Pyros.Progress}" Tag="MCH.Pyros" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="15" Content="{Binding Path=BLM.Pyros.Progress}" Tag="BLM.Pyros" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="16" Content="{Binding Path=SMN.Pyros.Progress}" Tag="SMN.Pyros" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="17" Content="{Binding Path=RDM.Pyros.Progress}" Tag="RDM.Pyros" />
 
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="01" Content="{Binding Path=PLD.Eureka.Progress}" Tag="{Binding PLD.Eureka}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="02" Content="{Binding Path=WAR.Eureka.Progress}" Tag="{Binding WAR.Eureka}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="03" Content="{Binding Path=DRK.Eureka.Progress}" Tag="{Binding DRK.Eureka}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="05" Content="{Binding Path=WHM.Eureka.Progress}" Tag="{Binding WHM.Eureka}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="06" Content="{Binding Path=SCH.Eureka.Progress}" Tag="{Binding SCH.Eureka}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="07" Content="{Binding Path=AST.Eureka.Progress}" Tag="{Binding AST.Eureka}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="08" Content="{Binding Path=MNK.Eureka.Progress}" Tag="{Binding MNK.Eureka}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="09" Content="{Binding Path=DRG.Eureka.Progress}" Tag="{Binding DRG.Eureka}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="10" Content="{Binding Path=NIN.Eureka.Progress}" Tag="{Binding NIN.Eureka}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="11" Content="{Binding Path=SAM.Eureka.Progress}" Tag="{Binding SAM.Eureka}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="12" Content="{Binding Path=BRD.Eureka.Progress}" Tag="{Binding BRD.Eureka}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="13" Content="{Binding Path=MCH.Eureka.Progress}" Tag="{Binding MCH.Eureka}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="15" Content="{Binding Path=BLM.Eureka.Progress}" Tag="{Binding BLM.Eureka}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="16" Content="{Binding Path=SMN.Eureka.Progress}" Tag="{Binding SMN.Eureka}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="17" Content="{Binding Path=RDM.Eureka.Progress}" Tag="{Binding RDM.Eureka}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="01" Content="{Binding Path=PLD.Eureka.Progress}" Tag="PLD.Eureka" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="02" Content="{Binding Path=WAR.Eureka.Progress}" Tag="WAR.Eureka" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="03" Content="{Binding Path=DRK.Eureka.Progress}" Tag="DRK.Eureka" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="05" Content="{Binding Path=WHM.Eureka.Progress}" Tag="WHM.Eureka" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="06" Content="{Binding Path=SCH.Eureka.Progress}" Tag="SCH.Eureka" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="07" Content="{Binding Path=AST.Eureka.Progress}" Tag="AST.Eureka" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="08" Content="{Binding Path=MNK.Eureka.Progress}" Tag="MNK.Eureka" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="09" Content="{Binding Path=DRG.Eureka.Progress}" Tag="DRG.Eureka" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="10" Content="{Binding Path=NIN.Eureka.Progress}" Tag="NIN.Eureka" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="11" Content="{Binding Path=SAM.Eureka.Progress}" Tag="SAM.Eureka" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="12" Content="{Binding Path=BRD.Eureka.Progress}" Tag="BRD.Eureka" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="13" Content="{Binding Path=MCH.Eureka.Progress}" Tag="MCH.Eureka" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="15" Content="{Binding Path=BLM.Eureka.Progress}" Tag="BLM.Eureka" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="16" Content="{Binding Path=SMN.Eureka.Progress}" Tag="SMN.Eureka" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="17" Content="{Binding Path=RDM.Eureka.Progress}" Tag="RDM.Eureka" />
 
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="01" Content="{Binding Path=PLD.Physeos.Progress}" Tag="{Binding PLD.Physeos}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="02" Content="{Binding Path=WAR.Physeos.Progress}" Tag="{Binding WAR.Physeos}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="03" Content="{Binding Path=DRK.Physeos.Progress}" Tag="{Binding DRK.Physeos}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="05" Content="{Binding Path=WHM.Physeos.Progress}" Tag="{Binding WHM.Physeos}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="06" Content="{Binding Path=SCH.Physeos.Progress}" Tag="{Binding SCH.Physeos}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="07" Content="{Binding Path=AST.Physeos.Progress}" Tag="{Binding AST.Physeos}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="08" Content="{Binding Path=MNK.Physeos.Progress}" Tag="{Binding MNK.Physeos}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="09" Content="{Binding Path=DRG.Physeos.Progress}" Tag="{Binding DRG.Physeos}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="10" Content="{Binding Path=NIN.Physeos.Progress}" Tag="{Binding NIN.Physeos}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="11" Content="{Binding Path=SAM.Physeos.Progress}" Tag="{Binding SAM.Physeos}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="12" Content="{Binding Path=BRD.Physeos.Progress}" Tag="{Binding BRD.Physeos}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="13" Content="{Binding Path=MCH.Physeos.Progress}" Tag="{Binding MCH.Physeos}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="15" Content="{Binding Path=BLM.Physeos.Progress}" Tag="{Binding BLM.Physeos}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="16" Content="{Binding Path=SMN.Physeos.Progress}" Tag="{Binding SMN.Physeos}" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="17" Content="{Binding Path=RDM.Physeos.Progress}" Tag="{Binding RDM.Physeos}" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="01" Content="{Binding Path=PLD.Physeos.Progress}" Tag="PLD.Physeos" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="02" Content="{Binding Path=WAR.Physeos.Progress}" Tag="WAR.Physeos" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="03" Content="{Binding Path=DRK.Physeos.Progress}" Tag="DRK.Physeos" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="05" Content="{Binding Path=WHM.Physeos.Progress}" Tag="WHM.Physeos" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="06" Content="{Binding Path=SCH.Physeos.Progress}" Tag="SCH.Physeos" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="07" Content="{Binding Path=AST.Physeos.Progress}" Tag="AST.Physeos" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="08" Content="{Binding Path=MNK.Physeos.Progress}" Tag="MNK.Physeos" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="09" Content="{Binding Path=DRG.Physeos.Progress}" Tag="DRG.Physeos" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="10" Content="{Binding Path=NIN.Physeos.Progress}" Tag="NIN.Physeos" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="11" Content="{Binding Path=SAM.Physeos.Progress}" Tag="SAM.Physeos" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="12" Content="{Binding Path=BRD.Physeos.Progress}" Tag="BRD.Physeos" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="13" Content="{Binding Path=MCH.Physeos.Progress}" Tag="MCH.Physeos" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="15" Content="{Binding Path=BLM.Physeos.Progress}" Tag="BLM.Physeos" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="16" Content="{Binding Path=SMN.Physeos.Progress}" Tag="SMN.Physeos" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="17" Content="{Binding Path=RDM.Physeos.Progress}" Tag="RDM.Physeos" />
 
             </Grid>
         </Grid>

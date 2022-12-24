@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace FFXIVRelicTracker
+﻿namespace FFXIVRelicTracker
 {
     public interface IPageViewModel
     {

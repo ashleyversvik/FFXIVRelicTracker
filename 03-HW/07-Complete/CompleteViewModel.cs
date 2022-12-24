@@ -4,16 +4,15 @@ using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace FFXIVRelicTracker._03_HW._07_Complete
 {
     public class CompleteViewModel : ObservableObject, IPageViewModel
     {
+        public string Name => "Complete";
+
         #region Fields
         private CompleteModel completeModel;
         private Character selectedCharacter;
@@ -41,7 +40,6 @@ namespace FFXIVRelicTracker._03_HW._07_Complete
         #endregion
 
         #region Properties
-        public string Name => "Complete";
         public Character SelectedCharacter
         {
             get { return selectedCharacter; }
@@ -244,7 +242,7 @@ namespace FFXIVRelicTracker._03_HW._07_Complete
 
             HWJob tempJob = selectedCharacter.HWModel.HWJobList[HWInfo.JobListString.IndexOf(SelectedJob)];
 
-            HWStageCompleter.ProgressClass(selectedCharacter, tempJob.Complete, true);
+            HWStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Complete, true);
 
             LoadAvailableJobs();
         }

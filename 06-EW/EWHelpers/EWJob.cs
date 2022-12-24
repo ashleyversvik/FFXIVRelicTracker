@@ -1,11 +1,9 @@
-﻿using FFXIVRelicTracker.Models.Helpers;
-using System;
+﻿using FFXIVRelicTracker.Helpers;
 using System.Collections.Generic;
-using System.Text;
 
 namespace FFXIVRelicTracker._06_EW.EWHelpers
 {
-    public class EWJob : ObservableObject
+    public class EWJob : BaseJob
     {
         #region Constructors
         public EWJob()
@@ -15,27 +13,13 @@ namespace FFXIVRelicTracker._06_EW.EWHelpers
 
         public EWJob(string name)
         {
-            this.name = name;
-            Manderville = new EWProgress("Manderville",Name);
+            this.Name = name;
+            Manderville = new EWProgress("Manderville");
         }
 
-        #endregion
-
-        #region Fields
-        private string name;
         #endregion
 
         #region Properties
-        public string Name
-        {
-            get { return name; }
-            set
-            {
-                name = value;
-                OnPropertyChanged(nameof(Name));
-            }
-        }
-
         public List<EWProgress> StageList = new List<EWProgress>();
         private EWProgress manderville;
 
@@ -62,11 +46,16 @@ namespace FFXIVRelicTracker._06_EW.EWHelpers
 
             for (int stageIndex = 0; stageIndex < EWInfo.StageListString.Count; stageIndex++)
             {
-                EWProgress EWProgress = new EWProgress();
-                if (stageIndex < StageList.Count && StageList[stageIndex] != null) { EWProgress = StageList[stageIndex]; }
-                if (EWProgress.Name == null)
+                EWProgress tempProgress = null;
+                if (stageIndex < StageList.Count && StageList[stageIndex] != null)
                 {
-                    EWProgress tempProgress = new EWProgress(EWInfo.StageListString[stageIndex], name);
+                    tempProgress = StageList[stageIndex];
+                    tempProgress.Name = EWInfo.StageListString[stageIndex];
+                    tempList.Add(tempProgress);
+                }
+                else
+                {
+                    tempProgress = new EWProgress(EWInfo.StageListString[stageIndex]);
 
                     tempList.Add(tempProgress);
 
@@ -78,7 +67,6 @@ namespace FFXIVRelicTracker._06_EW.EWHelpers
 
                     }
                 }
-                else { tempList.Add(EWProgress); }
             }
 
             StageList = tempList;

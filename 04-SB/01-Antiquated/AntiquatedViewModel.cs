@@ -3,16 +3,15 @@ using FFXIVRelicTracker.Helpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows.Input;
 
 namespace FFXIVRelicTracker._04_SB._01_Antiquated
 {
     public class AntiquatedViewModel : ObservableObject, IPageViewModel
     {
+        public string Name => "Antiquated";
+
         #region Fields
         private IEventAggregator eventAggregator;
         private Character selectedCharacter;
@@ -40,7 +39,6 @@ namespace FFXIVRelicTracker._04_SB._01_Antiquated
         #endregion
 
         #region Properties
-        public string Name => "Antiquated";
 
         public Character SelectedCharacter
         {
@@ -131,7 +129,7 @@ namespace FFXIVRelicTracker._04_SB._01_Antiquated
 
             SBJob tempJob = selectedCharacter.SBModel.SBJobList[SBInfo.JobListString.IndexOf(SelectedJob)];
 
-            SBStageCompleter.ProgressClass(selectedCharacter, tempJob.Antiquated, true);
+            SBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Antiquated, true);
 
             LoadAvailableJobs();
 

@@ -2,20 +2,17 @@
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows.Input;
 
 namespace FFXIVRelicTracker._02_ARR._07_Braves
 {
     public class BravesViewModel : ObservableObject, IPageViewModel
     {
+        public string Name => "Zodiac Braves";
         private IEventAggregator iEventAggregator;
         private BravesModel bravesModel;
         private Character selectedCharacter;
-        private ArrWeapon arrWeapon;
 
         public BravesViewModel(IEventAggregator iEventAggregator)
         {
@@ -28,10 +25,7 @@ namespace FFXIVRelicTracker._02_ARR._07_Braves
                                 {
                                     this.SelectedCharacter = details;
                                 });
-            iEventAggregator.GetEvent<PubSubEvent<ArrWeapon>>().Subscribe((details) => { this.ArrWeapon = details; });
         }
-
-        public string Name => "Zodiac Braves";
 
         #region Properties
 
@@ -56,23 +50,11 @@ namespace FFXIVRelicTracker._02_ARR._07_Braves
                 OnPropertyChanged(nameof(SelectedCharacter));
                 if (value != null)
                 {
-                    BravesModel = SelectedCharacter.ArrProgress.BravesModel;
-                    ArrWeapon = SelectedCharacter.ArrProgress.ArrWeapon;
+                    BravesModel = SelectedCharacter.ArrModel.BravesModel;
                     CalculateTotals();
                 }
             }
         }
-        public ArrWeapon ArrWeapon
-        {
-            get { return arrWeapon; }
-            set
-            {
-                arrWeapon = value;
-                OnPropertyChanged(nameof(ArrWeapon));
-                LoadAvailableJobs();
-            }
-        }
-
         public ObservableCollection<string> AvailableJobs
         {
             get { return BravesModel.AvailableJobs; }
@@ -215,7 +197,7 @@ namespace FFXIVRelicTracker._02_ARR._07_Braves
         public void LoadAvailableJobs()
         {
             if (AvailableJobs == null) { AvailableJobs = new ObservableCollection<string>(); }
-            foreach (ArrJobs job in ArrWeapon.JobList)
+            foreach (ArrJob job in selectedCharacter.ArrModel.ArrJobList)
             {
                 if (job.Braves.Progress != ArrProgress.States.Completed & !AvailableJobs.Contains(job.Name))
                 {
@@ -254,9 +236,9 @@ namespace FFXIVRelicTracker._02_ARR._07_Braves
         private void CompleteCommand()
         {
 
-            ArrJobs tempJob = ArrWeapon.JobList[ArrInfo.JobListString.IndexOf(SelectedJob)];
+            ArrJob tempJob = selectedCharacter.ArrModel.ArrJobList[ArrInfo.JobListString.IndexOf(SelectedJob)];
 
-            ArrStageCompleter.ProgressClass(selectedCharacter, tempJob.Braves,true);
+            ArrStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Braves,true);
 
 
 

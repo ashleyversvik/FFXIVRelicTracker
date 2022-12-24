@@ -2,12 +2,7 @@
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
-using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Reflection;
-using System.Text;
-using System.Windows.Documents;
 using System.Windows.Input;
 
 namespace FFXIVRelicTracker._02_ARR._00_Summary
@@ -64,16 +59,16 @@ namespace FFXIVRelicTracker._02_ARR._00_Summary
         public string Name {get{return "Summary";}}
 
         #region Expose Job Objects to VM
-        public ArrJobs PLD { get { return SelectedCharacter.ArrProgress.ArrWeapon.PLD; } }
-        public ArrJobs WAR { get { return SelectedCharacter.ArrProgress.ArrWeapon.WAR; } }
-        public ArrJobs WHM { get { return SelectedCharacter.ArrProgress.ArrWeapon.WHM; } }
-        public ArrJobs SCH { get { return SelectedCharacter.ArrProgress.ArrWeapon.SCH; } }
-        public ArrJobs MNK { get { return SelectedCharacter.ArrProgress.ArrWeapon.MNK; } }
-        public ArrJobs DRG { get { return SelectedCharacter.ArrProgress.ArrWeapon.DRG; } }
-        public ArrJobs NIN { get { return SelectedCharacter.ArrProgress.ArrWeapon.NIN; } }
-        public ArrJobs BRD { get { return SelectedCharacter.ArrProgress.ArrWeapon.BRD; } }
-        public ArrJobs BLM { get { return SelectedCharacter.ArrProgress.ArrWeapon.BLM; } }
-        public ArrJobs SMN { get { return SelectedCharacter.ArrProgress.ArrWeapon.SMN; } }
+        public ArrJob PLD { get { return SelectedCharacter.ArrModel.PLD; } }
+        public ArrJob WAR { get { return SelectedCharacter.ArrModel.WAR; } }
+        public ArrJob WHM { get { return SelectedCharacter.ArrModel.WHM; } }
+        public ArrJob SCH { get { return SelectedCharacter.ArrModel.SCH; } }
+        public ArrJob MNK { get { return SelectedCharacter.ArrModel.MNK; } }
+        public ArrJob DRG { get { return SelectedCharacter.ArrModel.DRG; } }
+        public ArrJob NIN { get { return SelectedCharacter.ArrModel.NIN; } }
+        public ArrJob BRD { get { return SelectedCharacter.ArrModel.BRD; } }
+        public ArrJob BLM { get { return SelectedCharacter.ArrModel.BLM; } }
+        public ArrJob SMN { get { return SelectedCharacter.ArrModel.SMN; } }
         #endregion
 
         #region ArrButton Command
@@ -96,17 +91,12 @@ namespace FFXIVRelicTracker._02_ARR._00_Summary
         private bool ArrCan() { return true; }
         private void ArrCommand(object param)
         {
-            //Object[] values = (object[])param;
+            string[] values = ((string)param).Split(".");
 
-            //string jobInfo = (string)values[0];
+            ArrJob tempJob = (ArrJob)SelectedCharacter.ArrModel.GetType().GetProperty(values[0]).GetValue(SelectedCharacter.ArrModel);
+            ArrProgress tempProgress = tempJob.StageList.Find(x => x.Name == values[1]);
 
-            //ArrJobs tempJob = SummaryModel.JobDictionary[jobInfo].Key;
-            //ArrProgress tempProgress= SummaryModel.JobDictionary[jobInfo].Value;
-
-            ArrProgress tempProgress = (ArrProgress)param;
-
-            ArrStageCompleter.ProgressClass(selectedCharacter,tempProgress);
-
+            ArrStageCompleter.ProgressClass(SelectedCharacter, tempJob.Name, tempProgress);
         }
 
         public void LoadAvailableJobs()

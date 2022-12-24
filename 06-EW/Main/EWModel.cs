@@ -1,16 +1,12 @@
 ﻿using FFXIVRelicTracker._06_EW._01_Manderville;
 using FFXIVRelicTracker._06_EW.EWHelpers;
 using FFXIVRelicTracker.Models.Helpers;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace FFXIVRelicTracker._06_EW.Main
 {
     public class EWModel : ObservableObject
     {
-
-
         #region Fields
 
         private EWJob pld = new EWJob("PLD");

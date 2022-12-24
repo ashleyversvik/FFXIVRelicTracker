@@ -1,46 +1,27 @@
-﻿using FFXIVRelicTracker.Models.Helpers;
-using System;
+﻿using FFXIVRelicTracker.Helpers;
 using System.Collections.Generic;
-using System.Text;
 
 namespace FFXIVRelicTracker._05_ShB.ShBHelpers
 {
-    public class ShBJob : ObservableObject
+    public class ShBJob : BaseJob
     {
         #region Constructors
         public ShBJob()
-        {
-
-        }
-
+        { }
         public ShBJob(string name)
         {
-            this.name = name;
-            Resistance = new ShBProgress("Resistance",Name);
-            AugmentedResistance = new ShBProgress("AugmentedResistance", Name);
-            Recollection = new ShBProgress("Recollection", Name);
-            LawsOrder = new ShBProgress("LawsOrder", Name);
-            AugmentedLawsOrder = new ShBProgress("AugmentedLawsOrder", Name);
-            Blades = new ShBProgress("Blades", Name);
+            this.Name = name;
+            Resistance = new ShBProgress("Resistance");
+            AugmentedResistance = new ShBProgress("AugmentedResistance");
+            Recollection = new ShBProgress("Recollection");
+            LawsOrder = new ShBProgress("LawsOrder");
+            AugmentedLawsOrder = new ShBProgress("AugmentedLawsOrder");
+            Blades = new ShBProgress("Blades");
         }
 
-        #endregion
-
-        #region Fields
-        private string name;
         #endregion
 
         #region Properties
-        public string Name
-        {
-            get { return name; }
-            set
-            {
-                name = value;
-                OnPropertyChanged(nameof(Name));
-            }
-        }
-
         public List<ShBProgress> StageList = new List<ShBProgress>();
         private ShBProgress resistance;
         private ShBProgress augmentedResistance;
@@ -121,11 +102,16 @@ namespace FFXIVRelicTracker._05_ShB.ShBHelpers
 
             for (int stageIndex = 0; stageIndex < ShBInfo.StageListString.Count; stageIndex++)
             {
-                ShBProgress ShBProgress = new ShBProgress();
-                if (stageIndex < StageList.Count && StageList[stageIndex] != null) { ShBProgress = StageList[stageIndex]; }
-                if (ShBProgress.Name == null)
+                ShBProgress tempProgress = null;
+                if (stageIndex < StageList.Count && StageList[stageIndex] != null)
                 {
-                    ShBProgress tempProgress = new ShBProgress(ShBInfo.StageListString[stageIndex], name);
+                    tempProgress = StageList[stageIndex];
+                    tempProgress.Name = ShBInfo.StageListString[stageIndex];
+                    tempList.Add(tempProgress);
+                }
+                else
+                {
+                    tempProgress = new ShBProgress(ShBInfo.StageListString[stageIndex]);
 
                     tempList.Add(tempProgress);
 
@@ -151,7 +137,6 @@ namespace FFXIVRelicTracker._05_ShB.ShBHelpers
                             break;
                     }
                 }
-                else { tempList.Add(ShBProgress); }
             }
 
             StageList = tempList;

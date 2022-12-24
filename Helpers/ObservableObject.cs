@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Text;
-using System.Xml.Serialization;
 
 namespace FFXIVRelicTracker.Models.Helpers
 {
-    
+
     public abstract class ObservableObject : INotifyPropertyChanged
     {
         #region Debugging Aides

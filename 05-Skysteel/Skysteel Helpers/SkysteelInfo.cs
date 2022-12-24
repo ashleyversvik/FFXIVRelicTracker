@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 
 namespace FFXIVRelicTracker._05_Skysteel.Skysteel_Helpers
 {
@@ -70,10 +69,10 @@ namespace FFXIVRelicTracker._05_Skysteel.Skysteel_Helpers
         }
 
         #region CompleteStages
-        public static void ProgressClass(Character character, SkysteelProgress skysteelProgress, bool CompleteBool = false)
+        public static void ProgressClass(Character character, string job, SkysteelProgress skysteelProgress, bool CompleteBool = false)
         {
             int StageIndex = SkysteelInfo.StageListString.IndexOf(skysteelProgress.Name);
-            int JobIndex = SkysteelInfo.JobListString.IndexOf(skysteelProgress.Job);
+            int JobIndex = SkysteelInfo.JobListString.IndexOf(job);
 
             SkysteelJob tempJob = character.SkysteelModel.SkysteelJobList[JobIndex];
 

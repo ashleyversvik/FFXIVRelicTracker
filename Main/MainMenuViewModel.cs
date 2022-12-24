@@ -8,16 +8,10 @@ using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using FFXIVRelicTracker.Views;
 using Prism.Events;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.IO;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Text.Json;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace FFXIVRelicTracker.ViewModels
@@ -97,23 +91,23 @@ namespace FFXIVRelicTracker.ViewModels
 
         private void ConfigureARRLists()
         {
-            List<ArrJobs> arrStages = new List<ArrJobs>()
+            List<ArrJob> arrStages = new List<ArrJob>()
             {
-                selectedCharacter.ArrProgress.ArrWeapon.PLD,
-                selectedCharacter.ArrProgress.ArrWeapon.WAR,
-                selectedCharacter.ArrProgress.ArrWeapon.WHM,
-                selectedCharacter.ArrProgress.ArrWeapon.SCH,
-                selectedCharacter.ArrProgress.ArrWeapon.MNK,
-                selectedCharacter.ArrProgress.ArrWeapon.DRG,
-                selectedCharacter.ArrProgress.ArrWeapon.NIN,
-                selectedCharacter.ArrProgress.ArrWeapon.BRD,
-                selectedCharacter.ArrProgress.ArrWeapon.BLM,
-                selectedCharacter.ArrProgress.ArrWeapon.SMN
+                selectedCharacter.ArrModel.PLD,
+                selectedCharacter.ArrModel.WAR,
+                selectedCharacter.ArrModel.WHM,
+                selectedCharacter.ArrModel.SCH,
+                selectedCharacter.ArrModel.MNK,
+                selectedCharacter.ArrModel.DRG,
+                selectedCharacter.ArrModel.NIN,
+                selectedCharacter.ArrModel.BRD,
+                selectedCharacter.ArrModel.BLM,
+                selectedCharacter.ArrModel.SMN
             };
 
-            selectedCharacter.ArrProgress.ArrWeapon.JobList = arrStages;
+            selectedCharacter.ArrModel.ArrJobList = arrStages;
 
-            foreach(ArrJobs job in selectedCharacter.ArrProgress.ArrWeapon.JobList)
+            foreach(ArrJob job in selectedCharacter.ArrModel.ArrJobList)
             {
                 List<ArrProgress> arrProgresses = new List<ArrProgress>()
                 {
@@ -127,6 +121,7 @@ namespace FFXIVRelicTracker.ViewModels
                     job.Zeta
                 };
                 job.StageList = arrProgresses;
+                job.CheckObject();
             }
         }
         private void ConfigureHWLists()

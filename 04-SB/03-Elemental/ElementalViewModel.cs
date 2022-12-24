@@ -3,11 +3,7 @@ using FFXIVRelicTracker.Helpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace FFXIVRelicTracker._04_SB._03_Elemental
@@ -15,9 +11,10 @@ namespace FFXIVRelicTracker._04_SB._03_Elemental
 
     public class ElementalViewModel : ObservableObject, IPageViewModel
     {
+        public string Name => "Elemental";
+
 
         #region Fields
-        public string Name => "Elemental";
         private IEventAggregator eventAggregator;
         private Character selectedCharacter;
         private ElementalModel elementalModel;
@@ -302,7 +299,7 @@ namespace FFXIVRelicTracker._04_SB._03_Elemental
 
             SBJob tempJob = selectedCharacter.SBModel.SBJobList[SBInfo.JobListString.IndexOf(SelectedJob)];
 
-            SBStageCompleter.ProgressClass(selectedCharacter, tempJob.Elemental, true);
+            SBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Elemental, true);
 
             LoadAvailableJobs();
             OnPropertyChanged(nameof(FrostedProteanCount));

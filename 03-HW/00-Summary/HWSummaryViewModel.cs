@@ -2,9 +2,7 @@
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 
 namespace FFXIVRelicTracker._03_HW._00_Summary
@@ -109,12 +107,12 @@ namespace FFXIVRelicTracker._03_HW._00_Summary
         private bool HWCan() { return true; }
         private void HWCommand(object param)
         {
-            //HWProgress values = (HWProgress)param;
+            string[] values = ((string)param).Split(".");
 
-            //HWJob tempJob = (HWJob)values[0];
-            HWProgress tempProgress = (HWProgress)param;
+            HWJob tempJob = (HWJob)SelectedCharacter.HWModel.GetType().GetProperty(values[0]).GetValue(SelectedCharacter.HWModel);
+            HWProgress tempProgress = tempJob.StageList.Find(x => x.Name == values[1]);
 
-            HWInfo.ProgressClass(selectedCharacter, tempProgress);
+            HWStageCompleter.ProgressClass(SelectedCharacter, tempJob.Name, tempProgress);
 
         }
         #endregion

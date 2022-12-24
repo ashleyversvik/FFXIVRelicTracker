@@ -1,9 +1,4 @@
-﻿using FFXIVRelicTracker.Models;
-using System.Collections.Generic;
-using System.Text;
-using System.Text.Json.Serialization;
-
-namespace FFXIVRelicTracker
+﻿namespace FFXIVRelicTracker
 {
     public class Settings
     {

@@ -3,11 +3,7 @@ using FFXIVRelicTracker.Helpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace FFXIVRelicTracker._05_ShB._02_AugmentedResistance
@@ -15,9 +11,9 @@ namespace FFXIVRelicTracker._05_ShB._02_AugmentedResistance
 
     public class AugmentedResistanceViewModel : ObservableObject, IPageViewModel
     {
+        public string Name => "Augmented Resistance";
 
         #region Fields
-        public string Name => "Augmented Resistance";
         private IEventAggregator eventAggregator;
         private Character selectedCharacter;
         private AugmentedResistanceModel augmentedResistanceModel;
@@ -187,7 +183,7 @@ namespace FFXIVRelicTracker._05_ShB._02_AugmentedResistance
 
             ShBJob tempJob = selectedCharacter.ShBModel.ShbJobList[ShBInfo.JobListString.IndexOf(SelectedJob)];
 
-            ShBStageCompleter.ProgressClass(selectedCharacter, tempJob.AugmentedResistance, true);
+            ShBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.AugmentedResistance, true);
 
             LoadAvailableJobs();
             OnPropertyChanged(nameof(HarrowingCount));

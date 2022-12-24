@@ -4,15 +4,15 @@ using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows.Input;
 
 namespace FFXIVRelicTracker._03_HW._04_Hyperconductive
 {
     public class HyperconduvtiveViewModel : ObservableObject, IPageViewModel
     {
+        public string Name => "Hyperconductive";
+
         #region Fields
         private HyperconductiveModel hyperconductiveModel;
         private Character selectedCharacter;
@@ -40,7 +40,6 @@ namespace FFXIVRelicTracker._03_HW._04_Hyperconductive
         #endregion
 
         #region Properties
-        public string Name => "Hyperconductive";
         public Character SelectedCharacter
         {
             get { return selectedCharacter; }
@@ -162,7 +161,7 @@ namespace FFXIVRelicTracker._03_HW._04_Hyperconductive
 
             HWJob tempJob = selectedCharacter.HWModel.HWJobList[HWInfo.JobListString.IndexOf(SelectedJob)];
 
-            HWStageCompleter.ProgressClass(selectedCharacter, tempJob.Hyperconductive, true);
+            HWStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Hyperconductive, true);
 
             LoadAvailableJobs();
         }

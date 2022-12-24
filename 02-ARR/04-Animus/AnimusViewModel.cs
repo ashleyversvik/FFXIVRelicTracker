@@ -1,6 +1,4 @@
 ﻿using FFXIVRelicTracker._02_ARR.ArrHelpers;
-using FFXIVRelicTracker._02_ARR._03_Atma;
-using FFXIVRelicTracker.Helpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
@@ -9,16 +7,13 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Windows;
 using System.Windows.Input;
 
 namespace FFXIVRelicTracker._02_ARR._04_Animus
 {
     public class AnimusViewModel : ObservableObject, IPageViewModel
     {
-        private ArrWeapon arrWeapon;
+        public string Name => "Animus";
         private IEventAggregator iEventAggregator;
         private Character selectedCharacter;
         private AnimusModel animusModel;
@@ -53,12 +48,9 @@ namespace FFXIVRelicTracker._02_ARR._04_Animus
                                 {
                                     this.SelectedCharacter = details;
                                 });
-            iEventAggregator.GetEvent<PubSubEvent<ArrWeapon>>().Subscribe((details) => { this.ArrWeapon = details; });
         }
 
         #region ViewModel Properties
-
-        public string Name =>"Animus";
         public AnimusModel AnimusModel
         {
             get { return animusModel; }
@@ -82,9 +74,8 @@ namespace FFXIVRelicTracker._02_ARR._04_Animus
                 OnPropertyChanged(nameof(SelectedCharacter));
                 if (value != null)
                 {
-                    AnimusModel = SelectedCharacter.ArrProgress.AnimusModel;
+                    AnimusModel = SelectedCharacter.ArrModel.AnimusModel;
                     AnimusBooks = animusModel.animusBooks;
-                    ArrWeapon = SelectedCharacter.ArrProgress.ArrWeapon;
                 }
             }
         }
@@ -115,15 +106,6 @@ namespace FFXIVRelicTracker._02_ARR._04_Animus
 
 
                 OnPropertyChanged(nameof(SelectedAnimusMap));
-            }
-        }
-        public ArrWeapon ArrWeapon 
-        {
-            get { return arrWeapon; }
-            set
-            {
-                arrWeapon = value;
-                OnPropertyChanged(nameof(ArrWeapon));
             }
         }
 
@@ -548,7 +530,7 @@ namespace FFXIVRelicTracker._02_ARR._04_Animus
             ReadBooks();
 
             if (AvailableJobs == null) { AvailableJobs = new ObservableCollection<string>(); }
-            foreach(ArrJobs job in ArrWeapon.JobList)
+            foreach(ArrJob job in selectedCharacter.ArrModel.ArrJobList)
             {
                 if ( job.Animus.Progress != ArrProgress.States.Completed & !AvailableJobs.Contains(job.Name))
                 {
@@ -1165,9 +1147,9 @@ namespace FFXIVRelicTracker._02_ARR._04_Animus
         private void AnimusCommand()
         {
 
-            ArrJobs tempJob = ArrWeapon.JobList[ArrInfo.JobListString.IndexOf(SelectedJob)];
+            ArrJob tempJob = selectedCharacter.ArrModel.ArrJobList[ArrInfo.JobListString.IndexOf(SelectedJob)];
 
-            ArrStageCompleter.ProgressClass(selectedCharacter, tempJob.Animus,true);
+            ArrStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Animus,true);
 
 
             LoadAvailableJobs();

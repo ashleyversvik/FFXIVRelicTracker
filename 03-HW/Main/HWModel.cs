@@ -8,9 +8,7 @@ using FFXIVRelicTracker._03_HW._07_Complete;
 using FFXIVRelicTracker._03_HW._08_Lux;
 using FFXIVRelicTracker._03_HW.HWHelpers;
 using FFXIVRelicTracker.Models.Helpers;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace FFXIVRelicTracker._03_HW.Main
 {

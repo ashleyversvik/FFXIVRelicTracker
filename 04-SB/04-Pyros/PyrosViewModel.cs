@@ -3,11 +3,7 @@ using FFXIVRelicTracker.Helpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace FFXIVRelicTracker._04_SB._04_Pyros
@@ -15,9 +11,9 @@ namespace FFXIVRelicTracker._04_SB._04_Pyros
 
     public class PyrosViewModel : ObservableObject, IPageViewModel
     {
+        public string Name => "Pyros";
 
         #region Fields
-        public string Name => "Pyros";
         private IEventAggregator eventAggregator;
         private Character selectedCharacter;
         private PyrosModel pyrosModel;
@@ -293,7 +289,7 @@ namespace FFXIVRelicTracker._04_SB._04_Pyros
 
             SBJob tempJob = selectedCharacter.SBModel.SBJobList[SBInfo.JobListString.IndexOf(SelectedJob)];
 
-            SBStageCompleter.ProgressClass(selectedCharacter, tempJob.Pyros, true);
+            SBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Pyros, true);
 
             LoadAvailableJobs();
             OnPropertyChanged(nameof(PyrosCount));

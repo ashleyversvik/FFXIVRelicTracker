@@ -1,16 +1,13 @@
 ﻿using FFXIVRelicTracker.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace FFXIVRelicTracker._06_EW.EWHelpers
 {
     public static class EWStageCompleter
     {
-        public static void ProgressClass(Character character, EWProgress ewProgress, bool CompleteBool = false)
+        public static void ProgressClass(Character character, string job, EWProgress ewProgress, bool CompleteBool = false)
         {
             int StageIndex = EWInfo.StageListString.IndexOf(ewProgress.Name);
-            int JobIndex = EWInfo.JobListString.IndexOf(ewProgress.Job);
+            int JobIndex = EWInfo.JobListString.IndexOf(job);
 
             EWJob tempJob = character.EWModel.EWJobList[JobIndex];
 

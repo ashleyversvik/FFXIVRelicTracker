@@ -4,15 +4,15 @@ using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows.Input;
 
 namespace FFXIVRelicTracker._05_Skysteel._02_BasePlus1
 {
     public class BasePlus1ViewModel : ObservableObject, IPageViewModel, IIncompleteViewModel
     {
+        public string Name => "Skysteel Tool+1";
+
         #region Fields
         private BasePlus1Model basePlus1Model;
         private Character selectedCharacter;
@@ -38,7 +38,6 @@ namespace FFXIVRelicTracker._05_Skysteel._02_BasePlus1
         #endregion
 
         #region Properties
-        public string Name => "Skysteel Tool+1";
         public BasePlus1Model BasePlus1Model
         {
             get { return basePlus1Model; }
@@ -192,7 +191,7 @@ namespace FFXIVRelicTracker._05_Skysteel._02_BasePlus1
 
             SkysteelJob tempJob = selectedCharacter.SkysteelModel.SkysteelJobList[SkysteelInfo.JobListString.IndexOf(SelectedJob)];
 
-            SkysteelInfo.ProgressClass(selectedCharacter, tempJob.BasePlus1, true);
+            SkysteelInfo.ProgressClass(selectedCharacter, SelectedJob, tempJob.BasePlus1, true);
 
             LoadAvailableJobs();
 

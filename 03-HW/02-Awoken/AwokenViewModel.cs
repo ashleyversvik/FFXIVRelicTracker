@@ -3,17 +3,14 @@ using FFXIVRelicTracker.Helpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows.Input;
-using System.Windows.Navigation;
 
 namespace FFXIVRelicTracker._03_HW._02_Awoken
 {
     public class AwokenViewModel : ObservableObject, IPageViewModel
     {
+        public string Name => "Awoken";
         #region Fields
         private AwokenModel awokenModel;
         private Character selectedCharacter;
@@ -42,7 +39,6 @@ namespace FFXIVRelicTracker._03_HW._02_Awoken
         #endregion
 
         #region Properties
-        public string Name => "Awoken";
         public Character SelectedCharacter
         {
             get { return selectedCharacter; }
@@ -244,7 +240,7 @@ namespace FFXIVRelicTracker._03_HW._02_Awoken
 
             HWJob tempJob = selectedCharacter.HWModel.HWJobList[HWInfo.JobListString.IndexOf(SelectedJob)];
 
-            HWInfo.ProgressClass(selectedCharacter, tempJob.Awoken, true);
+            HWInfo.ProgressClass(selectedCharacter, SelectedJob, tempJob.Awoken, true);
 
             LoadAvailableJobs();
         }

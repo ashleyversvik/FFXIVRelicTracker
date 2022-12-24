@@ -3,11 +3,7 @@ using FFXIVRelicTracker.Helpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace FFXIVRelicTracker._04_SB._05_Eureka
@@ -15,9 +11,9 @@ namespace FFXIVRelicTracker._04_SB._05_Eureka
 
     public class EurekaViewModel : ObservableObject, IPageViewModel
     {
+        public string Name => "Eureka";
 
         #region Fields
-        public string Name => "Eureka";
         private IEventAggregator eventAggregator;
         private Character selectedCharacter;
         private EurekaModel eurekaModel;
@@ -253,7 +249,7 @@ namespace FFXIVRelicTracker._04_SB._05_Eureka
 
             SBJob tempJob = selectedCharacter.SBModel.SBJobList[SBInfo.JobListString.IndexOf(SelectedJob)];
 
-            SBStageCompleter.ProgressClass(selectedCharacter, tempJob.Eureka, true);
+            SBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Eureka, true);
 
             LoadAvailableJobs();
             OnPropertyChanged(nameof(HydatosCount));

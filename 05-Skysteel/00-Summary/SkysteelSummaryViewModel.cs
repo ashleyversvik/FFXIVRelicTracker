@@ -2,9 +2,7 @@
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 
 namespace FFXIVRelicTracker._05_Skysteel._00_Summary
@@ -105,12 +103,13 @@ namespace FFXIVRelicTracker._05_Skysteel._00_Summary
         private bool SkysteelCan() { return true; }
         private void SkysteelCommand(object param)
         {
-            //object[] values = (object[])param;
 
-            //ShBJob tempJob = (ShBJob)values[0];
-            SkysteelProgress tempProgress = (SkysteelProgress)param;
+            string[] values = ((string)param).Split(".");
 
-            SkysteelInfo.ProgressClass(selectedCharacter, tempProgress);
+            SkysteelJob tempJob = (SkysteelJob)SelectedCharacter.SkysteelModel.GetType().GetProperty(values[0]).GetValue(SelectedCharacter.SkysteelModel);
+            SkysteelProgress tempProgress = tempJob.StageList.Find(x => x.Name == values[1]);
+
+            SkysteelInfo.ProgressClass(SelectedCharacter, tempJob.Name, tempProgress);
 
         }
         #endregion

@@ -6,17 +6,16 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Reflection;
-using System.Text;
 using System.Windows.Input;
 
 namespace FFXIVRelicTracker._02_ARR._05_Novus
 {
     class NovusViewModel : ObservableObject, IPageViewModel
     {
+        public string Name => "Novus";
         private IEventAggregator iEventAggregator;
         private Character selectedCharacter;
         private NovusModel novusModel;
-        private ArrWeapon arrWeapon;
 
         public NovusViewModel(IEventAggregator iEventAggregator)
         {
@@ -29,10 +28,7 @@ namespace FFXIVRelicTracker._02_ARR._05_Novus
                                 {
                                     this.SelectedCharacter = details;
                                 });
-            iEventAggregator.GetEvent<PubSubEvent<ArrWeapon>>().Subscribe((details) => { this.ArrWeapon = details; });
         }
-
-        public string Name => "Novus";
 
         #region Properties
 
@@ -54,8 +50,8 @@ namespace FFXIVRelicTracker._02_ARR._05_Novus
                 if (value != null)
                 {
                     selectedCharacter = value;
-                    NovusModel = selectedCharacter.ArrProgress.NovusModel;
-                    ArrWeapon = SelectedCharacter.ArrProgress.ArrWeapon;
+                    NovusModel = selectedCharacter.ArrModel.NovusModel;
+                    OnPropertyChanged(nameof(SelectedCharacter));
                 }
             }
         }
@@ -63,20 +59,6 @@ namespace FFXIVRelicTracker._02_ARR._05_Novus
         {
             "PLD","DRG"
         };
-        public ArrWeapon ArrWeapon
-        {
-            get { return arrWeapon; }
-            set
-            {
-                if (value != null)
-                {
-
-                    arrWeapon = value;
-                    LoadAvailableJobs();
-                    OnPropertyChanged(nameof(ArrWeapon));
-                }
-            }
-        }
         public ObservableCollection<string> AvailableJobs
         {
             get { return novusModel.AvailableJobs; }
@@ -803,7 +785,7 @@ namespace FFXIVRelicTracker._02_ARR._05_Novus
         {
             if (SelectedJob == "") { ResetCounts(); }
             if (AvailableJobs == null) { AvailableJobs = new ObservableCollection<string>(); }
-            foreach (ArrJobs job in ArrWeapon.JobList)
+            foreach (ArrJob job in selectedCharacter.ArrModel.ArrJobList)
             {
                 if (job.Novus.Progress != ArrProgress.States.Completed & !AvailableJobs.Contains(job.Name))
                 {
@@ -921,9 +903,9 @@ namespace FFXIVRelicTracker._02_ARR._05_Novus
         private void CompleteCommand()
         {
 
-            ArrJobs tempJob = ArrWeapon.JobList[ArrInfo.JobListString.IndexOf(SelectedJob)];
+            ArrJob tempJob = selectedCharacter.ArrModel.ArrJobList[ArrInfo.JobListString.IndexOf(SelectedJob)];
 
-            ArrStageCompleter.ProgressClass(selectedCharacter, tempJob.Novus, true);
+            ArrStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Novus, true);
 
             //int subtractAlexandrite = 75;
             //subtractAlexandrite -= MateriaShieldSum + MateriaSwordSum + MateriaSum;

@@ -1,11 +1,8 @@
 ﻿using Prism.Events;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace FFXIVRelicTracker.Models.Helpers
 {
-	public sealed class Event
+    public sealed class Event
 	{
 		#region Class Properties
 

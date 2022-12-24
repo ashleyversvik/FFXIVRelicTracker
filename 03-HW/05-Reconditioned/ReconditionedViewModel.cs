@@ -4,15 +4,15 @@ using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows.Input;
 
 namespace FFXIVRelicTracker._03_HW._05_Reconditioned
 {
     public class ReconditionedViewModel : ObservableObject, IPageViewModel
     {
+        public string Name => "Reconditioned";
+
         #region Fields
         private ReconditionedModel reconditionedModel;
         private Character selectedCharacter;
@@ -40,7 +40,6 @@ namespace FFXIVRelicTracker._03_HW._05_Reconditioned
         #endregion
 
         #region Properties
-        public string Name => "Reconditioned";
         public Character SelectedCharacter
         {
             get { return selectedCharacter; }
@@ -244,7 +243,7 @@ namespace FFXIVRelicTracker._03_HW._05_Reconditioned
 
             HWJob tempJob = selectedCharacter.HWModel.HWJobList[HWInfo.JobListString.IndexOf(SelectedJob)];
 
-            HWStageCompleter.ProgressClass(selectedCharacter, tempJob.Reconditioned, true);
+            HWStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Reconditioned, true);
 
             LoadAvailableJobs();
         }

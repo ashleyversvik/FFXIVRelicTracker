@@ -3,11 +3,7 @@ using FFXIVRelicTracker.Helpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace FFXIVRelicTracker._04_SB._02_Anemos
@@ -15,9 +11,9 @@ namespace FFXIVRelicTracker._04_SB._02_Anemos
 
     public class AnemosViewModel : ObservableObject, IPageViewModel
     {
+        public string Name => "Anemos";
 
         #region Fields
-        public string Name => "Anemos";
         private IEventAggregator eventAggregator;
         private Character selectedCharacter;
         private AnemosModel anemosModel;
@@ -273,7 +269,7 @@ namespace FFXIVRelicTracker._04_SB._02_Anemos
 
             SBJob tempJob = selectedCharacter.SBModel.SBJobList[SBInfo.JobListString.IndexOf(SelectedJob)];
 
-            SBStageCompleter.ProgressClass(selectedCharacter, tempJob.Anemos, true);
+            SBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Anemos, true);
 
             LoadAvailableJobs();
             OnPropertyChanged(nameof(ProteanCount));

@@ -6,10 +6,7 @@ using FFXIVRelicTracker._05_Skysteel._05_Skysung;
 using FFXIVRelicTracker._05_Skysteel._06_Skybuilders;
 using FFXIVRelicTracker._05_Skysteel.Skysteel_Helpers;
 using FFXIVRelicTracker.Models.Helpers;
-using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Windows.Media.Imaging;
 
 namespace FFXIVRelicTracker._05_Skysteel.Main
 {

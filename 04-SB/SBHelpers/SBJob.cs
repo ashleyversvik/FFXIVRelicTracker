@@ -1,11 +1,9 @@
-﻿using FFXIVRelicTracker.Models.Helpers;
-using System;
+﻿using FFXIVRelicTracker.Helpers;
 using System.Collections.Generic;
-using System.Text;
 
 namespace FFXIVRelicTracker._04_SB.SBHelpers
 {
-    public class SBJob : ObservableObject
+    public class SBJob : BaseJob
     {
         #region Constructors
         public SBJob()
@@ -15,32 +13,18 @@ namespace FFXIVRelicTracker._04_SB.SBHelpers
 
         public SBJob(string name)
         {
-            this.name = name;
-            Antiquated = new SBProgress("Antiquated", Name);
-            Anemos = new SBProgress("Anemos", Name);
-            Elemental = new SBProgress("Elemental", Name);
-            Pyros = new SBProgress("Pyros", Name);
-            Eureka = new SBProgress("Eureka", Name);
-            Physeos = new SBProgress("Physeos", Name);
+            this.Name = name;
+            Antiquated = new SBProgress("Antiquated");
+            Anemos = new SBProgress("Anemos");
+            Elemental = new SBProgress("Elemental");
+            Pyros = new SBProgress("Pyros");
+            Eureka = new SBProgress("Eureka");
+            Physeos = new SBProgress("Physeos");
         }
 
-        #endregion
-
-        #region Fields
-        private string name;
         #endregion
 
         #region Properties
-        public string Name
-        {
-            get { return name; }
-            set
-            {
-                name = value;
-                OnPropertyChanged(nameof(Name));
-            }
-        }
-
         public List<SBProgress> StageList = new List<SBProgress>();
         private SBProgress antiquated;
         private SBProgress anemos;
@@ -121,11 +105,16 @@ namespace FFXIVRelicTracker._04_SB.SBHelpers
 
             for (int stageIndex = 0; stageIndex < SBInfo.StageListString.Count; stageIndex++)
             {
-                SBProgress SBProgress = new SBProgress();
-                if (stageIndex < StageList.Count && StageList[stageIndex] != null) { SBProgress = StageList[stageIndex]; }
-                if (SBProgress.Name == null)
+                SBProgress tempProgress = null;
+                if (stageIndex < StageList.Count && StageList[stageIndex] != null) 
                 {
-                    SBProgress tempProgress = new SBProgress(SBInfo.StageListString[stageIndex], name);
+                    tempProgress = StageList[stageIndex];
+                    tempProgress.Name = SBInfo.StageListString[stageIndex];
+                    tempList.Add(tempProgress);
+                }
+                else
+                {
+                    tempProgress = new SBProgress(SBInfo.StageListString[stageIndex]);
 
                     tempList.Add(tempProgress);
 
@@ -151,7 +140,6 @@ namespace FFXIVRelicTracker._04_SB.SBHelpers
                             break;
                     }
                 }
-                else { tempList.Add(SBProgress); }
             }
 
             StageList = tempList;

@@ -1,14 +1,23 @@
 ﻿using FFXIVRelicTracker.Models.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Text.Json.Serialization;
 
 namespace FFXIVRelicTracker.Helpers
 {
     public class BaseProgressClass : ObservableObject
     {
-        private States progress;
-
+        
+        private string name;
+        private States progress = States.NA;
+        [JsonIgnore]
+        public string Name
+        {
+            get { return name; }
+            set
+            {
+                name = value;
+                OnPropertyChanged(nameof(Name));
+            }
+        }
 
         public States Progress
         {

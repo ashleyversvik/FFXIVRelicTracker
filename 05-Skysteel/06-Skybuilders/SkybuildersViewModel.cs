@@ -4,15 +4,15 @@ using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows.Input;
 
 namespace FFXIVRelicTracker._05_Skysteel._06_Skybuilders
 {
     class SkybuildersViewModel : ObservableObject, IPageViewModel, IIncompleteViewModel
     {
+        public string Name => "Skybuilders";
+
         #region Fields
         private SkybuildersModel skybuildersModel;
         private Character selectedCharacter;
@@ -38,7 +38,6 @@ namespace FFXIVRelicTracker._05_Skysteel._06_Skybuilders
         #endregion
 
         #region Properties
-        public string Name => "Skybuilders";
         public SkybuildersModel SkybuildersModel
         {
             get { return skybuildersModel; }
@@ -195,7 +194,7 @@ namespace FFXIVRelicTracker._05_Skysteel._06_Skybuilders
 
             SkysteelJob tempJob = selectedCharacter.SkysteelModel.SkysteelJobList[SkysteelInfo.JobListString.IndexOf(SelectedJob)];
 
-            SkysteelInfo.ProgressClass(selectedCharacter, tempJob.Skybuilders, true);
+            SkysteelInfo.ProgressClass(selectedCharacter, SelectedJob, tempJob.Skybuilders, true);
 
             LoadAvailableJobs();
 

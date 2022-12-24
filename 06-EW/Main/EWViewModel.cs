@@ -2,12 +2,9 @@
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Commands;
 using Prism.Events;
-using System;
 using System.Linq;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
-using FFXIVRelicTracker._06_EW.EWHelpers;
 using FFXIVRelicTracker._06_EW._00_Summary;
 using FFXIVRelicTracker._06_EW._01_Manderville;
 

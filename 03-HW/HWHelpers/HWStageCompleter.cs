@@ -1,17 +1,14 @@
 ﻿using FFXIVRelicTracker.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace FFXIVRelicTracker._03_HW.HWHelpers
 {
     public static class HWStageCompleter
     {
         #region CompleteStages
-        public static void ProgressClass(Character character, HWProgress hWProgress, bool CompleteBool = false)
+        public static void ProgressClass(Character character, string job, HWProgress hWProgress, bool CompleteBool = false)
         {
             int StageIndex = HWInfo.StageListString.IndexOf(hWProgress.Name);
-            int JobIndex = HWInfo.JobListString.IndexOf(hWProgress.Job);
+            int JobIndex = HWInfo.JobListString.IndexOf(job);
 
             HWJob tempJob = character.HWModel.HWJobList[JobIndex];
 
