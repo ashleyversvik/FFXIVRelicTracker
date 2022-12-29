@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FFXIVRelicTracker.PVP._00_Series"
-             xmlns:pvp="clr-namespace:FFXIVRelicTracker.PVP.PVPHelpers"
+             xmlns:pvphelp="clr-namespace:FFXIVRelicTracker.PVP.PVPHelpers"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
@@ -95,14 +95,14 @@
 
                     <StackPanel Grid.Row="2" Grid.Column="0" Margin="0,0,10,0">
                         <TextBlock Style="{StaticResource LeftTextBlock}" Text="Frontlines"/>
-                        <Button Style="{StaticResource incrementButton}" Content="1st" Command="{Binding IncrementButton}" CommandParameter="2"/>
-                        <Button Style="{StaticResource incrementButton}" Content="2nd " Command="{Binding IncrementButton}" CommandParameter="3"/>
-                        <Button Style="{StaticResource incrementButton}" Content="3rd " Command="{Binding IncrementButton}" CommandParameter="4"/>
+                        <Button Style="{StaticResource incrementButton}" Content="1st (1500)" Command="{Binding IncrementButton}" CommandParameter="2"/>
+                        <Button Style="{StaticResource incrementButton}" Content="2nd (1250)" Command="{Binding IncrementButton}" CommandParameter="3"/>
+                        <Button Style="{StaticResource incrementButton}" Content="3rd (1000)" Command="{Binding IncrementButton}" CommandParameter="4"/>
                     </StackPanel>
                     <StackPanel Grid.Row="2" Grid.Column="1" Margin="0,0,10,0">
                         <TextBlock Style="{StaticResource LeftTextBlock}" Margin="0,0,10,0" Text="Crystal Conflict"/>
-                        <Button Style="{StaticResource incrementButton}" Content="Win" Command="{Binding IncrementButton}" CommandParameter="5"/>
-                        <Button Style="{StaticResource incrementButton}" Content="Lose " Command="{Binding IncrementButton}" CommandParameter="6"/>
+                        <Button Style="{StaticResource incrementButton}" Content="Win (900)" Command="{Binding IncrementButton}" CommandParameter="5"/>
+                        <Button Style="{StaticResource incrementButton}" Content="Lose (700)" Command="{Binding IncrementButton}" CommandParameter="6"/>
                     </StackPanel>
                 </Grid>
             </Border>

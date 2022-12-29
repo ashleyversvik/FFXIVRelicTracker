@@ -1,5 +1,4 @@
-﻿using FFXIVRelicTracker.Models;
-using FFXIVRelicTracker.Models.Helpers;
+﻿using FFXIVRelicTracker.Models.Helpers;
 
 namespace FFXIVRelicTracker.PVP._00_Series
 {
