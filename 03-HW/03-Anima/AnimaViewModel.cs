@@ -1,5 +1,4 @@
 ﻿using FFXIVRelicTracker._03_HW.HWHelpers;
-using FFXIVRelicTracker.Helpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
@@ -16,6 +15,7 @@ namespace FFXIVRelicTracker._03_HW._03_Anima
         private AnimaModel animaModel;
         private Character selectedCharacter;
         private IEventAggregator eventAggregator;
+        private ObservableCollection<string> availableJobs;
         #endregion
 
         #region Constructor
@@ -66,10 +66,10 @@ namespace FFXIVRelicTracker._03_HW._03_Anima
 
         public ObservableCollection<string> AvailableJobs
         {
-            get { return AnimaModel.AvailableJobs; }
+            get { return availableJobs; }
             set
             {
-                AnimaModel.AvailableJobs = value;
+                availableJobs = value;
                 OnPropertyChanged(nameof(AvailableJobs));
             }
         }
@@ -221,18 +221,7 @@ namespace FFXIVRelicTracker._03_HW._03_Anima
         #endregion
         public void LoadAvailableJobs()
         {
-            if (AvailableJobs == null) { AvailableJobs = new ObservableCollection<string>(); }
-            foreach (HWJob job in selectedCharacter.HWModel.HWJobList)
-            {
-                if (job.Anima.Progress == BaseProgressClass.States.Completed & AvailableJobs.Contains(job.Name))
-                {
-                    AvailableJobs.Remove(job.Name);
-                }
-                if (job.Anima.Progress != BaseProgressClass.States.Completed & !AvailableJobs.Contains(job.Name))
-                {
-                    HWInfo.ReloadJobList(AvailableJobs, job.Name);
-                }
-            }
+            AvailableJobs = HWInfo.LoadJobs(AvailableJobs, SelectedCharacter, Name);
             OnPropertyChanged(nameof(AvailableJobs));
             RecalcAll();
         }
@@ -263,7 +252,7 @@ namespace FFXIVRelicTracker._03_HW._03_Anima
 
             HWJob tempJob = selectedCharacter.HWModel.HWJobList[HWInfo.JobListString.IndexOf(SelectedJob)];
 
-            HWStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Anima, true);
+            HWStageCompleter.ProgressClass(SelectedCharacter, SelectedJob, Name);
 
             LoadAvailableJobs();
             RecalcAll();

@@ -1,4 +1,5 @@
-﻿using FFXIVRelicTracker.Models;
+﻿using FFXIVRelicTracker.Helpers;
+using FFXIVRelicTracker.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -50,6 +51,7 @@ namespace FFXIVRelicTracker
             if (File.Exists(path))
             {
                 var content = File.ReadAllText(path);
+                content = MigrateCharacterData.ConvertProgressData(content);
                 var characters = JsonSerializer.Deserialize<List<Character>>(content, new JsonSerializerOptions { AllowTrailingCommas = true, ReadCommentHandling = JsonCommentHandling.Skip });
                 var convertedCharacters = new List<Character>();
                 foreach (var oldCharacter in characters)
@@ -57,8 +59,10 @@ namespace FFXIVRelicTracker
                     var newCharacter = new Character(oldCharacter);
                     convertedCharacters.Add(newCharacter);
                 }
+                
                 CharactersManager.Save(convertedCharacters);
             }
         }
+
     }
 }

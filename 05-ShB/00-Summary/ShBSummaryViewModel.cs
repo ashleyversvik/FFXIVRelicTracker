@@ -115,10 +115,7 @@ namespace FFXIVRelicTracker._05_ShB._00_Summary
             string[] values = ((string)param).Split(".");
 
             ShBJob tempJob = (ShBJob)SelectedCharacter.ShBModel.GetType().GetProperty(values[0]).GetValue(SelectedCharacter.ShBModel);
-            ShBProgress tempProgress = tempJob.StageList.Find(x => x.Name == values[1]);
-
-            ShBStageCompleter.ProgressClass(SelectedCharacter, tempJob.Name, tempProgress);
-
+            ShBStageCompleter.ProgressClass(SelectedCharacter, tempJob.Name, values[1]);
         }
         #endregion
     }

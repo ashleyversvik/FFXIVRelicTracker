@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using FFXIVRelicTracker.Models;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace FFXIVRelicTracker._06_EW.EWHelpers
@@ -35,10 +36,25 @@ namespace FFXIVRelicTracker._06_EW.EWHelpers
         };
 
         #region Methods
-
-        
-
-        public static void ReloadJobList(ObservableCollection<string> tempList, string jobName)
+        public static ObservableCollection<string> LoadJobs(ObservableCollection<string> jobs, Character selectedCharacter, string stage)
+        {
+            var AvailableJobs = jobs;
+            int StageIndex = EWInfo.StageListString.IndexOf(stage);
+            if (jobs == null) AvailableJobs = new ObservableCollection<string>();
+            foreach (EWJob job in selectedCharacter.EWModel.EWJobList)
+            {
+                if (!job.StageList[StageIndex] & !AvailableJobs.Contains(job.Name))
+                {
+                    EWInfo.ReloadJobList(AvailableJobs, job.Name);
+                }
+                if (job.StageList[StageIndex] & AvailableJobs.Contains(job.Name))
+                {
+                    AvailableJobs.Remove(job.Name);
+                }
+            }
+            return AvailableJobs;
+        }
+        private static void ReloadJobList(ObservableCollection<string> tempList, string jobName)
         {
             //This method should be called from LoadAvailableJobs methods to add jobs back into the list to preserve their order
 

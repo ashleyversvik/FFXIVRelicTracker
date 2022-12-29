@@ -1,5 +1,4 @@
 ﻿using FFXIVRelicTracker._05_ShB.ShBHelpers;
-using FFXIVRelicTracker.Helpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
@@ -16,6 +15,7 @@ namespace FFXIVRelicTracker._05_ShB._04_LawsOrder
         private IEventAggregator eventAggregator;
         private Character selectedCharacter;
         private LawsOrderModel lawsOrderModel;
+        private ObservableCollection<string> availableJobs;
         #endregion
 
         #region Constructor
@@ -75,10 +75,10 @@ namespace FFXIVRelicTracker._05_ShB._04_LawsOrder
 
         public ObservableCollection<string> AvailableJobs
         {
-            get { return lawsOrderModel.AvailableJobs; }
+            get { return availableJobs; }
             set
             {
-                lawsOrderModel.AvailableJobs = value;
+                availableJobs = value;
                 OnPropertyChanged(nameof(AvailableJobs));
             }
         }
@@ -112,18 +112,7 @@ namespace FFXIVRelicTracker._05_ShB._04_LawsOrder
         #region Methods
         public void LoadAvailableJobs()
         {
-            if (AvailableJobs == null) { AvailableJobs = new ObservableCollection<string>(); }
-            foreach (ShBJob job in selectedCharacter.ShBModel.ShbJobList)
-            {
-                if (job.LawsOrder.Progress == BaseProgressClass.States.Completed & AvailableJobs.Contains(job.Name))
-                {
-                    AvailableJobs.Remove(job.Name);
-                }
-                if (job.LawsOrder.Progress != BaseProgressClass.States.Completed & !AvailableJobs.Contains(job.Name))
-                {
-                    ShBInfo.ReloadJobList(AvailableJobs, job.Name);
-                }
-            }
+            AvailableJobs = ShBInfo.LoadJobs(AvailableJobs, SelectedCharacter, Name);
             //Calculate remaining memories to acquire
             OnPropertyChanged(nameof(MemoryNeeded));
             OnPropertyChanged(nameof(MemoryCount));
@@ -152,10 +141,7 @@ namespace FFXIVRelicTracker._05_ShB._04_LawsOrder
         private bool CompleteCan() { return SelectedJob != null; }
         private void CompleteCommand()
         {
-
-            ShBJob tempJob = selectedCharacter.ShBModel.ShbJobList[ShBInfo.JobListString.IndexOf(SelectedJob)];
-
-            ShBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.LawsOrder, true);
+            ShBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, Name);
 
             LoadAvailableJobs();
 

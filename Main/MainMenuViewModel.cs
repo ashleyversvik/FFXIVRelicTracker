@@ -109,7 +109,7 @@ namespace FFXIVRelicTracker.ViewModels
 
             foreach(ArrJob job in selectedCharacter.ArrModel.ArrJobList)
             {
-                List<ArrProgress> arrProgresses = new List<ArrProgress>()
+                List<bool> arrProgresses = new List<bool>()
                 {
                     job.Relic,
                     job.Zenith,
@@ -147,7 +147,7 @@ namespace FFXIVRelicTracker.ViewModels
 
             foreach (HWJob job in selectedCharacter.HWModel.HWJobList)
             {
-                List<HWProgress> hwProgresses = new List<HWProgress>()
+                List<bool> hwProgresses = new List<bool>()
                 {
                     job.Animated,
                     job.Awoken,
@@ -187,7 +187,7 @@ namespace FFXIVRelicTracker.ViewModels
 
             foreach (SBJob job in selectedCharacter.SBModel.SBJobList)
             {
-                List<SBProgress> sbProgresses = new List<SBProgress>()
+                List<bool> sbProgresses = new List<bool>()
                 {
                     job.Antiquated,
                     job.Anemos,
@@ -227,7 +227,7 @@ namespace FFXIVRelicTracker.ViewModels
 
             foreach (ShBJob job in selectedCharacter.ShBModel.ShbJobList)
             {
-                List<ShBProgress> shbProgresses = new List<ShBProgress>()
+                List<bool> shbProgresses = new List<bool>()
                 {
                     job.Resistance,
                     job.AugmentedResistance,
@@ -262,7 +262,7 @@ namespace FFXIVRelicTracker.ViewModels
 
             foreach (SkysteelJob job in selectedCharacter.SkysteelModel.SkysteelJobList)
             {
-                List<SkysteelProgress> skysteelProgresses = new List<SkysteelProgress>()
+                List<bool> skysteelProgresses = new List<bool>()
                 {
                     job.BaseTool,
                     job.BasePlus1,
@@ -305,7 +305,7 @@ namespace FFXIVRelicTracker.ViewModels
 
             foreach (EWJob job in selectedCharacter.EWModel.EWJobList)
             {
-                List<EWProgress> ewProgresses = new List<EWProgress>()
+                List<bool> ewProgresses = new List<bool>()
                 {
                     job.Manderville,
                 };

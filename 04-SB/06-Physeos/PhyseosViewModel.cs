@@ -1,5 +1,4 @@
 ﻿using FFXIVRelicTracker._04_SB.SBHelpers;
-using FFXIVRelicTracker.Helpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
@@ -16,6 +15,7 @@ namespace FFXIVRelicTracker._04_SB._06_Physeos
         private IEventAggregator eventAggregator;
         private Character selectedCharacter;
         private PhyseosModel physeosModel;
+        private ObservableCollection<string> availableJobs;
         #endregion
 
         #region Constructor
@@ -75,10 +75,10 @@ namespace FFXIVRelicTracker._04_SB._06_Physeos
 
         public ObservableCollection<string> AvailableJobs
         {
-            get { return physeosModel.AvailableJobs; }
+            get { return availableJobs; }
             set
             {
-                physeosModel.AvailableJobs = value;
+                availableJobs = value;
                 OnPropertyChanged(nameof(AvailableJobs));
             }
         }
@@ -112,18 +112,7 @@ namespace FFXIVRelicTracker._04_SB._06_Physeos
         #region Methods
         public void LoadAvailableJobs()
         {
-            if (AvailableJobs == null) { AvailableJobs = new ObservableCollection<string>(); }
-            foreach (SBJob job in selectedCharacter.SBModel.SBJobList)
-            {
-                if (job.Physeos.Progress == BaseProgressClass.States.Completed & AvailableJobs.Contains(job.Name))
-                {
-                    AvailableJobs.Remove(job.Name);
-                }
-                if (job.Physeos.Progress != BaseProgressClass.States.Completed & !AvailableJobs.Contains(job.Name))
-                {
-                    SBInfo.ReloadJobList(AvailableJobs, job.Name);
-                }
-            }
+            AvailableJobs = SBInfo.LoadJobs(AvailableJobs, SelectedCharacter, Name);
             //Calculate remaining memories to acquire
             OnPropertyChanged(nameof(FragmentNeeded));
         }
@@ -151,13 +140,8 @@ namespace FFXIVRelicTracker._04_SB._06_Physeos
         private bool CompleteCan() { return SelectedJob != null; }
         private void CompleteCommand()
         {
-
-            SBJob tempJob = selectedCharacter.SBModel.SBJobList[SBInfo.JobListString.IndexOf(SelectedJob)];
-
-            SBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Physeos, true);
-
+            SBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, Name);
             LoadAvailableJobs();
-
             OnPropertyChanged(nameof(FragmentCount));
         }
         #endregion

@@ -15,33 +15,33 @@ namespace FFXIVRelicTracker._03_HW.HWHelpers
         {
             this.Name = name;
 
-            Animated = new HWProgress("Animated");
-            Awoken = new HWProgress("Awoken");
-            Anima = new HWProgress("Anima");
-            Hyperconductive = new HWProgress("Hyperconductive");
-            Reconditioned = new HWProgress("Reconditioned");
-            Sharpened = new HWProgress("Sharpened");
-            Complete = new HWProgress("Complete");
-            Lux = new HWProgress("Lux");
+            Animated = false;
+            Awoken = false;
+            Anima = false;
+            Hyperconductive = false;
+            Reconditioned = false;
+            Sharpened = false;
+            Complete = false;
+            Lux = false;
         }
 
         #endregion
 
         #region Fields
-        private HWProgress animated;
-        private HWProgress awoken;
-        private HWProgress anima;
-        private HWProgress hyperconductive;
-        private HWProgress reconditioned;
-        private HWProgress sharpened;
-        private HWProgress complete;
-        private HWProgress lux;
+        private bool animated;
+        private bool awoken;
+        private bool anima;
+        private bool hyperconductive;
+        private bool reconditioned;
+        private bool sharpened;
+        private bool complete;
+        private bool lux;
         #endregion
 
         #region Properties
-        public List<HWProgress> StageList = new List<HWProgress>();
+        public List<bool> StageList = new List<bool>();
 
-        public HWProgress Animated
+        public bool Animated
         {
             get { return animated; }
             set
@@ -50,7 +50,7 @@ namespace FFXIVRelicTracker._03_HW.HWHelpers
                 OnPropertyChanged(nameof(Animated));
             }
         }
-        public HWProgress Awoken
+        public bool Awoken
         {
             get { return awoken; }
             set
@@ -59,7 +59,7 @@ namespace FFXIVRelicTracker._03_HW.HWHelpers
                 OnPropertyChanged(nameof(Awoken));
             }
         }
-        public HWProgress Anima
+        public bool Anima
         {
             get { return anima; }
             set
@@ -68,7 +68,7 @@ namespace FFXIVRelicTracker._03_HW.HWHelpers
                 OnPropertyChanged(nameof(Anima));
             }
         }
-        public HWProgress Hyperconductive
+        public bool Hyperconductive
         {
             get { return hyperconductive; }
             set
@@ -77,7 +77,7 @@ namespace FFXIVRelicTracker._03_HW.HWHelpers
                 OnPropertyChanged(nameof(Hyperconductive));
             }
         }
-        public HWProgress Reconditioned
+        public bool Reconditioned
         {
             get { return reconditioned; }
             set
@@ -86,7 +86,7 @@ namespace FFXIVRelicTracker._03_HW.HWHelpers
                 OnPropertyChanged(nameof(Reconditioned));
             }
         }
-        public HWProgress Sharpened
+        public bool Sharpened
         {
             get { return sharpened; }
             set
@@ -95,7 +95,7 @@ namespace FFXIVRelicTracker._03_HW.HWHelpers
                 OnPropertyChanged(nameof(Sharpened));
             }
         }
-        public HWProgress Complete
+        public bool Complete
         {
             get { return complete; }
             set
@@ -104,7 +104,7 @@ namespace FFXIVRelicTracker._03_HW.HWHelpers
                 OnPropertyChanged(nameof(Complete));
             }
         }
-        public HWProgress Lux
+        public bool Lux
         {
             get { return lux; }
             set
@@ -122,21 +122,18 @@ namespace FFXIVRelicTracker._03_HW.HWHelpers
             //Without checking and replacing the Progress lists and objects, the Progress object is null, regardless of the initiator being in the class constructor
             //  or in the field
 
-            List<HWProgress> tempList = new List<HWProgress>();
+            List<bool> tempList = new List<bool>();
 
             for (int stageIndex = 0; stageIndex < HWInfo.StageListString.Count; stageIndex++)
             {
-                HWProgress tempProgress = null;
-                if (stageIndex < StageList.Count && StageList[stageIndex] != null)
+                bool tempProgress = false;
+                if (stageIndex < StageList.Count)
                 {
                     tempProgress = StageList[stageIndex];
-                    tempProgress.Name = HWInfo.StageListString[stageIndex];
                     tempList.Add(tempProgress);
                 }
                 else
                 {
-                    tempProgress = new HWProgress(HWInfo.StageListString[stageIndex]);
-
                     tempList.Add(tempProgress);
 
                     switch (stageIndex)
@@ -171,6 +168,17 @@ namespace FFXIVRelicTracker._03_HW.HWHelpers
 
             StageList = tempList;
 
+        }
+        public void RefreshJob()
+        {
+            Animated = StageList[0];
+            Awoken = StageList[1];
+            Anima = StageList[2];
+            Hyperconductive = StageList[3];
+            Reconditioned = StageList[4];
+            Sharpened = StageList[5];
+            Complete = StageList[6];
+            Lux = StageList[7];
         }
         #endregion
     }

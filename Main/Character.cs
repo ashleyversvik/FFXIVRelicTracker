@@ -26,7 +26,7 @@ namespace FFXIVRelicTracker.Models
         private PVPModel pvpModel;
 
         #region Properties
-
+        public string Version { get; set; }
         public string ArrLayout { get; set; }
         public string HWLayout { get; set; }
         public string SBLayout { get; set; }

@@ -4,70 +4,50 @@ namespace FFXIVRelicTracker._06_EW.EWHelpers
 {
     public static class EWStageCompleter
     {
-        public static void ProgressClass(Character character, string job, EWProgress ewProgress, bool CompleteBool = false)
+        public static void ProgressClass(Character character, string job, string stage)
         {
-            int StageIndex = EWInfo.StageListString.IndexOf(ewProgress.Name);
+            int StageIndex = EWInfo.StageListString.IndexOf(stage);
             int JobIndex = EWInfo.JobListString.IndexOf(job);
 
             EWJob tempJob = character.EWModel.EWJobList[JobIndex];
+            var progress = tempJob.StageList[StageIndex];
 
-            if (ewProgress.Progress == EWProgress.States.NA)
+            if (!progress)
             {
                 CompletePreviousStages(character, tempJob, StageIndex);
             }
-            else if (ewProgress.Progress == EWProgress.States.Completed)
+            else if (progress)
             {
                 InCompleteFollowingStages(tempJob, StageIndex);
+                tempJob.RefreshJob();
                 return;
             }
 
-            if (ewProgress.Progress == EWProgress.States.Initiated | CompleteBool)
-            {
-                ewProgress.Progress = EWProgress.States.Completed;
-                AlterCounts(character, StageIndex);
-            }
-            else
-            {
-                IncompleteOtherJobs(character, StageIndex);
-                switch (StageIndex)
-                {
-                    default:
-                        ewProgress.Progress = EWProgress.States.Completed;
-                        break;
-                }
-                AlterCounts(character, StageIndex);
-            }
+            tempJob.StageList[StageIndex] = true;
+            tempJob.RefreshJob();
+            AlterCounts(character, StageIndex);
+        }
 
-        }
-        private static void IncompleteOtherJobs(Character SelectedCharacter, int StageIndex)
-        {
-            foreach (EWJob Job in SelectedCharacter.EWModel.EWJobList)
-            {
-                EWProgress stage = Job.StageList[StageIndex];
-                if (stage.Progress == EWProgress.States.Initiated)
-                {
-                    stage.Progress = EWProgress.States.NA;
-                }
-            }
-        }
         private static void InCompleteFollowingStages(EWJob tempStage, int stageIndex)
         {
             for (int i = stageIndex; i < tempStage.StageList.Count; i++)
             {
-                tempStage.StageList[i].Progress = EWProgress.States.NA;
+                tempStage.StageList[i] = false;
             }
         }
         private static void CompletePreviousStages(Character character, EWJob tempStage, int stageIndex)
         {
             for (int i = 0; i < stageIndex; i++)
             {
-                if (tempStage.StageList[i].Progress != EWProgress.States.Completed)
+                if (!tempStage.StageList[i])
                 {
                     AlterCounts(character, i);
-                    tempStage.StageList[i].Progress = EWProgress.States.Completed;
+                    tempStage.StageList[i] = true;
                 }
             }
         }
+
+        
 
         private static void AlterCounts(Character character, int stageIndex)
         {
@@ -84,8 +64,6 @@ namespace FFXIVRelicTracker._06_EW.EWHelpers
 
         private static void DecreaseMeteorites(Character character)
         {
-            //Decrease Scalepowder outside of resistance model so that changes to progress that occur outside of Resistance view still impact scalepowder
-
             if (character.EWModel.MandervilleModel.MeteoritesCount <= 3) { character.EWModel.MandervilleModel.MeteoritesCount = 0; }
             else { character.EWModel.MandervilleModel.MeteoritesCount -= 3; }
         }

@@ -18,6 +18,7 @@ namespace FFXIVRelicTracker._05_Skysteel._02_BasePlus1
         private Character selectedCharacter;
         private IEventAggregator eventAggregator;
         private Tuple<string, string, string, string> jobInfo;
+        private ObservableCollection<string> availableJobs;
         #endregion
 
         #region Constructors
@@ -88,10 +89,10 @@ namespace FFXIVRelicTracker._05_Skysteel._02_BasePlus1
         }
         public ObservableCollection<string> AvailableJobs
         {
-            get { return basePlus1Model.AvailableJobs; }
+            get { return availableJobs; }
             set
             {
-                basePlus1Model.AvailableJobs = value;
+                availableJobs = value;
                 OnPropertyChanged(nameof(AvailableJobs));
             }
         }
@@ -142,19 +143,7 @@ namespace FFXIVRelicTracker._05_Skysteel._02_BasePlus1
 
         public void LoadAvailableJobs()
         {
-            if (AvailableJobs == null) { AvailableJobs = new ObservableCollection<string>(); }
-            foreach (SkysteelJob job in selectedCharacter.SkysteelModel.SkysteelJobList)
-            {
-                if (job.BasePlus1.Progress == BaseProgressClass.States.Completed & AvailableJobs.Contains(job.Name))
-                {
-                    AvailableJobs.Remove(job.Name);
-                }
-                if (job.BasePlus1.Progress != BaseProgressClass.States.Completed & !AvailableJobs.Contains(job.Name))
-                {
-                    SkysteelInfo.ReloadJobList(AvailableJobs, job.Name);
-                }
-            }
-
+            AvailableJobs = SkysteelInfo.LoadJobs(AvailableJobs, SelectedCharacter, Name);
             int tempCount = AvailableJobs.Count;
 
             if (AvailableJobs.Contains("MIN")){ tempCount -= 1; }
@@ -188,13 +177,8 @@ namespace FFXIVRelicTracker._05_Skysteel._02_BasePlus1
         private bool CompleteCan() { return SelectedJob != null; }
         private void CompleteCommand()
         {
-
-            SkysteelJob tempJob = selectedCharacter.SkysteelModel.SkysteelJobList[SkysteelInfo.JobListString.IndexOf(SelectedJob)];
-
-            SkysteelInfo.ProgressClass(selectedCharacter, SelectedJob, tempJob.BasePlus1, true);
-
+            SkysteelInfo.ProgressClass(SelectedCharacter, SelectedJob, Name);
             LoadAvailableJobs();
-
         }
         #endregion
 

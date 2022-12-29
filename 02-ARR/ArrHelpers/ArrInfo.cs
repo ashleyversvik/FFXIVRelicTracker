@@ -1,5 +1,7 @@
-﻿using System;
+﻿using FFXIVRelicTracker.Models;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Drawing;
 
 namespace FFXIVRelicTracker._02_ARR.ArrHelpers
@@ -52,6 +54,52 @@ namespace FFXIVRelicTracker._02_ARR.ArrHelpers
            "Braves",
            "Zeta"
         };
+
+        public static ObservableCollection<string> LoadJobs(ObservableCollection<string> jobs, Character selectedCharacter, string stage)
+        {
+            var AvailableJobs = jobs;
+            int StageIndex = ArrInfo.StageListString.IndexOf(stage);
+            if (jobs == null) AvailableJobs = new ObservableCollection<string>();
+            foreach (ArrJob job in selectedCharacter.ArrModel.ArrJobList)
+            {
+                if (!job.StageList[StageIndex] & !AvailableJobs.Contains(job.Name))
+                {
+                    ArrInfo.ReloadJobList(AvailableJobs, job.Name);
+                }
+                if (job.StageList[StageIndex] & AvailableJobs.Contains(job.Name))
+                {
+                    AvailableJobs.Remove(job.Name);
+                }
+            }
+            return AvailableJobs;
+        }
+
+        private static void ReloadJobList(ObservableCollection<string> tempList, string jobName)
+        {
+
+            int jobIndex = ArrInfo.JobListString.IndexOf(jobName);
+            switch (tempList.Count)
+            {
+                case 0:
+                    tempList.Add(jobName);
+                    break;
+                case 1:
+                    if (ArrInfo.JobListString.IndexOf(tempList[0]) > jobIndex) { tempList.Insert(0, jobName); }
+                    else { tempList.Add(jobName); }
+                    break;
+                default:
+                    for (int i = 0; i < tempList.Count; i++)
+                    {
+                        if (ArrInfo.JobListString.IndexOf(tempList[i]) > jobIndex)
+                        {
+                            tempList.Insert(i, jobName);
+                            break;
+                        }
+                    }
+                    if (!tempList.Contains(jobName)) { tempList.Add(jobName); }
+                    break;
+            }
+        }
 
         public static Dictionary<string, string> ArrMapImages = new Dictionary<string, string>
         {

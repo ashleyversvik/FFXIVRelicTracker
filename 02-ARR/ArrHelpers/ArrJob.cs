@@ -14,63 +14,63 @@ namespace FFXIVRelicTracker._02_ARR.ArrHelpers
         {
             this.Name = name;
 
-            relic = new ArrProgress("Relic");
-            zenith = new ArrProgress("Zenith");
-            atma = new ArrProgress("Atma");
-            animus = new ArrProgress("Animus");
-            novus = new ArrProgress("Novus");
-            nexus = new ArrProgress("Nexus");
-            braves = new ArrProgress("Braves");
-            zeta = new ArrProgress("Zeta");
+            relic = false;
+            zenith = false;
+            atma = false;
+            animus = false;
+            novus = false;
+            nexus = false;
+            braves = false;
+            zeta = false;
         }
-        public List<ArrProgress> StageList = new List<ArrProgress>();
+        public List<bool> StageList = new List<bool>();
 
-        private ArrProgress relic;
-        private ArrProgress zenith;
-        private ArrProgress atma;
-        private ArrProgress animus;
-        private ArrProgress novus;
-        private ArrProgress nexus;
-        private ArrProgress braves;
-        private ArrProgress zeta;
+        private bool relic;
+        private bool zenith;
+        private bool atma;
+        private bool animus;
+        private bool novus;
+        private bool nexus;
+        private bool braves;
+        private bool zeta;
 
-        public ArrProgress Relic
+        public bool Relic
         {
             get { return relic; }
             set
             {relic = value; OnPropertyChanged(nameof(Relic)); }
         }
-        public ArrProgress Zenith
+        public bool Zenith
         {
             get { return zenith; }
             set { zenith = value; OnPropertyChanged(nameof(Zenith)); }
         }
-        public ArrProgress Atma
+        public bool Atma
         {
             get { return atma; }
             set { atma = value; OnPropertyChanged(nameof(Atma)); }
         }
-        public ArrProgress Animus
+        public bool Animus
         {
             get { return animus; }
             set { animus = value; OnPropertyChanged(nameof(Animus)); }
         }
-        public ArrProgress Novus
+        public bool Novus
         {
             get { return novus; }
             set { novus = value; OnPropertyChanged(nameof(Novus)); }
         }
-        public ArrProgress Nexus
+        public bool Nexus
         {
             get { return nexus; }
             set { nexus = value; OnPropertyChanged(nameof(Nexus)); }
         }
-        public ArrProgress Braves
+        public bool Braves
         {
             get { return braves; }
             set { braves = value; OnPropertyChanged(nameof(Braves)); }
         }
-        public ArrProgress Zeta
+        public bool Zeta
         {
             get { return zeta; }
             set { zeta = value; OnPropertyChanged(nameof(Zeta)); }
@@ -82,20 +82,19 @@ namespace FFXIVRelicTracker._02_ARR.ArrHelpers
             //Without checking and replacing the Progress lists and objects, the Progress object is null, regardless of the initiator being in the class constructor
             //  or in the field
 
-            List<ArrProgress> tempList = new List<ArrProgress>();
+            List<bool> tempList = new List<bool>();
 
             for (int stageIndex = 0; stageIndex < ArrInfo.StageListString.Count; stageIndex++)
             {
-                ArrProgress tempProgress = null;
-                if (stageIndex < StageList.Count && StageList[stageIndex] != null)
+                bool tempProgress = false;
+                if (stageIndex < StageList.Count)
                 {
                     tempProgress = StageList[stageIndex];
-                    tempProgress.Name = ArrInfo.StageListString[stageIndex];
                     tempList.Add(tempProgress);
                 }
                 else
                 {
-                    tempProgress = new ArrProgress(ArrInfo.StageListString[stageIndex]);
+                    tempProgress = false;
 
                     tempList.Add(tempProgress);
 
@@ -131,6 +130,17 @@ namespace FFXIVRelicTracker._02_ARR.ArrHelpers
 
             StageList = tempList;
 
+        }
+        public void RefreshJob()
+        {
+            Relic = StageList[0];
+            Zenith = StageList[1];
+            Atma = StageList[2];
+            Animus = StageList[3];
+            Novus = StageList[4];
+            Nexus = StageList[5];
+            Braves = StageList[6];
+            Zeta = StageList[7];
         }
     }
 }

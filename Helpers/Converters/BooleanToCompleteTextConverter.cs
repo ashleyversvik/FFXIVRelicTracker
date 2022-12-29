@@ -4,12 +4,19 @@ using System.Windows.Data;
 
 namespace FFXIVRelicTracker.Helpers.Converters
 {
-    class StageToProgressConverter : IValueConverter
+    class BooleanToCompleteTextConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            BaseProgressClass tempProgress= (BaseProgressClass)value;
-            return tempProgress.Progress;
+            if (value is bool)
+            {
+                if ((bool)value == true)
+                {
+                    return "Completed";
+                }
+            }
+            return "NA";
+
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

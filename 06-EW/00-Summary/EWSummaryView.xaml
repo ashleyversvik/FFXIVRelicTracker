@@ -85,25 +85,25 @@
 
                 <TextBlock Style="{StaticResource RotateTextBlock}" Text="Manderville"                Margin="0,5"   Grid.Row="2" Grid.Column="0"/>
 
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="01" Content="{Binding Path=PLD.Manderville.Progress}" Tag="PLD.Manderville" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="02" Content="{Binding Path=WAR.Manderville.Progress}" Tag="WAR.Manderville" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="03" Content="{Binding Path=DRK.Manderville.Progress}" Tag="DRK.Manderville" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="04" Content="{Binding Path=GNB.Manderville.Progress}" Tag="GNB.Manderville" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="05" Content="{Binding Path=WHM.Manderville.Progress}" Tag="WHM.Manderville" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="06" Content="{Binding Path=SCH.Manderville.Progress}" Tag="SCH.Manderville" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="07" Content="{Binding Path=AST.Manderville.Progress}" Tag="AST.Manderville" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="08" Content="{Binding Path=SGE.Manderville.Progress}" Tag="SGE.Manderville" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="09" Content="{Binding Path=MNK.Manderville.Progress}" Tag="MNK.Manderville" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="10" Content="{Binding Path=DRG.Manderville.Progress}" Tag="DRG.Manderville" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="11" Content="{Binding Path=NIN.Manderville.Progress}" Tag="NIN.Manderville" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="12" Content="{Binding Path=SAM.Manderville.Progress}" Tag="SAM.Manderville" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="13" Content="{Binding Path=RPR.Manderville.Progress}" Tag="RPR.Manderville" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="14" Content="{Binding Path=BRD.Manderville.Progress}" Tag="BRD.Manderville" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="15" Content="{Binding Path=MCH.Manderville.Progress}" Tag="MCH.Manderville" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="16" Content="{Binding Path=DNC.Manderville.Progress}" Tag="DNC.Manderville" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="17" Content="{Binding Path=BLM.Manderville.Progress}" Tag="BLM.Manderville" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="18" Content="{Binding Path=SMN.Manderville.Progress}" Tag="SMN.Manderville" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="19" Content="{Binding Path=RDM.Manderville.Progress}" Tag="RDM.Manderville" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="01" Content="{Binding Path=PLD.Manderville, Converter={StaticResource BooleanToCompleteText}}" Tag="PLD.Manderville" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="02" Content="{Binding Path=WAR.Manderville, Converter={StaticResource BooleanToCompleteText}}" Tag="WAR.Manderville" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="03" Content="{Binding Path=DRK.Manderville, Converter={StaticResource BooleanToCompleteText}}" Tag="DRK.Manderville" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="04" Content="{Binding Path=GNB.Manderville, Converter={StaticResource BooleanToCompleteText}}" Tag="GNB.Manderville" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="05" Content="{Binding Path=WHM.Manderville, Converter={StaticResource BooleanToCompleteText}}" Tag="WHM.Manderville" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="06" Content="{Binding Path=SCH.Manderville, Converter={StaticResource BooleanToCompleteText}}" Tag="SCH.Manderville" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="07" Content="{Binding Path=AST.Manderville, Converter={StaticResource BooleanToCompleteText}}" Tag="AST.Manderville" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="08" Content="{Binding Path=SGE.Manderville, Converter={StaticResource BooleanToCompleteText}}" Tag="SGE.Manderville" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="09" Content="{Binding Path=MNK.Manderville, Converter={StaticResource BooleanToCompleteText}}" Tag="MNK.Manderville" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="10" Content="{Binding Path=DRG.Manderville, Converter={StaticResource BooleanToCompleteText}}" Tag="DRG.Manderville" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="11" Content="{Binding Path=NIN.Manderville, Converter={StaticResource BooleanToCompleteText}}" Tag="NIN.Manderville" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="12" Content="{Binding Path=SAM.Manderville, Converter={StaticResource BooleanToCompleteText}}" Tag="SAM.Manderville" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="13" Content="{Binding Path=RPR.Manderville, Converter={StaticResource BooleanToCompleteText}}" Tag="RPR.Manderville" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="14" Content="{Binding Path=BRD.Manderville, Converter={StaticResource BooleanToCompleteText}}" Tag="BRD.Manderville" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="15" Content="{Binding Path=MCH.Manderville, Converter={StaticResource BooleanToCompleteText}}" Tag="MCH.Manderville" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="16" Content="{Binding Path=DNC.Manderville, Converter={StaticResource BooleanToCompleteText}}" Tag="DNC.Manderville" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="17" Content="{Binding Path=BLM.Manderville, Converter={StaticResource BooleanToCompleteText}}" Tag="BLM.Manderville" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="18" Content="{Binding Path=SMN.Manderville, Converter={StaticResource BooleanToCompleteText}}" Tag="SMN.Manderville" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="19" Content="{Binding Path=RDM.Manderville, Converter={StaticResource BooleanToCompleteText}}" Tag="RDM.Manderville" />
 
 
 

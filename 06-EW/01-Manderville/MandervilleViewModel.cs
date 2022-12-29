@@ -1,5 +1,4 @@
 ﻿using FFXIVRelicTracker._06_EW.EWHelpers;
-using FFXIVRelicTracker.Helpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
@@ -15,6 +14,7 @@ namespace FFXIVRelicTracker._06_EW._01_Manderville
         private IEventAggregator eventAggregator;
         private Character selectedCharacter;
         private MandervilleModel mandervilleModel;
+        private ObservableCollection<string> availableJobs;
         #endregion
 
         #region Constructor
@@ -94,10 +94,10 @@ namespace FFXIVRelicTracker._06_EW._01_Manderville
 
         public ObservableCollection<string> AvailableJobs
         {
-            get { return mandervilleModel.AvailableJobs; }
+            get { return availableJobs; }
             set
             {
-                mandervilleModel.AvailableJobs = value;
+                availableJobs = value;
                 OnPropertyChanged(nameof(AvailableJobs));
             }
         }
@@ -108,18 +108,7 @@ namespace FFXIVRelicTracker._06_EW._01_Manderville
         #region Methods
         public void LoadAvailableJobs()
         {
-            if (AvailableJobs == null) { AvailableJobs = new ObservableCollection<string>(); }
-            foreach( EWJob job in selectedCharacter.EWModel.EWJobList)
-            {
-                if(job.Manderville.Progress==BaseProgressClass.States.Completed & AvailableJobs.Contains(job.Name))
-                {
-                    AvailableJobs.Remove(job.Name);
-                }
-                if (job.Manderville.Progress != BaseProgressClass.States.Completed & !AvailableJobs.Contains(job.Name))
-                {
-                    EWInfo.ReloadJobList(AvailableJobs, job.Name);                 
-                }
-            }
+            AvailableJobs = EWInfo.LoadJobs(AvailableJobs, SelectedCharacter, Name);
             OnPropertyChanged(nameof(CompletedFirstManderville));
             OnPropertyChanged(nameof(NeededMeteorites));
             OnPropertyChanged(nameof(MeteoritesCost));
@@ -148,10 +137,7 @@ namespace FFXIVRelicTracker._06_EW._01_Manderville
         private bool CompleteCan() { return SelectedJob != null; }
         private void CompleteCommand()
         {
-
-            EWJob tempJob = selectedCharacter.EWModel.EWJobList[EWInfo.JobListString.IndexOf(SelectedJob)];
-
-            EWStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Manderville, true);
+            EWStageCompleter.ProgressClass(selectedCharacter, SelectedJob, Name);
 
             LoadAvailableJobs();
             OnPropertyChanged(nameof(MeteoritesCount));

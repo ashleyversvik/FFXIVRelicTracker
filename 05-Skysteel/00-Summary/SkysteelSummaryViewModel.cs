@@ -107,9 +107,7 @@ namespace FFXIVRelicTracker._05_Skysteel._00_Summary
             string[] values = ((string)param).Split(".");
 
             SkysteelJob tempJob = (SkysteelJob)SelectedCharacter.SkysteelModel.GetType().GetProperty(values[0]).GetValue(SelectedCharacter.SkysteelModel);
-            SkysteelProgress tempProgress = tempJob.StageList.Find(x => x.Name == values[1]);
-
-            SkysteelInfo.ProgressClass(SelectedCharacter, tempJob.Name, tempProgress);
+            SkysteelInfo.ProgressClass(SelectedCharacter, tempJob.Name, values[1]);
 
         }
         #endregion

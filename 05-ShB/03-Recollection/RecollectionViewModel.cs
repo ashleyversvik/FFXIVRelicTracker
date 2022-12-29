@@ -1,5 +1,4 @@
 ﻿using FFXIVRelicTracker._05_ShB.ShBHelpers;
-using FFXIVRelicTracker.Helpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
@@ -16,6 +15,7 @@ namespace FFXIVRelicTracker._05_ShB._03_Recollection
         private IEventAggregator eventAggregator;
         private Character selectedCharacter;
         private RecollectionModel recollectionModel;
+        private ObservableCollection<string> availableJobs;
         #endregion
 
         #region Constructor
@@ -75,10 +75,10 @@ namespace FFXIVRelicTracker._05_ShB._03_Recollection
 
         public ObservableCollection<string> AvailableJobs
         {
-            get { return recollectionModel.AvailableJobs; }
+            get { return availableJobs; }
             set
             {
-                recollectionModel.AvailableJobs = value;
+                availableJobs = value;
                 OnPropertyChanged(nameof(AvailableJobs));
             }
         }
@@ -112,18 +112,7 @@ namespace FFXIVRelicTracker._05_ShB._03_Recollection
         #region Methods
         public void LoadAvailableJobs()
         {
-            if (AvailableJobs == null) { AvailableJobs = new ObservableCollection<string>(); }
-            foreach (ShBJob job in selectedCharacter.ShBModel.ShbJobList)
-            {
-                if (job.Recollection.Progress == BaseProgressClass.States.Completed & AvailableJobs.Contains(job.Name))
-                {
-                    AvailableJobs.Remove(job.Name);
-                }
-                if (job.Recollection.Progress != BaseProgressClass.States.Completed & !AvailableJobs.Contains(job.Name))
-                {
-                    ShBInfo.ReloadJobList(AvailableJobs, job.Name);
-                }
-            }
+            AvailableJobs = ShBInfo.LoadJobs(AvailableJobs, SelectedCharacter, Name);
             //Calculate remaining memories to acquire
             OnPropertyChanged(nameof(MemoryNeeded));
         }
@@ -151,10 +140,7 @@ namespace FFXIVRelicTracker._05_ShB._03_Recollection
         private bool CompleteCan() { return SelectedJob != null; }
         private void CompleteCommand()
         {
-
-            ShBJob tempJob = selectedCharacter.ShBModel.ShbJobList[ShBInfo.JobListString.IndexOf(SelectedJob)];
-
-            ShBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Recollection, true);
+            ShBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, Name);
 
             LoadAvailableJobs();
 

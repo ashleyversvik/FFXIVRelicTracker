@@ -1,5 +1,4 @@
 ﻿using FFXIVRelicTracker.Models.Helpers;
-using System.Text.Json.Serialization;
 
 namespace FFXIVRelicTracker.Helpers
 {

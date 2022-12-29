@@ -14,26 +14,26 @@ namespace FFXIVRelicTracker._04_SB.SBHelpers
         public SBJob(string name)
         {
             this.Name = name;
-            Antiquated = new SBProgress("Antiquated");
-            Anemos = new SBProgress("Anemos");
-            Elemental = new SBProgress("Elemental");
-            Pyros = new SBProgress("Pyros");
-            Eureka = new SBProgress("Eureka");
-            Physeos = new SBProgress("Physeos");
+            Antiquated = false;
+            Anemos = false;
+            Elemental = false;
+            Pyros = false;
+            Eureka = false;
+            Physeos = false;
         }
 
         #endregion
 
         #region Properties
-        public List<SBProgress> StageList = new List<SBProgress>();
-        private SBProgress antiquated;
-        private SBProgress anemos;
-        private SBProgress elemental;
-        private SBProgress pyros;
-        private SBProgress eureka;
-        private SBProgress physeos;
+        public List<bool> StageList = new List<bool>();
+        private bool antiquated;
+        private bool anemos;
+        private bool elemental;
+        private bool pyros;
+        private bool eureka;
+        private bool physeos;
 
-        public SBProgress Antiquated
+        public bool Antiquated
         {
             get { return antiquated; }
             set
@@ -43,7 +43,7 @@ namespace FFXIVRelicTracker._04_SB.SBHelpers
             }
         }
 
-        public SBProgress Anemos
+        public bool Anemos
         {
             get { return anemos; }
             set
@@ -53,7 +53,7 @@ namespace FFXIVRelicTracker._04_SB.SBHelpers
             }
         }
 
-        public SBProgress Elemental
+        public bool Elemental
         {
             get { return elemental; }
             set
@@ -63,7 +63,7 @@ namespace FFXIVRelicTracker._04_SB.SBHelpers
             }
         }
 
-        public SBProgress Pyros
+        public bool Pyros
         {
             get { return pyros; }
             set
@@ -73,7 +73,7 @@ namespace FFXIVRelicTracker._04_SB.SBHelpers
             }
         }
 
-        public SBProgress Eureka
+        public bool Eureka
         {
             get { return eureka; }
             set
@@ -83,7 +83,7 @@ namespace FFXIVRelicTracker._04_SB.SBHelpers
             }
         }
 
-        public SBProgress Physeos
+        public bool Physeos
         {
             get { return physeos; }
             set
@@ -101,21 +101,18 @@ namespace FFXIVRelicTracker._04_SB.SBHelpers
             //Without checking and replacing the Progress lists and objects, the Progress object is null, regardless of the initiator being in the class constructor
             //  or in the field
 
-            List<SBProgress> tempList = new List<SBProgress>();
+            List<bool> tempList = new List<bool>();
 
             for (int stageIndex = 0; stageIndex < SBInfo.StageListString.Count; stageIndex++)
             {
-                SBProgress tempProgress = null;
-                if (stageIndex < StageList.Count && StageList[stageIndex] != null) 
+                bool tempProgress = false;
+                if (stageIndex < StageList.Count) 
                 {
                     tempProgress = StageList[stageIndex];
-                    tempProgress.Name = SBInfo.StageListString[stageIndex];
                     tempList.Add(tempProgress);
                 }
                 else
                 {
-                    tempProgress = new SBProgress(SBInfo.StageListString[stageIndex]);
-
                     tempList.Add(tempProgress);
 
                     switch (stageIndex)
@@ -143,6 +140,16 @@ namespace FFXIVRelicTracker._04_SB.SBHelpers
             }
 
             StageList = tempList;
+        }
+
+        public void RefreshJob()
+        {
+            Antiquated = StageList[0];
+            Anemos = StageList[1];
+            Elemental = StageList[2];
+            Pyros = StageList[3];
+            Eureka = StageList[4];
+            Physeos = StageList[5];
         }
         #endregion
     }

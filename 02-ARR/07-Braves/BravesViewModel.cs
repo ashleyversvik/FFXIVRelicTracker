@@ -13,6 +13,10 @@ namespace FFXIVRelicTracker._02_ARR._07_Braves
         private IEventAggregator iEventAggregator;
         private BravesModel bravesModel;
         private Character selectedCharacter;
+        private ObservableCollection<string> availableJobs;
+        private int remainingGil { get; set; }
+        private int remainingSeals { get; set; }
+        private int remainingPoetics { get; set; }
 
         public BravesViewModel(IEventAggregator iEventAggregator)
         {
@@ -57,10 +61,10 @@ namespace FFXIVRelicTracker._02_ARR._07_Braves
         }
         public ObservableCollection<string> AvailableJobs
         {
-            get { return BravesModel.AvailableJobs; }
+            get { return availableJobs; }
             set
             {
-                BravesModel.AvailableJobs = value;
+                availableJobs = value;
                 OnPropertyChanged(nameof(AvailableJobs));
             }
         }
@@ -80,30 +84,30 @@ namespace FFXIVRelicTracker._02_ARR._07_Braves
 
         public int RemainingGil
         {
-            get { return BravesModel.RemainingGil; }
+            get { return remainingGil; }
             set
             {
-                BravesModel.RemainingGil = value;
+                remainingGil = value;
                 OnPropertyChanged(nameof(RemainingGil));
             }
         }
 
         public int RemainingSeals
         {
-            get { return BravesModel.RemainingSeals; }
+            get { return remainingSeals; }
             set
             {
-                BravesModel.RemainingSeals = value;
+                remainingSeals = value;
                 OnPropertyChanged(nameof(RemainingSeals));
             }
         }
 
         public int RemainingPoetics
         {
-            get { return BravesModel.RemainingPoetics; }
+            get { return remainingPoetics; }
             set
             {
-                BravesModel.RemainingPoetics = value;
+                remainingPoetics = value;
                 OnPropertyChanged(nameof(RemainingPoetics));
             }
         }
@@ -196,18 +200,7 @@ namespace FFXIVRelicTracker._02_ARR._07_Braves
 
         public void LoadAvailableJobs()
         {
-            if (AvailableJobs == null) { AvailableJobs = new ObservableCollection<string>(); }
-            foreach (ArrJob job in selectedCharacter.ArrModel.ArrJobList)
-            {
-                if (job.Braves.Progress != ArrProgress.States.Completed & !AvailableJobs.Contains(job.Name))
-                {
-                    AvailableJobs.Add(job.Name);
-                }
-                if (job.Braves.Progress == ArrProgress.States.Completed & AvailableJobs.Contains(job.Name))
-                {
-                    AvailableJobs.Remove(job.Name);
-                }
-            }
+            AvailableJobs = ArrInfo.LoadJobs(AvailableJobs, SelectedCharacter, Name);
         }
         #endregion
 
@@ -235,13 +228,7 @@ namespace FFXIVRelicTracker._02_ARR._07_Braves
         private bool CanComplete() { return SelectedJob != null; }
         private void CompleteCommand()
         {
-
-            ArrJob tempJob = selectedCharacter.ArrModel.ArrJobList[ArrInfo.JobListString.IndexOf(SelectedJob)];
-
-            ArrStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Braves,true);
-
-
-
+            ArrStageCompleter.ProgressClass(selectedCharacter, SelectedJob, Name);
             ResetBools();
             LoadAvailableJobs();
         }

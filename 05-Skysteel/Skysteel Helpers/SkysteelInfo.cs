@@ -62,79 +62,27 @@ namespace FFXIVRelicTracker._05_Skysteel.Skysteel_Helpers
         };
 
         #region Methods
-
-        public static string ReturnToolName(string job)
+        public static ObservableCollection<string> LoadJobs(ObservableCollection<string> jobs, Character selectedCharacter, string stage)
         {
-            return JobToToolDict[job];
-        }
-
-        #region CompleteStages
-        public static void ProgressClass(Character character, string job, SkysteelProgress skysteelProgress, bool CompleteBool = false)
-        {
-            int StageIndex = SkysteelInfo.StageListString.IndexOf(skysteelProgress.Name);
-            int JobIndex = SkysteelInfo.JobListString.IndexOf(job);
-
-            SkysteelJob tempJob = character.SkysteelModel.SkysteelJobList[JobIndex];
-
-            if (skysteelProgress.Progress == SkysteelProgress.States.NA)
+            var AvailableJobs = jobs;
+            int StageIndex = SkysteelInfo.StageListString.IndexOf(stage);
+            if (jobs == null) AvailableJobs = new ObservableCollection<string>();
+            foreach (SkysteelJob job in selectedCharacter.SkysteelModel.SkysteelJobList)
             {
-                CompletePreviousStages(tempJob, StageIndex);
-            }
-            else if (skysteelProgress.Progress == SkysteelProgress.States.Completed)
-            {
-                InCompleteFollowingStages(tempJob, StageIndex);
-                return;
-            }
-            if (skysteelProgress.Progress == SkysteelProgress.States.Initiated | CompleteBool)
-            {
-                skysteelProgress.Progress = SkysteelProgress.States.Completed;
-            }
-            else
-            {
-                IncompleteOtherJobs(character, StageIndex);
-                switch (StageIndex)
+                if (!job.StageList[StageIndex] & !AvailableJobs.Contains(job.Name))
                 {
-                    default:
-                        skysteelProgress.Progress = SkysteelProgress.States.Completed;
-                        break;
-                    //case 1:
-                    //case 2:
-                    //    skysteelProgress.Progress++;
-                    //    break;
+                    SkysteelInfo.ReloadJobList(AvailableJobs, job.Name);
+                }
+                if (job.StageList[StageIndex] & AvailableJobs.Contains(job.Name))
+                {
+                    AvailableJobs.Remove(job.Name);
                 }
             }
-        }
-        private static void IncompleteOtherJobs(Character SelectedCharacter, int StageIndex)
-        {
-            foreach (SkysteelJob Job in SelectedCharacter.SkysteelModel.SkysteelJobList)
-            {
-                SkysteelProgress stage = Job.StageList[StageIndex];
-                if (stage.Progress == SkysteelProgress.States.Initiated)
-                {
-                    stage.Progress = SkysteelProgress.States.NA;
-                }
-            }
-        }
-        private static void InCompleteFollowingStages(SkysteelJob tempStage, int stageIndex)
-        {
-            for (int i = stageIndex; i < tempStage.StageList.Count; i++)
-            {
-                tempStage.StageList[i].Progress = SkysteelProgress.States.NA;
-            }
-        }
-        private static void CompletePreviousStages(SkysteelJob tempStage, int stageIndex)
-        {
-            for (int i = 0; i < stageIndex; i++)
-            {
-                tempStage.StageList[i].Progress = SkysteelProgress.States.Completed;
-            }
+            return AvailableJobs;
         }
 
-        #endregion
-
-        public static void ReloadJobList(ObservableCollection<string> tempList, string jobName)
+        private static void ReloadJobList(ObservableCollection<string> tempList, string jobName)
         {
-            //This method should be called from LoadAvailableJobs methods to add jobs back into the list to preserve their order
 
             int jobIndex = SkysteelInfo.JobListString.IndexOf(jobName);
             switch (tempList.Count)
@@ -159,6 +107,49 @@ namespace FFXIVRelicTracker._05_Skysteel.Skysteel_Helpers
                     break;
             }
         }
+        public static string ReturnToolName(string job)
+        {
+            return JobToToolDict[job];
+        }
+
+        #region CompleteStages
+        public static void ProgressClass(Character character, string job, string stage)
+        {
+            int StageIndex = SkysteelInfo.StageListString.IndexOf(stage);
+            int JobIndex = SkysteelInfo.JobListString.IndexOf(job);
+
+            SkysteelJob tempJob = character.SkysteelModel.SkysteelJobList[JobIndex];
+            var progress = tempJob.StageList[StageIndex];
+
+            if (!progress)
+            {
+                CompletePreviousStages(tempJob, StageIndex);
+            }
+            else if (progress)
+            {
+                InCompleteFollowingStages(tempJob, StageIndex);
+                tempJob.RefreshJob();
+                return;
+            }
+            tempJob.StageList[StageIndex] = true;
+            tempJob.RefreshJob();
+        }
+        private static void InCompleteFollowingStages(SkysteelJob tempStage, int stageIndex)
+        {
+            for (int i = stageIndex; i < tempStage.StageList.Count; i++)
+            {
+                tempStage.StageList[i] = false;
+            }
+        }
+        private static void CompletePreviousStages(SkysteelJob tempStage, int stageIndex)
+        {
+            for (int i = 0; i < stageIndex; i++)
+            {
+                tempStage.StageList[i] = true;
+            }
+        }
+
+        #endregion
 
         #endregion
 

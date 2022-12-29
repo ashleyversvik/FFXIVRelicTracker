@@ -1,5 +1,4 @@
 ﻿using FFXIVRelicTracker._04_SB.SBHelpers;
-using FFXIVRelicTracker.Helpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
@@ -18,6 +17,7 @@ namespace FFXIVRelicTracker._04_SB._03_Elemental
         private IEventAggregator eventAggregator;
         private Character selectedCharacter;
         private ElementalModel elementalModel;
+        private ObservableCollection<string> availableJobs;
         #endregion
 
         #region Constructor
@@ -79,10 +79,10 @@ namespace FFXIVRelicTracker._04_SB._03_Elemental
 
         public ObservableCollection<string> AvailableJobs
         {
-            get { return elementalModel.AvailableJobs; }
+            get { return availableJobs; }
             set
             {
-                elementalModel.AvailableJobs = value;
+                availableJobs = value;
                 OnPropertyChanged(nameof(AvailableJobs));
             }
         }
@@ -223,18 +223,7 @@ namespace FFXIVRelicTracker._04_SB._03_Elemental
         #region Methods
         public void LoadAvailableJobs()
         {
-            if (AvailableJobs == null) { AvailableJobs = new ObservableCollection<string>(); }
-            foreach (SBJob job in selectedCharacter.SBModel.SBJobList)
-            {
-                if (job.Elemental.Progress == BaseProgressClass.States.Completed & AvailableJobs.Contains(job.Name))
-                {
-                    AvailableJobs.Remove(job.Name);
-                }
-                if (job.Elemental.Progress != BaseProgressClass.States.Completed & !AvailableJobs.Contains(job.Name))
-                {
-                    SBInfo.ReloadJobList(AvailableJobs, job.Name);
-                }
-            }
+            AvailableJobs = SBInfo.LoadJobs(AvailableJobs, SelectedCharacter, Name);
             OnPropertyChanged(nameof(FrostedProteanNeeded));
             OnPropertyChanged(nameof(FrostedProteanCount));
             OnPropertyChanged(nameof(IceNeeded));
@@ -296,11 +285,7 @@ namespace FFXIVRelicTracker._04_SB._03_Elemental
         private bool CompleteCan() { return SelectedJob != null; }
         private void CompleteCommand()
         {
-
-            SBJob tempJob = selectedCharacter.SBModel.SBJobList[SBInfo.JobListString.IndexOf(SelectedJob)];
-
-            SBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Elemental, true);
-
+            SBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, Name);
             LoadAvailableJobs();
             OnPropertyChanged(nameof(FrostedProteanCount));
             OnPropertyChanged(nameof(IceCount));

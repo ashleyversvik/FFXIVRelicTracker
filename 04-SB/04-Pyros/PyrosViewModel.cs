@@ -1,5 +1,4 @@
 ﻿using FFXIVRelicTracker._04_SB.SBHelpers;
-using FFXIVRelicTracker.Helpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
@@ -17,6 +16,7 @@ namespace FFXIVRelicTracker._04_SB._04_Pyros
         private IEventAggregator eventAggregator;
         private Character selectedCharacter;
         private PyrosModel pyrosModel;
+        private ObservableCollection<string> availableJobs;
         #endregion
 
         #region Constructor
@@ -78,10 +78,10 @@ namespace FFXIVRelicTracker._04_SB._04_Pyros
 
         public ObservableCollection<string> AvailableJobs
         {
-            get { return pyrosModel.AvailableJobs; }
+            get { return availableJobs; }
             set
             {
-                pyrosModel.AvailableJobs = value;
+                availableJobs = value;
                 OnPropertyChanged(nameof(AvailableJobs));
             }
         }
@@ -212,18 +212,7 @@ namespace FFXIVRelicTracker._04_SB._04_Pyros
         #region Methods
         public void LoadAvailableJobs()
         {
-            if (AvailableJobs == null) { AvailableJobs = new ObservableCollection<string>(); }
-            foreach (SBJob job in selectedCharacter.SBModel.SBJobList)
-            {
-                if (job.Pyros.Progress == BaseProgressClass.States.Completed & AvailableJobs.Contains(job.Name))
-                {
-                    AvailableJobs.Remove(job.Name);
-                }
-                if (job.Pyros.Progress != BaseProgressClass.States.Completed & !AvailableJobs.Contains(job.Name))
-                {
-                    SBInfo.ReloadJobList(AvailableJobs, job.Name);
-                }
-            }
+            AvailableJobs = SBInfo.LoadJobs(AvailableJobs, SelectedCharacter, Name);
             OnPropertyChanged(nameof(PyrosNeeded));
             OnPropertyChanged(nameof(PyrosCount));
             OnPropertyChanged(nameof(FlamesNeeded));
@@ -286,11 +275,7 @@ namespace FFXIVRelicTracker._04_SB._04_Pyros
         private bool CompleteCan() { return SelectedJob != null; }
         private void CompleteCommand()
         {
-
-            SBJob tempJob = selectedCharacter.SBModel.SBJobList[SBInfo.JobListString.IndexOf(SelectedJob)];
-
-            SBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Pyros, true);
-
+            SBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, Name);
             LoadAvailableJobs();
             OnPropertyChanged(nameof(PyrosCount));
             OnPropertyChanged(nameof(FlamesCount));

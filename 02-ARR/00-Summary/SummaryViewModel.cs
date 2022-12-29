@@ -94,9 +94,7 @@ namespace FFXIVRelicTracker._02_ARR._00_Summary
             string[] values = ((string)param).Split(".");
 
             ArrJob tempJob = (ArrJob)SelectedCharacter.ArrModel.GetType().GetProperty(values[0]).GetValue(SelectedCharacter.ArrModel);
-            ArrProgress tempProgress = tempJob.StageList.Find(x => x.Name == values[1]);
-
-            ArrStageCompleter.ProgressClass(SelectedCharacter, tempJob.Name, tempProgress);
+            ArrStageCompleter.ProgressClass(SelectedCharacter, tempJob.Name, values[1]);
         }
 
         public void LoadAvailableJobs()

@@ -11,26 +11,26 @@ namespace FFXIVRelicTracker._05_ShB.ShBHelpers
         public ShBJob(string name)
         {
             this.Name = name;
-            Resistance = new ShBProgress("Resistance");
-            AugmentedResistance = new ShBProgress("AugmentedResistance");
-            Recollection = new ShBProgress("Recollection");
-            LawsOrder = new ShBProgress("LawsOrder");
-            AugmentedLawsOrder = new ShBProgress("AugmentedLawsOrder");
-            Blades = new ShBProgress("Blades");
+            Resistance = false;
+            AugmentedResistance = false;
+            Recollection = false;
+            LawsOrder = false;
+            AugmentedLawsOrder = false;
+            Blades = false;
         }
 
         #endregion
 
         #region Properties
-        public List<ShBProgress> StageList = new List<ShBProgress>();
-        private ShBProgress resistance;
-        private ShBProgress augmentedResistance;
-        private ShBProgress recollection;
-        private ShBProgress lawsOrder;
-        private ShBProgress augmentedLawsOrder;
-        private ShBProgress blades;
+        public List<bool> StageList = new List<bool>();
+        private bool resistance;
+        private bool augmentedResistance;
+        private bool recollection;
+        private bool lawsOrder;
+        private bool augmentedLawsOrder;
+        private bool blades;
 
-        public ShBProgress Resistance
+        public bool Resistance
         {
             get { return resistance; }
             set
@@ -40,7 +40,7 @@ namespace FFXIVRelicTracker._05_ShB.ShBHelpers
             }
         }
 
-        public ShBProgress AugmentedResistance
+        public bool AugmentedResistance
         {
             get { return augmentedResistance; }
             set
@@ -50,7 +50,7 @@ namespace FFXIVRelicTracker._05_ShB.ShBHelpers
             }
         }
 
-        public ShBProgress Recollection
+        public bool Recollection
         {
             get { return recollection; }
             set
@@ -60,7 +60,7 @@ namespace FFXIVRelicTracker._05_ShB.ShBHelpers
             }
         }
 
-        public ShBProgress LawsOrder
+        public bool LawsOrder
         {
             get { return lawsOrder; }
             set
@@ -70,7 +70,7 @@ namespace FFXIVRelicTracker._05_ShB.ShBHelpers
             }
         }
 
-        public ShBProgress AugmentedLawsOrder
+        public bool AugmentedLawsOrder
         {
             get { return augmentedLawsOrder; }
             set
@@ -80,7 +80,7 @@ namespace FFXIVRelicTracker._05_ShB.ShBHelpers
             }
         }
 
-        public ShBProgress Blades
+        public bool Blades
         {
             get { return blades; }
             set
@@ -98,20 +98,19 @@ namespace FFXIVRelicTracker._05_ShB.ShBHelpers
             //Without checking and replacing the Progress lists and objects, the Progress object is null, regardless of the initiator being in the class constructor
             //  or in the field
 
-            List<ShBProgress> tempList = new List<ShBProgress>();
+            List<bool> tempList = new List<bool>();
 
             for (int stageIndex = 0; stageIndex < ShBInfo.StageListString.Count; stageIndex++)
             {
-                ShBProgress tempProgress = null;
-                if (stageIndex < StageList.Count && StageList[stageIndex] != null)
+                bool tempProgress = false;
+                if (stageIndex < StageList.Count)
                 {
                     tempProgress = StageList[stageIndex];
-                    tempProgress.Name = ShBInfo.StageListString[stageIndex];
                     tempList.Add(tempProgress);
                 }
                 else
                 {
-                    tempProgress = new ShBProgress(ShBInfo.StageListString[stageIndex]);
+                    tempProgress = false;
 
                     tempList.Add(tempProgress);
 
@@ -140,6 +139,16 @@ namespace FFXIVRelicTracker._05_ShB.ShBHelpers
             }
 
             StageList = tempList;
+        }
+
+        public void RefreshJob()
+        {
+            Resistance = StageList[0];
+            AugmentedResistance = StageList[1];
+            Recollection = StageList[2];
+            LawsOrder = StageList[3];
+            AugmentedLawsOrder = StageList[4];
+            Blades = StageList[5];
         }
         #endregion
     }

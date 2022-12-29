@@ -1,5 +1,4 @@
 ﻿using FFXIVRelicTracker._03_HW.HWHelpers;
-using FFXIVRelicTracker.Helpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
@@ -17,6 +16,7 @@ namespace FFXIVRelicTracker._03_HW._05_Reconditioned
         private ReconditionedModel reconditionedModel;
         private Character selectedCharacter;
         private IEventAggregator eventAggregator;
+        private ObservableCollection<string> availableJobs;
         #endregion
 
         #region Constructor
@@ -70,10 +70,10 @@ namespace FFXIVRelicTracker._03_HW._05_Reconditioned
 
         public ObservableCollection<string> AvailableJobs
         {
-            get { return reconditionedModel.AvailableJobs; }
+            get { return availableJobs; }
             set
             {
-                reconditionedModel.AvailableJobs = value;
+                availableJobs = value;
                 OnPropertyChanged(nameof(AvailableJobs));
             }
         }
@@ -180,18 +180,7 @@ namespace FFXIVRelicTracker._03_HW._05_Reconditioned
         #region Methods
         public void LoadAvailableJobs()
         {
-            if (AvailableJobs == null) { AvailableJobs = new ObservableCollection<string>(); }
-            foreach (HWJob job in selectedCharacter.HWModel.HWJobList)
-            {
-                if (job.Reconditioned.Progress == BaseProgressClass.States.Completed & AvailableJobs.Contains(job.Name))
-                {
-                    AvailableJobs.Remove(job.Name);
-                }
-                if (job.Reconditioned.Progress != BaseProgressClass.States.Completed & !AvailableJobs.Contains(job.Name))
-                {
-                    HWInfo.ReloadJobList(AvailableJobs, job.Name);
-                }
-            }
+            AvailableJobs = HWInfo.LoadJobs(AvailableJobs, SelectedCharacter, Name);
             OnPropertyChanged(nameof(AvailableJobs));
             OnPropertyChanged(nameof(AnimaWeapon));
             OnPropertyChanged(nameof(ReconditionedWeapon));
@@ -240,11 +229,7 @@ namespace FFXIVRelicTracker._03_HW._05_Reconditioned
         private bool CompleteCan() { return SelectedJob != null; }
         private void CompleteCommand()
         {
-
-            HWJob tempJob = selectedCharacter.HWModel.HWJobList[HWInfo.JobListString.IndexOf(SelectedJob)];
-
-            HWStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Reconditioned, true);
-
+            HWStageCompleter.ProgressClass(selectedCharacter, SelectedJob, Name);
             LoadAvailableJobs();
         }
         #endregion

@@ -1,5 +1,4 @@
 ﻿using FFXIVRelicTracker._05_ShB.ShBHelpers;
-using FFXIVRelicTracker.Helpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
@@ -17,6 +16,7 @@ namespace FFXIVRelicTracker._05_ShB._01_Resistance
         private IEventAggregator eventAggregator;
         private Character selectedCharacter;
         private ResistanceModel resistanceModel;
+        private ObservableCollection<string> availableJobs;
         #endregion
 
         #region Constructor
@@ -96,10 +96,10 @@ namespace FFXIVRelicTracker._05_ShB._01_Resistance
 
         public ObservableCollection<string> AvailableJobs
         {
-            get { return resistanceModel.AvailableJobs; }
+            get { return availableJobs; }
             set
             {
-                resistanceModel.AvailableJobs = value;
+                availableJobs = value;
                 OnPropertyChanged(nameof(AvailableJobs));
             }
         }
@@ -110,18 +110,7 @@ namespace FFXIVRelicTracker._05_ShB._01_Resistance
         #region Methods
         public void LoadAvailableJobs()
         {
-            if (AvailableJobs == null) { AvailableJobs = new ObservableCollection<string>(); }
-            foreach( ShBJob job in selectedCharacter.ShBModel.ShbJobList)
-            {
-                if(job.Resistance.Progress==BaseProgressClass.States.Completed & AvailableJobs.Contains(job.Name))
-                {
-                    AvailableJobs.Remove(job.Name);
-                }
-                if (job.Resistance.Progress != BaseProgressClass.States.Completed & !AvailableJobs.Contains(job.Name))
-                {
-                    ShBInfo.ReloadJobList(AvailableJobs, job.Name);                 
-                }
-            }
+            AvailableJobs = ShBInfo.LoadJobs(AvailableJobs, SelectedCharacter, Name);
             OnPropertyChanged(nameof(CompletedFirstResistance));
             OnPropertyChanged(nameof(NeededScalepowder));
             OnPropertyChanged(nameof(ScalepowderCost));
@@ -151,12 +140,8 @@ namespace FFXIVRelicTracker._05_ShB._01_Resistance
         private void CompleteCommand()
         {
 
-            ShBJob tempJob = selectedCharacter.ShBModel.ShbJobList[ShBInfo.JobListString.IndexOf(SelectedJob)];
-
-            ShBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Resistance, true);
-
+            ShBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, Name);
             LoadAvailableJobs();
-
         }
         #endregion
 

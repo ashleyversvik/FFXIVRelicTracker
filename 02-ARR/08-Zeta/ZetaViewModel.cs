@@ -15,6 +15,7 @@ namespace FFXIVRelicTracker._02_ARR._08_Zeta
         private IEventAggregator iEventAggregator;
         private ZetaModel zetaModel;
         private Character selectedCharacter;
+        private ObservableCollection<string> availableJobs;
         public ZetaViewModel(IEventAggregator iEventAggregator)
         {
             this.iEventAggregator = iEventAggregator;
@@ -56,10 +57,10 @@ namespace FFXIVRelicTracker._02_ARR._08_Zeta
 
         public ObservableCollection<string> AvailableJobs
         {
-            get { return zetaModel.AvailableJobs; }
+            get { return availableJobs; }
             set
             {
-                zetaModel.AvailableJobs = value;
+                availableJobs = value;
                 OnPropertyChanged(nameof(AvailableJobs));
             }
         }
@@ -240,18 +241,7 @@ namespace FFXIVRelicTracker._02_ARR._08_Zeta
         }
         public void LoadAvailableJobs()
         {
-            if (AvailableJobs == null) { AvailableJobs = new ObservableCollection<string>(); }
-            foreach (ArrJob job in selectedCharacter.ArrModel.ArrJobList)
-            {
-                if (job.Zeta.Progress != ArrProgress.States.Completed & !AvailableJobs.Contains(job.Name))
-                {
-                    AvailableJobs.Add(job.Name);
-                }
-                if (job.Zeta.Progress == ArrProgress.States.Completed & AvailableJobs.Contains(job.Name))
-                {
-                    AvailableJobs.Remove(job.Name);
-                }
-            }
+            AvailableJobs = ArrInfo.LoadJobs(AvailableJobs, SelectedCharacter, Name);
         }
         private void ResetBools()
         {
@@ -318,10 +308,7 @@ namespace FFXIVRelicTracker._02_ARR._08_Zeta
         private bool CanComplete() { return SelectedJob != null; }
         private void CompleteCommand()
         {
-
-            ArrJob tempJob = selectedCharacter.ArrModel.ArrJobList[ArrInfo.JobListString.IndexOf(SelectedJob)];
-
-            ArrStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Zeta, true);
+            ArrStageCompleter.ProgressClass(selectedCharacter, SelectedJob, Name);
 
             ResetBools();
             LoadAvailableJobs();

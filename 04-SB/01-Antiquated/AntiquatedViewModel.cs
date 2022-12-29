@@ -1,5 +1,4 @@
 ﻿using FFXIVRelicTracker._04_SB.SBHelpers;
-using FFXIVRelicTracker.Helpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
@@ -16,6 +15,7 @@ namespace FFXIVRelicTracker._04_SB._01_Antiquated
         private IEventAggregator eventAggregator;
         private Character selectedCharacter;
         private AntiquatedModel antiquatedModel;
+        private ObservableCollection<string> availableJobs;
         #endregion
 
         #region Constructor
@@ -76,10 +76,10 @@ namespace FFXIVRelicTracker._04_SB._01_Antiquated
 
         public ObservableCollection<string> AvailableJobs
         {
-            get { return antiquatedModel.AvailableJobs; }
+            get { return availableJobs; }
             set
             {
-                antiquatedModel.AvailableJobs = value;
+                availableJobs = value;
                 OnPropertyChanged(nameof(AvailableJobs));
             }
         }
@@ -89,18 +89,7 @@ namespace FFXIVRelicTracker._04_SB._01_Antiquated
         #region Methods
         public void LoadAvailableJobs()
         {
-            if (AvailableJobs == null) { AvailableJobs = new ObservableCollection<string>(); }
-            foreach( SBJob job in selectedCharacter.SBModel.SBJobList)
-            {
-                if(job.Antiquated.Progress==BaseProgressClass.States.Completed & AvailableJobs.Contains(job.Name))
-                {
-                    AvailableJobs.Remove(job.Name);
-                }
-                if (job.Antiquated.Progress != BaseProgressClass.States.Completed & !AvailableJobs.Contains(job.Name))
-                {
-                    SBInfo.ReloadJobList(AvailableJobs, job.Name);                 
-                }
-            }
+            AvailableJobs = SBInfo.LoadJobs(AvailableJobs, SelectedCharacter, Name);
         }
         #endregion
 
@@ -126,13 +115,8 @@ namespace FFXIVRelicTracker._04_SB._01_Antiquated
         private bool CompleteCan() { return SelectedJob != null; }
         private void CompleteCommand()
         {
-
-            SBJob tempJob = selectedCharacter.SBModel.SBJobList[SBInfo.JobListString.IndexOf(SelectedJob)];
-
-            SBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Antiquated, true);
-
+            SBStageCompleter.ProgressClass(SelectedCharacter, SelectedJob, Name);
             LoadAvailableJobs();
-
         }
         #endregion
 

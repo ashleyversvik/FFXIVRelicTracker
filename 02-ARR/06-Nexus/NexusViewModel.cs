@@ -14,6 +14,7 @@ namespace FFXIVRelicTracker._02_ARR._06_Nexus
         private IEventAggregator iEventAggregator;
         private Character selectedCharacter;
         private NexusModel nexusModel;
+        private ObservableCollection<string> availableJobs;
 
         public NexusViewModel(IEventAggregator iEventAggregator)
         {
@@ -58,10 +59,10 @@ namespace FFXIVRelicTracker._02_ARR._06_Nexus
 
         public ObservableCollection<string> AvailableJobs
         {
-            get { return NexusModel.AvailableJobs; }
+            get { return availableJobs; }
             set
             {
-                NexusModel.AvailableJobs = value;
+                availableJobs = value;
                 OnPropertyChanged(nameof(AvailableJobs));
             }
         }
@@ -124,18 +125,7 @@ namespace FFXIVRelicTracker._02_ARR._06_Nexus
         }
         public void LoadAvailableJobs()
         {
-            if (AvailableJobs == null) { AvailableJobs = new ObservableCollection<string>(); }
-            foreach (ArrJob job in selectedCharacter.ArrModel.ArrJobList)
-            {
-                if (job.Nexus.Progress != ArrProgress.States.Completed & !AvailableJobs.Contains(job.Name))
-                {
-                    AvailableJobs.Add(job.Name);
-                }
-                if (job.Nexus.Progress == ArrProgress.States.Completed & AvailableJobs.Contains(job.Name))
-                {
-                    AvailableJobs.Remove(job.Name);
-                }
-            }
+            AvailableJobs = ArrInfo.LoadJobs(AvailableJobs, SelectedCharacter, Name);
         }
         #endregion
 
@@ -187,15 +177,9 @@ namespace FFXIVRelicTracker._02_ARR._06_Nexus
         private bool CanComplete() { return SelectedJob != null; }
         private void CompleteCommand()
         {
-
-            ArrJob tempJob = selectedCharacter.ArrModel.ArrJobList[ArrInfo.JobListString.IndexOf(SelectedJob)];
-
-            ArrStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Nexus, true);
-
+            ArrStageCompleter.ProgressClass(selectedCharacter, SelectedJob, Name);
             CurrentLight = 0;
             LoadAvailableJobs();
-
-
         }
 
         #endregion

@@ -110,9 +110,7 @@ namespace FFXIVRelicTracker._03_HW._00_Summary
             string[] values = ((string)param).Split(".");
 
             HWJob tempJob = (HWJob)SelectedCharacter.HWModel.GetType().GetProperty(values[0]).GetValue(SelectedCharacter.HWModel);
-            HWProgress tempProgress = tempJob.StageList.Find(x => x.Name == values[1]);
-
-            HWStageCompleter.ProgressClass(SelectedCharacter, tempJob.Name, tempProgress);
+            HWStageCompleter.ProgressClass(SelectedCharacter, tempJob.Name, values[1]);
 
         }
         #endregion

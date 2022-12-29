@@ -1,5 +1,4 @@
 ﻿using FFXIVRelicTracker._03_HW.HWHelpers;
-using FFXIVRelicTracker.Helpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
@@ -17,6 +16,7 @@ namespace FFXIVRelicTracker._03_HW._04_Hyperconductive
         private HyperconductiveModel hyperconductiveModel;
         private Character selectedCharacter;
         private IEventAggregator eventAggregator;
+        private ObservableCollection<string> availableJobs;
         #endregion
 
         #region Constructor
@@ -68,10 +68,10 @@ namespace FFXIVRelicTracker._03_HW._04_Hyperconductive
 
         public ObservableCollection<string> AvailableJobs
         {
-            get { return HyperconductiveModel.AvailableJobs; }
+            get { return availableJobs; }
             set
             {
-                HyperconductiveModel.AvailableJobs = value;
+                availableJobs = value;
                 OnPropertyChanged(nameof(AvailableJobs));
             }
         }
@@ -119,18 +119,7 @@ namespace FFXIVRelicTracker._03_HW._04_Hyperconductive
 
         public void LoadAvailableJobs()
         {
-            if (AvailableJobs == null) { AvailableJobs = new ObservableCollection<string>(); }
-            foreach (HWJob job in selectedCharacter.HWModel.HWJobList)
-            {
-                if (job.Hyperconductive.Progress == BaseProgressClass.States.Completed & AvailableJobs.Contains(job.Name))
-                {
-                    AvailableJobs.Remove(job.Name);
-                }
-                if (job.Hyperconductive.Progress != BaseProgressClass.States.Completed & !AvailableJobs.Contains(job.Name))
-                {
-                    HWInfo.ReloadJobList(AvailableJobs, job.Name);
-                }
-            }
+            AvailableJobs = HWInfo.LoadJobs(AvailableJobs, SelectedCharacter, Name);
             OnPropertyChanged(nameof(AvailableJobs));
             OilChange();
         }
@@ -158,11 +147,7 @@ namespace FFXIVRelicTracker._03_HW._04_Hyperconductive
         private bool CompleteCan() { return SelectedJob != null; }
         private void CompleteCommand()
         {
-
-            HWJob tempJob = selectedCharacter.HWModel.HWJobList[HWInfo.JobListString.IndexOf(SelectedJob)];
-
-            HWStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Hyperconductive, true);
-
+            HWStageCompleter.ProgressClass(SelectedCharacter, SelectedJob, Name);
             LoadAvailableJobs();
         }
         #endregion

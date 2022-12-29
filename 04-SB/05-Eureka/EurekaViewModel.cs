@@ -1,5 +1,4 @@
 ﻿using FFXIVRelicTracker._04_SB.SBHelpers;
-using FFXIVRelicTracker.Helpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
@@ -17,6 +16,7 @@ namespace FFXIVRelicTracker._04_SB._05_Eureka
         private IEventAggregator eventAggregator;
         private Character selectedCharacter;
         private EurekaModel eurekaModel;
+        private ObservableCollection<string> availableJobs;
         #endregion
 
         #region Constructor
@@ -78,10 +78,10 @@ namespace FFXIVRelicTracker._04_SB._05_Eureka
 
         public ObservableCollection<string> AvailableJobs
         {
-            get { return eurekaModel.AvailableJobs; }
+            get { return availableJobs; }
             set
             {
-                eurekaModel.AvailableJobs = value;
+                availableJobs = value;
                 OnPropertyChanged(nameof(AvailableJobs));
             }
         }
@@ -173,18 +173,7 @@ namespace FFXIVRelicTracker._04_SB._05_Eureka
         #region Methods
         public void LoadAvailableJobs()
         {
-            if (AvailableJobs == null) { AvailableJobs = new ObservableCollection<string>(); }
-            foreach (SBJob job in selectedCharacter.SBModel.SBJobList)
-            {
-                if (job.Eureka.Progress == BaseProgressClass.States.Completed & AvailableJobs.Contains(job.Name))
-                {
-                    AvailableJobs.Remove(job.Name);
-                }
-                if (job.Eureka.Progress != BaseProgressClass.States.Completed & !AvailableJobs.Contains(job.Name))
-                {
-                    SBInfo.ReloadJobList(AvailableJobs, job.Name);
-                }
-            }
+            AvailableJobs = SBInfo.LoadJobs(AvailableJobs, SelectedCharacter, Name);
             OnPropertyChanged(nameof(HydatosNeeded));
             OnPropertyChanged(nameof(HydatosCount));
             OnPropertyChanged(nameof(ScaleNeeded));
@@ -246,10 +235,7 @@ namespace FFXIVRelicTracker._04_SB._05_Eureka
         private bool CompleteCan() { return SelectedJob != null; }
         private void CompleteCommand()
         {
-
-            SBJob tempJob = selectedCharacter.SBModel.SBJobList[SBInfo.JobListString.IndexOf(SelectedJob)];
-
-            SBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Eureka, true);
+            SBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, Name);
 
             LoadAvailableJobs();
             OnPropertyChanged(nameof(HydatosCount));

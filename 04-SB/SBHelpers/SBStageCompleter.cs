@@ -4,67 +4,45 @@ namespace FFXIVRelicTracker._04_SB.SBHelpers
 {
     public static class SBStageCompleter
     {
-        public static void ProgressClass(Character character, string job, SBProgress SBProgress, bool CompleteBool = false)
+        public static void ProgressClass(Character character, string job, string stage)
         {
-            int StageIndex = SBInfo.StageListString.IndexOf(SBProgress.Name);
+            int StageIndex = SBInfo.StageListString.IndexOf(stage);
             int JobIndex = SBInfo.JobListString.IndexOf(job);
 
             SBJob tempJob = character.SBModel.SBJobList[JobIndex];
+            var progress = tempJob.StageList[StageIndex];
 
-            if (SBProgress.Progress == SBProgress.States.NA)
+            if (!progress)
             {
                 CompletePreviousStages(character, tempJob, StageIndex);
             }
-            else if (SBProgress.Progress == SBProgress.States.Completed)
+            else if (progress)
             {
                 InCompleteFollowingStages(tempJob, StageIndex);
+                tempJob.RefreshJob();
                 return;
             }
 
-            if (SBProgress.Progress == SBProgress.States.Initiated | CompleteBool)
-            {
-                SBProgress.Progress = SBProgress.States.Completed;
-                AlterCounts(character, StageIndex);
-            }
-            else
-            {
-                IncompleteOtherJobs(character, StageIndex);
-                switch (StageIndex)
-                {
-                    default:
-                        SBProgress.Progress = SBProgress.States.Completed;
-                        break;
-                }
-                AlterCounts(character, StageIndex);
-            }
+            tempJob.StageList[StageIndex] = true;
+            tempJob.RefreshJob();
+            AlterCounts(character, StageIndex);
+        }
 
-        }
-        private static void IncompleteOtherJobs(Character SelectedCharacter, int StageIndex)
-        {
-            foreach (SBJob Job in SelectedCharacter.SBModel.SBJobList)
-            {
-                SBProgress stage = Job.StageList[StageIndex];
-                if (stage.Progress == SBProgress.States.Initiated)
-                {
-                    stage.Progress = SBProgress.States.NA;
-                }
-            }
-        }
         private static void InCompleteFollowingStages(SBJob tempStage, int stageIndex)
         {
             for (int i = stageIndex; i < tempStage.StageList.Count; i++)
             {
-                tempStage.StageList[i].Progress = SBProgress.States.NA;
+                tempStage.StageList[i] = false;
             }
         }
         private static void CompletePreviousStages(Character character, SBJob tempStage, int stageIndex)
         {
             for (int i = 0; i < stageIndex; i++)
             {
-                if (tempStage.StageList[i].Progress != SBProgress.States.Completed)
+                if (!tempStage.StageList[i])
                 {
                     AlterCounts(character, i);
-                    tempStage.StageList[i].Progress = SBProgress.States.Completed;
+                    tempStage.StageList[i] = true;
                 }
             }
         }

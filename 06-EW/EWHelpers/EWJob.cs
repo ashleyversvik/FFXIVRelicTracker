@@ -14,16 +14,16 @@ namespace FFXIVRelicTracker._06_EW.EWHelpers
         public EWJob(string name)
         {
             this.Name = name;
-            Manderville = new EWProgress("Manderville");
+            Manderville = false;
         }
 
         #endregion
 
         #region Properties
-        public List<EWProgress> StageList = new List<EWProgress>();
-        private EWProgress manderville;
+        public List<bool> StageList = new List<bool>();
+        private bool manderville;
 
-        public EWProgress Manderville
+        public bool Manderville
         {
             get { return manderville; }
             set
@@ -38,38 +38,36 @@ namespace FFXIVRelicTracker._06_EW.EWHelpers
         #region Methods
         public void CheckObject()
         {
-            //This method is used to fix the situation where an existing character is loaded and a new stage was added since the character was initially created
-            //Without checking and replacing the Progress lists and objects, the Progress object is null, regardless of the initiator being in the class constructor
-            //  or in the field
-
-            List<EWProgress> tempList = new List<EWProgress>();
+            List<bool> tempList = new List<bool>();
 
             for (int stageIndex = 0; stageIndex < EWInfo.StageListString.Count; stageIndex++)
             {
-                EWProgress tempProgress = null;
-                if (stageIndex < StageList.Count && StageList[stageIndex] != null)
+                bool tempProgress = false;
+                if (stageIndex < StageList.Count)
                 {
                     tempProgress = StageList[stageIndex];
-                    tempProgress.Name = EWInfo.StageListString[stageIndex];
                     tempList.Add(tempProgress);
                 }
                 else
                 {
-                    tempProgress = new EWProgress(EWInfo.StageListString[stageIndex]);
-
+                    tempProgress = false;
                     tempList.Add(tempProgress);
+                }
+                switch (stageIndex)
+                {
+                    case 0:
+                        Manderville = tempProgress;
+                        break;
 
-                    switch (stageIndex)
-                    {
-                        case 0:
-                            Manderville = tempProgress;
-                            break;
-
-                    }
                 }
             }
 
             StageList = tempList;
+        }
+
+        public void RefreshJob()
+        {
+            Manderville = StageList[0];
         }
         #endregion
     }

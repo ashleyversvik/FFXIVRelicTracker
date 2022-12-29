@@ -1,5 +1,4 @@
 ﻿using FFXIVRelicTracker._04_SB.SBHelpers;
-using FFXIVRelicTracker.Helpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
@@ -17,6 +16,7 @@ namespace FFXIVRelicTracker._04_SB._02_Anemos
         private IEventAggregator eventAggregator;
         private Character selectedCharacter;
         private AnemosModel anemosModel;
+        private ObservableCollection<string> availableJobs;
         #endregion
 
         #region Constructor
@@ -78,10 +78,10 @@ namespace FFXIVRelicTracker._04_SB._02_Anemos
 
         public ObservableCollection<string> AvailableJobs
         {
-            get { return anemosModel.AvailableJobs; }
+            get { return availableJobs; }
             set
             {
-                anemosModel.AvailableJobs = value;
+                availableJobs = value;
                 OnPropertyChanged(nameof(AvailableJobs));
             }
         }
@@ -192,18 +192,7 @@ namespace FFXIVRelicTracker._04_SB._02_Anemos
         #region Methods
         public void LoadAvailableJobs()
         {
-            if (AvailableJobs == null) { AvailableJobs = new ObservableCollection<string>(); }
-            foreach (SBJob job in selectedCharacter.SBModel.SBJobList)
-            {
-                if (job.Anemos.Progress == BaseProgressClass.States.Completed & AvailableJobs.Contains(job.Name))
-                {
-                    AvailableJobs.Remove(job.Name);
-                }
-                if (job.Anemos.Progress != BaseProgressClass.States.Completed & !AvailableJobs.Contains(job.Name))
-                {
-                    SBInfo.ReloadJobList(AvailableJobs, job.Name);
-                }
-            }
+            AvailableJobs = SBInfo.LoadJobs(AvailableJobs, SelectedCharacter, Name);
             OnPropertyChanged(nameof(ProteanNeeded));
             OnPropertyChanged(nameof(ProteanCount));
             OnPropertyChanged(nameof(FeatherNeeded));
@@ -266,11 +255,7 @@ namespace FFXIVRelicTracker._04_SB._02_Anemos
         private bool CompleteCan() { return SelectedJob != null; }
         private void CompleteCommand()
         {
-
-            SBJob tempJob = selectedCharacter.SBModel.SBJobList[SBInfo.JobListString.IndexOf(SelectedJob)];
-
-            SBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Anemos, true);
-
+            SBStageCompleter.ProgressClass(SelectedCharacter, SelectedJob, Name);
             LoadAvailableJobs();
             OnPropertyChanged(nameof(ProteanCount));
             OnPropertyChanged(nameof(FeatherCount)); 

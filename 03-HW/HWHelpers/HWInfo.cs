@@ -37,72 +37,25 @@ namespace FFXIVRelicTracker._03_HW.HWHelpers
         };
 
         #region Methods
-        #region CompleteStages
-        public static void ProgressClass(Character character, string job, HWProgress hwProgress, bool CompleteBool = false)
+        public static ObservableCollection<string> LoadJobs(ObservableCollection<string> jobs, Character selectedCharacter, string stage)
         {
-            int StageIndex = HWInfo.StageListString.IndexOf(hwProgress.Name);
-            int JobIndex = HWInfo.JobListString.IndexOf(job);
-
-            HWJob tempJob = character.HWModel.HWJobList[JobIndex];
-
-            if (hwProgress.Progress == HWProgress.States.NA)
+            var AvailableJobs = jobs;
+            int StageIndex = HWInfo.StageListString.IndexOf(stage);
+            if (jobs == null) AvailableJobs = new ObservableCollection<string>();
+            foreach (HWJob job in selectedCharacter.HWModel.HWJobList)
             {
-                CompletePreviousStages(tempJob, StageIndex);
-            }
-            else if (hwProgress.Progress == HWProgress.States.Completed)
-            {
-                InCompleteFollowingStages(tempJob, StageIndex);
-                return;
-            }
-            if (hwProgress.Progress == HWProgress.States.Initiated | CompleteBool)
-            {
-                hwProgress.Progress = HWProgress.States.Completed;
-            }
-            else
-            {
-                IncompleteOtherJobs(character, StageIndex);
-                switch (StageIndex)
+                if (!job.StageList[StageIndex] & !AvailableJobs.Contains(job.Name))
                 {
-                    default:
-                        hwProgress.Progress = HWProgress.States.Completed;
-                        break;
-                        //case 1:
-                        //case 2:
-                        //    hwProgress.Progress++;
-                        //    break;
+                    HWInfo.ReloadJobList(AvailableJobs, job.Name);
+                }
+                if (job.StageList[StageIndex] & AvailableJobs.Contains(job.Name))
+                {
+                    AvailableJobs.Remove(job.Name);
                 }
             }
+            return AvailableJobs;
         }
-        private static void IncompleteOtherJobs(Character SelectedCharacter, int StageIndex)
-        {
-            foreach (HWJob Job in SelectedCharacter.HWModel.HWJobList)
-            {
-                HWProgress stage = Job.StageList[StageIndex];
-                if (stage.Progress == HWProgress.States.Initiated)
-                {
-                    stage.Progress = HWProgress.States.NA;
-                }
-            }
-        }
-        private static void InCompleteFollowingStages(HWJob tempStage, int stageIndex)
-        {
-            for (int i = stageIndex; i < tempStage.StageList.Count; i++)
-            {
-                tempStage.StageList[i].Progress = HWProgress.States.NA;
-            }
-        }
-        private static void CompletePreviousStages(HWJob tempStage, int stageIndex)
-        {
-            for (int i = 0; i < stageIndex; i++)
-            {
-                tempStage.StageList[i].Progress = HWProgress.States.Completed;
-            }
-        }
-
-        #endregion
-
-
-        public static void ReloadJobList(ObservableCollection<string> tempList, string jobName)
+        private static void ReloadJobList(ObservableCollection<string> tempList, string jobName)
         {
             //This method should be called from LoadAvailableJobs methods to add jobs back into the list to preserve their order
 

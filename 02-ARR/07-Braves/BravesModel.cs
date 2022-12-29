@@ -14,8 +14,5 @@ namespace FFXIVRelicTracker._02_ARR._07_Braves
         public bool FourthQuest{ get; set;}
         public bool ThirdQuest{ get; set;}
         public bool SecondQuest{ get; set;}
-        public int RemainingGil{ get; set;}
-        public int RemainingSeals{ get; set;}
-        public int RemainingPoetics{ get; set;}
     }
 }

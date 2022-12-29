@@ -88,117 +88,117 @@
                 <TextBlock Style="{StaticResource RotateTextBlock}" Text="Complete"         Margin="0,5" Grid.Row="8" Grid.Column="0"/>
                 <TextBlock Style="{StaticResource RotateTextBlock}" Text="Lux"              Margin="0,5" Grid.Row="9" Grid.Column="0"/>
 
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="01" Content="{Binding Path=PLD.Animated.Progress}" Tag="PLD.Animated" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="02" Content="{Binding Path=WAR.Animated.Progress}" Tag="WAR.Animated" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="03" Content="{Binding Path=DRK.Animated.Progress}" Tag="DRK.Animated" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="04" Content="{Binding Path=WHM.Animated.Progress}" Tag="WHM.Animated" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="05" Content="{Binding Path=SCH.Animated.Progress}" Tag="SCH.Animated" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="06" Content="{Binding Path=AST.Animated.Progress}" Tag="AST.Animated" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="07" Content="{Binding Path=MNK.Animated.Progress}" Tag="MNK.Animated" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="08" Content="{Binding Path=DRG.Animated.Progress}" Tag="DRG.Animated" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="09" Content="{Binding Path=NIN.Animated.Progress}" Tag="NIN.Animated" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="10" Content="{Binding Path=BRD.Animated.Progress}" Tag="BRD.Animated" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="11" Content="{Binding Path=MCH.Animated.Progress}" Tag="MCH.Animated" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="12" Content="{Binding Path=BLM.Animated.Progress}" Tag="BLM.Animated" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="13" Content="{Binding Path=SMN.Animated.Progress}" Tag="SMN.Animated" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="01" Content="{Binding Path=PLD.Animated, Converter={StaticResource BooleanToCompleteText}}" Tag="PLD.Animated" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="02" Content="{Binding Path=WAR.Animated, Converter={StaticResource BooleanToCompleteText}}" Tag="WAR.Animated" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="03" Content="{Binding Path=DRK.Animated, Converter={StaticResource BooleanToCompleteText}}" Tag="DRK.Animated" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="04" Content="{Binding Path=WHM.Animated, Converter={StaticResource BooleanToCompleteText}}" Tag="WHM.Animated" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="05" Content="{Binding Path=SCH.Animated, Converter={StaticResource BooleanToCompleteText}}" Tag="SCH.Animated" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="06" Content="{Binding Path=AST.Animated, Converter={StaticResource BooleanToCompleteText}}" Tag="AST.Animated" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="07" Content="{Binding Path=MNK.Animated, Converter={StaticResource BooleanToCompleteText}}" Tag="MNK.Animated" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="08" Content="{Binding Path=DRG.Animated, Converter={StaticResource BooleanToCompleteText}}" Tag="DRG.Animated" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="09" Content="{Binding Path=NIN.Animated, Converter={StaticResource BooleanToCompleteText}}" Tag="NIN.Animated" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="10" Content="{Binding Path=BRD.Animated, Converter={StaticResource BooleanToCompleteText}}" Tag="BRD.Animated" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="11" Content="{Binding Path=MCH.Animated, Converter={StaticResource BooleanToCompleteText}}" Tag="MCH.Animated" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="12" Content="{Binding Path=BLM.Animated, Converter={StaticResource BooleanToCompleteText}}" Tag="BLM.Animated" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="13" Content="{Binding Path=SMN.Animated, Converter={StaticResource BooleanToCompleteText}}" Tag="SMN.Animated" />
 
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="01" Content="{Binding Path=PLD.Awoken.Progress}" Tag="PLD.Awoken" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="02" Content="{Binding Path=WAR.Awoken.Progress}" Tag="WAR.Awoken" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="03" Content="{Binding Path=DRK.Awoken.Progress}" Tag="DRK.Awoken" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="04" Content="{Binding Path=WHM.Awoken.Progress}" Tag="WHM.Awoken" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="05" Content="{Binding Path=SCH.Awoken.Progress}" Tag="SCH.Awoken" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="06" Content="{Binding Path=AST.Awoken.Progress}" Tag="AST.Awoken" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="07" Content="{Binding Path=MNK.Awoken.Progress}" Tag="MNK.Awoken" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="08" Content="{Binding Path=DRG.Awoken.Progress}" Tag="DRG.Awoken" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="09" Content="{Binding Path=NIN.Awoken.Progress}" Tag="NIN.Awoken" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="10" Content="{Binding Path=BRD.Awoken.Progress}" Tag="BRD.Awoken" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="11" Content="{Binding Path=MCH.Awoken.Progress}" Tag="MCH.Awoken" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="12" Content="{Binding Path=BLM.Awoken.Progress}" Tag="BLM.Awoken" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="13" Content="{Binding Path=SMN.Awoken.Progress}" Tag="SMN.Awoken" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="01" Content="{Binding Path=PLD.Awoken, Converter={StaticResource BooleanToCompleteText}}" Tag="PLD.Awoken" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="02" Content="{Binding Path=WAR.Awoken, Converter={StaticResource BooleanToCompleteText}}" Tag="WAR.Awoken" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="03" Content="{Binding Path=DRK.Awoken, Converter={StaticResource BooleanToCompleteText}}" Tag="DRK.Awoken" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="04" Content="{Binding Path=WHM.Awoken, Converter={StaticResource BooleanToCompleteText}}" Tag="WHM.Awoken" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="05" Content="{Binding Path=SCH.Awoken, Converter={StaticResource BooleanToCompleteText}}" Tag="SCH.Awoken" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="06" Content="{Binding Path=AST.Awoken, Converter={StaticResource BooleanToCompleteText}}" Tag="AST.Awoken" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="07" Content="{Binding Path=MNK.Awoken, Converter={StaticResource BooleanToCompleteText}}" Tag="MNK.Awoken" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="08" Content="{Binding Path=DRG.Awoken, Converter={StaticResource BooleanToCompleteText}}" Tag="DRG.Awoken" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="09" Content="{Binding Path=NIN.Awoken, Converter={StaticResource BooleanToCompleteText}}" Tag="NIN.Awoken" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="10" Content="{Binding Path=BRD.Awoken, Converter={StaticResource BooleanToCompleteText}}" Tag="BRD.Awoken" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="11" Content="{Binding Path=MCH.Awoken, Converter={StaticResource BooleanToCompleteText}}" Tag="MCH.Awoken" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="12" Content="{Binding Path=BLM.Awoken, Converter={StaticResource BooleanToCompleteText}}" Tag="BLM.Awoken" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="13" Content="{Binding Path=SMN.Awoken, Converter={StaticResource BooleanToCompleteText}}" Tag="SMN.Awoken" />
 
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="01" Content="{Binding Path=PLD.Anima.Progress}" Tag="PLD.Anima" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="02" Content="{Binding Path=WAR.Anima.Progress}" Tag="WAR.Anima" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="03" Content="{Binding Path=DRK.Anima.Progress}" Tag="DRK.Anima" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="04" Content="{Binding Path=WHM.Anima.Progress}" Tag="WHM.Anima" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="05" Content="{Binding Path=SCH.Anima.Progress}" Tag="SCH.Anima" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="06" Content="{Binding Path=AST.Anima.Progress}" Tag="AST.Anima" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="07" Content="{Binding Path=MNK.Anima.Progress}" Tag="MNK.Anima" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="08" Content="{Binding Path=DRG.Anima.Progress}" Tag="DRG.Anima" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="09" Content="{Binding Path=NIN.Anima.Progress}" Tag="NIN.Anima" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="10" Content="{Binding Path=BRD.Anima.Progress}" Tag="BRD.Anima" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="11" Content="{Binding Path=MCH.Anima.Progress}" Tag="MCH.Anima" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="12" Content="{Binding Path=BLM.Anima.Progress}" Tag="BLM.Anima" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="13" Content="{Binding Path=SMN.Anima.Progress}" Tag="SMN.Anima" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="01" Content="{Binding Path=PLD.Anima, Converter={StaticResource BooleanToCompleteText}}" Tag="PLD.Anima" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="02" Content="{Binding Path=WAR.Anima, Converter={StaticResource BooleanToCompleteText}}" Tag="WAR.Anima" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="03" Content="{Binding Path=DRK.Anima, Converter={StaticResource BooleanToCompleteText}}" Tag="DRK.Anima" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="04" Content="{Binding Path=WHM.Anima, Converter={StaticResource BooleanToCompleteText}}" Tag="WHM.Anima" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="05" Content="{Binding Path=SCH.Anima, Converter={StaticResource BooleanToCompleteText}}" Tag="SCH.Anima" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="06" Content="{Binding Path=AST.Anima, Converter={StaticResource BooleanToCompleteText}}" Tag="AST.Anima" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="07" Content="{Binding Path=MNK.Anima, Converter={StaticResource BooleanToCompleteText}}" Tag="MNK.Anima" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="08" Content="{Binding Path=DRG.Anima, Converter={StaticResource BooleanToCompleteText}}" Tag="DRG.Anima" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="09" Content="{Binding Path=NIN.Anima, Converter={StaticResource BooleanToCompleteText}}" Tag="NIN.Anima" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="10" Content="{Binding Path=BRD.Anima, Converter={StaticResource BooleanToCompleteText}}" Tag="BRD.Anima" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="11" Content="{Binding Path=MCH.Anima, Converter={StaticResource BooleanToCompleteText}}" Tag="MCH.Anima" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="12" Content="{Binding Path=BLM.Anima, Converter={StaticResource BooleanToCompleteText}}" Tag="BLM.Anima" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="13" Content="{Binding Path=SMN.Anima, Converter={StaticResource BooleanToCompleteText}}" Tag="SMN.Anima" />
 
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="01" Content="{Binding Path=PLD.Hyperconductive.Progress}" Tag="PLD.Hyperconductive" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="02" Content="{Binding Path=WAR.Hyperconductive.Progress}" Tag="WAR.Hyperconductive" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="03" Content="{Binding Path=DRK.Hyperconductive.Progress}" Tag="DRK.Hyperconductive" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="04" Content="{Binding Path=WHM.Hyperconductive.Progress}" Tag="WHM.Hyperconductive" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="05" Content="{Binding Path=SCH.Hyperconductive.Progress}" Tag="SCH.Hyperconductive" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="06" Content="{Binding Path=AST.Hyperconductive.Progress}" Tag="AST.Hyperconductive" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="07" Content="{Binding Path=MNK.Hyperconductive.Progress}" Tag="MNK.Hyperconductive" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="08" Content="{Binding Path=DRG.Hyperconductive.Progress}" Tag="DRG.Hyperconductive" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="09" Content="{Binding Path=NIN.Hyperconductive.Progress}" Tag="NIN.Hyperconductive" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="10" Content="{Binding Path=BRD.Hyperconductive.Progress}" Tag="BRD.Hyperconductive" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="11" Content="{Binding Path=MCH.Hyperconductive.Progress}" Tag="MCH.Hyperconductive" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="12" Content="{Binding Path=BLM.Hyperconductive.Progress}" Tag="BLM.Hyperconductive" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="13" Content="{Binding Path=SMN.Hyperconductive.Progress}" Tag="SMN.Hyperconductive" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="01" Content="{Binding Path=PLD.Hyperconductive, Converter={StaticResource BooleanToCompleteText}}" Tag="PLD.Hyperconductive" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="02" Content="{Binding Path=WAR.Hyperconductive, Converter={StaticResource BooleanToCompleteText}}" Tag="WAR.Hyperconductive" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="03" Content="{Binding Path=DRK.Hyperconductive, Converter={StaticResource BooleanToCompleteText}}" Tag="DRK.Hyperconductive" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="04" Content="{Binding Path=WHM.Hyperconductive, Converter={StaticResource BooleanToCompleteText}}" Tag="WHM.Hyperconductive" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="05" Content="{Binding Path=SCH.Hyperconductive, Converter={StaticResource BooleanToCompleteText}}" Tag="SCH.Hyperconductive" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="06" Content="{Binding Path=AST.Hyperconductive, Converter={StaticResource BooleanToCompleteText}}" Tag="AST.Hyperconductive" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="07" Content="{Binding Path=MNK.Hyperconductive, Converter={StaticResource BooleanToCompleteText}}" Tag="MNK.Hyperconductive" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="08" Content="{Binding Path=DRG.Hyperconductive, Converter={StaticResource BooleanToCompleteText}}" Tag="DRG.Hyperconductive" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="09" Content="{Binding Path=NIN.Hyperconductive, Converter={StaticResource BooleanToCompleteText}}" Tag="NIN.Hyperconductive" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="10" Content="{Binding Path=BRD.Hyperconductive, Converter={StaticResource BooleanToCompleteText}}" Tag="BRD.Hyperconductive" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="11" Content="{Binding Path=MCH.Hyperconductive, Converter={StaticResource BooleanToCompleteText}}" Tag="MCH.Hyperconductive" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="12" Content="{Binding Path=BLM.Hyperconductive, Converter={StaticResource BooleanToCompleteText}}" Tag="BLM.Hyperconductive" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="13" Content="{Binding Path=SMN.Hyperconductive, Converter={StaticResource BooleanToCompleteText}}" Tag="SMN.Hyperconductive" />
 
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="01" Content="{Binding Path=PLD.Reconditioned.Progress}" Tag="PLD.Reconditioned" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="02" Content="{Binding Path=WAR.Reconditioned.Progress}" Tag="WAR.Reconditioned" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="03" Content="{Binding Path=DRK.Reconditioned.Progress}" Tag="DRK.Reconditioned" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="04" Content="{Binding Path=WHM.Reconditioned.Progress}" Tag="WHM.Reconditioned" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="05" Content="{Binding Path=SCH.Reconditioned.Progress}" Tag="SCH.Reconditioned" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="06" Content="{Binding Path=AST.Reconditioned.Progress}" Tag="AST.Reconditioned" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="07" Content="{Binding Path=MNK.Reconditioned.Progress}" Tag="MNK.Reconditioned" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="08" Content="{Binding Path=DRG.Reconditioned.Progress}" Tag="DRG.Reconditioned" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="09" Content="{Binding Path=NIN.Reconditioned.Progress}" Tag="NIN.Reconditioned" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="10" Content="{Binding Path=BRD.Reconditioned.Progress}" Tag="BRD.Reconditioned" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="11" Content="{Binding Path=MCH.Reconditioned.Progress}" Tag="MCH.Reconditioned" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="12" Content="{Binding Path=BLM.Reconditioned.Progress}" Tag="BLM.Reconditioned" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="13" Content="{Binding Path=SMN.Reconditioned.Progress}" Tag="SMN.Reconditioned" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="01" Content="{Binding Path=PLD.Reconditioned, Converter={StaticResource BooleanToCompleteText}}" Tag="PLD.Reconditioned" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="02" Content="{Binding Path=WAR.Reconditioned, Converter={StaticResource BooleanToCompleteText}}" Tag="WAR.Reconditioned" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="03" Content="{Binding Path=DRK.Reconditioned, Converter={StaticResource BooleanToCompleteText}}" Tag="DRK.Reconditioned" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="04" Content="{Binding Path=WHM.Reconditioned, Converter={StaticResource BooleanToCompleteText}}" Tag="WHM.Reconditioned" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="05" Content="{Binding Path=SCH.Reconditioned, Converter={StaticResource BooleanToCompleteText}}" Tag="SCH.Reconditioned" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="06" Content="{Binding Path=AST.Reconditioned, Converter={StaticResource BooleanToCompleteText}}" Tag="AST.Reconditioned" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="07" Content="{Binding Path=MNK.Reconditioned, Converter={StaticResource BooleanToCompleteText}}" Tag="MNK.Reconditioned" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="08" Content="{Binding Path=DRG.Reconditioned, Converter={StaticResource BooleanToCompleteText}}" Tag="DRG.Reconditioned" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="09" Content="{Binding Path=NIN.Reconditioned, Converter={StaticResource BooleanToCompleteText}}" Tag="NIN.Reconditioned" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="10" Content="{Binding Path=BRD.Reconditioned, Converter={StaticResource BooleanToCompleteText}}" Tag="BRD.Reconditioned" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="11" Content="{Binding Path=MCH.Reconditioned, Converter={StaticResource BooleanToCompleteText}}" Tag="MCH.Reconditioned" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="12" Content="{Binding Path=BLM.Reconditioned, Converter={StaticResource BooleanToCompleteText}}" Tag="BLM.Reconditioned" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="13" Content="{Binding Path=SMN.Reconditioned, Converter={StaticResource BooleanToCompleteText}}" Tag="SMN.Reconditioned" />
 
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="01" Content="{Binding Path=PLD.Sharpened.Progress}" Tag="PLD.Sharpened" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="02" Content="{Binding Path=WAR.Sharpened.Progress}" Tag="WAR.Sharpened" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="03" Content="{Binding Path=DRK.Sharpened.Progress}" Tag="DRK.Sharpened" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="04" Content="{Binding Path=WHM.Sharpened.Progress}" Tag="WHM.Sharpened" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="05" Content="{Binding Path=SCH.Sharpened.Progress}" Tag="SCH.Sharpened" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="06" Content="{Binding Path=AST.Sharpened.Progress}" Tag="AST.Sharpened" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="07" Content="{Binding Path=MNK.Sharpened.Progress}" Tag="MNK.Sharpened" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="08" Content="{Binding Path=DRG.Sharpened.Progress}" Tag="DRG.Sharpened" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="09" Content="{Binding Path=NIN.Sharpened.Progress}" Tag="NIN.Sharpened" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="10" Content="{Binding Path=BRD.Sharpened.Progress}" Tag="BRD.Sharpened" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="11" Content="{Binding Path=MCH.Sharpened.Progress}" Tag="MCH.Sharpened" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="12" Content="{Binding Path=BLM.Sharpened.Progress}" Tag="BLM.Sharpened" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="13" Content="{Binding Path=SMN.Sharpened.Progress}" Tag="SMN.Sharpened" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="01" Content="{Binding Path=PLD.Sharpened, Converter={StaticResource BooleanToCompleteText}}" Tag="PLD.Sharpened" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="02" Content="{Binding Path=WAR.Sharpened, Converter={StaticResource BooleanToCompleteText}}" Tag="WAR.Sharpened" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="03" Content="{Binding Path=DRK.Sharpened, Converter={StaticResource BooleanToCompleteText}}" Tag="DRK.Sharpened" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="04" Content="{Binding Path=WHM.Sharpened, Converter={StaticResource BooleanToCompleteText}}" Tag="WHM.Sharpened" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="05" Content="{Binding Path=SCH.Sharpened, Converter={StaticResource BooleanToCompleteText}}" Tag="SCH.Sharpened" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="06" Content="{Binding Path=AST.Sharpened, Converter={StaticResource BooleanToCompleteText}}" Tag="AST.Sharpened" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="07" Content="{Binding Path=MNK.Sharpened, Converter={StaticResource BooleanToCompleteText}}" Tag="MNK.Sharpened" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="08" Content="{Binding Path=DRG.Sharpened, Converter={StaticResource BooleanToCompleteText}}" Tag="DRG.Sharpened" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="09" Content="{Binding Path=NIN.Sharpened, Converter={StaticResource BooleanToCompleteText}}" Tag="NIN.Sharpened" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="10" Content="{Binding Path=BRD.Sharpened, Converter={StaticResource BooleanToCompleteText}}" Tag="BRD.Sharpened" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="11" Content="{Binding Path=MCH.Sharpened, Converter={StaticResource BooleanToCompleteText}}" Tag="MCH.Sharpened" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="12" Content="{Binding Path=BLM.Sharpened, Converter={StaticResource BooleanToCompleteText}}" Tag="BLM.Sharpened" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="7" Grid.Column="13" Content="{Binding Path=SMN.Sharpened, Converter={StaticResource BooleanToCompleteText}}" Tag="SMN.Sharpened" />
 
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="8" Grid.Column="01" Content="{Binding Path=PLD.Complete.Progress}" Tag="PLD.Complete" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="8" Grid.Column="02" Content="{Binding Path=WAR.Complete.Progress}" Tag="WAR.Complete" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="8" Grid.Column="03" Content="{Binding Path=DRK.Complete.Progress}" Tag="DRK.Complete" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="8" Grid.Column="04" Content="{Binding Path=WHM.Complete.Progress}" Tag="WHM.Complete" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="8" Grid.Column="05" Content="{Binding Path=SCH.Complete.Progress}" Tag="SCH.Complete" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="8" Grid.Column="06" Content="{Binding Path=AST.Complete.Progress}" Tag="AST.Complete" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="8" Grid.Column="07" Content="{Binding Path=MNK.Complete.Progress}" Tag="MNK.Complete" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="8" Grid.Column="08" Content="{Binding Path=DRG.Complete.Progress}" Tag="DRG.Complete" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="8" Grid.Column="09" Content="{Binding Path=NIN.Complete.Progress}" Tag="NIN.Complete" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="8" Grid.Column="10" Content="{Binding Path=BRD.Complete.Progress}" Tag="BRD.Complete" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="8" Grid.Column="11" Content="{Binding Path=MCH.Complete.Progress}" Tag="MCH.Complete" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="8" Grid.Column="12" Content="{Binding Path=BLM.Complete.Progress}" Tag="BLM.Complete" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="8" Grid.Column="13" Content="{Binding Path=SMN.Complete.Progress}" Tag="SMN.Complete" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="8" Grid.Column="01" Content="{Binding Path=PLD.Complete, Converter={StaticResource BooleanToCompleteText}}" Tag="PLD.Complete" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="8" Grid.Column="02" Content="{Binding Path=WAR.Complete, Converter={StaticResource BooleanToCompleteText}}" Tag="WAR.Complete" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="8" Grid.Column="03" Content="{Binding Path=DRK.Complete, Converter={StaticResource BooleanToCompleteText}}" Tag="DRK.Complete" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="8" Grid.Column="04" Content="{Binding Path=WHM.Complete, Converter={StaticResource BooleanToCompleteText}}" Tag="WHM.Complete" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="8" Grid.Column="05" Content="{Binding Path=SCH.Complete, Converter={StaticResource BooleanToCompleteText}}" Tag="SCH.Complete" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="8" Grid.Column="06" Content="{Binding Path=AST.Complete, Converter={StaticResource BooleanToCompleteText}}" Tag="AST.Complete" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="8" Grid.Column="07" Content="{Binding Path=MNK.Complete, Converter={StaticResource BooleanToCompleteText}}" Tag="MNK.Complete" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="8" Grid.Column="08" Content="{Binding Path=DRG.Complete, Converter={StaticResource BooleanToCompleteText}}" Tag="DRG.Complete" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="8" Grid.Column="09" Content="{Binding Path=NIN.Complete, Converter={StaticResource BooleanToCompleteText}}" Tag="NIN.Complete" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="8" Grid.Column="10" Content="{Binding Path=BRD.Complete, Converter={StaticResource BooleanToCompleteText}}" Tag="BRD.Complete" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="8" Grid.Column="11" Content="{Binding Path=MCH.Complete, Converter={StaticResource BooleanToCompleteText}}" Tag="MCH.Complete" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="8" Grid.Column="12" Content="{Binding Path=BLM.Complete, Converter={StaticResource BooleanToCompleteText}}" Tag="BLM.Complete" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="8" Grid.Column="13" Content="{Binding Path=SMN.Complete, Converter={StaticResource BooleanToCompleteText}}" Tag="SMN.Complete" />
 
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="9" Grid.Column="01" Content="{Binding Path=PLD.Lux.Progress}" Tag="PLD.Lux" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="9" Grid.Column="02" Content="{Binding Path=WAR.Lux.Progress}" Tag="WAR.Lux" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="9" Grid.Column="03" Content="{Binding Path=DRK.Lux.Progress}" Tag="DRK.Lux" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="9" Grid.Column="04" Content="{Binding Path=WHM.Lux.Progress}" Tag="WHM.Lux" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="9" Grid.Column="05" Content="{Binding Path=SCH.Lux.Progress}" Tag="SCH.Lux" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="9" Grid.Column="06" Content="{Binding Path=AST.Lux.Progress}" Tag="AST.Lux" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="9" Grid.Column="07" Content="{Binding Path=MNK.Lux.Progress}" Tag="MNK.Lux" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="9" Grid.Column="08" Content="{Binding Path=DRG.Lux.Progress}" Tag="DRG.Lux" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="9" Grid.Column="09" Content="{Binding Path=NIN.Lux.Progress}" Tag="NIN.Lux" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="9" Grid.Column="10" Content="{Binding Path=BRD.Lux.Progress}" Tag="BRD.Lux" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="9" Grid.Column="11" Content="{Binding Path=MCH.Lux.Progress}" Tag="MCH.Lux" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="9" Grid.Column="12" Content="{Binding Path=BLM.Lux.Progress}" Tag="BLM.Lux" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="9" Grid.Column="13" Content="{Binding Path=SMN.Lux.Progress}" Tag="SMN.Lux" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="9" Grid.Column="01" Content="{Binding Path=PLD.Lux, Converter={StaticResource BooleanToCompleteText}}" Tag="PLD.Lux" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="9" Grid.Column="02" Content="{Binding Path=WAR.Lux, Converter={StaticResource BooleanToCompleteText}}" Tag="WAR.Lux" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="9" Grid.Column="03" Content="{Binding Path=DRK.Lux, Converter={StaticResource BooleanToCompleteText}}" Tag="DRK.Lux" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="9" Grid.Column="04" Content="{Binding Path=WHM.Lux, Converter={StaticResource BooleanToCompleteText}}" Tag="WHM.Lux" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="9" Grid.Column="05" Content="{Binding Path=SCH.Lux, Converter={StaticResource BooleanToCompleteText}}" Tag="SCH.Lux" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="9" Grid.Column="06" Content="{Binding Path=AST.Lux, Converter={StaticResource BooleanToCompleteText}}" Tag="AST.Lux" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="9" Grid.Column="07" Content="{Binding Path=MNK.Lux, Converter={StaticResource BooleanToCompleteText}}" Tag="MNK.Lux" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="9" Grid.Column="08" Content="{Binding Path=DRG.Lux, Converter={StaticResource BooleanToCompleteText}}" Tag="DRG.Lux" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="9" Grid.Column="09" Content="{Binding Path=NIN.Lux, Converter={StaticResource BooleanToCompleteText}}" Tag="NIN.Lux" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="9" Grid.Column="10" Content="{Binding Path=BRD.Lux, Converter={StaticResource BooleanToCompleteText}}" Tag="BRD.Lux" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="9" Grid.Column="11" Content="{Binding Path=MCH.Lux, Converter={StaticResource BooleanToCompleteText}}" Tag="MCH.Lux" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="9" Grid.Column="12" Content="{Binding Path=BLM.Lux, Converter={StaticResource BooleanToCompleteText}}" Tag="BLM.Lux" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="9" Grid.Column="13" Content="{Binding Path=SMN.Lux, Converter={StaticResource BooleanToCompleteText}}" Tag="SMN.Lux" />
 
             </Grid>
         </Grid>

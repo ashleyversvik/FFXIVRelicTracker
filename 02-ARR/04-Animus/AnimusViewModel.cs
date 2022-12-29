@@ -17,6 +17,8 @@ namespace FFXIVRelicTracker._02_ARR._04_Animus
         private IEventAggregator iEventAggregator;
         private Character selectedCharacter;
         private AnimusModel animusModel;
+        private ObservableCollection<string> availableJobs;
+
         public ObservableCollection<string> AvailableBooks = new ObservableCollection<string>
             {
                 "Book of Skyfire I",
@@ -170,10 +172,10 @@ namespace FFXIVRelicTracker._02_ARR._04_Animus
 
         public ObservableCollection<string> AvailableJobs
         {
-            get { return animusModel.AvailableJobs; }
+            get { return availableJobs; }
             set
             {
-                animusModel.AvailableJobs = value;
+                availableJobs = value;
                 OnPropertyChanged(nameof(AvailableJobs));
             }
         }
@@ -529,19 +531,8 @@ namespace FFXIVRelicTracker._02_ARR._04_Animus
         {
             ReadBooks();
 
-            if (AvailableJobs == null) { AvailableJobs = new ObservableCollection<string>(); }
-            foreach(ArrJob job in selectedCharacter.ArrModel.ArrJobList)
-            {
-                if ( job.Animus.Progress != ArrProgress.States.Completed & !AvailableJobs.Contains(job.Name))
-                {
-                    AvailableJobs.Add(job.Name);
-                }
-                if (job.Animus.Progress == ArrProgress.States.Completed & AvailableJobs.Contains(job.Name))
-                {
-                    AvailableJobs.Remove(job.Name);
-                }
-            }
-                RecheckAvailableBooks();
+            AvailableJobs = ArrInfo.LoadJobs(AvailableJobs, SelectedCharacter, Name);
+            RecheckAvailableBooks();
             //Refreshes view for people with older versions that may have had a bug resolved
             CurrentBook = CurrentBook;
         }
@@ -1146,11 +1137,7 @@ namespace FFXIVRelicTracker._02_ARR._04_Animus
         private bool AnimusCan() { return SelectedJob != null; }
         private void AnimusCommand()
         {
-
-            ArrJob tempJob = selectedCharacter.ArrModel.ArrJobList[ArrInfo.JobListString.IndexOf(SelectedJob)];
-
-            ArrStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Animus,true);
-
+            ArrStageCompleter.ProgressClass(selectedCharacter, SelectedJob, Name);
 
             LoadAvailableJobs();
             ResetBools();

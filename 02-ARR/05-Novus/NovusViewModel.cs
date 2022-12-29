@@ -16,6 +16,7 @@ namespace FFXIVRelicTracker._02_ARR._05_Novus
         private IEventAggregator iEventAggregator;
         private Character selectedCharacter;
         private NovusModel novusModel;
+        private ObservableCollection<string> availableJobs;
 
         public NovusViewModel(IEventAggregator iEventAggregator)
         {
@@ -61,10 +62,10 @@ namespace FFXIVRelicTracker._02_ARR._05_Novus
         };
         public ObservableCollection<string> AvailableJobs
         {
-            get { return novusModel.AvailableJobs; }
+            get { return availableJobs; }
             set
             {
-                novusModel.AvailableJobs = value;
+                availableJobs = value;
                 OnPropertyChanged(nameof(AvailableJobs));
             }
         }
@@ -784,18 +785,7 @@ namespace FFXIVRelicTracker._02_ARR._05_Novus
         public void LoadAvailableJobs()
         {
             if (SelectedJob == "") { ResetCounts(); }
-            if (AvailableJobs == null) { AvailableJobs = new ObservableCollection<string>(); }
-            foreach (ArrJob job in selectedCharacter.ArrModel.ArrJobList)
-            {
-                if (job.Novus.Progress != ArrProgress.States.Completed & !AvailableJobs.Contains(job.Name))
-                {
-                    AvailableJobs.Add(job.Name);
-                }
-                if (job.Novus.Progress == ArrProgress.States.Completed & AvailableJobs.Contains(job.Name))
-                {
-                    AvailableJobs.Remove(job.Name);
-                }
-            }
+            AvailableJobs = ArrInfo.LoadJobs(AvailableJobs, SelectedCharacter, Name);
             OnPropertyChanged(nameof(AlexandriteNeeded));
         }
 
@@ -902,16 +892,7 @@ namespace FFXIVRelicTracker._02_ARR._05_Novus
         private bool CanComplete() { return SelectedJob != null; }
         private void CompleteCommand()
         {
-
-            ArrJob tempJob = selectedCharacter.ArrModel.ArrJobList[ArrInfo.JobListString.IndexOf(SelectedJob)];
-
-            ArrStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Novus, true);
-
-            //int subtractAlexandrite = 75;
-            //subtractAlexandrite -= MateriaShieldSum + MateriaSwordSum + MateriaSum;
-
-            //if (subtractAlexandrite >= AlexandriteCount) { AlexandriteCount = 0; }
-            //else { AlexandriteCount -= subtractAlexandrite; }
+            ArrStageCompleter.ProgressClass(selectedCharacter, SelectedJob, Name);
 
             ResetCounts();
             LoadAvailableJobs();

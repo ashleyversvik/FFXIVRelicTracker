@@ -1,5 +1,4 @@
-﻿using FFXIVRelicTracker._02_ARR.ArrHelpers;
-using FFXIVRelicTracker.Helpers;
+﻿using FFXIVRelicTracker.Helpers;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows;
@@ -15,7 +14,7 @@ namespace FFXIVRelicTracker._02_ARR._01_Relic
         }
 
         public Visibility relicVisibility = Visibility.Hidden;
-        public List<ArrProgress> JobRelics{ get; set;}
+        public List<bool> JobRelics{ get; set;}
         public int RelicIndex{ get; set;}
         public string RelicDestination{ get; set;}
         public string RelicClassWeapon{ get; set;}

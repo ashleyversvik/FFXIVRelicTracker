@@ -5,68 +5,44 @@ namespace FFXIVRelicTracker._03_HW.HWHelpers
     public static class HWStageCompleter
     {
         #region CompleteStages
-        public static void ProgressClass(Character character, string job, HWProgress hWProgress, bool CompleteBool = false)
+        public static void ProgressClass(Character character, string job, string stage)
         {
-            int StageIndex = HWInfo.StageListString.IndexOf(hWProgress.Name);
+            int StageIndex = HWInfo.StageListString.IndexOf(stage);
             int JobIndex = HWInfo.JobListString.IndexOf(job);
 
             HWJob tempJob = character.HWModel.HWJobList[JobIndex];
+            var progress = tempJob.StageList[StageIndex];
 
-            if (hWProgress.Progress == HWProgress.States.NA)
+            if (!progress)
             {
                 CompletePreviousStages(character, tempJob, StageIndex);
             }
-            else if (hWProgress.Progress == HWProgress.States.Completed)
+            else if (progress)
             {
                 InCompleteFollowingStages(tempJob, StageIndex);
+                tempJob.RefreshJob();
                 return;
             }
-            if (hWProgress.Progress == HWProgress.States.Initiated | CompleteBool)
-            {
-                hWProgress.Progress = HWProgress.States.Completed;
-                SelectStage(character, StageIndex);
-            }
-            else
-            {
-                IncompleteOtherJobs(character, StageIndex);
-                switch (StageIndex)
-                {
-                    default:
-                        hWProgress.Progress = HWProgress.States.Completed;
-                        break;
-                        //case 1:
-                        //case 2:
-                        //    hWProgress.Progress++;
-                        //    break;
-                }
-                SelectStage(character, StageIndex);
-            }
+       
+            tempJob.StageList[StageIndex] = true;
+            tempJob.RefreshJob();
+            SelectStage(character, StageIndex);
         }
-        private static void IncompleteOtherJobs(Character SelectedCharacter, int StageIndex)
-        {
-            foreach (HWJob Job in SelectedCharacter.HWModel.HWJobList)
-            {
-                HWProgress stage = Job.StageList[StageIndex];
-                if (stage.Progress == HWProgress.States.Initiated)
-                {
-                    stage.Progress = HWProgress.States.NA;
-                }
-            }
-        }
+
         private static void InCompleteFollowingStages(HWJob tempStage, int stageIndex)
         {
             for (int i = stageIndex; i < tempStage.StageList.Count; i++)
             {
-                tempStage.StageList[i].Progress = HWProgress.States.NA;
+                tempStage.StageList[i] = false;
             }
         }
         private static void CompletePreviousStages(Character character, HWJob tempStage, int stageIndex)
         {
             for (int i = 0; i < stageIndex; i++)
             {
-                if (tempStage.StageList[i].Progress != HWProgress.States.Completed)
+                if (!tempStage.StageList[i])
                 {
-                    tempStage.StageList[i].Progress = HWProgress.States.Completed;
+                    tempStage.StageList[i] = true;
                     SelectStage(character, i);
                 }
                 

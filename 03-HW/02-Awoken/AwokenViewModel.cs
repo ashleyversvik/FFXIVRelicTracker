@@ -1,5 +1,4 @@
 ﻿using FFXIVRelicTracker._03_HW.HWHelpers;
-using FFXIVRelicTracker.Helpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
@@ -15,6 +14,7 @@ namespace FFXIVRelicTracker._03_HW._02_Awoken
         private AwokenModel awokenModel;
         private Character selectedCharacter;
         private IEventAggregator eventAggregator;
+        private ObservableCollection<string> availableJobs;
         #endregion
 
         #region Constructors
@@ -85,10 +85,10 @@ namespace FFXIVRelicTracker._03_HW._02_Awoken
 
         public ObservableCollection<string> AvailableJobs
         {
-            get { return awokenModel.AvailableJobs; }
+            get { return availableJobs; }
             set
             {
-                awokenModel.AvailableJobs = value;
+                availableJobs = value;
                 OnPropertyChanged(nameof(AvailableJobs));
             }
         }
@@ -198,18 +198,7 @@ namespace FFXIVRelicTracker._03_HW._02_Awoken
         }
         public void LoadAvailableJobs()
         {
-            if (AvailableJobs == null) { AvailableJobs = new ObservableCollection<string>(); }
-            foreach (HWJob job in selectedCharacter.HWModel.HWJobList)
-            {
-                if (job.Awoken.Progress == BaseProgressClass.States.Completed & AvailableJobs.Contains(job.Name))
-                {
-                    AvailableJobs.Remove(job.Name);
-                }
-                if (job.Awoken.Progress != BaseProgressClass.States.Completed & !AvailableJobs.Contains(job.Name))
-                {
-                    HWInfo.ReloadJobList(AvailableJobs, job.Name);
-                }
-            }
+            AvailableJobs = HWInfo.LoadJobs(AvailableJobs, SelectedCharacter, Name);
             OnPropertyChanged(nameof(AvailableJobs));
         }
         #endregion
@@ -237,11 +226,7 @@ namespace FFXIVRelicTracker._03_HW._02_Awoken
         private bool CompleteCan() { return SelectedJob != null; }
         private void CompleteCommand()
         {
-
-            HWJob tempJob = selectedCharacter.HWModel.HWJobList[HWInfo.JobListString.IndexOf(SelectedJob)];
-
-            HWInfo.ProgressClass(selectedCharacter, SelectedJob, tempJob.Awoken, true);
-
+            HWStageCompleter.ProgressClass(SelectedCharacter, SelectedJob, Name);
             LoadAvailableJobs();
         }
         #endregion

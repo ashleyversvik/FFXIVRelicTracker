@@ -16,6 +16,7 @@ namespace FFXIVRelicTracker._02_ARR._01_Relic
         private Character selectedCharacter;
         private RelicModel relicModel;
         private IEventAggregator eventAggregator;
+        private ObservableCollection<string> availableJobs;
 
         public RelicViewModel(IEventAggregator eventAggregator)
         {
@@ -59,10 +60,10 @@ namespace FFXIVRelicTracker._02_ARR._01_Relic
 
         public ObservableCollection<string> AvailableJobs
         {
-            get { return relicModel.AvailableJobs; }
+            get { return availableJobs; }
             set
             {
-                relicModel.AvailableJobs = value;
+                availableJobs = value;
                 OnPropertyChanged(nameof(AvailableJobs));
             }
         }
@@ -250,18 +251,7 @@ namespace FFXIVRelicTracker._02_ARR._01_Relic
         }
         public void LoadAvailableJobs()
         {
-            if (AvailableJobs == null) { AvailableJobs = new ObservableCollection<string>(); }
-            foreach(ArrJob job in selectedCharacter.ArrModel.ArrJobList)
-            {
-                if (job.Relic.Progress != ArrProgress.States.Completed & !AvailableJobs.Contains(job.Name))
-                {
-                    AvailableJobs.Add(job.Name);
-                }
-                if (job.Relic.Progress == ArrProgress.States.Completed & AvailableJobs.Contains(job.Name))
-                {
-                    AvailableJobs.Remove(job.Name);
-                }
-            }
+            AvailableJobs = ArrInfo.LoadJobs(AvailableJobs, SelectedCharacter, Name);
         }
         #endregion
 
@@ -286,10 +276,7 @@ namespace FFXIVRelicTracker._02_ARR._01_Relic
         private bool RelicCan() { return SelectedJob!=null; }
         private void RelicCommand()
         {
-            ArrJob tempJob = selectedCharacter.ArrModel.ArrJobList[ArrInfo.JobListString.IndexOf(SelectedJob)];
-
-            ArrStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.Relic, true);
-
+            ArrStageCompleter.ProgressClass(selectedCharacter, SelectedJob, Name);
             AvailableJobs.Remove(SelectedJob);
         }
         #endregion

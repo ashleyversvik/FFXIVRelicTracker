@@ -1,4 +1,5 @@
-﻿using FFXIVRelicTracker.Models;
+﻿using FFXIVRelicTracker.Helpers;
+using FFXIVRelicTracker.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,7 +10,8 @@ namespace FFXIVRelicTracker
 {
     public static class CharactersManager
     {
-        private const string Filename = "characters.json";
+        public const string Filename = "characters.json";
+        public const string CurrentCharacterVersion = "2";
 
         public static IEnumerable<Character> Load()
         {
@@ -17,6 +19,8 @@ namespace FFXIVRelicTracker
             if (File.Exists(path))
             {
                 var content = File.ReadAllText(path);
+                content = MigrateCharacterData.TryMigrate(content);
+                
                 var characters = JsonSerializer.Deserialize<List<Character>>(content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true, AllowTrailingCommas = true, ReadCommentHandling = JsonCommentHandling.Skip });
                 return characters;
             }
@@ -49,6 +53,11 @@ namespace FFXIVRelicTracker
             var appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             var appName = Assembly.GetEntryAssembly().GetName().Name;
             return Path.Combine(appData, appName);
+        }
+
+        public static string GetCharacterFilePath()
+        {
+            return Path.Combine(GetLocalDirectory(), Filename);
         }
     }
 }

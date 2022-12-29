@@ -116,10 +116,7 @@ namespace FFXIVRelicTracker._06_EW._00_Summary
             string[] values = ((string)param).Split(".");
 
             EWJob tempJob = (EWJob)SelectedCharacter.EWModel.GetType().GetProperty(values[0]).GetValue(SelectedCharacter.EWModel);
-            EWProgress tempProgress = tempJob.StageList.Find(x => x.Name == values[1]);
-
-            EWStageCompleter.ProgressClass(SelectedCharacter, tempJob.Name, tempProgress);
-
+            EWStageCompleter.ProgressClass(SelectedCharacter, tempJob.Name, values[1]);
         }
         #endregion
     }

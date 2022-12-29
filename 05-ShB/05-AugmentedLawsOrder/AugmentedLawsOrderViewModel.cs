@@ -1,5 +1,4 @@
 ﻿using FFXIVRelicTracker._05_ShB.ShBHelpers;
-using FFXIVRelicTracker.Helpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Events;
@@ -16,6 +15,7 @@ namespace FFXIVRelicTracker._05_ShB._05_AugmentedLawsOrder
         private IEventAggregator eventAggregator;
         private Character selectedCharacter;
         private AugmentedLawsOrderModel augmentedLawsOrderModel;
+        private ObservableCollection<string> availableJobs;
         #endregion
 
         #region Constructor
@@ -75,10 +75,10 @@ namespace FFXIVRelicTracker._05_ShB._05_AugmentedLawsOrder
 
         public ObservableCollection<string> AvailableJobs
         {
-            get { return augmentedLawsOrderModel.AvailableJobs; }
+            get { return availableJobs; }
             set
             {
-                augmentedLawsOrderModel.AvailableJobs = value;
+                availableJobs = value;
                 OnPropertyChanged(nameof(AvailableJobs));
             }
         }
@@ -155,18 +155,7 @@ namespace FFXIVRelicTracker._05_ShB._05_AugmentedLawsOrder
         #region Methods
         public void LoadAvailableJobs()
         {
-            if (AvailableJobs == null) { AvailableJobs = new ObservableCollection<string>(); }
-            foreach (ShBJob job in selectedCharacter.ShBModel.ShbJobList)
-            {
-                if (job.AugmentedLawsOrder.Progress == BaseProgressClass.States.Completed & AvailableJobs.Contains(job.Name))
-                {
-                    AvailableJobs.Remove(job.Name);
-                }
-                if (job.AugmentedLawsOrder.Progress != BaseProgressClass.States.Completed & !AvailableJobs.Contains(job.Name))
-                {
-                    ShBInfo.ReloadJobList(AvailableJobs, job.Name);
-                }
-            }
+            AvailableJobs = ShBInfo.LoadJobs(AvailableJobs, SelectedCharacter, Name);
             //Calculate remaining memories to acquire
             OnPropertyChanged(nameof(ArtifactCount));
         }
@@ -194,10 +183,7 @@ namespace FFXIVRelicTracker._05_ShB._05_AugmentedLawsOrder
         private bool CompleteCan() { return SelectedJob != null; }
         private void CompleteCommand()
         {
-
-            ShBJob tempJob = selectedCharacter.ShBModel.ShbJobList[ShBInfo.JobListString.IndexOf(SelectedJob)];
-
-            ShBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, tempJob.AugmentedLawsOrder, true);
+            ShBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, Name);
 
             LoadAvailableJobs();
 

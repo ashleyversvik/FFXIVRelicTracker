@@ -6,12 +6,12 @@ namespace FFXIVRelicTracker._05_Skysteel.Skysteel_Helpers
     public class SkysteelJob : BaseJob
     {
         #region Fields
-        private SkysteelProgress baseTool;
-        private SkysteelProgress basePlus1;
-        private SkysteelProgress dragonsung;
-        private SkysteelProgress augmentedDragonsung;
-        private SkysteelProgress skysung;
-        private SkysteelProgress skybuilders;
+        private bool baseTool;
+        private bool basePlus1;
+        private bool dragonsung;
+        private bool augmentedDragonsung;
+        private bool skysung;
+        private bool skybuilders;
         #endregion
 
 
@@ -24,19 +24,19 @@ namespace FFXIVRelicTracker._05_Skysteel.Skysteel_Helpers
         {
             this.Name = name;
 
-            BaseTool = new SkysteelProgress("BaseTool");
-            BasePlus1 = new SkysteelProgress("BasePlus1");
-            Dragonsung = new SkysteelProgress("Dragonsung");
-            AugmentedDragonsung = new SkysteelProgress("AugmentedDragonsung");
-            Skysung = new SkysteelProgress("Skysung");
-            skybuilders = new SkysteelProgress("Skybuilders");
+            BaseTool = false;
+            BasePlus1 = false;
+            Dragonsung = false;
+            AugmentedDragonsung = false;
+            Skysung = false;
+            skybuilders = false;
         }
         #endregion
 
         #region Properties
-        public List<SkysteelProgress> StageList = new List<SkysteelProgress>();
+        public List<bool> StageList = new List<bool>();
 
-        public SkysteelProgress BaseTool
+        public bool BaseTool
         {
             get { return baseTool; }
             set
@@ -45,7 +45,7 @@ namespace FFXIVRelicTracker._05_Skysteel.Skysteel_Helpers
                 OnPropertyChanged(nameof(BaseTool));
             }
         }
-        public SkysteelProgress BasePlus1
+        public bool BasePlus1
         {
             get { return basePlus1; }
             set
@@ -54,7 +54,7 @@ namespace FFXIVRelicTracker._05_Skysteel.Skysteel_Helpers
                 OnPropertyChanged(nameof(BasePlus1));
             }
         }
-        public SkysteelProgress Dragonsung
+        public bool Dragonsung
         {
             get { return dragonsung; }
             set
@@ -63,7 +63,7 @@ namespace FFXIVRelicTracker._05_Skysteel.Skysteel_Helpers
                 OnPropertyChanged(nameof(Dragonsung));
             }
         }
-        public SkysteelProgress AugmentedDragonsung
+        public bool AugmentedDragonsung
         {
             get { return augmentedDragonsung; }
             set
@@ -72,7 +72,7 @@ namespace FFXIVRelicTracker._05_Skysteel.Skysteel_Helpers
                 OnPropertyChanged(nameof(AugmentedDragonsung));
             }
         }
-        public SkysteelProgress Skysung
+        public bool Skysung
         {
             get { return skysung; }
             set
@@ -82,7 +82,7 @@ namespace FFXIVRelicTracker._05_Skysteel.Skysteel_Helpers
             }
         }
 
-        public SkysteelProgress Skybuilders
+        public bool Skybuilders
         {
             get { return skybuilders; }
             set
@@ -102,21 +102,18 @@ namespace FFXIVRelicTracker._05_Skysteel.Skysteel_Helpers
             //  or in the field
 
 
-            List<SkysteelProgress> tempList = new List<SkysteelProgress>();
+            List<bool> tempList = new List<bool>();
 
             for (int stageIndex = 0; stageIndex < StageList.Count; stageIndex++)
             {
-                SkysteelProgress tempProgress = null;
-                if (stageIndex < StageList.Count && StageList[stageIndex] != null)
+                bool tempProgress = false;
+                if (stageIndex < StageList.Count)
                 {
                     tempProgress = StageList[stageIndex];
-                    tempProgress.Name = SkysteelInfo.StageListString[stageIndex];
                     tempList.Add(tempProgress);
                 }
                 else
                 {
-                    tempProgress = new SkysteelProgress(SkysteelInfo.StageListString[stageIndex]);
-
                     tempList.Add(tempProgress);
 
                     switch (stageIndex)
@@ -144,6 +141,16 @@ namespace FFXIVRelicTracker._05_Skysteel.Skysteel_Helpers
             }
             StageList = tempList;
 
+        }
+
+        public void RefreshJob()
+        {
+            BaseTool = StageList[0];
+            BasePlus1 = StageList[1];
+            Dragonsung = StageList[2];
+            AugmentedDragonsung = StageList[3];
+            Skysung = StageList[4];
+            Skybuilders = StageList[5];
         }
         #endregion
 
