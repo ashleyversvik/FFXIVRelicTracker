@@ -1,11 +1,13 @@
-﻿using FFXIVRelicTracker._02_ARR.ArrHelpers;
+﻿using FFXIVRelicTracker._02_Arr;
 using FFXIVRelicTracker._03_HW.Main;
 using FFXIVRelicTracker._04_SB.Main;
 using FFXIVRelicTracker._05_ShB.Main;
 using FFXIVRelicTracker._05_Skysteel.Main;
 using FFXIVRelicTracker._06_EW.Main;
+using FFXIVRelicTracker.PVP.Main;
 using FFXIVRelicTracker.Models.Helpers;
 using System.Reflection;
+
 
 namespace FFXIVRelicTracker.Models
 {
@@ -21,6 +23,7 @@ namespace FFXIVRelicTracker.Models
         private HWModel hwModel;
         private SBModel sbModel;
         private EWModel ewModel;
+        private PVPModel pvpModel;
 
         #region Properties
 
@@ -127,6 +130,18 @@ namespace FFXIVRelicTracker.Models
                 }
             }
         }
+        public PVPModel PVPModel
+        {
+            get { return pvpModel; }
+            set
+            {
+                if (value != null)
+                {
+                    pvpModel = value;
+                    OnPropertyChanged(nameof(PVPModel));
+                }
+            }
+        }
         #endregion
         public Character()
         {
@@ -139,6 +154,7 @@ namespace FFXIVRelicTracker.Models
             HWModel = new HWModel();
             SBModel = new SBModel();
             EWModel = new EWModel();
+            PVPModel = new PVPModel();
         }
 
         public Character(string name, string server )
@@ -151,6 +167,7 @@ namespace FFXIVRelicTracker.Models
             SBModel = new SBModel();
             SkysteelModel = new SkysteelModel();
             EWModel = new EWModel();
+            PVPModel = new PVPModel();
 
             ArrLayout = "Horizontal";
             HWLayout = "Horizontal";

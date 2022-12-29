@@ -1,0 +1,150 @@
+﻿<UserControl x:Class="FFXIVRelicTracker.PVP._00_Series.PVPSeriesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FFXIVRelicTracker.PVP._00_Series"
+             xmlns:pvp="clr-namespace:FFXIVRelicTracker.PVP.PVPHelpers"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/FFXIVRelicTracker;component/Helpers/ResourceDictionaries/PVPDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="10,0,0,0">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Style="{StaticResource GoldBorder}" Grid.Row="0" Grid.Column="0" Margin="10,10,0,0" Padding="10,5,10,5">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="75"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource LeftTextBlock}" Foreground="White" Text="Series Level"/>
+                    <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" Margin="10,0,0,0">
+                        <TextBox Style="{StaticResource BaseTextBox}" Margin="0,0,10,0" HorizontalAlignment="Center" TextAlignment="Center" Text="{Binding CurrentLevel}" MinWidth="40"/>
+                        <StackPanel VerticalAlignment="Center">
+                            <Button Style="{StaticResource incrementButton}" Content="+" Command="{Binding IncrementButton}" CommandParameter="1"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Style="{StaticResource LeftTextBlock}" Foreground="White" Text="Desired Level"/>
+                    <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Margin="10,0,0,0">
+                        <TextBox Style="{StaticResource BaseTextBox}" Margin="0,0,10,0" HorizontalAlignment="Center" TextAlignment="Center" Text="{Binding DesiredLevel}" MinWidth="40"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+
+            <Border Style="{StaticResource GoldBorder}" Grid.Row="1" Grid.Column="0" Margin="10,10,0,0" Padding="10,5,10,5">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource LeftTextBlock}" Foreground="White" Text="Current EXP"/>
+
+                    <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" Margin="10,0,0,0">
+                        <TextBox Style="{StaticResource BaseTextBox}" Margin="0,0,2,0" HorizontalAlignment="Center" TextAlignment="Center" Text="{Binding CurrentExp}" MinWidth="40"/>
+                        <TextBlock Style="{StaticResource LeftTextBlock}" Text=" / "/>
+                        <TextBlock Style="{StaticResource LeftTextBlock}" Text="{Binding CurrentLevelExp}"/>
+                    </StackPanel>
+
+                </Grid>
+            </Border>
+
+            <Border Style="{StaticResource GoldBorder}" Grid.Row="2" Grid.Column="0" Margin="10,10,0,0" Padding="10,5,10,5">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource BaseTextBlock}" Foreground="White" Margin="0,0,20,0" Text="Add Exp"/>
+
+                    <StackPanel Grid.Row="2" Grid.Column="0" Margin="0,0,10,0">
+                        <TextBlock Style="{StaticResource LeftTextBlock}" Text="Frontlines"/>
+                        <Button Style="{StaticResource incrementButton}" Content="1st" Command="{Binding IncrementButton}" CommandParameter="2"/>
+                        <Button Style="{StaticResource incrementButton}" Content="2nd " Command="{Binding IncrementButton}" CommandParameter="3"/>
+                        <Button Style="{StaticResource incrementButton}" Content="3rd " Command="{Binding IncrementButton}" CommandParameter="4"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2" Grid.Column="1" Margin="0,0,10,0">
+                        <TextBlock Style="{StaticResource LeftTextBlock}" Margin="0,0,10,0" Text="Crystal Conflict"/>
+                        <Button Style="{StaticResource incrementButton}" Content="Win" Command="{Binding IncrementButton}" CommandParameter="5"/>
+                        <Button Style="{StaticResource incrementButton}" Content="Lose " Command="{Binding IncrementButton}" CommandParameter="6"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <Border Style="{StaticResource GoldBorder}" Grid.Row="0" Grid.RowSpan="3" Grid.Column="1" Margin="10,10,0,0" Padding="10,5,10,5">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="75"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource LeftTextBlock}" HorizontalAlignment="Center" Foreground="White" Text="Frontlines Remaining "/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource LeftTextBlock}" HorizontalAlignment="Center" Text="First Places: "/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource LeftTextBlock}" HorizontalAlignment="Center" Text="{Binding NeededFL1st}"/>
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Style="{StaticResource LeftTextBlock}" HorizontalAlignment="Center" Text="Second Places: "/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Style="{StaticResource LeftTextBlock}" HorizontalAlignment="Center" Text="{Binding NeededFL2nd}"/>
+
+                    <TextBlock Grid.Row="3" Grid.Column="0" Style="{StaticResource LeftTextBlock}" HorizontalAlignment="Center" Text="Third Places: "/>
+                    <TextBlock Grid.Row="3" Grid.Column="1" Style="{StaticResource LeftTextBlock}" HorizontalAlignment="Center" Text="{Binding NeededFL3rd}"/>
+
+                    <TextBlock Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource LeftTextBlock}" HorizontalAlignment="Center" Foreground="White" Text="CC Remaining "/>
+
+                    <TextBlock Grid.Row="6" Grid.Column="0" Style="{StaticResource LeftTextBlock}" HorizontalAlignment="Center" Text="Wins: "/>
+                    <TextBlock Grid.Row="6" Grid.Column="1" Style="{StaticResource LeftTextBlock}" HorizontalAlignment="Center" Text="{Binding NeededCCWins}"/>
+
+                    <TextBlock Grid.Row="7" Grid.Column="0" Style="{StaticResource LeftTextBlock}" HorizontalAlignment="Center" Text="Losses: "/>
+                    <TextBlock Grid.Row="7" Grid.Column="1" Style="{StaticResource LeftTextBlock}" HorizontalAlignment="Center" Text="{Binding NeededCCLosses}"/>
+                </Grid>
+            </Border>
+
+        </Grid>
+    </ScrollViewer>
+    
+</UserControl>

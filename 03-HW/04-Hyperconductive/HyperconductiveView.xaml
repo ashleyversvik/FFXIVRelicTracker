@@ -9,7 +9,7 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/FFXIVRelicTracker;component/Helpers/ResourceDictionaries/05-SkysteelDictionary.xaml"/>
+                <ResourceDictionary Source="/FFXIVRelicTracker;component/Helpers/ResourceDictionaries/03-HWDictionary.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>

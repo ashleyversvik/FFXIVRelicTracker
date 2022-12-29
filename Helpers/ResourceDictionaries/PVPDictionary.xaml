@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:pvp="clr-namespace:FFXIVRelicTracker.PVP._00_Series"
+                    >
+
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/FFXIVRelicTracker;component/Helpers/ResourceDictionaries/BaseDictionary.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <DataTemplate DataType="{x:Type pvp:PVPSeriesViewModel}">
+        <pvp:PVPSeriesView />
+    </DataTemplate>
+
+</ResourceDictionary>

@@ -9,7 +9,7 @@ using FFXIVRelicTracker._02_ARR._08_Zeta;
 using FFXIVRelicTracker.Models.Helpers;
 using System.Collections.Generic;
 
-namespace FFXIVRelicTracker.Models
+namespace FFXIVRelicTracker._02_Arr
 {
     public class ArrModel:ObservableObject
     {
