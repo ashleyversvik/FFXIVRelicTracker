@@ -13,7 +13,6 @@ namespace FFXIVRelicTracker.PVP.PVPHelpers
             2000,
             2000,
             2000,
-            2000,
             3000,
             3000,
             3000,
@@ -48,7 +47,8 @@ namespace FFXIVRelicTracker.PVP.PVPHelpers
             20000,
             20000,
             20000,
-            20000
+            20000,
+            0
         };
 
         public static List<int> ExpGraph = new List<int>
