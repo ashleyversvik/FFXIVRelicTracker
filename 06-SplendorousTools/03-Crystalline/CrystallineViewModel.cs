@@ -1,4 +1,4 @@
-﻿using FFXIVRelicTracker._05_Skysteel.Skysteel_Helpers;
+﻿using FFXIVRelicTracker._06_SplendorousTools.Splendorous_Helpers;
 using FFXIVRelicTracker.Helpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
@@ -7,23 +7,21 @@ using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
-namespace FFXIVRelicTracker._05_Skysteel._04_AugmentedDragonsung
+namespace FFXIVRelicTracker._06_SplendorousTools._03_Crystalline
 {
-    public class AugmentedDragonsungViewModel : ObservableObject, IPageViewModel, IIncompleteViewModel
+    public class CrystallineViewModel : ObservableObject, IPageViewModel, IIncompleteViewModel
     {
-        public string Name => "Augmented Dragonsung";
-        public string TagName => "AugmentedDragonsung";
-
+        public string Name => "Crystalline";
         #region Fields
-        private AugmentedDragonsungModel augmentedDragonsungModel;
+        private CrystallineModel augmentedSplendorousModel;
         private Character selectedCharacter;
         private IEventAggregator eventAggregator;
-        private Tuple<string, string, string, string, string> jobInfo;
+        private Tuple<string, string, string, string, string, string> jobInfo;
         private ObservableCollection<string> availableJobs;
         #endregion
 
         #region Constructors
-        public AugmentedDragonsungViewModel(IEventAggregator eventAggregator)
+        public CrystallineViewModel(IEventAggregator eventAggregator)
         {
             this.eventAggregator = eventAggregator;
 
@@ -40,13 +38,13 @@ namespace FFXIVRelicTracker._05_Skysteel._04_AugmentedDragonsung
         #endregion
 
         #region Properties
-        public AugmentedDragonsungModel AugmentedDragonsungModel
+        public CrystallineModel CrystallineModel
         {
-            get { return augmentedDragonsungModel; }
+            get { return augmentedSplendorousModel; }
             set
             {
-                augmentedDragonsungModel = value;
-                OnPropertyChanged(nameof(AugmentedDragonsungModel));
+                augmentedSplendorousModel = value;
+                OnPropertyChanged(nameof(CrystallineModel));
             }
         }
         public Character SelectedCharacter
@@ -60,16 +58,15 @@ namespace FFXIVRelicTracker._05_Skysteel._04_AugmentedDragonsung
                     CheckModelExists();
                     OnPropertyChanged(nameof(SelectedCharacter));
                 }
-
             }
         }
 
         public string SelectedJob
         {
-            get { return AugmentedDragonsungModel.SelectedJob; }
+            get { return CrystallineModel.SelectedJob; }
             set
             {
-                AugmentedDragonsungModel.SelectedJob = value;
+                CrystallineModel.SelectedJob = value;
                 OnPropertyChanged(nameof(SelectedJob));
                 OnPropertyChanged(nameof(IsGatherer));
                 OnPropertyChanged(nameof(IsFSH));
@@ -78,14 +75,14 @@ namespace FFXIVRelicTracker._05_Skysteel._04_AugmentedDragonsung
 
                 if (value != null)
                 {
-                    jobInfo = SkysteelInfo.ReturnAugmentedDragonsungTuple(SelectedJob);
-
+                    jobInfo = SplendorousToolsInfo.ReturnCrystallineTuple(SelectedJob);
 
                     ToolName = jobInfo.Item1;
                     TradedMat = jobInfo.Item2;
                     CraftedMat = jobInfo.Item3;
                     FirstMat = jobInfo.Item4;
                     SecondMat = jobInfo.Item5;
+                    ThirdMat = jobInfo.Item6;
                 }
             }
         }
@@ -99,20 +96,20 @@ namespace FFXIVRelicTracker._05_Skysteel._04_AugmentedDragonsung
             }
         }
 
-        public string ToolName { get { return AugmentedDragonsungModel.ToolName; } set { AugmentedDragonsungModel.ToolName = value; OnPropertyChanged(nameof(ToolName)); } }
-        public string TradedMat { get { return AugmentedDragonsungModel.TradedMat; } set { AugmentedDragonsungModel.TradedMat = value; OnPropertyChanged(nameof(TradedMat)); } }
-        public string CraftedMat { get { return AugmentedDragonsungModel.CraftedMat; } set { AugmentedDragonsungModel.CraftedMat = value; OnPropertyChanged(nameof(CraftedMat)); } }
-        public string FirstMat { get { return AugmentedDragonsungModel.FirstMat; } set { AugmentedDragonsungModel.FirstMat = value; OnPropertyChanged(nameof(FirstMat)); } }
-        public string SecondMat { get { return AugmentedDragonsungModel.SecondMat; } set { AugmentedDragonsungModel.SecondMat = value; OnPropertyChanged(nameof(SecondMat)); } }
-        public string GatherLoc { get { return AugmentedDragonsungModel.GatherLoc; } set { AugmentedDragonsungModel.GatherLoc = value; OnPropertyChanged(nameof(GatherLoc)); } }
+        public string ToolName { get { return augmentedSplendorousModel.ToolName; } set { augmentedSplendorousModel.ToolName = value; OnPropertyChanged(nameof(ToolName)); } }
+        public string TradedMat { get { return augmentedSplendorousModel.TradedMat; } set { augmentedSplendorousModel.TradedMat = value; OnPropertyChanged(nameof(TradedMat)); } }
+        public string CraftedMat { get { return augmentedSplendorousModel.CraftedMat; } set { augmentedSplendorousModel.CraftedMat = value; OnPropertyChanged(nameof(CraftedMat)); } }
+        public string FirstMat { get { return augmentedSplendorousModel.FirstMat; } set { augmentedSplendorousModel.FirstMat = value; OnPropertyChanged(nameof(FirstMat)); } }
+        public string SecondMat { get { return augmentedSplendorousModel.SecondMat; } set { augmentedSplendorousModel.SecondMat = value; OnPropertyChanged(nameof(SecondMat)); } }
+        public string ThirdMat { get { return augmentedSplendorousModel.ThirdMat; } set { augmentedSplendorousModel.ThirdMat = value; OnPropertyChanged(nameof(ThirdMat)); } }
+        public string GatherLoc { get { return augmentedSplendorousModel.GatherLoc; } set { augmentedSplendorousModel.GatherLoc = value; OnPropertyChanged(nameof(GatherLoc)); } }
 
-
-        public string SelectedToolType { get { return SkysteelInfo.ReturnToolName(SelectedJob); } }
+        public string SelectedToolType { get { return SplendorousToolsInfo.ReturnToolName(SelectedJob); } }
         public bool DisplayInfo { get { return SelectedJob != null; } }
         public bool IsGatherer { get { return (SelectedJob == "MIN" | SelectedJob == "BTN" | SelectedJob == "FSH"); } }
         public bool IsFSH { get { return SelectedJob == "FSH"; } }
-        public int MinRemainingYellowScrips { get { return AugmentedDragonsungModel.MinRemainingYellowScrips; } set { AugmentedDragonsungModel.MinRemainingYellowScrips = value; OnPropertyChanged(nameof(MinRemainingYellowScrips)); } }
-        public int MaxRemainingYellowScrips { get { return AugmentedDragonsungModel.MaxRemainingYellowScrips; } set { AugmentedDragonsungModel.MaxRemainingYellowScrips = value; OnPropertyChanged(nameof(MaxRemainingYellowScrips)); } }
+        public int MinRemainingScrips { get { return augmentedSplendorousModel.MinRemainingScrips; } set { augmentedSplendorousModel.MinRemainingScrips = value; OnPropertyChanged(nameof(MinRemainingScrips)); } }
+        public int MaxRemainingScrips { get { return augmentedSplendorousModel.MaxRemainingScrips; } set { augmentedSplendorousModel.MaxRemainingScrips = value; OnPropertyChanged(nameof(MaxRemainingScrips)); } }
 
 
         #endregion
@@ -120,23 +117,22 @@ namespace FFXIVRelicTracker._05_Skysteel._04_AugmentedDragonsung
         #region Methods
         public void CheckModelExists()
         {
-            if (AugmentedDragonsungModel == null)
+            if (CrystallineModel == null)
             {
-                AugmentedDragonsungModel = new AugmentedDragonsungModel();
-                selectedCharacter.SkysteelModel.AugmentedDragonsungModel = AugmentedDragonsungModel;
+                CrystallineModel = new CrystallineModel();
+                selectedCharacter.SplendorousToolsModel.CrystallineModel = CrystallineModel;
             }
-            else { AugmentedDragonsungModel = selectedCharacter.SkysteelModel.AugmentedDragonsungModel; }
+            else { CrystallineModel = selectedCharacter.SplendorousToolsModel.CrystallineModel; }
         }
-
         public void SetGatherLoc()
         {
             switch (SelectedJob)
             {
                 case "MIN":
-                    GatherLoc = " (Yanxia | The Lochs)";
+                    GatherLoc = " (Amh Araeng)";
                     break;
                 case "BTN":
-                    GatherLoc = " (Yanxia | The Lochs)";
+                    GatherLoc = " (Lakeland)";
                     break;
                 default:
                     GatherLoc = "";
@@ -146,15 +142,15 @@ namespace FFXIVRelicTracker._05_Skysteel._04_AugmentedDragonsung
 
         public void LoadAvailableJobs()
         {
-            AvailableJobs = SkysteelInfo.LoadJobs(AvailableJobs, SelectedCharacter, TagName);
+            AvailableJobs = SplendorousToolsInfo.LoadJobs(AvailableJobs, SelectedCharacter, Name);
             int tempCount = AvailableJobs.Count;
 
             if (AvailableJobs.Contains("MIN")) { tempCount -= 1; }
             if (AvailableJobs.Contains("BTN")) { tempCount -= 1; }
             if (AvailableJobs.Contains("FSH")) { tempCount -= 1; }
 
-            MinRemainingYellowScrips = tempCount * 18 * 60;
-            MaxRemainingYellowScrips = tempCount * 45 * 60;
+            MinRemainingScrips = tempCount * 30 * 50;
+            MaxRemainingScrips = tempCount * 90 * 50;
         }
         #endregion
 
@@ -181,7 +177,7 @@ namespace FFXIVRelicTracker._05_Skysteel._04_AugmentedDragonsung
         private bool CompleteCan() { return SelectedJob != null; }
         private void CompleteCommand()
         {
-            SkysteelInfo.ProgressClass(SelectedCharacter, SelectedJob, TagName);
+            SplendorousToolsInfo.ProgressClass(SelectedCharacter, SelectedJob, Name);
             LoadAvailableJobs();
         }
         #endregion

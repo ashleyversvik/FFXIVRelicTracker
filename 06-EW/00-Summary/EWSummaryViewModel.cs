@@ -71,7 +71,7 @@ namespace FFXIVRelicTracker._06_EW._00_Summary
         public EWJob WHM { get { return SelectedCharacter.EWModel.WHM; } }
         public EWJob SCH { get { return SelectedCharacter.EWModel.SCH; } }
         public EWJob AST { get { return SelectedCharacter.EWModel.AST; } }
-        public EWJob SGE { get { return SelectedCharacter.EWModel.AST; } }
+        public EWJob SGE { get { return SelectedCharacter.EWModel.SGE; } }
         public EWJob MNK { get { return SelectedCharacter.EWModel.MNK; } }
         public EWJob DRG { get { return SelectedCharacter.EWModel.DRG; } }
         public EWJob NIN { get { return SelectedCharacter.EWModel.NIN; } }

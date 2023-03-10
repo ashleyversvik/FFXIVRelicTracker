@@ -3,6 +3,7 @@ using FFXIVRelicTracker._04_SB.SBHelpers;
 using FFXIVRelicTracker._05_ShB.ShBHelpers;
 using FFXIVRelicTracker._05_Skysteel.Skysteel_Helpers;
 using FFXIVRelicTracker._06_EW.EWHelpers;
+using FFXIVRelicTracker._06_SplendorousTools.Splendorous_Helpers;
 using FFXIVRelicTracker._02_ARR.ArrHelpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
@@ -49,6 +50,7 @@ namespace FFXIVRelicTracker.ViewModels
                     ConfigureShBLists();
                     ConfigureSkysteelLists();
                     ConfigureEWLists();
+                    ConfigureSplendorousLists();
                 }
 
                 CharacterInt = CharacterList.IndexOf(SelectedCharacter);
@@ -308,13 +310,44 @@ namespace FFXIVRelicTracker.ViewModels
                 List<bool> ewProgresses = new List<bool>()
                 {
                     job.Manderville,
+                    job.Amazing
                 };
                 job.StageList = ewProgresses;
                 job.CheckObject();
             }
         }
 
+        private void ConfigureSplendorousLists()
+        {
+            List<SplendorousToolsJob> splendorousStages = new List<SplendorousToolsJob>()
+            {
+                selectedCharacter.SplendorousToolsModel.CRP,
+                selectedCharacter.SplendorousToolsModel.BSM,
+                selectedCharacter.SplendorousToolsModel.ARM,
+                selectedCharacter.SplendorousToolsModel.GSM,
+                selectedCharacter.SplendorousToolsModel.LTW,
+                selectedCharacter.SplendorousToolsModel.WVR,
+                selectedCharacter.SplendorousToolsModel.ALC,
+                selectedCharacter.SplendorousToolsModel.CUL,
+                selectedCharacter.SplendorousToolsModel.MIN,
+                selectedCharacter.SplendorousToolsModel.BTN,
+                selectedCharacter.SplendorousToolsModel.FSH
+            };
 
+            selectedCharacter.SplendorousToolsModel.SplendorousToolsJobList = splendorousStages;
+
+            foreach (SplendorousToolsJob job in selectedCharacter.SplendorousToolsModel.SplendorousToolsJobList)
+            {
+                List<bool> splendorousProgresses = new List<bool>()
+                {
+                    job.Splendorous,
+                    job.AugmentedSplendorous,
+                    job.Crystalline,
+                };
+                job.StageList = splendorousProgresses;
+                job.CheckObject();
+            }
+        }
         #endregion
 
 

@@ -1,73 +1,72 @@
-﻿using FFXIVRelicTracker.Models;
+﻿using FFXIVRelicTracker._06_SplendorousTools._00_Summary;
+using FFXIVRelicTracker._06_SplendorousTools._01_Splendorous;
+using FFXIVRelicTracker._06_SplendorousTools._02_AugmentedSplendorous;
+using FFXIVRelicTracker._06_SplendorousTools._03_Crystalline;
+using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
 using Prism.Commands;
 using Prism.Events;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Input;
-using FFXIVRelicTracker._06_EW._00_Summary;
-using FFXIVRelicTracker._06_EW._01_Manderville;
-using FFXIVRelicTracker._06_EW._02_Amazing;
 
-namespace FFXIVRelicTracker._06_EW.Main
+namespace FFXIVRelicTracker._06_SplendorousTools.Main
 {
-    public class EWViewModel : ObservableObject, IPageViewModel
+    public class SplendorousToolsViewModel : ObservableObject, IPageViewModel
     {
-        private Character selectedCharacter;
+        #region Fields
         private IEventAggregator iEventAggregator;
-
-        #region Constructors
-
-        public EWViewModel(IEventAggregator iEventAggregator)
-        {
-            this.iEventAggregator = iEventAggregator;
-            SubscriptionToken subscriptionToken =
-                                    this
-                                        .iEventAggregator
-                                        .GetEvent<PubSubEvent<Character>>()
-                                        .Subscribe((details) =>
-                                        {
-                                            this.SelectedCharacter = details;
-                                        });
-
-            PageViewModels.Add(new EWSummaryViewModel(Event.EventInstance.EventAggregator));
-            PageViewModels.Add(new MandervilleViewModel(Event.EventInstance.EventAggregator));
-            PageViewModels.Add(new AmazingViewModel(Event.EventInstance.EventAggregator));
-
-
-            CurrentPageViewModel = PageViewModels[0];
-
-            this.Subscribe = new DelegateCommand(
-            () =>
-            {
-                subscriptionToken =
-                    this
-                        .iEventAggregator
-                        .GetEvent<PubSubEvent<Character>>()
-                        .Subscribe((details) =>
-                        {
-                            this.SelectedCharacter = details;
-                        });
-            });
-
-            this.Unsubscribe = new DelegateCommand(
-                () =>
-                {
-
-                    this
-                        .iEventAggregator
-                        .GetEvent<PubSubEvent<Character>>()
-                        .Unsubscribe(subscriptionToken);
-                });
-
-
-        }
+        private Character selectedCharacter;
 
         #endregion
 
-        #region Properties
-        public string Name => "EW View";
+        #region Constructor
+        public SplendorousToolsViewModel(IEventAggregator iEventAggregator)
+		{
+			this.iEventAggregator = iEventAggregator;
+			SubscriptionToken subscriptionToken =
+									this
+										.iEventAggregator
+										.GetEvent<PubSubEvent<Character>>()
+										.Subscribe((details) =>
+										{
+											this.SelectedCharacter = details;
+										});
 
+            PageViewModels.Add(new SplendorousToolsSummaryViewModel(Event.EventInstance.EventAggregator));
+            PageViewModels.Add(new SplendorousViewModel(Event.EventInstance.EventAggregator));
+            PageViewModels.Add(new AugmentedSplendorousViewModel(Event.EventInstance.EventAggregator));
+            PageViewModels.Add(new CrystallineViewModel(Event.EventInstance.EventAggregator));
+            CurrentPageViewModel = PageViewModels[0];
+
+			this.Subscribe = new DelegateCommand(
+			() =>
+			{
+				subscriptionToken =
+					this
+						.iEventAggregator
+						.GetEvent<PubSubEvent<Character>>()
+						.Subscribe((details) =>
+						{
+							this.SelectedCharacter = details;
+						});
+			});
+
+			this.Unsubscribe = new DelegateCommand(
+				() => {
+
+					this
+						.iEventAggregator
+						.GetEvent<PubSubEvent<Character>>()
+						.Unsubscribe(subscriptionToken);
+				});
+
+
+		}
+		#endregion
+
+		#region Properties
+		public string Name => "Splendorous Tools";
         public Character SelectedCharacter
         {
             get { return selectedCharacter; }
@@ -94,7 +93,6 @@ namespace FFXIVRelicTracker._06_EW.Main
         public void LoadAvailableJobs()
         {
         }
-
         #endregion
 
         #region Commands

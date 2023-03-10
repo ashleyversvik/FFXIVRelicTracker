@@ -1,4 +1,4 @@
-﻿using FFXIVRelicTracker._05_Skysteel.Skysteel_Helpers;
+﻿using FFXIVRelicTracker._06_SplendorousTools.Splendorous_Helpers;
 using FFXIVRelicTracker.Helpers;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
@@ -6,15 +6,14 @@ using Prism.Events;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
-namespace FFXIVRelicTracker._05_Skysteel._01_BaseTool
+namespace FFXIVRelicTracker._06_SplendorousTools._01_Splendorous
 {
-    public class BaseToolViewModel : ObservableObject, IPageViewModel, IIncompleteViewModel
+    public class SplendorousViewModel : ObservableObject, IPageViewModel, IIncompleteViewModel
     {
-        public string Name => "Base Tool";
-        public string TagName => "BaseTool";
+        public string Name => "Splendorous";
 
         #region Fields
-        private BaseToolModel baseToolModel;
+        private SplendorousModel splendorousModel;
         private Character selectedCharacter;
         private IEventAggregator eventAggregator;
         private ObservableCollection<string> availableJobs;
@@ -22,7 +21,7 @@ namespace FFXIVRelicTracker._05_Skysteel._01_BaseTool
         #endregion
 
         #region Constructors
-        public BaseToolViewModel(IEventAggregator eventAggregator)
+        public SplendorousViewModel(IEventAggregator eventAggregator)
         {
             this.eventAggregator = eventAggregator;
 
@@ -40,13 +39,13 @@ namespace FFXIVRelicTracker._05_Skysteel._01_BaseTool
 
         #region Properties
 
-        public BaseToolModel BaseToolModel
+        public SplendorousModel SplendorousModel
         {
-            get { return baseToolModel; }
+            get { return splendorousModel; }
             set
             {
-                baseToolModel = value;
-                OnPropertyChanged(nameof(BaseToolModel));
+                splendorousModel = value;
+                OnPropertyChanged(nameof(SplendorousModel));
             }
         }
         public Character SelectedCharacter
@@ -66,10 +65,10 @@ namespace FFXIVRelicTracker._05_Skysteel._01_BaseTool
 
         public string SelectedJob
         {
-            get { return baseToolModel.SelectedJob; }
+            get { return splendorousModel.SelectedJob; }
             set
             {
-                baseToolModel.SelectedJob = value;
+                splendorousModel.SelectedJob = value;
                 OnPropertyChanged(nameof(SelectedJob));
             }
         }
@@ -84,26 +83,28 @@ namespace FFXIVRelicTracker._05_Skysteel._01_BaseTool
             }
         }
 
-        public bool CompletedFirstTool { get { return AvailableJobs.Count < SkysteelInfo.JobListString.Count; } }
+        public bool CompletedFirstTool { get { return AvailableJobs.Count < SplendorousToolsInfo.JobListString.Count; } }
+        public int RemainingScrips { get { return AvailableJobs.Count * 1500;  } }
         #endregion
 
         #region Methods
         public void CheckModelExists()
         {
-            if (BaseToolModel == null)
+            if (SplendorousModel == null)
             {
-                BaseToolModel = new BaseToolModel();
-                selectedCharacter.SkysteelModel.BaseToolModel = BaseToolModel;
+                SplendorousModel = new SplendorousModel();
+                selectedCharacter.SplendorousToolsModel.SplendorousModel = SplendorousModel;
             }
-            else { BaseToolModel = selectedCharacter.SkysteelModel.BaseToolModel; }
+            else { SplendorousModel = selectedCharacter.SplendorousToolsModel.SplendorousModel; }
         }
 
 
         public void LoadAvailableJobs()
         {
-            AvailableJobs = SkysteelInfo.LoadJobs(AvailableJobs, SelectedCharacter, TagName);
+            AvailableJobs = SplendorousToolsInfo.LoadJobs(AvailableJobs, SelectedCharacter, Name);
             OnPropertyChanged(nameof(AvailableJobs));
             OnPropertyChanged(nameof(CompletedFirstTool));
+            OnPropertyChanged(nameof(RemainingScrips));
         }
 
         #endregion
@@ -130,7 +131,7 @@ namespace FFXIVRelicTracker._05_Skysteel._01_BaseTool
         private bool CompleteCan() { return SelectedJob != null; }
         private void CompleteCommand()
         {
-            SkysteelInfo.ProgressClass(SelectedCharacter, SelectedJob, TagName);
+            SplendorousToolsInfo.ProgressClass(SelectedCharacter, SelectedJob, Name);
             LoadAvailableJobs();
         }
         #endregion

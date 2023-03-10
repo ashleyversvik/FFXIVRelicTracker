@@ -3,6 +3,7 @@ using FFXIVRelicTracker._04_SB.Main;
 using FFXIVRelicTracker._05_ShB.Main;
 using FFXIVRelicTracker._05_Skysteel.Main;
 using FFXIVRelicTracker._06_EW.Main;
+using FFXIVRelicTracker._06_SplendorousTools.Main;
 using FFXIVRelicTracker.Main;
 using FFXIVRelicTracker.Models;
 using FFXIVRelicTracker.Models.Helpers;
@@ -53,6 +54,7 @@ namespace FFXIVRelicTracker.ViewModels
             PageViewModels.Add(new ShBViewModel(Event.EventInstance.EventAggregator));
             PageViewModels.Add(new SkysteelViewModel(Event.EventInstance.EventAggregator));
             PageViewModels.Add(new EWViewModel(Event.EventInstance.EventAggregator));
+            PageViewModels.Add(new SplendorousToolsViewModel(Event.EventInstance.EventAggregator));
             PageViewModels.Add(new PVPViewModel(Event.EventInstance.EventAggregator));
 
             // Set starting page

@@ -61,6 +61,7 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
                 <TextBlock Style="{StaticResource RotateTextBlock}" Text="PLD" Grid.Row="1"   Grid.Column="01"/>
@@ -105,6 +106,27 @@
                 <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="18" Content="{Binding Path=SMN.Manderville, Converter={StaticResource BooleanToCompleteText}}" Tag="SMN.Manderville" />
                 <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="19" Content="{Binding Path=RDM.Manderville, Converter={StaticResource BooleanToCompleteText}}" Tag="RDM.Manderville" />
 
+                <TextBlock Style="{StaticResource RotateTextBlock}" Text="Amazing"                Margin="0,5"   Grid.Row="3" Grid.Column="0"/>
+
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="01" Content="{Binding Path=PLD.Amazing, Converter={StaticResource BooleanToCompleteText}}" Tag="PLD.Amazing" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="02" Content="{Binding Path=WAR.Amazing, Converter={StaticResource BooleanToCompleteText}}" Tag="WAR.Amazing" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="03" Content="{Binding Path=DRK.Amazing, Converter={StaticResource BooleanToCompleteText}}" Tag="DRK.Amazing" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="04" Content="{Binding Path=GNB.Amazing, Converter={StaticResource BooleanToCompleteText}}" Tag="GNB.Amazing" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="05" Content="{Binding Path=WHM.Amazing, Converter={StaticResource BooleanToCompleteText}}" Tag="WHM.Amazing" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="06" Content="{Binding Path=SCH.Amazing, Converter={StaticResource BooleanToCompleteText}}" Tag="SCH.Amazing" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="07" Content="{Binding Path=AST.Amazing, Converter={StaticResource BooleanToCompleteText}}" Tag="AST.Amazing" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="08" Content="{Binding Path=SGE.Amazing, Converter={StaticResource BooleanToCompleteText}}" Tag="SGE.Amazing" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="09" Content="{Binding Path=MNK.Amazing, Converter={StaticResource BooleanToCompleteText}}" Tag="MNK.Amazing" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="10" Content="{Binding Path=DRG.Amazing, Converter={StaticResource BooleanToCompleteText}}" Tag="DRG.Amazing" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="11" Content="{Binding Path=NIN.Amazing, Converter={StaticResource BooleanToCompleteText}}" Tag="NIN.Amazing" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="12" Content="{Binding Path=SAM.Amazing, Converter={StaticResource BooleanToCompleteText}}" Tag="SAM.Amazing" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="13" Content="{Binding Path=RPR.Amazing, Converter={StaticResource BooleanToCompleteText}}" Tag="RPR.Amazing" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="14" Content="{Binding Path=BRD.Amazing, Converter={StaticResource BooleanToCompleteText}}" Tag="BRD.Amazing" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="15" Content="{Binding Path=MCH.Amazing, Converter={StaticResource BooleanToCompleteText}}" Tag="MCH.Amazing" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="16" Content="{Binding Path=DNC.Amazing, Converter={StaticResource BooleanToCompleteText}}" Tag="DNC.Amazing" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="17" Content="{Binding Path=BLM.Amazing, Converter={StaticResource BooleanToCompleteText}}" Tag="BLM.Amazing" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="18" Content="{Binding Path=SMN.Amazing, Converter={StaticResource BooleanToCompleteText}}" Tag="SMN.Amazing" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="3" Grid.Column="19" Content="{Binding Path=RDM.Amazing, Converter={StaticResource BooleanToCompleteText}}" Tag="RDM.Amazing" />
 
 
             </Grid>

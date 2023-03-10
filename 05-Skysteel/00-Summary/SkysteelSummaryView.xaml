@@ -76,10 +76,10 @@
 
                 <TextBlock Style="{StaticResource RotateTextBlock}" Grid.Row="2" Grid.Column="0" Margin="0,5" Text="Base Tool"/>
                 <TextBlock Style="{StaticResource RotateTextBlock}" Grid.Row="3" Grid.Column="0" Margin="0,5" Text="Base Tool +1"/>
-                <TextBlock Style="{StaticResource RotateTextBlock}" Grid.Row="4" Grid.Column="0" Margin="0,5" Text="Dragonsung Tool"/>
-                <TextBlock Style="{StaticResource RotateTextBlock}" Grid.Row="5" Grid.Column="0" Margin="0,5" Text="Augmented Dragonsung Tool"/>
-                <TextBlock Style="{StaticResource RotateTextBlock}" Grid.Row="6" Grid.Column="0" Margin="0,5" Text="Skysung Tool"/>
-                <TextBlock Style="{StaticResource RotateTextBlock}" Grid.Row="7" Grid.Column="0" Margin="0,5" Text="Skybuilders' Tool"/>
+                <TextBlock Style="{StaticResource RotateTextBlock}" Grid.Row="4" Grid.Column="0" Margin="0,5" Text="Dragonsung"/>
+                <TextBlock Style="{StaticResource RotateTextBlock}" Grid.Row="5" Grid.Column="0" Margin="0,5" Text="Augmented Dragonsung"/>
+                <TextBlock Style="{StaticResource RotateTextBlock}" Grid.Row="6" Grid.Column="0" Margin="0,5" Text="Skysung"/>
+                <TextBlock Style="{StaticResource RotateTextBlock}" Grid.Row="7" Grid.Column="0" Margin="0,5" Text="Skybuilders'"/>
 
                 <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="01" Content="{Binding Path=CRP.BaseTool, Converter={StaticResource BooleanToCompleteText}}" Tag="CRP.BaseTool" />
                 <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="2" Grid.Column="02" Content="{Binding Path=BSM.BaseTool, Converter={StaticResource BooleanToCompleteText}}" Tag="BSM.BaseTool" />
@@ -117,17 +117,17 @@
                 <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="10" Content="{Binding Path=BTN.Dragonsung, Converter={StaticResource BooleanToCompleteText}}" Tag="BTN.Dragonsung" />
                 <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="4" Grid.Column="11" Content="{Binding Path=FSH.Dragonsung, Converter={StaticResource BooleanToCompleteText}}" Tag="FSH.Dragonsung" />
 
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="01" Content="{Binding Path=CRP.AugmentedDragonsung, Converter={StaticResource BooleanToCompleteText}}" Tag="CRP.AugmentedDragonsung" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="02" Content="{Binding Path=BSM.AugmentedDragonsung, Converter={StaticResource BooleanToCompleteText}}" Tag="BSM.AugmentedDragonsung" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="03" Content="{Binding Path=ARM.AugmentedDragonsung, Converter={StaticResource BooleanToCompleteText}}" Tag="ARM.AugmentedDragonsung" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="04" Content="{Binding Path=GSM.AugmentedDragonsung, Converter={StaticResource BooleanToCompleteText}}" Tag="GSM.AugmentedDragonsung" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="05" Content="{Binding Path=LTW.AugmentedDragonsung, Converter={StaticResource BooleanToCompleteText}}" Tag="LTW.AugmentedDragonsung" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="06" Content="{Binding Path=WVR.AugmentedDragonsung, Converter={StaticResource BooleanToCompleteText}}" Tag="WVR.AugmentedDragonsung" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="07" Content="{Binding Path=ALC.AugmentedDragonsung, Converter={StaticResource BooleanToCompleteText}}" Tag="ALC.AugmentedDragonsung" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="08" Content="{Binding Path=CUL.AugmentedDragonsung, Converter={StaticResource BooleanToCompleteText}}" Tag="CUL.AugmentedDragonsung" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="09" Content="{Binding Path=MIN.AugmentedDragonsung, Converter={StaticResource BooleanToCompleteText}}" Tag="MIN.AugmentedDragonsung" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="10" Content="{Binding Path=BTN.AugmentedDragonsung, Converter={StaticResource BooleanToCompleteText}}" Tag="BTN.AugmentedDragonsung" />
-                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="11" Content="{Binding Path=FSH.AugmentedDragonsung, Converter={StaticResource BooleanToCompleteText}}" Tag="FSH.AugmentedDragonsung" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="01" Content="{Binding Path=CRP.AugmentedDragonsung, Converter={StaticResource BooleanToCompleteText}}" Tag="CRP.Augmented Dragonsung" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="02" Content="{Binding Path=BSM.AugmentedDragonsung, Converter={StaticResource BooleanToCompleteText}}" Tag="BSM.Augmented Dragonsung" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="03" Content="{Binding Path=ARM.AugmentedDragonsung, Converter={StaticResource BooleanToCompleteText}}" Tag="ARM.Augmented Dragonsung" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="04" Content="{Binding Path=GSM.AugmentedDragonsung, Converter={StaticResource BooleanToCompleteText}}" Tag="GSM.Augmented Dragonsung" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="05" Content="{Binding Path=LTW.AugmentedDragonsung, Converter={StaticResource BooleanToCompleteText}}" Tag="LTW.Augmented Dragonsung" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="06" Content="{Binding Path=WVR.AugmentedDragonsung, Converter={StaticResource BooleanToCompleteText}}" Tag="WVR.Augmented Dragonsung" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="07" Content="{Binding Path=ALC.AugmentedDragonsung, Converter={StaticResource BooleanToCompleteText}}" Tag="ALC.Augmented Dragonsung" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="08" Content="{Binding Path=CUL.AugmentedDragonsung, Converter={StaticResource BooleanToCompleteText}}" Tag="CUL.Augmented Dragonsung" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="09" Content="{Binding Path=MIN.AugmentedDragonsung, Converter={StaticResource BooleanToCompleteText}}" Tag="MIN.Augmented Dragonsung" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="10" Content="{Binding Path=BTN.AugmentedDragonsung, Converter={StaticResource BooleanToCompleteText}}" Tag="BTN.Augmented Dragonsung" />
+                <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="5" Grid.Column="11" Content="{Binding Path=FSH.AugmentedDragonsung, Converter={StaticResource BooleanToCompleteText}}" Tag="FSH.Augmented Dragonsung" />
 
                 <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="01" Content="{Binding Path=CRP.Skysung, Converter={StaticResource BooleanToCompleteText}}" Tag="CRP.Skysung" />
                 <Button Style="{StaticResource RotateSummaryButton}" Grid.Row="6" Grid.Column="02" Content="{Binding Path=BSM.Skysung, Converter={StaticResource BooleanToCompleteText}}" Tag="BSM.Skysung" />

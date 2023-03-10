@@ -10,6 +10,7 @@ namespace FFXIVRelicTracker._05_ShB._05_AugmentedLawsOrder
     class AugmentedLawsOrderViewModel : ObservableObject, IPageViewModel
     {
         public string Name => "Augmented Law's Order";
+        public string TagName => "AugmentedLawsOrder";
 
         #region Fields
         private IEventAggregator eventAggregator;
@@ -155,7 +156,7 @@ namespace FFXIVRelicTracker._05_ShB._05_AugmentedLawsOrder
         #region Methods
         public void LoadAvailableJobs()
         {
-            AvailableJobs = ShBInfo.LoadJobs(AvailableJobs, SelectedCharacter, Name);
+            AvailableJobs = ShBInfo.LoadJobs(AvailableJobs, SelectedCharacter, TagName);
             //Calculate remaining memories to acquire
             OnPropertyChanged(nameof(ArtifactCount));
         }
@@ -183,7 +184,7 @@ namespace FFXIVRelicTracker._05_ShB._05_AugmentedLawsOrder
         private bool CompleteCan() { return SelectedJob != null; }
         private void CompleteCommand()
         {
-            ShBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, Name);
+            ShBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, TagName);
 
             LoadAvailableJobs();
 

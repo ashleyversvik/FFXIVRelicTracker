@@ -33,6 +33,7 @@ namespace FFXIVRelicTracker._06_EW.EWHelpers
         public static List<string> StageListString = new List<string>()
         {
            "Manderville",
+           "Amazing",
         };
 
         #region Methods

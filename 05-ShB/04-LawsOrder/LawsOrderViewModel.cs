@@ -10,6 +10,7 @@ namespace FFXIVRelicTracker._05_ShB._04_LawsOrder
     public class LawsOrderViewModel : ObservableObject, IPageViewModel
     {
         public string Name => "Law's Order";
+        public string TagName => "LawsOrder";
 
         #region Fields
         private IEventAggregator eventAggregator;
@@ -112,7 +113,7 @@ namespace FFXIVRelicTracker._05_ShB._04_LawsOrder
         #region Methods
         public void LoadAvailableJobs()
         {
-            AvailableJobs = ShBInfo.LoadJobs(AvailableJobs, SelectedCharacter, Name);
+            AvailableJobs = ShBInfo.LoadJobs(AvailableJobs, SelectedCharacter, TagName);
             //Calculate remaining memories to acquire
             OnPropertyChanged(nameof(MemoryNeeded));
             OnPropertyChanged(nameof(MemoryCount));
@@ -141,7 +142,7 @@ namespace FFXIVRelicTracker._05_ShB._04_LawsOrder
         private bool CompleteCan() { return SelectedJob != null; }
         private void CompleteCommand()
         {
-            ShBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, Name);
+            ShBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, TagName);
 
             LoadAvailableJobs();
 

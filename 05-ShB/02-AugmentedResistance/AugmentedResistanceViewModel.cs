@@ -11,6 +11,7 @@ namespace FFXIVRelicTracker._05_ShB._02_AugmentedResistance
     public class AugmentedResistanceViewModel : ObservableObject, IPageViewModel
     {
         public string Name => "Augmented Resistance";
+        public string TagName => "AugmentedResistance";
 
         #region Fields
         private IEventAggregator eventAggregator;
@@ -139,7 +140,7 @@ namespace FFXIVRelicTracker._05_ShB._02_AugmentedResistance
         #region Methods
         public void LoadAvailableJobs()
         {
-            AvailableJobs = ShBInfo.LoadJobs(AvailableJobs, SelectedCharacter, Name);
+            AvailableJobs = ShBInfo.LoadJobs(AvailableJobs, SelectedCharacter, TagName);
             //Calculate remaining memories to acquire
             OnPropertyChanged(nameof(HarrowingNeeded));
             OnPropertyChanged(nameof(TorturedNeeded));
@@ -169,7 +170,7 @@ namespace FFXIVRelicTracker._05_ShB._02_AugmentedResistance
         private bool CompleteCan() { return SelectedJob != null; }
         private void CompleteCommand()
         {
-            ShBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, Name);
+            ShBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, TagName);
 
             LoadAvailableJobs();
             OnPropertyChanged(nameof(HarrowingCount));

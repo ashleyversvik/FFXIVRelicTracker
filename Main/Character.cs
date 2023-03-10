@@ -7,7 +7,7 @@ using FFXIVRelicTracker._06_EW.Main;
 using FFXIVRelicTracker.PVP.Main;
 using FFXIVRelicTracker.Models.Helpers;
 using System.Reflection;
-
+using FFXIVRelicTracker._06_SplendorousTools.Main;
 
 namespace FFXIVRelicTracker.Models
 {
@@ -24,7 +24,7 @@ namespace FFXIVRelicTracker.Models
         private SBModel sbModel;
         private EWModel ewModel;
         private PVPModel pvpModel;
-
+        private SplendorousToolsModel splendorousToolsModel;
         #region Properties
         public string Version { get; set; }
         public string ArrLayout { get; set; }
@@ -33,6 +33,7 @@ namespace FFXIVRelicTracker.Models
         public string ShBLayout { get; set; }
         public string SkysteelLayout { get; set; }
         public string EWLayout { get; set; }
+        public string SplendorousLayout { get; set; }
 
         public string Name
         {
@@ -142,6 +143,19 @@ namespace FFXIVRelicTracker.Models
                 }
             }
         }
+
+        public SplendorousToolsModel SplendorousToolsModel
+        {
+            get { return splendorousToolsModel; }
+            set
+            {
+                if (value != null)
+                {
+                    splendorousToolsModel = value;
+                    OnPropertyChanged(nameof(SplendorousToolsModel));
+                }
+            }
+        }
         #endregion
         public Character()
         {
@@ -155,6 +169,7 @@ namespace FFXIVRelicTracker.Models
             SBModel = new SBModel();
             EWModel = new EWModel();
             PVPModel = new PVPModel();
+            SplendorousToolsModel = new SplendorousToolsModel();
         }
 
         public Character(string name, string server )
@@ -168,6 +183,7 @@ namespace FFXIVRelicTracker.Models
             SkysteelModel = new SkysteelModel();
             EWModel = new EWModel();
             PVPModel = new PVPModel();
+            SplendorousToolsModel = new SplendorousToolsModel();
 
             ArrLayout = "Horizontal";
             HWLayout = "Horizontal";
@@ -175,7 +191,7 @@ namespace FFXIVRelicTracker.Models
             ShBLayout = "Horizontal";
             SkysteelLayout = "Horizontal";
             EWLayout = "Horizontal";
-
+            SplendorousLayout = "Horizontal";
         }
 
         public Character(Character oldCharacter)
@@ -196,6 +212,7 @@ namespace FFXIVRelicTracker.Models
             if (string.IsNullOrEmpty(ShBLayout)) { ShBLayout = "Horizontal"; }
             if (string.IsNullOrEmpty(SkysteelLayout)) { SkysteelLayout = "Horizontal"; }
             if (string.IsNullOrEmpty(EWLayout)) { EWLayout = "Horizontal"; }
+            if (string.IsNullOrEmpty(SplendorousLayout)) { EWLayout = "Horizontal"; }
 
         }
 

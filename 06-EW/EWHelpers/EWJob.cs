@@ -22,6 +22,7 @@ namespace FFXIVRelicTracker._06_EW.EWHelpers
         #region Properties
         public List<bool> StageList = new List<bool>();
         private bool manderville;
+        private bool amazing;
 
         public bool Manderville
         {
@@ -30,6 +31,16 @@ namespace FFXIVRelicTracker._06_EW.EWHelpers
             {
                 manderville = value;
                 OnPropertyChanged(nameof(Manderville));
+            }
+        }
+
+        public bool Amazing
+        {
+            get { return amazing; }
+            set
+            {
+                amazing = value;
+                OnPropertyChanged(nameof(Amazing));
             }
         }
 
@@ -68,6 +79,7 @@ namespace FFXIVRelicTracker._06_EW.EWHelpers
         public void RefreshJob()
         {
             Manderville = StageList[0];
+            Amazing = StageList[1];
         }
         #endregion
     }

@@ -10,6 +10,7 @@ namespace FFXIVRelicTracker._05_ShB._06_Blades
     class BladesViewModel : ObservableObject, IPageViewModel
     {
         public string Name => "Blades of Gunnhildr";
+        public string TagName => "Blades";
 
         #region Fields
         private IEventAggregator eventAggregator;
@@ -217,7 +218,7 @@ namespace FFXIVRelicTracker._05_ShB._06_Blades
         #region Methods
         public void LoadAvailableJobs()
         {
-            AvailableJobs = ShBInfo.LoadJobs(AvailableJobs, SelectedCharacter, Name);
+            AvailableJobs = ShBInfo.LoadJobs(AvailableJobs, SelectedCharacter, TagName);
             //Calculate remaining memories to acquire
             OnPropertyChanged(nameof(EmotionCount));
             OnPropertyChanged(nameof(EmotionNeeded));
@@ -246,7 +247,7 @@ namespace FFXIVRelicTracker._05_ShB._06_Blades
         private bool CompleteCan() { return SelectedJob != null; }
         private void CompleteCommand()
         {
-            ShBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, Name);
+            ShBStageCompleter.ProgressClass(selectedCharacter, SelectedJob, TagName);
 
             LoadAvailableJobs();
 

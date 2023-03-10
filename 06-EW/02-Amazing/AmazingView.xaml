@@ -1,9 +1,9 @@
-﻿<UserControl x:Class="FFXIVRelicTracker._06_EW._01_Manderville.MandervilleView"
+﻿<UserControl x:Class="FFXIVRelicTracker._06_EW._02_Amazing.AmazingView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:FFXIVRelicTracker._06_EW._01_Manderville"
+             xmlns:local="clr-namespace:FFXIVRelicTracker._06_EW._02_Amazing"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
@@ -50,27 +50,27 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Margin="0,0,0,0" Grid.Row="0" Grid.Column="0" Style="{StaticResource LeftTextBlock}" 
-                    Text="The first Manderville weapon is received upon completion of a quest chain starting with:"
-                    TextDecorations="{Binding Path=CompletedFirstManderville, Converter={StaticResource ConvertToStrikethrough}}" />
-                <TextBlock Margin="10,0,0,0" Grid.Row="1" Grid.Column="0" Style="{StaticResource LeftTextBlock}" Text="Quest: 'Make It a Manderville' | Started by: House Manderville Manservant (Radz-at-Han)"
-                    TextDecorations="{Binding Path=CompletedFirstManderville, Converter={StaticResource ConvertToStrikethrough}}" />
+                    Text="The first Amazing Manderville weapon is received upon completion of a quest chain starting with:"
+                    TextDecorations="{Binding Path=CompletedFirstAmazing, Converter={StaticResource ConvertToStrikethrough}}" />
+                <TextBlock Margin="10,0,0,0" Grid.Row="1" Grid.Column="0" Style="{StaticResource LeftTextBlock}" Text="Quest: 'Well-oild' | Started by: Gerolt (Radz-at-Han)"
+                    TextDecorations="{Binding Path=CompletedFirstAmazing, Converter={StaticResource ConvertToStrikethrough}}" />
 
                 <TextBlock Margin="0,0,0,0" Grid.Row="2" Grid.Column="0" Style="{StaticResource LeftTextBlock}" Text=""/>
 
-                <TextBlock Margin="0,0,0,0" Grid.Row="3" Grid.Column="0" Style="{StaticResource LeftTextBlock}" Text="Subsequent Manderville weapons are acquired from the side quest:"/>
-                <TextBlock Margin="10,0,0,0" Grid.Row="4" Grid.Column="0" Style="{StaticResource LeftTextBlock}" Text="'Make Another Manderville' | Started by: House Manderville Artisan (Radz-at-Han)"/>
+                <TextBlock Margin="0,0,0,0" Grid.Row="3" Grid.Column="0" Style="{StaticResource LeftTextBlock}" Text="Subsequent Amazing Manderville weapons are acquired from the side quest:"/>
+                <TextBlock Margin="10,0,0,0" Grid.Row="4" Grid.Column="0" Style="{StaticResource LeftTextBlock}" Text="'The Next Mander-level' | Started by: House Manderville Artisan (Radz-at-Han)"/>
                 <StackPanel Orientation="Horizontal" Margin="10,0,0,0" Grid.Row="5">
                     <TextBlock Style="{StaticResource LeftTextBlock}" Text="Three "/>
-                    <TextBlock Style="{StaticResource LeftTextBlock}" Foreground="White" Text="Manderium Meteorites"/>
+                    <TextBlock Style="{StaticResource LeftTextBlock}" Foreground="White" Text="Complementary Chondrites"/>
                     <TextBlock Style="{StaticResource LeftTextBlock}" Text=" are required to complete this quest"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="10,0,0,0" Grid.Row="6">
-                    <TextBlock Style="{StaticResource LeftTextBlock}" Foreground="White" Text="Manderium Meteorites"/>
+                    <TextBlock Style="{StaticResource LeftTextBlock}" Foreground="White" Text="Complementary Chondrites"/>
                     <TextBlock Style="{StaticResource LeftTextBlock}" Text=" are purchased for 500 Allagan Tomestones of Astronomy each"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="10,0,0,0" Grid.Row="7">
                     <TextBlock Style="{StaticResource LeftTextBlock}" Text="Purchase "/>
-                    <TextBlock Style="{StaticResource LeftTextBlock}" Foreground="White" Text="Manderium Meteorites"/>
+                    <TextBlock Style="{StaticResource LeftTextBlock}" Foreground="White" Text="Complementary Chondrites"/>
                     <TextBlock Style="{StaticResource LeftTextBlock}" Text=" from:"/>
                 </StackPanel>
                 <TextBlock Margin="20,0,0,0" Grid.Row="8" Grid.Column="0" Style="{StaticResource LeftTextBlock}" Text="Jubrunnah (Radz-At-Han)"/>
@@ -92,20 +92,20 @@
 
                     <StackPanel Orientation="Horizontal" Grid.Row="0">
                         <TextBlock Style="{StaticResource LeftTextBlock}" Text="Current "/>
-                        <TextBlock Style="{StaticResource LeftTextBlock}" Foreground="White" Text="Manderium Meteorites"/>
+                        <TextBlock Style="{StaticResource LeftTextBlock}" Foreground="White" Text="Complementary Chondrites"/>
                         <TextBlock Style="{StaticResource LeftTextBlock}" Text=":"/>
                     </StackPanel>
-                    <TextBox Grid.Row="0" Grid.Column="1"  Margin="0,0,0,0" Style="{StaticResource BaseTextBox}"  Text="{Binding MeteoritesCount}" MinWidth="20"/>
-                    <Button Grid.Row="0" Grid.Column="2"  Style="{StaticResource incrementButton}" Content="+" Command="{Binding MeteoritesButton}"/>
+                    <TextBox Grid.Row="0" Grid.Column="1"  Margin="0,0,0,0" Style="{StaticResource BaseTextBox}"  Text="{Binding ChondritesCount}" MinWidth="20"/>
+                    <Button Grid.Row="0" Grid.Column="2"  Style="{StaticResource incrementButton}" Content="+" Command="{Binding ChondritesButton}"/>
 
                     <StackPanel Orientation="Horizontal" Grid.Row="1">
-                        <TextBlock Style="{StaticResource LeftTextBlock}" Foreground="White" Text="Manderium Meteorites"/>
+                        <TextBlock Style="{StaticResource LeftTextBlock}" Foreground="White" Text="Complementary Chondrites"/>
                         <TextBlock Style="{StaticResource LeftTextBlock}" Text=" remaining:"/>
                     </StackPanel>
-                    <TextBlock Grid.Row="1" Grid.Column="1" Margin="5,0,0,0" Style="{StaticResource LeftTextBlock}" Text="{Binding NeededMeteorites}" Width="20"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Margin="5,0,0,0" Style="{StaticResource LeftTextBlock}" Text="{Binding NeededChondrites}" Width="20"/>
                     
                     <TextBlock Grid.Row="2" Grid.Column="0" Style="{StaticResource LeftTextBlock}" Text="Remaining Tomestones needed:"/>
-                    <TextBlock Grid.Row="2" Grid.Column="1" Margin="5,0,0,0" Style="{StaticResource LeftTextBlock}" Text="{Binding MeteoritesCost, StringFormat='{}{0:N0}'}" MinWidth="20"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Margin="5,0,0,0" Style="{StaticResource LeftTextBlock}" Text="{Binding ChondritesCost, StringFormat='{}{0:N0}'}" MinWidth="20"/>
                 </Grid>
             </Grid>
         </ScrollViewer>

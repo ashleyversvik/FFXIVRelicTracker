@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="FFXIVRelicTracker._06_SplendorousTools._01_Splendorous.SplendorousView"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            xmlns:local="clr-namespace:FFXIVRelicTracker._06_SplendorousTools._01_Splendorous"
+            mc:Ignorable="d" 
+            d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/FFXIVRelicTracker;component/Helpers/ResourceDictionaries/06-SplendorousDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <TextBlock Style="{StaticResource LeftTextBlock}" Text="Active Job:"/>
+            <ComboBox Style="{StaticResource FFXIVComboBox}" Margin="5,0,0,0"
+                                                ItemsSource="{Binding   Path=AvailableJobs}" 
+                                                SelectedItem="{Binding Path=SelectedJob}"
+                                    />
+            <Border HorizontalAlignment="Center">
+                <Button Style="{StaticResource FFXIVButton}" Content="Mark as completed" Command="{Binding CompleteButton}" CommandParameter="{Binding Path=SelectedJob}"/>
+            </Border>
+        </StackPanel>
+        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Style="{StaticResource LeftTextBlock}" Text="The first Splendorous Tool is awarded upon completion of:"/>
+                <TextBlock Grid.Row="1" Margin="10,0,0,0" Style="{StaticResource LeftTextBlock}" Text="Quest: 'An Original Improvement' | Started by: Chora-Zoi (Crystarium)"/>
+                <TextBlock Grid.Row="2"/>
+                <TextBlock Grid.Row="3" Style="{StaticResource LeftTextBlock}" Text="Subsequent Splendorous Tools are purchased for 1,500 white scrips each from:"/>
+                <TextBlock Grid.Row="4" Margin="10,0,0,0" Style="{StaticResource LeftTextBlock}" Text="Quinnana (Crystarium) "/>
+                <TextBlock Grid.Row="5" />
+                <StackPanel Margin="10,0,0,0" Grid.Row="6" Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource LeftTextBlock}" Text="Remaining White Scrips (Based on completed tools):"/>
+                    <TextBlock Style="{StaticResource LeftTextBlock}" Text="{Binding RemainingScrips, StringFormat='{}{0:N0}'}"/>
+                </StackPanel>
+
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

@@ -12,6 +12,7 @@ namespace FFXIVRelicTracker._05_Skysteel._02_BasePlus1
     public class BasePlus1ViewModel : ObservableObject, IPageViewModel, IIncompleteViewModel
     {
         public string Name => "Skysteel Tool+1";
+        public string TagName => "BasePlus1";
 
         #region Fields
         private BasePlus1Model basePlus1Model;
@@ -143,7 +144,7 @@ namespace FFXIVRelicTracker._05_Skysteel._02_BasePlus1
 
         public void LoadAvailableJobs()
         {
-            AvailableJobs = SkysteelInfo.LoadJobs(AvailableJobs, SelectedCharacter, Name);
+            AvailableJobs = SkysteelInfo.LoadJobs(AvailableJobs, SelectedCharacter, TagName);
             int tempCount = AvailableJobs.Count;
 
             if (AvailableJobs.Contains("MIN")){ tempCount -= 1; }
@@ -177,7 +178,7 @@ namespace FFXIVRelicTracker._05_Skysteel._02_BasePlus1
         private bool CompleteCan() { return SelectedJob != null; }
         private void CompleteCommand()
         {
-            SkysteelInfo.ProgressClass(SelectedCharacter, SelectedJob, Name);
+            SkysteelInfo.ProgressClass(SelectedCharacter, SelectedJob, TagName);
             LoadAvailableJobs();
         }
         #endregion

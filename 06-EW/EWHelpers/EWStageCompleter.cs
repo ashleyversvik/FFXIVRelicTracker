@@ -56,7 +56,9 @@ namespace FFXIVRelicTracker._06_EW.EWHelpers
                 case 0:
                     DecreaseMeteorites(character);
                     break;
-
+                case 1:
+                    DecreateChondrites(character);
+                    break;
                 default:
                     break;
             }
@@ -67,6 +69,12 @@ namespace FFXIVRelicTracker._06_EW.EWHelpers
             if (character.EWModel.MandervilleModel.MeteoritesCount <= 3) { character.EWModel.MandervilleModel.MeteoritesCount = 0; }
             else { character.EWModel.MandervilleModel.MeteoritesCount -= 3; }
         }
-        
+
+        private static void DecreateChondrites(Character character)
+        {
+            if (character.EWModel.AmazingModel.ChondritesCount <= 3) { character.EWModel.AmazingModel.ChondritesCount = 0; }
+            else { character.EWModel.AmazingModel.ChondritesCount -= 3; }
+        }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using FFXIVRelicTracker._06_EW._01_Manderville;
+using FFXIVRelicTracker._06_EW._02_Amazing;
 using FFXIVRelicTracker._06_EW.EWHelpers;
 using FFXIVRelicTracker.Models.Helpers;
 using System.Collections.Generic;
@@ -30,6 +31,7 @@ namespace FFXIVRelicTracker._06_EW.Main
         private EWJob rdm = new EWJob("RDM");
 
         private MandervilleModel mandervilleModel = new MandervilleModel();
+        private AmazingModel amazingModel = new AmazingModel();
 
         #endregion
 
@@ -63,6 +65,7 @@ namespace FFXIVRelicTracker._06_EW.Main
         public EWJob RDM { get { return rdm; } set { rdm = value; OnPropertyChanged(nameof(RDM)); } }
 
         public MandervilleModel MandervilleModel { get { return mandervilleModel; } set { mandervilleModel = value; OnPropertyChanged(nameof(MandervilleModel)); } }
+        public AmazingModel AmazingModel { get { return amazingModel; } set { amazingModel = value; OnPropertyChanged(nameof(AmazingModel)); } }
         #endregion
 
     }
